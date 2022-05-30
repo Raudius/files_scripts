@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"outDir": "./js",
+		"isolatedModules": true,
+		"allowJs": true,
+		"target": "es5",
+		"paths": {
+			"@/*": [
+				"./"
+			]
+		}
+	},
+	"include": ["./src/*"],
+}

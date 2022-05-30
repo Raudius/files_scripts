@@ -21,7 +21,17 @@
 		"@nextcloud/dialogs": "^3.1.2",
 		"@nextcloud/router": "^2.0.0",
 		"@nextcloud/vue": "^5.3.1",
-		"vue": "^2.6.14"
+		"@types/codemirror": "^5.60.5",
+		"@vue/composition-api": "^1.6.2",
+		"codemirror": "*",
+		"pinia": "^2.0.14",
+		"source-map-loader": "^3.0.1",
+		"ts-loader": "^9.3.0",
+		"vue": "^2.6.14",
+		"vue-class-component": "^7.2.6",
+		"vue-codemirror": "^4.0.6",
+		"vue-material-design-icons": "^5.0.0",
+		"vue-property-decorator": "^9.1.2"
 	},
 	"browserslist": [
 		"extends @nextcloud/browserslist-config"
@@ -35,6 +45,14 @@
 		"@nextcloud/browserslist-config": "^2.2.0",
 		"@nextcloud/eslint-config": "^7.0.2",
 		"@nextcloud/stylelint-config": "^2.1.2",
-		"@nextcloud/webpack-vue-config": "^5.0.0"
+		"@nextcloud/webpack-vue-config": "^5.0.0",
+		"css-loader": "^6.7.1",
+		"postcss": "^8.4.14",
+		"postcss-loader": "^7.0.0",
+		"sass": "^1.52.1",
+		"sass-loader": "^12.4.0",
+		"vue-loader": "^15.9.8",
+		"vue-template-compiler": "^2.6.14",
+		"webpack": "^5.72.1"
 	}
 }

@@ -12,13 +12,13 @@ import '@nextcloud/dialogs/styles/toast.scss'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
 
 export default {
-	name: 'ActionsModal',
+	name: 'ScriptSelectionModal',
 	components: {
-		Modal
+		Modal,
 	},
 	data() {
 		return {
-			showModal: false
+			showModal: false,
 		}
 	},
 	computed: {
@@ -49,7 +49,7 @@ export default {
 	methods: {
 		closeModal() {
 			this.showModal = false
-		}
+		},
 	},
 }
 </script>

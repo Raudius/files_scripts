@@ -11,7 +11,7 @@
     <category>files</category>
     <bugs>https://github.com/</bugs>
     <dependencies>
-        <nextcloud min-version="23" max-version="24"/>
+        <nextcloud min-version="23" max-version="25"/>
     </dependencies>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>

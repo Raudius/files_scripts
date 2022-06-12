@@ -24,7 +24,7 @@
 			</ul>
 
 			<div v-if="isLoading" class="icon-loading"></div>
-			<EmptyContent v-if="scripts.length === 0" class="empty-content">
+			<EmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
 				No actions
 				<template #icon>
 					<FileCog />
@@ -38,7 +38,6 @@
 <script lang="ts">
 import Plus from 'vue-material-design-icons/Plus.vue'
 import FileCog from 'vue-material-design-icons/FileCog.vue'
-import Save from 'vue-material-design-icons/ContentSave.vue'
 import Button from '@nextcloud/vue/dist/Components/Button'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
@@ -46,36 +45,51 @@ import ScriptEdit from './components/ScriptEdit.vue';
 import ScriptCard from './components/ScriptCard.vue';
 
 import {defineComponent, computed} from '@vue/composition-api'
-import {useScripts} from "./store/scripts";
 import {ScriptDescriptor} from "./types/script";
+import {mapGetters, mapState} from 'vuex'
+import {State} from "./store/scripts";
+import Vue from "vue";
 
-export default defineComponent({
+
+export default {
 	name: 'Settings',
 	components: {
-		Plus,
 		Button,
-		FileCog,
-		Save,
 		EmptyContent,
 		Modal,
 		ScriptEdit,
-		ScriptCard
+		ScriptCard,
+		Plus,
+		FileCog
 	},
 
-	setup() {
-		const scriptsStore = useScripts();
+	mounted() {
+		this.$store.dispatch('fetchScripts')
+	},
 
-		console.log('setup');
+	computed: {
+		...mapState({
+			scripts: 'scripts',
+			selectedScript: 'selectedScript',
+		}),
+		showModal: function (): boolean {
+			return !!this.selectedScript
+		},
+		isLoading: function (): boolean {
+			return this.scripts === null;
+		}
+	},
 
-		return {
-			loading: true,
-			scripts: computed(() => scriptsStore.getScripts),
-			showModal: computed( () => {  return !!scriptsStore.getSelectedScript }),
-			clearSelected: () => scriptsStore.clearSelected(),
-			newScript: scriptsStore.newScript,
+	methods: {
+		clearSelected() {
+			this.$store.commit('clearSelected')
+		},
+		newScript() {
+			this.$store.commit('newScript')
 		}
 	}
-});
+}
+
 </script>
 <style scoped>
 .section {

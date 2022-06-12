@@ -1,8 +1,9 @@
 <template>
 	<ListItem
+		v-if="this.script"
 		:title="this.script.title"
 		details="Enabled"
-		:active="this.script.isEnabled"
+		:active="this.isLoading"
 		:force-display-actions="true"
 		@click="this.selectScript"
 	>
@@ -24,31 +25,39 @@
 <script lang="ts">
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import {useScripts} from "../store/scripts"
-import {computed, defineComponent} from "@vue/composition-api";
-import {Script} from "../types/script";
+import {mapGetters, mapState} from "vuex";
 
-export default defineComponent({
+export default {
 	name: 'ScriptCard',
 	components: {
 		ListItem, ActionButton
 	},
 
-	setup(props) {
-		const scriptsStore = useScripts();
-		scriptsStore.loadScripts()
+	computed: {
+		...mapGetters([
+			'getScriptById',
+		]),
+		...mapState({
+			loadingScriptId: 'loadingScriptId'
+		}),
+		isLoading: function (): boolean {
+			return this.loadingScriptId === this.id;
+		},
+		script: function () {
+			return this.getScriptById(this.id)
+		}
+	},
 
-		return {
-			script: computed( (): Script => scriptsStore.getScriptById(props.id) ),
-			isLoading: computed((): boolean => scriptsStore.getLoadingScriptId === props.id),
-			selectScript: function() { scriptsStore.selectScript(this.script); }
+	methods: {
+		selectScript() {
+			this.script && this.$store.dispatch('selectScript', this.script)
 		}
 	},
 
 	props: {
 		id: Number
 	},
-})
+}
 </script>
 
 <style scoped>

@@ -5,11 +5,11 @@
 				   class="input-script-name"
 				   required
 				   placeholder="Script name"
-				   v-model="this.script.title"
+				   v-model="scriptTitle"
 			>
 		</div>
-		<CodeMirror v-model="this.script.program" class="editor" :options="cmOption" />
-		<Button type="primary">
+		<CodeMirror v-model="scriptProgram" class="editor" :options="cmOption" />
+		<Button type="primary" @click="saveScript">
 			<template #icon>
 				<Save :size="20" />
 			</template>
@@ -25,22 +25,14 @@ import Save from "vue-material-design-icons/ContentSave.vue";
 import 'codemirror/mode/lua/lua.js'
 import 'codemirror/addon/edit/matchbrackets.js'
 import 'codemirror/addon/hint/show-hint.js'
-import {defineComponent} from "@vue/composition-api";
-import {useScripts} from "../store/scripts";
 const CodeMirror = require('vue-codemirror').codemirror;
 
-export default defineComponent({
+export default {
 	name: 'ScriptEdit',
 	components: {
 		Button,
 		Save,
 		CodeMirror,
-	},
-	setup() {
-		const scriptsStore = useScripts();
-		return {
-			script: scriptsStore.getSelectedScript,
-		}
 	},
 	data() {
 		return {
@@ -62,7 +54,31 @@ export default defineComponent({
 			},
 		}
 	},
-})
+	computed: {
+		scriptTitle: {
+			get() {
+				return this.$store.state.selectedScript.title
+			},
+			set (value) {
+				this.$store.commit('updateCurrentScript', {title: value})
+			}
+		},
+		scriptProgram: {
+			get() {
+				return this.$store.state.selectedScript.program
+			},
+			set (value) {
+				this.$store.commit('updateCurrentScript', {program: value})
+			}
+		}
+	},
+
+	methods: {
+		saveScript() {
+			this.$store.commit('saveScript')
+		}
+	}
+}
 </script>
 
 <style scoped>

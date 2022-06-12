@@ -7,9 +7,10 @@
 	</Modal>
 </template>
 
-<script>
+<script lang="ts">
 import '@nextcloud/dialogs/styles/toast.scss'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
+import Vue from "vue";
 
 export default {
 	name: 'ScriptSelectionModal',

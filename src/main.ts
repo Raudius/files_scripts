@@ -1,26 +1,29 @@
 import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
-import VueCompositionApi, {createApp} from '@vue/composition-api'
 import ScriptSelectionModal from "./components/ScriptSelectionModal.vue";
 import Settings from "./Settings.vue";
-import { createPinia, PiniaVuePlugin } from 'pinia'
+import Vuex from "vuex";
+import '@nextcloud/typings'
 
-declare var appName, __webpack_public_path__: string;
-declare var OC,OCA,t,n: any
+
+Vue.mixin({ methods: { t, n } })
+Vue.use(Vuex)
+Vue.prototype.OC = OC
+__webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 const ID_DIV_SETTINGS = 'files_scripts_settings'
 const ID_DIV_FILES = 'files_scripts_files'
 
-__webpack_public_path__ = generateFilePath(appName, '', 'js/')
+declare global {
+	const OC: Nextcloud.v24.OC
+	const t: (ctxt: String, str: String, params?: Object) => String
+	const n: (ctxt: String, str: String, params?: Object) => String
+	var appName, __webpack_public_path__: string;
+}
 
-Vue.mixin({ methods: { t, n } })
-Vue.prototype.OC = OC
-Vue.prototype.OCA = OCA
-
-Vue.use(VueCompositionApi)
-Vue.use(PiniaVuePlugin)
-const pinia = createPinia()
+// Import store after vuex registration.
+import { scripts as scriptsStore } from "./store/scripts";
 
 /*
  * Render Vue app.
@@ -28,16 +31,12 @@ const pinia = createPinia()
  * Otherwise we add a modal mount DIV to the DOM, and mount ScriptSelectionModal.vue
  */
 const settingsDiv = document.getElementById(ID_DIV_SETTINGS)
-if (settingsDiv) {/*
-	const app = new Vue({
+if (settingsDiv) {
+	new Vue({
 		render: h => h(Settings),
 		el: '#' + ID_DIV_SETTINGS,
-		pinia,
-	})*/
-	const app = createApp(Settings)
-	// @ts-ignore
-	app.use(pinia)
-	app.mount('#' + ID_DIV_SETTINGS)
+		store: scriptsStore
+	})
 } else {
 	const div = document.createElement('div')
 	div.id = ID_DIV_FILES
@@ -45,7 +44,6 @@ if (settingsDiv) {/*
 
 	const app = new Vue({
 		render: h => h(ScriptSelectionModal),
-		pinia,
 	})
 	app.$mount('#' + ID_DIV_FILES)
 }

@@ -8,12 +8,15 @@ use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
 use OCA\FilesScripts\Interpreter\Functions\Files\Get_Parent;
 use OCA\FilesScripts\Interpreter\Functions\Files\Full_Path;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
+use OCA\FilesScripts\Interpreter\Functions\Files\New_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Root;
+use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
+use OCP\Files\Node;
 use OCP\IUserManager;
 use OCP\IUserSession;
 
@@ -21,6 +24,7 @@ class Interpreter {
 	private const REGISTRABLE_FUNCTIONS = [
 		Exists::class,
 		Copy_File::class,
+		New_File::class,
 		Full_Path::class,
 		Get_Parent::class,
 		Root::class,
@@ -45,7 +49,13 @@ class Interpreter {
 		$this->userManager = $userManager;
 	}
 
-	public function execute(string $program, string $userId) {
+	/**
+	 * @param string $program
+	 * @param Node[] $files
+	 * @param string $userId
+	 * @return false|mixed|null
+	 */
+	public function execute(string $program, array $files, string $userId) {
 		$user = $this->userManager->get($userId);
 		if (!$user) {
 			return null;
@@ -55,7 +65,7 @@ class Interpreter {
 		$originalUser = $this->userSession->getUser();
 		$this->userSession->setUser($user);
 
-		$lua = $this->createLua($userFolder);
+		$lua = $this->createLua($userFolder, $files);
 		$program = <<<LUA
 __ = {}
 $program
@@ -67,12 +77,19 @@ LUA;
 		return $lua->eval($program);
 	}
 
-	private function createLua(Folder $root): Lua {
+	/**
+	 * @param Folder $root
+	 * @param Node[] $inputFiles
+	 * @return Lua
+	 */
+	private function createLua(Folder $root, array $inputFiles): Lua {
 		$lua = new Lua();
 
 		foreach (self::REGISTRABLE_FUNCTIONS as $function) {
 			(new $function($lua, $root))->register();
 		}
+
+		(new Get_Input_Files($lua, $root, $inputFiles))->register();
 
 		return $lua;
 	}

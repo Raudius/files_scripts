@@ -13,7 +13,7 @@ abstract class RegistrableFunction {
 	private Lua $lua;
 	private Folder $folder;
 
-	final public function __construct(Lua $lua, Folder $folder) {
+	public function __construct(Lua $lua, Folder $folder) {
 		$this->lua = $lua;
 		$this->folder = $folder;
 	}
@@ -79,7 +79,7 @@ LUA);
 		$name = '/';
 		if ($id !== $this->folder->getId()) {
 			$path = $this->folder->getRelativePath($node->getParent()->getPath());
-			$node->getName();
+			$name = $node->getName();
 		}
 
 		return [

@@ -9,13 +9,15 @@
         }
     ],
     "require": {
-		"raudius/phpdf": "^1.0"
-	},
+		"raudius/phpdf": "^1.0",
+		"ext-json": "*",
+      	"ext-lua": "*"
+    },
     "require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"phpunit/phpunit": "^8.5",
         "nextcloud/coding-standard": "^0.5.0"
-    },
+	},
     "config": {
         "optimize-autoloader": true,
         "classmap-authoritative": true,

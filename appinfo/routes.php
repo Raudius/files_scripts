@@ -6,5 +6,7 @@ return [
 	'resources' => [
 		'script' => ['url' => '/scripts']
 	],
-	'routes' => []
+	'routes' => [
+		['name' => 'script#run', 'url'=>'/run/{id}', 'verb'=>'POST']
+	]
 ];

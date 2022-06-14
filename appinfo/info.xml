@@ -4,7 +4,7 @@
     <name>Custom actions</name>
     <summary>Custom actions on files.</summary>
     <description>Enables users to write scripts to drive custom file actions.</description>
-    <version>18.0.0</version>
+    <version>1.0.0</version>
     <licence>agpl</licence>
     <author mail="r.ferreira.fuentes@gmail.com" >Raul Ferreira Fuentes</author>
     <namespace>FilesScripts</namespace>

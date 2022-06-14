@@ -1,10 +1,11 @@
 import Vuex, {ActionTree, GetterTree, MutationTree} from 'vuex'
-import {Script, ScriptDescriptor} from "../types/script";
-
+import {Script} from "../types/script";
+import axios from "@nextcloud/axios"
+import {generateUrl} from "@nextcloud/router";
 
 export interface State {
 	loadingScriptId: number;
-	scripts: { [index: number]: ScriptDescriptor };
+	scripts: { [index: number]: Script };
 	selectedScript: Script;
 }
 
@@ -12,10 +13,13 @@ const getters = <GetterTree<State, any>>{
 	getScriptById(state: State) {
 		return (scriptId) => state.scripts[scriptId] ?? null;
 	},
+	getScripts(state: State) {
+		return state.scripts ? Object.values(state.scripts) : null;
+	}
 };
 
 const mutations = <MutationTree<State>> {
-	async loadScripts(state: State, scripts: ScriptDescriptor[]) {
+	async setScripts(state: State, scripts: Script[]) {
 		state.scripts = scripts
 	},
 
@@ -25,7 +29,7 @@ const mutations = <MutationTree<State>> {
 		state.scripts[id] = {
 			id: id,
 			title: title
-		} as ScriptDescriptor;
+		} as Script;
 	},
 
 	setLoadingScriptId(state: State, scriptId: number) {
@@ -54,52 +58,35 @@ const mutations = <MutationTree<State>> {
 			title: newValues.title ?? state.selectedScript.title,
 			program: newValues.program ?? state.selectedScript.program
 		}
-	},
-	saveScript(state: State) {
-		console.log('Save')
 	}
 }
 
 const actions = <ActionTree<State, any>>{
-	fetchScripts({ commit }) {
-		const scripts = {
-			1: {
-				id: 1,
-				title: 'Merge PDFs',
-				isEnabled: true,
-			} as ScriptDescriptor,
-			2: {
-				id: 2,
-				title: 'Create report',
-				isEnabled: false,
-			} as ScriptDescriptor
-		};
-
-		setTimeout(() => {
-			commit('loadScripts', scripts)
-		}, 1000)
+	async fetchScripts({ commit }) {
+		commit('clearAll')
+		const result = (await axios.get(generateUrl('/apps/files_scripts/scripts'))).data as Script[]
+		const scripts = {}
+		result.forEach((script) => {
+			scripts[script.id] = script
+		})
+		commit('setScripts', scripts)
 	},
 
-	selectScript({ commit, state }, scriptDescriptor: ScriptDescriptor) {
-		if (!scriptDescriptor || state.loadingScriptId === scriptDescriptor.id || state.selectedScript?.id === scriptDescriptor.id) {
-			return
+	async saveScript({dispatch, state}) {
+		const script = state.selectedScript
+		if (script.id) {
+			await axios.put(generateUrl('/apps/files_scripts/scripts/' + script.id), state.selectedScript)
+		} else {
+			script.description = ''; // TODO: remove this after v-binding
+			script.enabled = true; // TODO: remove this after v-binding
+			await axios.post(generateUrl('/apps/files_scripts/scripts'), state.selectedScript)
 		}
-		commit('setLoadingScriptId', scriptDescriptor.id)
+		dispatch('fetchScripts')
+	},
 
-		setTimeout(() => {
-			const script = {
-				...scriptDescriptor,
-				program: '-- ' + scriptDescriptor.title + `
-local foo = "bar"
-function helloWorld()
-	print("Hello, world!")
-end`
-			} as Script;
-
-			if (script.id === state.loadingScriptId) {
-				commit('setSelectedScript', script)
-			}
-		}, 600)
+	async runScript({dispatch}, payload: { script: Script, files: any[] }) {
+		const script = payload.script
+		return await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), {files: payload.files})
 	}
 };
 

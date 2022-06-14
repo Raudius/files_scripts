@@ -1,28 +1,69 @@
 <template>
 	<Modal v-if="showModal" @close="closeModal">
-		<div class="file_scripts_modal">
-			<h2>Title</h2>
-			<div>A Nextcloud modal!</div>
+		<div class="file-scripts-modal">
+			<h2>Select action to perform</h2>
+			<div v-if="isLoading" class="icon-loading"></div>
+			<div v-else>
+				<div class="section-wrapper">
+					<div class="section-label" v-tooltip="'Select action to perform'">
+						<FileCog title="" :size="20" />
+					</div>
+					<div class="section-details">
+						<Multiselect class="multiselect" v-model="selectedScript" :options="scripts" track-by="id" label="title" />
+					</div>
+				</div>
+
+				<div class="script-info">
+					{{ this.selectedDescription }}
+				</div>
+
+				<Button class="btn-run" type="primary" @click="run">
+					<template #icon> <Play :size="20" /> </template>
+					Execute
+				</Button>`
+			</div>
 		</div>
 	</Modal>
 </template>
 
 <script lang="ts">
 import '@nextcloud/dialogs/styles/toast.scss'
+import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
+import Button from '@nextcloud/vue/dist/Components/Button'
+import FileCog from 'vue-material-design-icons/FileCog.vue'
+import Play from 'vue-material-design-icons/Play.vue'
 import Vue from "vue";
+import {mapState} from "vuex";
 
 export default {
 	name: 'ScriptSelectionModal',
 	components: {
 		Modal,
+		Button,
+		Multiselect,
+		FileCog,
+		Play
 	},
 	data() {
 		return {
 			showModal: false,
+			isRunning: false,
+			selectedScript: null,
+			selectedFiles: [],
 		}
 	},
+
 	computed: {
+		scripts: function() {
+			return this.$store.getters.getScripts
+		},
+		selectedDescription: function () {
+			return this.selectedScript ? this.selectedScript.description : ''
+		},
+		isLoading: function (): boolean {
+			return this.isRunning || this.scripts === null;
+		}
 	},
 
 	async mounted() {
@@ -35,8 +76,8 @@ export default {
 					iconClass: 'icon-category-workflow',
 					order: 1001,
 					action: (files) => {
-						console.debug(files)
 						self.showModal = true
+						self.selectedFiles = files
 					},
 				})
 			},
@@ -46,16 +87,93 @@ export default {
 
 		OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
 	},
+	watch: {
+		showModal(newVal, oldVal) {
+			if (newVal === true && !this.scripts) {
+				this.$store.dispatch('fetchScripts')
+			}
+		}
+	},
 
 	methods: {
 		closeModal() {
 			this.showModal = false
 		},
+		closeAndReset() {
+			this.closeModal()
+			this.isRunning = false
+			this.selectedScript = null
+			this.selectedFiles = null
+		},
+		run() {
+			if (this.isRunning) {
+				return;
+			}
+			this.isRunning = true;
+
+			const payload = {
+				script: this.selectedScript,
+				files: this.selectedFiles
+			}
+			const self = this;
+			const promise = this.$store.dispatch('runScript', payload)
+			promise.then(() => {
+				self.closeAndReset();
+			})
+		}
 	},
 }
 </script>
-<style scoped>
-.file_scripts_modal {
+<style scoped lang="scss">
+.file-scripts-modal {
+	height: auto;
 	padding: 15px;
+}
+
+.script-info {
+	margin-top: 10px;
+	min-height: 5vh;
+}
+
+.btn-run {
+	float: right;
+	margin-bottom: 15px;
+}
+
+.multiselect {
+	width: 100%;
+}
+
+.section-wrapper {
+	display: flex;
+	max-width: 100%;
+	margin-top: 10px;
+
+	.section-label {
+		background-position: 0px center;
+		width: 28px;
+		flex-shrink: 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.section-details {
+		flex-grow: 1;
+
+		button.action-item--single {
+			margin-top: -6px;
+		}
+	}
+}
+</style>
+
+<style>
+/* Hack to get multiselect to show correctly */
+.file-scripts-modal .multiselect__content-wrapper {
+	position:fixed !important;
+	width: auto !important;
+	min-width: 400px !important;
 }
 </style>

@@ -4,23 +4,22 @@ import Vue from 'vue'
 import ScriptSelectionModal from "./components/ScriptSelectionModal.vue";
 import Settings from "./Settings.vue";
 import Vuex from "vuex";
+import { Tooltip } from '@nextcloud/vue'
 import '@nextcloud/typings'
-
-
-Vue.mixin({ methods: { t, n } })
-Vue.use(Vuex)
-Vue.prototype.OC = OC
-__webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 const ID_DIV_SETTINGS = 'files_scripts_settings'
 const ID_DIV_FILES = 'files_scripts_files'
 
 declare global {
-	const OC: Nextcloud.v24.OC
+	const OC, OCA: any
 	const t: (ctxt: String, str: String, params?: Object) => String
 	const n: (ctxt: String, str: String, params?: Object) => String
 	var appName, __webpack_public_path__: string;
 }
+
+Vue.use(Vuex)
+Vue.directive('tooltip', Tooltip)
+__webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 // Import store after vuex registration.
 import { scripts as scriptsStore } from "./store/scripts";
@@ -44,6 +43,7 @@ if (settingsDiv) {
 
 	const app = new Vue({
 		render: h => h(ScriptSelectionModal),
+		el: '#' + ID_DIV_FILES,
+		store: scriptsStore
 	})
-	app.$mount('#' + ID_DIV_FILES)
 }

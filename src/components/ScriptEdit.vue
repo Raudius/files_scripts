@@ -75,7 +75,7 @@ export default {
 
 	methods: {
 		saveScript() {
-			this.$store.commit('saveScript')
+			this.$store.dispatch('saveScript')
 		}
 	}
 }

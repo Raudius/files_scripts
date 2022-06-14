@@ -1,9 +1,7 @@
-export interface ScriptDescriptor {
+export interface Script {
 	id: number|null
 	title: string
-	isEnabled: boolean
-}
-
-export interface Script extends ScriptDescriptor{
+	description: string
+	enabled: boolean
 	program: string
 }

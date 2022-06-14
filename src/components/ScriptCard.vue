@@ -1,3 +1,4 @@
+<script src="../../../../core/src/icons.js"></script>
 <template>
 	<ListItem
 		v-if="this.script"
@@ -10,7 +11,7 @@
 		<template #extra>
 			<div v-if="isLoading" class="icon-loading"></div>
 		</template>
-		<template #subtitle>TODO: description goes here</template>
+		<template #subtitle>{{ script.description }}</template>
 		<template #actions>
 			<ActionButton icon="icon-toggle">
 				Enable
@@ -50,7 +51,10 @@ export default {
 
 	methods: {
 		selectScript() {
-			this.script && this.$store.dispatch('selectScript', this.script)
+			this.script && this.$store.commit('setSelectedScript', this.script)
+		},
+		scriptDescription() {
+			return this.script ? this.script.description : ''
 		}
 	},
 

@@ -2,6 +2,7 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use Lua;
+use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
@@ -15,10 +16,7 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
 use OCP\Files\Folder;
-use OCP\Files\IRootFolder;
 use OCP\Files\Node;
-use OCP\IUserManager;
-use OCP\IUserSession;
 
 class Interpreter {
 	private const REGISTRABLE_FUNCTIONS = [
@@ -33,46 +31,24 @@ class Interpreter {
 		Pdf_Merge::class,
 		Pdf_Overlay::class,
 		Pdf_Decrypt::class,
+		Abort::class,
 	];
-
-	private IRootFolder $storage;
-	private IUserManager $userManager;
-	private IUserSession $userSession;
-
-	public function __construct(
-		IRootFolder $storage,
-		IUserSession $userSession,
-		IUserManager $userManager
-	) {
-		$this->storage = $storage;
-		$this->userSession = $userSession;
-		$this->userManager = $userManager;
-	}
 
 	/**
 	 * @param string $program
-	 * @param Node[] $files
-	 * @param string $userId
-	 * @return false|mixed|null
+	 * @param array $files
+	 * @param Folder $root
+	 * @return false|mixed
+	 * @throws AbortException - Thrown by RegistrableFunctions
 	 */
-	public function execute(string $program, array $files, string $userId) {
-		$user = $this->userManager->get($userId);
-		if (!$user) {
-			return null;
-		}
+	public function execute(string $program, array $files, Folder $root) {
 
-		$userFolder = $this->storage->getUserFolder($user->getUID());
-		$originalUser = $this->userSession->getUser();
-		$this->userSession->setUser($user);
-
-		$lua = $this->createLua($userFolder, $files);
+		$lua = $this->createLua($root, $files);
 		$program = <<<LUA
 __ = {}
 $program
 return __
 LUA;
-
-		$this->userSession->setUser($originalUser);
 
 		return $lua->eval($program);
 	}

@@ -89,5 +89,9 @@ LUA);
 		];
 	}
 
+	/**
+	 * @return mixed
+	 * @throws AbortException
+	 */
 	abstract public function getCallback();
 }

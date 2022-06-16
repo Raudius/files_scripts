@@ -12,14 +12,14 @@ use OCP\AppFramework\Db\Entity;
  * @method string getDescription()
  * @method setProgram(string $program)
  * @method string getProgram()
- * @method setEnabled(bool $enabled)
- * @method boolean getEnabled()
+ * @method setEnabled(int $enabled)
+ * @method int getEnabled()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
 	protected ?string $description = null;
 	protected ?string $program = null;
-	protected ?bool $enabled = null;
+	protected ?int $enabled = null;
 
 	public function jsonSerialize(): array {
 		return [

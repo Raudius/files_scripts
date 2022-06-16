@@ -5,11 +5,18 @@
 			<div v-if="isLoading" class="icon-loading"></div>
 			<div v-else>
 				<div class="section-wrapper">
-					<div class="section-label" v-tooltip="'Select action to perform'">
+					<div class="section-label">
 						<FileCog title="" :size="20" />
 					</div>
 					<div class="section-details">
-						<Multiselect class="multiselect" v-model="selectedScript" :options="scripts" track-by="id" label="title" />
+						<Multiselect
+							class="multiselect"
+							v-model="selectedScript"
+							:options="scripts"
+							placeholder="Select an action to perform"
+							track-by="id"
+							label="title"
+						/>
 					</div>
 				</div>
 
@@ -20,7 +27,7 @@
 				<Button class="btn-run" type="primary" @click="run">
 					<template #icon> <Play :size="20" /> </template>
 					Execute
-				</Button>`
+				</Button>
 			</div>
 		</div>
 	</Modal>
@@ -33,11 +40,10 @@ import Modal from '@nextcloud/vue/dist/Components/Modal'
 import Button from '@nextcloud/vue/dist/Components/Button'
 import FileCog from 'vue-material-design-icons/FileCog.vue'
 import Play from 'vue-material-design-icons/Play.vue'
-import Vue from "vue";
-import {mapState} from "vuex";
+import {showError} from "@nextcloud/dialogs";
 
 export default {
-	name: 'ScriptSelectionModal',
+	name: 'ScriptSelect',
 	components: {
 		Modal,
 		Button,
@@ -51,6 +57,7 @@ export default {
 			isRunning: false,
 			selectedScript: null,
 			selectedFiles: [],
+			readableName: 'test'
 		}
 	},
 
@@ -80,12 +87,10 @@ export default {
 						self.selectedFiles = files
 					},
 				})
-			},
-			async compressFiles(fileIds, target) {
-			},
+			}
 		}
 
-		OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
+		await OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
 	},
 	watch: {
 		showModal(newVal, oldVal) {
@@ -98,9 +103,6 @@ export default {
 	methods: {
 		closeModal() {
 			this.showModal = false
-		},
-		closeAndReset() {
-			this.closeModal()
 			this.isRunning = false
 			this.selectedScript = null
 			this.selectedFiles = null
@@ -116,10 +118,17 @@ export default {
 				files: this.selectedFiles
 			}
 			const self = this;
-			const promise = this.$store.dispatch('runScript', payload)
-			promise.then(() => {
-				self.closeAndReset();
-			})
+			this.$store.dispatch('runScript', payload)
+				.then(() => {
+					self.closeModal()
+				})
+				.catch((response) => {
+					const errorObj = response.response.data
+					const errorMsg = (errorObj && errorObj.error) ? errorObj.error : "Action failed without error."
+
+					showError(errorMsg)
+					this.closeModal()
+				})
 		}
 	},
 }
@@ -170,7 +179,7 @@ export default {
 </style>
 
 <style>
-/* Hack to get multiselect to show correctly */
+/* Hack to get multiselect to show correctly (over the modal mask) */
 .file-scripts-modal .multiselect__content-wrapper {
 	position:fixed !important;
 	width: auto !important;

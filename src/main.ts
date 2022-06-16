@@ -1,28 +1,28 @@
 import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
-import ScriptSelectionModal from "./components/ScriptSelectionModal.vue";
-import Settings from "./Settings.vue";
+import ScriptSelect from "./views/ScriptSelect.vue";
+import Settings from "./views/Settings.vue";
 import Vuex from "vuex";
-import { Tooltip } from '@nextcloud/vue'
-import '@nextcloud/typings'
 
-const ID_DIV_SETTINGS = 'files_scripts_settings'
-const ID_DIV_FILES = 'files_scripts_files'
+Vue.use(Vuex)
+
+// Import store after vuex registration.
+import { scripts as scriptsStore } from "./store/scripts";
+
 
 declare global {
 	const OC, OCA: any
 	const t: (ctxt: String, str: String, params?: Object) => String
 	const n: (ctxt: String, str: String, params?: Object) => String
-	var appName, __webpack_public_path__: string;
+	const appName: string
+	let __webpack_public_path__: string
 }
 
-Vue.use(Vuex)
-Vue.directive('tooltip', Tooltip)
 __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
-// Import store after vuex registration.
-import { scripts as scriptsStore } from "./store/scripts";
+const ID_DIV_SETTINGS = 'files_scripts_settings'
+const ID_DIV_FILES = 'files_scripts_files'
 
 /*
  * Render Vue app.
@@ -41,8 +41,8 @@ if (settingsDiv) {
 	div.id = ID_DIV_FILES
 	document.body.appendChild(div)
 
-	const app = new Vue({
-		render: h => h(ScriptSelectionModal),
+	new Vue({
+		render: h => h(ScriptSelect),
 		el: '#' + ID_DIV_FILES,
 		store: scriptsStore
 	})

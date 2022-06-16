@@ -26,6 +26,21 @@ class ScriptMapper extends QBMapper {
 		}
 	}
 
+	public function findByTitle(string $title): ?Script {
+		$title = trim($title);
+		$qb = $this->db->getQueryBuilder();
+		$qb->select('*')
+			->from('filescripts')
+			->where($qb->expr()->eq('title', $qb->createNamedParameter($title)));
+
+		try {
+			$scripts = $this->findEntities($qb);
+			return reset($scripts) ?: null;
+		} catch (Exception $e) {
+			return null;
+		}
+	}
+
 	public function findAll(): array {
 		$qb = $this->db->getQueryBuilder();
 		$qb->select('*')->from('filescripts');

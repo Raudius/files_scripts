@@ -1,5 +1,5 @@
 import Vuex, {ActionTree, GetterTree, MutationTree} from 'vuex'
-import {Script} from "../types/script";
+import {Script, defaultScript} from "../types/script";
 import axios from "@nextcloud/axios"
 import {generateUrl} from "@nextcloud/router";
 
@@ -19,44 +19,40 @@ const getters = <GetterTree<State, any>>{
 };
 
 const mutations = <MutationTree<State>> {
-	async setScripts(state: State, scripts: Script[]) {
+	setScripts(state: State, scripts: Script[]) {
 		state.scripts = scripts
-	},
-
-	addScript(state: State) {
-		const id = Math.floor(Math.random()*1000);
-		const title = 'Script #' + id
-		state.scripts[id] = {
-			id: id,
-			title: title
-		} as Script;
-	},
-
-	setLoadingScriptId(state: State, scriptId: number) {
-		state.loadingScriptId = scriptId
 	},
 
 	setSelectedScript(state: State, script: Script) {
 		state.selectedScript = script
 	},
 
-	newScript(state: State) {
-		state.selectedScript = { id: null, title: '', program: '' } as Script
+	selectedToggleEnabled(state: State) {
+		if (state.selectedScript) {
+			state.selectedScript.enabled = !state.selectedScript.enabled;
+		}
 	},
+
+	newScript(state: State) {
+		state.selectedScript = defaultScript()
+	},
+
 	clearSelected(state: State) {
 		state.selectedScript = null
-		state.loadingScriptId = null;
 	},
+
 	clearAll(state: State) {
 		state.scripts = null;
 		state.selectedScript = null
-		state.loadingScriptId = null;
 	},
+
 	updateCurrentScript(state: State, newValues: Script) {
 		state.selectedScript = {
 			...state.selectedScript,
 			title: newValues.title ?? state.selectedScript.title,
-			program: newValues.program ?? state.selectedScript.program
+			program: newValues.program ?? state.selectedScript.program,
+			description: newValues.description ?? state.selectedScript.description,
+			enabled: newValues.enabled ?? state.selectedScript.enabled,
 		}
 	}
 }
@@ -77,9 +73,15 @@ const actions = <ActionTree<State, any>>{
 		if (script.id) {
 			await axios.put(generateUrl('/apps/files_scripts/scripts/' + script.id), state.selectedScript)
 		} else {
-			script.description = ''; // TODO: remove this after v-binding
-			script.enabled = true; // TODO: remove this after v-binding
 			await axios.post(generateUrl('/apps/files_scripts/scripts'), state.selectedScript)
+		}
+		dispatch('fetchScripts')
+	},
+
+	async deleteScript({dispatch, commit, state}, script) {
+		commit('clearAll')
+		if (script.id) {
+			await axios.delete(generateUrl('/apps/files_scripts/scripts/' + script.id))
 		}
 		dispatch('fetchScripts')
 	},

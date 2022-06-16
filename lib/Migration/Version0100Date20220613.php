@@ -47,6 +47,7 @@ class Version0100Date20220613 extends SimpleMigrationStep {
 			]);
 
 			$table->setPrimaryKey(['id']);
+			$table->addIndex(['title'], 'filescripts_title_index');
 		}
 		return $schema;
 	}

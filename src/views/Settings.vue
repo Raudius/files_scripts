@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<Modal v-if="showModal" size="full" @close="clearSelected">
-			<ScriptEdit />
-		</Modal>
+		<ScriptEdit />
 		<SettingsSection
 			title="Custom actions"
 			description="Here you can define custom actions which users may perform on their files. Actions are small Lua scripts that can create, modify, and/or delete files programatically. For more details on how you can create actions visit the documentation. abc"
@@ -40,14 +38,9 @@ import FileCog from 'vue-material-design-icons/FileCog.vue'
 import Button from '@nextcloud/vue/dist/Components/Button'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
-import Modal from '@nextcloud/vue/dist/Components/Modal'
-import ScriptEdit from './components/ScriptEdit.vue';
-import ScriptCard from './components/ScriptCard.vue';
-import {Script} from "./types/script";
-import {mapGetters, mapState} from 'vuex'
-import {State} from "./store/scripts";
-import Vue from "vue";
-
+import ScriptEdit from '../components/ScriptEdit.vue';
+import ScriptCard from '../components/ScriptCard.vue';
+import {mapState} from 'vuex'
 
 export default {
 	name: 'Settings',
@@ -55,7 +48,6 @@ export default {
 		Button,
 		SettingsSection,
 		EmptyContent,
-		Modal,
 		ScriptEdit,
 		ScriptCard,
 		Plus,
@@ -68,22 +60,19 @@ export default {
 
 	computed: {
 		...mapState({
-			scripts: 'scripts',
 			selectedScript: 'selectedScript',
 		}),
-		showModal: function (): boolean {
-			return !!this.selectedScript
+		scripts: function () {
+			return this.$store.getters.getScripts
 		},
-		isLoading: function (): boolean {
+		isLoading: function () {
 			return this.scripts === null;
 		}
 	},
 
 	methods: {
-		clearSelected() {
-			this.$store.commit('clearSelected')
-		},
 		newScript() {
+			console.log(this.scripts);
 			this.$store.commit('newScript')
 		}
 	}

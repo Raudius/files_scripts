@@ -1,22 +1,17 @@
-<script src="../../../../core/src/icons.js"></script>
 <template>
 	<ListItem
 		v-if="this.script"
 		:title="this.script.title"
-		details="Enabled"
-		:active="this.isLoading"
+		:details="this.enabledText()"
 		:force-display-actions="true"
-		@click="this.selectScript"
+		@click="this.editScript"
 	>
-		<template #extra>
-			<div v-if="isLoading" class="icon-loading"></div>
-		</template>
 		<template #subtitle>{{ script.description }}</template>
 		<template #actions>
-			<ActionButton icon="icon-toggle">
-				Enable
+			<ActionButton icon="icon-rename" @click="editScript" :closeAfterClick="true">
+				Edit
 			</ActionButton>
-			<ActionButton icon="icon-delete">
+			<ActionButton icon="icon-delete" @click="deleteScript" :closeAfterClick="true">
 				Delete
 			</ActionButton>
 		</template>
@@ -26,7 +21,6 @@
 <script lang="ts">
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import {mapGetters, mapState} from "vuex";
 
 export default {
 	name: 'ScriptCard',
@@ -35,26 +29,20 @@ export default {
 	},
 
 	computed: {
-		...mapGetters([
-			'getScriptById',
-		]),
-		...mapState({
-			loadingScriptId: 'loadingScriptId'
-		}),
-		isLoading: function (): boolean {
-			return this.loadingScriptId === this.id;
-		},
 		script: function () {
-			return this.getScriptById(this.id)
+			return this.$store.getters.getScriptById(this.id)
 		}
 	},
 
 	methods: {
-		selectScript() {
+		editScript() {
 			this.script && this.$store.commit('setSelectedScript', this.script)
 		},
-		scriptDescription() {
-			return this.script ? this.script.description : ''
+		deleteScript() {
+			this.script && this.$store.dispatch('deleteScript', this.script)
+		},
+		enabledText() {
+			return this.script.enabled ? 'Enabled' : 'Disabled';
 		}
 	},
 
@@ -63,9 +51,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped>
-.icon-loading {
-	display: contents;
-}
-</style>

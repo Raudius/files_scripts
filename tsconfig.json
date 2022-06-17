@@ -3,7 +3,8 @@
 		"outDir": "./js",
 		"isolatedModules": true,
 		"allowJs": true,
-		"target": "es5",
+		"target": "es2017",
+		"moduleResolution": "node",
 		"paths": {
 			"@/*": [
 				"./"

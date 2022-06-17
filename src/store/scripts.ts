@@ -1,7 +1,6 @@
 import Vuex, {ActionTree, GetterTree, MutationTree} from 'vuex'
 import {Script, defaultScript} from "../types/script";
-import axios from "@nextcloud/axios"
-import {generateUrl} from "@nextcloud/router";
+import {api} from "../api/script";
 
 export interface State {
 	loadingScriptId: number;
@@ -11,10 +10,17 @@ export interface State {
 
 const getters = <GetterTree<State, any>>{
 	getScriptById(state: State) {
-		return (scriptId) => state.scripts[scriptId] ?? null;
+		return (scriptId) => state.scripts[scriptId] ?? null
 	},
 	getScripts(state: State) {
-		return state.scripts ? Object.values(state.scripts) : null;
+		return state.scripts ? Object.values(state.scripts) : null
+	},
+	getEnabledScripts(state: State) {
+		if (!state.scripts) {
+			return null
+		}
+
+		return Object.values(state.scripts).filter(s => s.enabled)
 	}
 };
 
@@ -27,9 +33,9 @@ const mutations = <MutationTree<State>> {
 		state.selectedScript = script
 	},
 
-	selectedToggleEnabled(state: State) {
-		if (state.selectedScript) {
-			state.selectedScript.enabled = !state.selectedScript.enabled;
+	selectedToggleValue(state: State,  value: string) {
+		if (state.selectedScript && state.selectedScript.hasOwnProperty(value)) {
+			state.selectedScript[value] = !state.selectedScript[value]
 		}
 	},
 
@@ -42,7 +48,7 @@ const mutations = <MutationTree<State>> {
 	},
 
 	clearAll(state: State) {
-		state.scripts = null;
+		state.scripts = null
 		state.selectedScript = null
 	},
 
@@ -57,10 +63,9 @@ const mutations = <MutationTree<State>> {
 	}
 }
 
-const actions = <ActionTree<State, any>>{
+const actions = <ActionTree<State, any>> {
 	async fetchScripts({ commit }) {
-		commit('clearAll')
-		const result = (await axios.get(generateUrl('/apps/files_scripts/scripts'))).data as Script[]
+		const result = await api.getScripts()
 		const scripts = {}
 		result.forEach((script) => {
 			scripts[script.id] = script
@@ -68,12 +73,13 @@ const actions = <ActionTree<State, any>>{
 		commit('setScripts', scripts)
 	},
 
-	async saveScript({dispatch, state}) {
+	async saveScript({dispatch, commit, state}) {
 		const script = state.selectedScript
 		if (script.id) {
-			await axios.put(generateUrl('/apps/files_scripts/scripts/' + script.id), state.selectedScript)
+			await api.updateScript(script)
 		} else {
-			await axios.post(generateUrl('/apps/files_scripts/scripts'), state.selectedScript)
+			await api.createScript(script)
+			commit('clearSelected')
 		}
 		dispatch('fetchScripts')
 	},
@@ -81,14 +87,13 @@ const actions = <ActionTree<State, any>>{
 	async deleteScript({dispatch, commit, state}, script) {
 		commit('clearAll')
 		if (script.id) {
-			await axios.delete(generateUrl('/apps/files_scripts/scripts/' + script.id))
+			await api.deleteScript(script);
 		}
 		dispatch('fetchScripts')
 	},
 
 	async runScript({dispatch}, payload: { script: Script, files: any[] }) {
-		const script = payload.script
-		return await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), {files: payload.files})
+		return await api.runScript(payload.script, payload.files);
 	}
 };
 

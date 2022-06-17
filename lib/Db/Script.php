@@ -14,12 +14,18 @@ use OCP\AppFramework\Db\Entity;
  * @method string getProgram()
  * @method setEnabled(int $enabled)
  * @method int getEnabled()
+ * @method setBackground(int $enabled)
+ * @method int getBackground()
+ * @method setRequestDirectory(int $enabled)
+ * @method int getRequestDirectory()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
 	protected ?string $description = null;
 	protected ?string $program = null;
 	protected ?int $enabled = null;
+	protected ?int $background = null;
+	protected ?int $requestDirectory = null;
 
 	public function jsonSerialize(): array {
 		return [
@@ -27,7 +33,9 @@ class Script extends Entity implements JsonSerializable {
 			'title' => $this->title,
 			'description' => $this->description,
 			'program' => $this->program,
-			'enabled' => $this->enabled
+			'enabled' => $this->enabled,
+			'background' => $this->background,
+			'requestDirectory' => $this->requestDirectory,
 		];
 	}
 }

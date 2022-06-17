@@ -9,10 +9,9 @@ use OCP\Migration\SimpleMigrationStep;
 use OCP\Migration\IOutput;
 
 /**
- * Creates the scripts table.
+ * Creates the scripts input table.
  */
-class Version0100Date20220613 extends SimpleMigrationStep {
-
+class Version0100Date20220616 extends SimpleMigrationStep {
 	/**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
@@ -24,40 +23,26 @@ class Version0100Date20220613 extends SimpleMigrationStep {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 
-		if (!$schema->hasTable('filescripts')) {
-			$table = $schema->createTable('filescripts');
+		if (!$schema->hasTable('filescript_inputs')) {
+			$table = $schema->createTable('filescript_inputs');
 			$table->addColumn('id', 'integer', [
 				'autoincrement' => true,
 				'notnull' => true,
 			]);
-			$table->addColumn('title', 'string', [
+			$table->addColumn('script_id', 'integer', [
 				'notnull' => true,
-				'length' => 200
+			]);
+			$table->addColumn('name', 'string', [
+				'notnull' => true,
+				'length' => 100
 			]);
 			$table->addColumn('description', 'string', [
 				'notnull' => true,
-				'default' => '',
-				'length' => 1000
-			]);
-			$table->addColumn('program', 'text', [
-				'notnull' => true,
-				'default' => ''
-			]);
-			$table->addColumn('enabled', 'boolean', [
-				'notnull' => false,
-				'default' => true
-			]);
-			$table->addColumn('background', 'boolean', [
-				'notnull' => false,
-				'default' => false
-			]);
-			$table->addColumn('request_directory', 'boolean', [
-				'notnull' => false,
-				'default' => false
+				'length' => 100
 			]);
 
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['title'], 'filescripts_title_index');
+			$table->addIndex(['script_id'], 'filescript_script_id_index');
 		}
 		return $schema;
 	}

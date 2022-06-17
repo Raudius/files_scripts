@@ -14,8 +14,8 @@
 					Create custom action
 				</Button>
 
-				<ul v-for="script in scripts" class="script-cards">
-					<ScriptCard :id="script.id" :title="script.title"></ScriptCard>
+				<ul class="script-cards">
+					<ScriptCard v-for="script in scripts" v-bind:key="script.id" :id="script.id" :title="script.title"></ScriptCard>
 				</ul>
 
 				<div v-if="isLoading" class="icon-loading"></div>
@@ -72,7 +72,6 @@ export default {
 
 	methods: {
 		newScript() {
-			console.log(this.scripts);
 			this.$store.commit('newScript')
 		}
 	}

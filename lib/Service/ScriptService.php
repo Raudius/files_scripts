@@ -3,6 +3,7 @@
 namespace OCA\FilesScripts\Service;
 
 use OCA\FilesScripts\Db\Script;
+use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
 
 class ScriptService {

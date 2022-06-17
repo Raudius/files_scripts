@@ -5,8 +5,8 @@
 				<template #icon><Save :size="20" /></template>
 			</ActionButton>
 		</Actions>
-		<!-- TODO: Replace with LoadingIcon-->
-		<span style="position: fixed;"><Save :size="20" v-if="saving" /></span>
+		<div v-if="saving" style="display: inline-block;" class="icon-loading"></div>
+
 
 		<div class="container-script-edit">
 			<div class="script-details">
@@ -25,7 +25,18 @@
 				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
 					Enable script
 				</CheckboxRadioSwitch>
+
+				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
+					Request output location
+				</CheckboxRadioSwitch>
+
+				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
+					Run in background
+				</CheckboxRadioSwitch>
+
+				<EditInputs v-bind:script-id="this.script.id" v-on:changed="updateInputs" />
 			</div>
+
 
 			<div class="script-editor">
 				<CodeMirror style="height: 100%" v-model="scriptProgram" :options="cmOption" />
@@ -35,33 +46,36 @@
 </template>
 
 <script lang="ts">
-import Button from "@nextcloud/vue/dist/Components/Button";
 import CheckboxRadioSwitch from "@nextcloud/vue/dist/Components/CheckboxRadioSwitch";
 import Save from "vue-material-design-icons/ContentSave.vue";
 import Modal from '@nextcloud/vue/dist/Components/Modal'
 import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
 import 'codemirror/addon/edit/matchbrackets.js'
 import 'codemirror/addon/hint/show-hint.js'
 import {mapState} from "vuex";
-import {showError} from "@nextcloud/dialogs";
+import {showError, showSuccess} from "@nextcloud/dialogs";
+import {ScriptInput} from "../types/script";
+import {api} from "../api/script";
 const CodeMirror = require('vue-codemirror').codemirror;
 
 export default {
 	name: 'ScriptEdit',
 	components: {
-		Button,
 		Save,
 		Modal,
 		Actions,
 		ActionButton,
 		CodeMirror,
-		CheckboxRadioSwitch
+		CheckboxRadioSwitch,
+		EditInputs
 	},
 	data() {
 		return {
+			scriptInputs: [],
 			saving: false,
 			cmOption: {
 				tabSize: 4,
@@ -114,17 +128,16 @@ export default {
 
 	methods: {
 		saveScript() {
-			const script = this.script;
+			const self = this;
 			this.saving = true
 			this.$store.dispatch('saveScript')
+				.then(function() {
+					api.updateScriptInputs(self.script, self.scriptInputs)
+				})
 				.then(() => {
-					if (!script.id) {
-						this.$store.dispatch('fetchScripts')
-						this.closeModal();
-					}
+					showSuccess('Saved', { timeout: 2000 })
 				})
 				.catch((error) => {
-					console.log(error);
 					let message = 'An error occurred during saving'
 					if (error.response && error.response.data.error) {
 						message = error.response.data.error
@@ -136,7 +149,17 @@ export default {
 				})
 		},
 		toggleEnabled() {
-			this.$store.commit('selectedToggleEnabled')
+			this.$store.commit('selectedToggleValue', 'enabled')
+		},
+		toggleBackground() {
+			this.$store.commit('selectedToggleValue', 'background')
+		},
+		toggleRequestDirectory() {
+			this.$store.commit('selectedToggleValue', 'requestDirectory')
+		},
+		updateInputs(scriptInputs: ScriptInput[]) {
+			console.log('updateInputs')
+			this.scriptInputs = scriptInputs;
 		},
 		closeModal() {
 			this.$store.commit('clearSelected')
@@ -158,14 +181,16 @@ export default {
 }
 .script-details {
 	flex: 0 0 25%;
-	height: 80vh;
+	height: 90vh;
 	margin-right: 12px;
+	overflow-y: auto;
+	overflow-x: clip;
 }
 
 .script-editor {
 	flex: 1 0;
 	border: solid 1px slategray;
-	height: 80vh;
+	height: 90vh;
 }
 
 .input-script-name {

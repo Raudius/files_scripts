@@ -2,6 +2,7 @@
 namespace OCA\FilesScripts\Controller;
 
 use OCA\FilesScripts\Db\Script;
+use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\FilesScripts\Interpreter\AbortException;
@@ -19,6 +20,7 @@ use OCP\IRequest;
 class ScriptController extends Controller {
 	private ?string $userId;
 	private ScriptMapper $scriptMapper;
+	private ScriptInputMapper $scriptInputMapper;
 	private IRootFolder $rootFolder;
 	private ScriptService $scriptService;
 
@@ -26,37 +28,49 @@ class ScriptController extends Controller {
 		$appName, IRequest $request,
 		?string $userId,
 		ScriptMapper $scriptMapper,
+		ScriptInputMapper $scriptInputMapper,
 		ScriptService $scriptService,
 		IRootFolder $rootFolder
 	) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
 		$this->scriptMapper = $scriptMapper;
+		$this->scriptInputMapper = $scriptInputMapper;
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
 	}
 
 	/**
-	 * @return DataResponse
 	 * @NoAdminRequired
 	 */
-	public function index(): DataResponse {
+	public function index(): Response {
 		return new DataResponse($this->scriptMapper->findAll());
 	}
 
 	/**
-	 * @param string $title
-	 * @param string $description
-	 * @param string $program
-	 * @param bool $enabled
-	 * @return Response
+	 * @NoAdminRequired
 	 */
-	public function create (string $title, string $description, string $program, bool $enabled): Response {
+	public function getInputs($id): Response {
+		sleep(1);
+		return new DataResponse($this->scriptInputMapper->findAllByScriptId($id));
+	}
+
+	public function create (
+		string $title,
+		string $description,
+		string $program,
+		bool $enabled,
+		bool $background,
+		bool $requestDirectory
+	): Response {
 		$script = new Script();
 		$script->setTitle($title);
 		$script->setDescription($description);
 		$script->setProgram($program);
 		$script->setEnabled($enabled);
+		$script->setEnabled($enabled);
+		$script->setBackground($background);
+		$script->setRequestDirectory($requestDirectory);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {
@@ -69,19 +83,21 @@ class ScriptController extends Controller {
 			return new JSONResponse(['error' => $e->getMessage()], Http::STATUS_BAD_REQUEST);
 		}
 
-		return new JSONResponse();
+		return new JSONResponse($script);
 	}
 
 	/**
-	 * @param int $id
-	 * @param string $title
-	 * @param string $description
-	 * @param string $program
-	 * @param bool $enabled
-	 * @return Response
 	 * @NoAdminRequired
 	 */
-	public function update(int $id, string $title, string $description, string $program, bool $enabled): Response {
+	public function update(
+		int $id,
+		string $title,
+		string $description,
+		string $program,
+		bool $enabled,
+		bool $background,
+		bool $requestDirectory
+	): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
 			return new JSONResponse([], Http::STATUS_NOT_FOUND);
@@ -91,6 +107,8 @@ class ScriptController extends Controller {
 		$script->setDescription($description);
 		$script->setProgram($program);
 		$script->setEnabled($enabled);
+		$script->setBackground($background);
+		$script->setRequestDirectory($requestDirectory);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {
@@ -102,13 +120,10 @@ class ScriptController extends Controller {
 		} catch (Exception $e) {
 			return new JSONResponse(['error' => $e->getMessage()], Http::STATUS_BAD_REQUEST);
 		}
-		return new JSONResponse();
+		return new JSONResponse($script);
 	}
 
 	/**
-	 * @param int $id
-	 * @param array $files
-	 * @return Response
 	 * @NoAdminRequired
 	 */
 	public function run(int $id, array $files = []): Response {
@@ -136,8 +151,6 @@ class ScriptController extends Controller {
 	}
 
 	/**
-	 * @param int $id
-	 * @return Response
 	 * @throws Exception
 	 */
 	public function destroy(int $id): Response {

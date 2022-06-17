@@ -63,7 +63,7 @@ export default {
 
 	computed: {
 		scripts: function() {
-			return this.$store.getters.getScripts
+			return this.$store.getters.getEnabledScripts
 		},
 		selectedDescription: function () {
 			return this.selectedScript ? this.selectedScript.description : ''
@@ -93,10 +93,8 @@ export default {
 		await OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
 	},
 	watch: {
-		showModal(newVal, oldVal) {
-			if (newVal === true && !this.scripts) {
-				this.$store.dispatch('fetchScripts')
-			}
+		showModal(newVal) {
+			(newVal === true && !this.scripts) && this.$store.dispatch('fetchScripts')
 		}
 	},
 

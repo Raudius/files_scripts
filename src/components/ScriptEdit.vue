@@ -74,6 +74,8 @@ export default {
 		EditInputs
 	},
 	data() {
+		const darkMode = document.body.classList.contains('theme--dark');
+
 		return {
 			scriptInputs: [],
 			dirtyInputs: false,
@@ -88,7 +90,7 @@ export default {
 				matchBrackets: true,
 				showCursorWhenSelecting: true,
 				mode: 'text/x-lua',
-				theme: 'idea',
+				theme: darkMode ? 'material-darker' : 'idea',
 				extraKeys: { Ctrl: 'autocomplete' },
 				hintOptions: {
 					completeSingle: true,
@@ -177,9 +179,8 @@ export default {
 
 <style scoped>
 @import 'codemirror/lib/codemirror.css';
-@import 'codemirror/lib/codemirror.css';
 @import 'codemirror/theme/idea.css';
-@import 'codemirror/theme/base16-light.css';
+@import 'codemirror/theme/material-darker.css';
 @import '../../css/codemirror.css';
 
 .container-script-edit {

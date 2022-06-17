@@ -26,6 +26,6 @@ class AdminSection implements IIconSection {
 	}
 
 	public function getIcon() {
-		return $this->urlGenerator->imagePath('files_scripts', 'app.svg');
+		return $this->urlGenerator->imagePath('files_scripts', 'files_scripts-dark.svg');
 	}
 }

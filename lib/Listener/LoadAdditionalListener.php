@@ -15,6 +15,7 @@ class LoadAdditionalListener implements IEventListener {
 			return;
 		}
 
+		Util::addStyle(Application::APP_ID, 'global');
 		Util::addScript(Application::APP_ID, 'files_scripts-main');
 	}
 }

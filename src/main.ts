@@ -1,8 +1,7 @@
 import { generateFilePath } from '@nextcloud/router'
-
-import Vue from 'vue'
 import ScriptSelect from "./views/ScriptSelect.vue";
 import Settings from "./views/Settings.vue";
+import Vue from 'vue'
 import Vuex from "vuex";
 
 Vue.use(Vuex)

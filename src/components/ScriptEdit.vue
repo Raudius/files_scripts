@@ -29,11 +29,11 @@
 				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
 					Request output location
 				</CheckboxRadioSwitch>
-
+<!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
 					Run in background
 				</CheckboxRadioSwitch>
-
+-->
 				<EditInputs v-bind:script-id="this.script.id" v-on:changed="updateInputs" />
 			</div>
 
@@ -150,7 +150,6 @@ export default {
 		async saveScriptAsync() {
 			await this.$store.dispatch('saveScript')
 			if (this.dirtyInputs) {
-				console.log('Updating inputs ' + this.dirtyInputs)
 				await api.updateScriptInputs(this.script, this.scriptInputs)
 			}
 		},

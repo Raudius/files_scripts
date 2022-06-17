@@ -32,7 +32,7 @@
 					{{ this.selectedDescription }}
 				</div>
 
-				<Button class="btn-run" type="primary" @click="run">
+				<Button class="btn-run" type="primary" :disabled="!readyToRun" @click="run">
 					<template #icon> <Play :size="20" /> </template>
 					Execute
 				</Button>
@@ -79,14 +79,19 @@ export default {
 	},
 
 	computed: {
-		scripts: function() {
+		scripts() {
 			return this.$store.getters.getEnabledScripts
 		},
-		selectedDescription: function () {
+		selectedDescription() {
 			return this.selectedScript ? this.selectedScript.description : ''
 		},
-		isLoading: function (): boolean {
+		isLoading(): boolean {
 			return this.isRunning || this.scripts === null;
+		},
+		readyToRun() {
+			return this.selectedScript
+				&& (!this.selectedScript.requestDirectory || this.outputDirectory)
+				&& !this.loadingScriptInputs;
 		}
 	},
 
@@ -94,10 +99,11 @@ export default {
 		const self = this
 		const FilesPlugin = {
 			attach(fileList) {
+
 				fileList.registerMultiSelectFileAction({
 					name: 'files_actions',
 					displayName: 'Run action',
-					iconClass: 'icon-category-workflow',
+					iconClass: 'icon-files_scripts',
 					order: 1001,
 					action: (files) => {
 						self.showModal = true
@@ -124,7 +130,8 @@ export default {
 			this.scriptInputs = []
 		},
 		async selectScript(script) {
-			this.outputDirectory = null
+			this.outputDirectory = this.selectedFiles[0].path ?? '/'
+
 			this.loadingScriptInputs = true;
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
 			this.loadingScriptInputs = false;
@@ -136,6 +143,9 @@ export default {
 			this.isRunning = true;
 			try {
 				await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles);
+
+				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
+				OCA.Files.App.fileList.changeDirectory(currentDir, true, true);
 				this.closeModal()
 			} catch (response) {
 				const errorObj = response?.response?.data
@@ -143,12 +153,14 @@ export default {
 
 				showError(errorMsg)
 			}
+			this.isRunning = false;
 		},
 
 		async pickOutputDirectory() {
 			const picker = (new FilePickerBuilder('Choose a folder...'))
 				.allowDirectories(true)
 				.setMimeTypeFilter(['httpd/unix-directory'])
+				.startAt(this.outputDirectory)
 				.build()
 
 			try {

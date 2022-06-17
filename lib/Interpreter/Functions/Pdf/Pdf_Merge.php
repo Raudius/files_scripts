@@ -9,9 +9,14 @@ use raudius\phpdf\Phpdf;
  *
  */
 class Pdf_Merge extends RegistrableFunction {
-	public function getCallback(?array $files=[], string $fileName=null) {
+	public function getCallback(?array $files=[], array $folder=[], string $fileName=null) {
 		if (!$fileName) {
 			return false; //FIXME error handling
+		}
+
+		$targetFolder = $this->getFolder($this->getPath($folder));
+		if (!$targetFolder) {
+			return false;
 		}
 
 		$pdfs = [];
@@ -24,7 +29,8 @@ class Pdf_Merge extends RegistrableFunction {
 		}
 
 		$mergedPdf = (new Merge($pdfs))->execute();
-		$this->getRootFolder()->newFile($fileName, file_get_contents($mergedPdf->getPath()));
+
+		$targetFolder->newFile($fileName, file_get_contents($mergedPdf->getPath()));
 		return true;
 	}
 }

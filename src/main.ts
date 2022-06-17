@@ -8,7 +8,7 @@ import Vuex from "vuex";
 Vue.use(Vuex)
 
 // Import store after vuex registration.
-import { scripts as scriptsStore } from "./store/scripts";
+const scriptsStore = require('./store/scripts').store
 
 
 declare global {

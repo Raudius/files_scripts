@@ -6,7 +6,6 @@ export interface Script {
 	enabled: boolean
 	background: boolean
 	requestDirectory: boolean,
-	inputs: ScriptInput[]
 }
 
 export interface ScriptInput {
@@ -14,6 +13,7 @@ export interface ScriptInput {
 	scriptId: number
 	name: string
 	description: string
+	value: string
 }
 
 export function defaultScript(): Script {
@@ -25,7 +25,6 @@ export function defaultScript(): Script {
 		program: '',
 		background: false,
 		requestDirectory: false,
-		inputs: null
 	}
 }
 
@@ -34,6 +33,7 @@ export function defaultScriptInput(scriptId: number = null): ScriptInput {
 		id: null,
 		scriptId: scriptId,
 		name: '',
-		description: ''
+		description: '',
+		value: '',
 	}
 }

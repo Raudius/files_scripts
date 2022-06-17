@@ -19,8 +19,8 @@ export const api = {
 		return (await axios.delete(generateUrl('/apps/files_scripts/scripts/' + script.id))).data
 	},
 
-	async runScript(script: Script, files: any[]): Promise<any> {
-		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), {files})).data
+	async runScript(script: Script, outputDirectory: string, inputs: ScriptInput[], files: any[]): Promise<any> {
+		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), {outputDirectory, inputs, files})).data
 	},
 
 	async getScriptInputs(scriptId: Number): Promise<ScriptInput[]> {

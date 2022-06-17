@@ -1,6 +1,7 @@
 <?php
 namespace  OCA\FilesScripts\Interpreter;
 
+use Exception;
 use Lua;
 use OC\Files\Filesystem;
 use OCP\Files\File;
@@ -87,6 +88,14 @@ LUA);
 			'path' => $path,
 			'name' => $name,
 		];
+	}
+
+
+	/**
+	 * @throws AbortException
+	 */
+	final protected function abort(string $message, Exception $exception=null): void {
+		throw new AbortException($message, 0, $exception);
 	}
 
 	/**

@@ -76,6 +76,7 @@ export default {
 	data() {
 		return {
 			scriptInputs: [],
+			dirtyInputs: false,
 			saving: false,
 			cmOption: {
 				tabSize: 4,
@@ -130,11 +131,9 @@ export default {
 		saveScript() {
 			const self = this;
 			this.saving = true
-			this.$store.dispatch('saveScript')
-				.then(function() {
-					api.updateScriptInputs(self.script, self.scriptInputs)
-				})
+			this.saveScriptAsync()
 				.then(() => {
+					self.dirtyInputs = false;
 					showSuccess('Saved', { timeout: 2000 })
 				})
 				.catch((error) => {
@@ -148,6 +147,22 @@ export default {
 					this.saving = false;
 				})
 		},
+		async saveScriptAsync() {
+			await this.$store.dispatch('saveScript')
+			if (this.dirtyInputs) {
+				console.log('Updating inputs ' + this.dirtyInputs)
+				await api.updateScriptInputs(this.script, this.scriptInputs)
+			}
+		},
+		updateInputs(scriptInputs: ScriptInput[]) {
+			this.scriptInputs = scriptInputs;
+			this.dirtyInputs = true;
+		},
+		closeModal() {
+			this.$store.commit('clearSelected')
+			this.dirtyInputs = false;
+			this.scriptInputs = [];
+		},
 		toggleEnabled() {
 			this.$store.commit('selectedToggleValue', 'enabled')
 		},
@@ -156,13 +171,6 @@ export default {
 		},
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
-		},
-		updateInputs(scriptInputs: ScriptInput[]) {
-			console.log('updateInputs')
-			this.scriptInputs = scriptInputs;
-		},
-		closeModal() {
-			this.$store.commit('clearSelected')
 		},
 	}
 }

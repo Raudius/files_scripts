@@ -5,19 +5,27 @@
 			<div v-if="isLoading" class="icon-loading"></div>
 			<div v-else>
 				<div class="section-wrapper">
-					<div class="section-label">
-						<FileCog title="" :size="20" />
-					</div>
-					<div class="section-details">
-						<Multiselect
-							class="multiselect"
-							v-model="selectedScript"
-							:options="scripts"
-							placeholder="Select an action to perform"
-							track-by="id"
-							label="title"
-						/>
-					</div>
+					<FileCog class="section-label" :size="20" />
+					<Multiselect
+						class="section-details"
+						v-model="selectedScript"
+						:options="scripts"
+						placeholder="Select an action to perform"
+						track-by="id"
+						label="title"
+						@change="selectScript"
+					/>
+				</div>
+
+				<div class="section-wrapper" v-if="selectedScript && selectedScript.requestDirectory">
+					<Folder class="section-label" :size="20" />
+					<input type="text" style="cursor: pointer;" class="section-details" v-model="outputDirectory" @click="pickOutputDirectory" placeholder="Choose a folder..." />
+				</div>
+
+				<div v-if="loadingScriptInputs" class="input-loader icon-loading"></div>
+				<div class="section-wrapper" v-for="scriptInput in scriptInputs">
+					<ConsoleLine class="section-label" :size="20" />
+					<input type="text" class="section-details" v-model="scriptInput.value" :placeholder="scriptInput.description" />
 				</div>
 
 				<div class="script-info">
@@ -39,8 +47,12 @@ import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
 import Button from '@nextcloud/vue/dist/Components/Button'
 import FileCog from 'vue-material-design-icons/FileCog.vue'
+import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
-import {showError} from "@nextcloud/dialogs";
+import Folder from 'vue-material-design-icons/Folder.vue'
+import {showError, FilePickerBuilder} from "@nextcloud/dialogs";
+import {api} from "../api/script";
+import * as path from "path";
 
 export default {
 	name: 'ScriptSelect',
@@ -49,6 +61,8 @@ export default {
 		Button,
 		Multiselect,
 		FileCog,
+		ConsoleLine,
+		Folder,
 		Play
 	},
 	data() {
@@ -57,7 +71,10 @@ export default {
 			isRunning: false,
 			selectedScript: null,
 			selectedFiles: [],
-			readableName: 'test'
+			outputDirectory: null,
+			readableName: 'test',
+			scriptInputs: [],
+			loadingScriptInputs: false
 		}
 	},
 
@@ -79,7 +96,7 @@ export default {
 			attach(fileList) {
 				fileList.registerMultiSelectFileAction({
 					name: 'files_actions',
-					displayName: t('files_actions', 'Run action'),
+					displayName: 'Run action',
 					iconClass: 'icon-category-workflow',
 					order: 1001,
 					action: (files) => {
@@ -104,29 +121,42 @@ export default {
 			this.isRunning = false
 			this.selectedScript = null
 			this.selectedFiles = null
+			this.scriptInputs = []
 		},
-		run() {
+		async selectScript(script) {
+			this.outputDirectory = null
+			this.loadingScriptInputs = true;
+			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
+			this.loadingScriptInputs = false;
+		},
+		async run() {
 			if (this.isRunning) {
 				return;
 			}
 			this.isRunning = true;
+			try {
+				await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles);
+				this.closeModal()
+			} catch (response) {
+				const errorObj = response?.response?.data
+				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : "Action failed unexpectedly."
 
-			const payload = {
-				script: this.selectedScript,
-				files: this.selectedFiles
+				showError(errorMsg)
 			}
-			const self = this;
-			this.$store.dispatch('runScript', payload)
-				.then(() => {
-					self.closeModal()
-				})
-				.catch((response) => {
-					const errorObj = response.response.data
-					const errorMsg = (errorObj && errorObj.error) ? errorObj.error : "Action failed without error."
+		},
 
-					showError(errorMsg)
-					this.closeModal()
-				})
+		async pickOutputDirectory() {
+			const picker = (new FilePickerBuilder('Choose a folder...'))
+				.allowDirectories(true)
+				.setMimeTypeFilter(['httpd/unix-directory'])
+				.build()
+
+			try {
+				const dir = await picker.pick() || '/'
+				this.outputDirectory = path.normalize(dir);
+			} catch (error) {
+				showError(error.message || 'Unknown error')
+			}
 		}
 	},
 }
@@ -147,8 +177,8 @@ export default {
 	margin-bottom: 15px;
 }
 
-.multiselect {
-	width: 100%;
+.input-loader {
+	margin-top: 18px;
 }
 
 .section-wrapper {

@@ -9,6 +9,6 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Abort extends RegistrableFunction {
 	public function getCallback($error=null): array {
-		throw new AbortException($error ?? "");
+		$this->abort($error ?? "");
 	}
 }

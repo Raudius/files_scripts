@@ -51,7 +51,6 @@ class ScriptController extends Controller {
 	 * @NoAdminRequired
 	 */
 	public function getInputs($id): Response {
-		sleep(1);
 		return new DataResponse($this->scriptInputMapper->findAllByScriptId($id));
 	}
 
@@ -126,7 +125,7 @@ class ScriptController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 */
-	public function run(int $id, array $files = []): Response {
+	public function run(int $id, string $outputDirectory = null, array $inputs = [], array $files = []): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script || !$script->getEnabled()) {
 			return new JSONResponse(['error' => 'Script does not exist or is disabled.'], Http::STATUS_NOT_FOUND);
@@ -141,8 +140,13 @@ class ScriptController extends Controller {
 			$files
 		);
 
+		$scriptInputs = [];
+		foreach ($inputs as $input) {
+			$scriptInputs[$input['name']] = $input['value'];
+		}
+
 		try {
-			(new Interpreter())->execute($script->getProgram(), $files, $userFolder);
+			(new Interpreter($script, $userFolder))->execute($outputDirectory, $scriptInputs, $files);
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
 		}

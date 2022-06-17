@@ -78,8 +78,8 @@ const actions = <ActionTree<State, any>> {
 		if (script.id) {
 			await api.updateScript(script)
 		} else {
-			await api.createScript(script)
-			commit('clearSelected')
+			const newScript = await api.createScript(script)
+			commit('setSelectedScript', newScript)
 		}
 		dispatch('fetchScripts')
 	},
@@ -91,13 +91,9 @@ const actions = <ActionTree<State, any>> {
 		}
 		dispatch('fetchScripts')
 	},
-
-	async runScript({dispatch}, payload: { script: Script, files: any[] }) {
-		return await api.runScript(payload.script, payload.files);
-	}
 };
 
-export const scripts = new Vuex.Store({
+export const store = new Vuex.Store({
 	state: {
 		loadingScriptId: null,
 		scripts:  null,

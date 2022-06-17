@@ -57,7 +57,7 @@ export default {
 		return {
 			inputName: '',
 			inputDescription: '',
-			scriptInputs: [],
+			scriptInputs: {},
 			loading: true
 		}
 	},
@@ -107,7 +107,7 @@ export default {
 	},
 	watch: {
 		scriptId(newVal) {
-			(newVal) && this.fetchInputs()
+			(newVal !== null) && this.fetchInputs()
 		}
 	}
 }

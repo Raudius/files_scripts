@@ -2,6 +2,7 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use Lua;
+use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
@@ -11,12 +12,14 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Full_Path;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
 use OCA\FilesScripts\Interpreter\Functions\Files\New_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Root;
+use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
+use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
 use OCP\Files\Folder;
-use OCP\Files\Node;
+use OCP\Files\NotFoundException;
 
 class Interpreter {
 	private const REGISTRABLE_FUNCTIONS = [
@@ -34,39 +37,58 @@ class Interpreter {
 		Abort::class,
 	];
 
-	/**
-	 * @param string $program
-	 * @param array $files
-	 * @param Folder $root
-	 * @return false|mixed
-	 * @throws AbortException - Thrown by RegistrableFunctions
-	 */
-	public function execute(string $program, array $files, Folder $root) {
+	private Folder $root;
+	private Script $script;
 
-		$lua = $this->createLua($root, $files);
-		$program = <<<LUA
-__ = {}
-$program
-return __
-LUA;
-
-		return $lua->eval($program);
+	public function __construct(Script $script, Folder $root) {
+		$this->script = $script;
+		$this->root = $root;
 	}
 
 	/**
-	 * @param Folder $root
-	 * @param Node[] $inputFiles
-	 * @return Lua
+	 * @throws AbortException
 	 */
-	private function createLua(Folder $root, array $inputFiles): Lua {
+	public function execute(?string $targetDirectory, array $input, array $files): void {
+		$targetFolder = $this->getTargetDirectory($targetDirectory);
+
+		$lua = $this->createLua();
+		(new Get_Input_Files($lua, $this->root, $files))->register();
+		(new Get_Input($lua, $this->root, $input))->register();
+		$targetFolder && (new Get_Target_Folder($lua, $this->root, $targetFolder))->register();
+
+		$oldVal = ignore_user_abort(true);
+
+		$lua->eval($this->script->getProgram());
+
+		ignore_user_abort($oldVal);
+	}
+
+	private function createLua(): Lua {
 		$lua = new Lua();
 
 		foreach (self::REGISTRABLE_FUNCTIONS as $function) {
-			(new $function($lua, $root))->register();
+			(new $function($lua, $this->root))->register();
 		}
 
-		(new Get_Input_Files($lua, $root, $inputFiles))->register();
-
 		return $lua;
+	}
+
+	/**
+	 * @throws AbortException
+	 */
+	private function getTargetDirectory(?string $targetDirectory): ?Folder {
+		if (!$this->script->getRequestDirectory()) {
+			return null;
+		}
+
+		try {
+			$folder = $this->root->get($targetDirectory);
+			if ($folder instanceof Folder) {
+				return $folder;
+			}
+		} catch (NotFoundException $e) {
+		}
+
+		throw new AbortException('Could not find the target directory.');
 	}
 }

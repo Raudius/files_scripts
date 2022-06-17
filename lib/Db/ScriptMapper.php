@@ -2,9 +2,8 @@
 
 namespace OCA\FilesScripts\Db;
 
-use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Db\Entity;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
-use OCP\AppFramework\Db\QBMapper;
 use OCP\DB\Exception;
 use OCP\IDBConnection;
 
@@ -15,8 +14,11 @@ use OCP\IDBConnection;
  * @method Script[] findAll()
  */
 class ScriptMapper extends BaseMapper {
-	public function __construct(IDBConnection $db) {
+	private ScriptInputMapper $scriptInputMapper;
+
+	public function __construct(IDBConnection $db, ScriptInputMapper $scriptInputMapper) {
 		parent::__construct($db, 'filescripts', Script::class);
+		$this->scriptInputMapper = $scriptInputMapper;
 	}
 
 	public function findByTitle(string $title): ?Script {
@@ -26,5 +28,14 @@ class ScriptMapper extends BaseMapper {
 		} catch (MultipleObjectsReturnedException $e) {
 			return $this->findAllBy('title', $title)[0] ?? null;
 		}
+	}
+
+	/**
+	 * @param Script $entity
+	 * @throws Exception
+	 */
+	public function delete($entity): Entity {
+		$this->scriptInputMapper->deleteByScriptId($entity->getId());
+		return parent::delete($entity);
 	}
 }

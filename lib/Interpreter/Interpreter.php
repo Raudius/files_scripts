@@ -4,11 +4,14 @@ namespace OCA\FilesScripts\Interpreter;
 use Lua;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
 use OCA\FilesScripts\Interpreter\Functions\Files\Get_Parent;
 use OCA\FilesScripts\Interpreter\Functions\Files\Full_Path;
+use OCA\FilesScripts\Interpreter\Functions\Files\Is_File;
+use OCA\FilesScripts\Interpreter\Functions\Files\Is_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
 use OCA\FilesScripts\Interpreter\Functions\Files\New_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Root;
@@ -31,6 +34,9 @@ class Interpreter {
 		Root::class,
 		Meta_Data::class,
 		File_Content::class,
+		Directory_Listing::class,
+		Is_File::class,
+		Is_Folder::class,
 		Pdf_Merge::class,
 		Pdf_Overlay::class,
 		Pdf_Decrypt::class,

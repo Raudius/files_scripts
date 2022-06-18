@@ -52,7 +52,7 @@ import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
-import {showError, FilePickerBuilder} from "@nextcloud/dialogs";
+import {showError, FilePickerBuilder, showSuccess} from "@nextcloud/dialogs";
 import {api} from "../api/script";
 import * as path from "path";
 
@@ -146,6 +146,8 @@ export default {
 
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
 				OCA.Files.App.fileList.changeDirectory(currentDir, true, true);
+
+				showSuccess('Action completed!')
 				this.closeModal()
 			} catch (response) {
 				const errorObj = response?.response?.data

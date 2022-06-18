@@ -129,13 +129,12 @@ class ScriptController extends Controller {
 		}
 
 		$userFolder = $this->rootFolder->getUserFolder($this->userId);
-		$files = array_map(
-			static function (array $fileData) use ($userFolder): Node {
-				$path = $fileData['path'] . '/' . $fileData['name'];
-				return $userFolder->get($path);
-			},
-			$files
-		);
+		$fileNodes = [];
+		$n = 1;
+		foreach ($files as $file) {
+			$path = $file['path'] . '/' . $file['name'];
+			$fileNodes[$n++] = $userFolder->get($path);
+		}
 
 		$scriptInputs = [];
 		foreach ($inputs as $input) {
@@ -143,7 +142,7 @@ class ScriptController extends Controller {
 		}
 
 		try {
-			(new Interpreter($script, $userFolder))->execute($outputDirectory, $scriptInputs, $files);
+			(new Interpreter($script, $userFolder))->execute($outputDirectory, $scriptInputs, $fileNodes);
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
 		}

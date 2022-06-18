@@ -4,7 +4,7 @@ namespace OCA\FilesScripts\Interpreter\Functions\Files;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 class Copy_File extends RegistrableFunction {
-	public function getCallback(
+	public function run(
 		array $file=null,
 		string $folderPath=null,
 		string $name=null,

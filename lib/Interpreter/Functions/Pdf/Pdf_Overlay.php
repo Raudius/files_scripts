@@ -10,7 +10,7 @@ use raudius\phpdf\Phpdf;
  *
  */
 class Pdf_Overlay extends RegistrableFunction {
-	public function getCallback(array $targetFile=[], array $overlayFile=[], string $fileName=null, bool $repeat=true) {
+	public function run(array $targetFile=[], array $overlayFile=[], string $fileName=null, bool $repeat=true) {
 		if (!$fileName) {
 			return false; //FIXME error handling
 		}

@@ -9,7 +9,7 @@ use raudius\phpdf\Phpdf;
  *
  */
 class Pdf_Merge extends RegistrableFunction {
-	public function getCallback(?array $files=[], array $folder=[], string $fileName=null) {
+	public function run(?array $files=[], array $folder=[], string $fileName=null) {
 		if (!$fileName) {
 			return false; //FIXME error handling
 		}

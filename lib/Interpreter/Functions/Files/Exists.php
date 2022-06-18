@@ -11,7 +11,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * assumed to be directory. The function will return whether there is such file in the directory.
  */
 class Exists extends RegistrableFunction {
-	public function getCallback(?array $node=[], string $fileName=null): bool {
+	public function run(?array $node=[], string $fileName=null): bool {
 		if (!$node) {
 			return false;
 		}

@@ -9,7 +9,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * E.g. for a file `abc.txt` in directory `/path/to/file` the full path is: `/path/to/file/abc.txt`.
  */
 class Full_Path extends RegistrableFunction {
-	public function getCallback($node=null): ?string {
+	public function run($node=null): ?string {
 		$node = $this->getNode($this->getPath($node));
 		return $node ? $this->getRootFolder()->getRelativePath($node->getPath()) : null;
 	}

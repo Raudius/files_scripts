@@ -10,7 +10,7 @@ use OCP\Files\NotPermittedException;
  * If file creation fails, returns null
  */
 class New_File extends RegistrableFunction {
-	public function getCallback($node=null, $name=null, $content=null): ?array {
+	public function run($node=null, $name=null, $content=null): ?array {
 		$folder = $this->getNode($this->getPath($node));
 		if (false === $folder instanceof Folder) {
 			return null;

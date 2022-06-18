@@ -10,7 +10,7 @@ use OCP\Files\NotFoundException;
  *
  */
 class Directory_Listing extends RegistrableFunction {
-	public function getCallback(?array $node=[]): array {
+	public function run(?array $node=[]): array {
 		$folder = $this->getNode($this->getPath($node));
 		if (false === $folder instanceof Folder) {
 			return [];

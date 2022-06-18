@@ -8,7 +8,7 @@ use OCP\Files\Folder;
  *
  */
 class Is_Folder extends RegistrableFunction {
-	public function getCallback(?array $node=[]): bool {
+	public function run(?array $node=[]): bool {
 		return $this->getNode($this->getPath($node)) instanceof Folder;
 	}
 }

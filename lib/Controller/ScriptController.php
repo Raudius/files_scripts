@@ -4,6 +4,7 @@ namespace OCA\FilesScripts\Controller;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
+use OCA\FilesScripts\Interpreter\Context;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Interpreter;
@@ -24,6 +25,7 @@ class ScriptController extends Controller {
 	private IRootFolder $rootFolder;
 	private ScriptService $scriptService;
 	private IL10N $l;
+	private Interpreter $interpreter;
 
 	public function __construct(
 		$appName,
@@ -33,7 +35,8 @@ class ScriptController extends Controller {
 		ScriptInputMapper $scriptInputMapper,
 		ScriptService $scriptService,
 		IRootFolder $rootFolder,
-		IL10N $l
+		IL10N $l,
+		Interpreter $interpreter
 	) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
@@ -42,6 +45,7 @@ class ScriptController extends Controller {
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
+		$this->interpreter = $interpreter;
 	}
 
 	/**
@@ -146,11 +150,12 @@ class ScriptController extends Controller {
 		}
 
 		try {
-			(new Interpreter($script, $userFolder))->execute($outputDirectory, $scriptInputs, $fileNodes);
+			$context = new Context($userFolder, $scriptInputs, $fileNodes, $outputDirectory);
+			$this->interpreter->execute($script, $context);
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
 		} catch (\Exception $e) {
-			return new JSONResponse(['error' => $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(['error' => $e->getMessage(), $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();

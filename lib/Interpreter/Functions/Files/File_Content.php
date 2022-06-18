@@ -19,7 +19,7 @@ use OCP\Lock\LockedException;
  *  - `can_update`: whether the user can modify the file or can write to the directory
  */
 class File_Content extends RegistrableFunction {
-	public function getCallback($node=null): ?string {
+	public function run($node=null): ?string {
 		$node = $this->getFile($this->getPath($node));
 		if (!$node) {
 			return null;

@@ -8,7 +8,7 @@ use OCP\Files\File;
  *
  */
 class Is_File extends RegistrableFunction {
-	public function getCallback(?array $node=[]): bool {
+	public function run(?array $node=[]): bool {
 		return $this->getNode($this->getPath($node)) instanceof File;
 	}
 }

@@ -13,7 +13,7 @@ use OCP\Files\NotFoundException;
  * If the passed node cannot be found, null is returned.
  */
 class Get_Parent extends RegistrableFunction {
-	public function getCallback($node=null): ?array {
+	public function run($node=null): ?array {
 		$node = $this->getNode($this->getPath($node));
 		if (!$node) {
 			return null;

@@ -11,7 +11,7 @@ use raudius\phpdf\Phpdf;
  *
  */
 class Pdf_Decrypt extends RegistrableFunction {
-	public function getCallback(array $targetFile=[], string $password=null, string $newFileName=null) {
+	public function run(array $targetFile=[], string $password=null, string $newFileName=null) {
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		if (!$targetFileNode) {
 			return false; //FIXME error handling

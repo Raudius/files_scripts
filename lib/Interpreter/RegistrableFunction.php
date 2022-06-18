@@ -1,40 +1,33 @@
 <?php
 namespace  OCA\FilesScripts\Interpreter;
 
-use Exception;
-use Lua;
 use OC\Files\Filesystem;
 use OCP\Files\File;
 use OCP\Files\Folder;
 use OCP\Files\InvalidPathException;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
+use ReflectionClass;
 
 abstract class RegistrableFunction {
-	private Lua $lua;
-	private Folder $folder;
+	private ?Context $context;
 
-	public function __construct(Lua $lua, Folder $folder) {
-		$this->lua = $lua;
-		$this->folder = $folder;
+	final public function register($lua, $context): void {
+		$name = strtolower((new ReflectionClass($this))->getShortName());
+		$lua->registerCallback($name, [$this, 'run']);
+		$this->context = $context;
 	}
 
-	final public function register() {
-		$name = strtolower((new \ReflectionClass($this))->getShortName());
-		$this->lua->registerCallback($name, [$this, 'getCallback']);
-	}
+	final protected function getContext(): Context {
+		if (!$this->context) {
+			throw new AbortException('Script setup failed. No context.');
+		}
 
-	final protected function getVariable(string $name) {
-		return $this->lua->eval(<<<LUA
-if $name then
-	return $name
-end
-return nil
-LUA);
+		return $this->context;
 	}
 
 	final protected function getRootFolder(): Folder {
-		return $this->folder;
+		return $this->getContext()->getRoot();
 	}
 
 	final protected function getPath(array $data): string {
@@ -47,7 +40,7 @@ LUA);
 		}
 
 		try {
-			return $this->folder->get($path);
+			return $this->getRootFolder()->get($path);
 		} catch (NotFoundException $e) {
 			return null;
 		}
@@ -76,10 +69,11 @@ LUA);
 			$id = null;
 		}
 
+		$root = $this->getRootFolder();
 		$path = '';
 		$name = '/';
-		if ($id !== $this->folder->getId()) {
-			$path = $this->folder->getRelativePath($node->getParent()->getPath());
+		if ($id !== $root->getId()) {
+			$path = $root->getRelativePath($node->getParent()->getPath());
 			$name = $node->getName();
 		}
 
@@ -90,17 +84,8 @@ LUA);
 		];
 	}
 
-
 	/**
 	 * @throws AbortException
 	 */
-	final protected function abort(string $message, Exception $exception=null): void {
-		throw new AbortException($message, 0, $exception);
-	}
-
-	/**
-	 * @return mixed
-	 * @throws AbortException
-	 */
-	abstract public function getCallback();
+	abstract public function run();
 }

@@ -21,6 +21,7 @@
 <script lang="ts">
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import {Script} from '../types/script'
 
 export default {
 	name: 'ScriptCard',
@@ -28,26 +29,20 @@ export default {
 		ListItem, ActionButton
 	},
 
-	computed: {
-		script: function () {
-			return this.$store.getters.getScriptById(this.id)
-		}
-	},
-
 	methods: {
-		editScript() {
-			this.script && this.$store.commit('setSelectedScript', this.script)
-		},
-		deleteScript() {
-			this.script && this.$store.dispatch('deleteScript', this.script)
-		},
 		enabledText() {
 			return this.script.enabled ? 'Enabled' : 'Disabled';
+		},
+		editScript() {
+			this.$emit('select', this.script)
+		},
+		deleteScript() {
+			this.$emit('delete', this.script)
 		}
 	},
 
 	props: {
-		id: Number
+		script: Object as () => Script
 	},
 }
 </script>

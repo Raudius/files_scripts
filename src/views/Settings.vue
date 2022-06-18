@@ -15,7 +15,15 @@
 				</Button>
 
 				<ul class="script-cards">
-					<ScriptCard v-for="script in scripts" v-bind:key="script.id" :id="script.id" :title="script.title"></ScriptCard>
+					<ScriptCard
+						v-for="script in scripts"
+						v-bind:key="script.id"
+						v-bind:script="script"
+						:id="script.id"
+						:title="script.title"
+						v-on:delete="deleteScript"
+						v-on:select="selectScript"
+					/>
 				</ul>
 
 				<div v-if="isLoading" class="icon-loading"></div>
@@ -41,6 +49,7 @@ import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import ScriptEdit from '../components/ScriptEdit.vue';
 import ScriptCard from '../components/ScriptCard.vue';
 import {mapState} from 'vuex'
+import {Script} from "../types/script";
 
 export default {
 	name: 'Settings',
@@ -61,10 +70,8 @@ export default {
 	computed: {
 		...mapState({
 			selectedScript: 'selectedScript',
+			scripts: 'scripts'
 		}),
-		scripts: function () {
-			return this.$store.getters.getScripts
-		},
 		isLoading: function () {
 			return this.scripts === null;
 		}
@@ -73,6 +80,12 @@ export default {
 	methods: {
 		newScript() {
 			this.$store.commit('newScript')
+		},
+		selectScript(script: Script) {
+			this.$store.commit('setSelectedScript', script)
+		},
+		deleteScript(script: Script) {
+			this.$store.dispatch('deleteScript', script)
 		}
 	}
 }

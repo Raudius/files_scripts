@@ -4,23 +4,15 @@ import {api} from "../api/script";
 
 export interface State {
 	loadingScriptId: number;
-	scripts: { [index: number]: Script };
+	scripts: Script[];
 	selectedScript: Script;
 }
 
 const getters = <GetterTree<State, any>>{
-	getScriptById(state: State) {
-		return (scriptId) => state.scripts[scriptId] ?? null
-	},
-	getScripts(state: State) {
-		return state.scripts ? Object.values(state.scripts) : null
-	},
 	getEnabledScripts(state: State) {
-		if (!state.scripts) {
-			return null
-		}
-
-		return Object.values(state.scripts).filter(s => s.enabled)
+		return state.scripts
+			? state.scripts.filter(s => s.enabled)
+			: null
 	}
 };
 
@@ -33,7 +25,7 @@ const mutations = <MutationTree<State>> {
 		state.selectedScript = script
 	},
 
-	selectedToggleValue(state: State,  value: string) {
+	selectedToggleValue(state: State, value: string) {
 		if (state.selectedScript && state.selectedScript.hasOwnProperty(value)) {
 			state.selectedScript[value] = !state.selectedScript[value]
 		}
@@ -65,12 +57,7 @@ const mutations = <MutationTree<State>> {
 
 const actions = <ActionTree<State, any>> {
 	async fetchScripts({ commit }) {
-		const result = await api.getScripts()
-		const scripts = {}
-		result.forEach((script) => {
-			scripts[script.id] = script
-		})
-		commit('setScripts', scripts)
+		commit('setScripts', await api.getScripts())
 	},
 
 	async saveScript({dispatch, commit, state}) {

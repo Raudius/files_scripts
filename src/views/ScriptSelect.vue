@@ -2,7 +2,7 @@
 	<Modal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
 			<h2>Select action to perform</h2>
-			<div v-if="isLoading" class="icon-loading"></div>
+			<div v-if="this.scripts === null" class="icon-loading"></div>
 			<div v-else>
 				<div class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
@@ -22,7 +22,6 @@
 					<input type="text" style="cursor: pointer;" class="section-details" v-model="outputDirectory" @click="pickOutputDirectory" placeholder="Choose a folder..." />
 				</div>
 
-				<div v-if="loadingScriptInputs" class="input-loader icon-loading"></div>
 				<div class="section-wrapper" v-for="scriptInput in scriptInputs">
 					<ConsoleLine class="section-label" :size="20" />
 					<input type="text" class="section-details" v-model="scriptInput.value" :placeholder="scriptInput.description" />
@@ -32,10 +31,13 @@
 					{{ this.selectedDescription }}
 				</div>
 
-				<Button class="btn-run" type="primary" :disabled="!readyToRun" @click="run">
-					<template #icon> <Play :size="20" /> </template>
-					Execute
-				</Button>
+				<div style="text-align: right;">
+					<div v-if="loadingScriptInputs || isRunning" class="input-loader icon-loading display-inline"></div>
+					<Button class="display-inline" type="primary" :disabled="!readyToRun" @click="run">
+						<template #icon> <Play :size="20" /> </template>
+						Execute
+					</Button>
+				</div>
 			</div>
 		</div>
 	</Modal>
@@ -85,13 +87,11 @@ export default {
 		selectedDescription() {
 			return this.selectedScript ? this.selectedScript.description : ''
 		},
-		isLoading(): boolean {
-			return this.isRunning || this.scripts === null;
-		},
 		readyToRun() {
 			return this.selectedScript
 				&& (!this.selectedScript.requestDirectory || this.outputDirectory)
-				&& !this.loadingScriptInputs;
+				&& !this.loadingScriptInputs
+				&& !this.isRunning;
 		}
 	},
 
@@ -184,9 +184,9 @@ export default {
 	min-height: 5vh;
 }
 
-.btn-run {
-	float: right;
-	margin-bottom: 15px;
+.display-inline {
+	display: inline;
+	margin-left: 24px;
 }
 
 .input-loader {

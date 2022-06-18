@@ -85,9 +85,6 @@ class ScriptController extends Controller {
 		return new JSONResponse($script);
 	}
 
-	/**
-	 * @NoAdminRequired
-	 */
 	public function update(
 		int $id,
 		string $title,

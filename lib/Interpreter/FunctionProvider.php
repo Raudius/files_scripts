@@ -19,6 +19,9 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
+use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
+use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
+use OCA\FilesScripts\Interpreter\Functions\Util\Sort_By;
 
 class FunctionProvider {
 	/** @var RegistrableFunction[] */
@@ -42,7 +45,10 @@ class FunctionProvider {
 		Abort $f15,
 		Get_Input $f16,
 		Get_Input_Files $f17,
-		Get_Target_Folder $f18
+		Get_Target_Folder $f18,
+		Html_To_Pdf $f19,
+		Mustache $f20,
+		Sort_By $f21
 	) {
 		$this->functions = func_get_args();
 	}

@@ -1,15 +1,15 @@
 <template>
 	<div>
-		<h3>User inputs</h3>
+		<h3>{{ t('User inputs') }}</h3>
 		<div class="section-description">
-			Specify any number of input values the user may provide when running this action. These will be accessible to the script via the `get_input()` function.
+			{{ t('Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function.') }}
 		</div>
 
 
 		<div v-if="loading" class="icon-loading"></div>
 		<div v-else class="script-input">
-			<input v-model="inputName" type="text" class="input-name" placeholder="Variable name">
-			<input v-model="inputDescription" type="text" class="input-description" placeholder="User prompt...">
+			<input v-model="inputName" type="text" class="input-name" :placeholder="t('Variable name')">
+			<input v-model="inputDescription" type="text" class="input-description" :placeholder="t('User prompt...')">
 			<div class="input-action">
 				<Actions>
 					<ActionButton @click="addInput()">
@@ -44,6 +44,7 @@ import Delete from "vue-material-design-icons/Delete.vue";
 import {ScriptInput} from "../../types/script";
 import Vue from 'vue';
 import {api} from "../../api/script";
+import {translate as t} from "../../l10n";
 
 export default {
 	name: "EditInputs",
@@ -68,6 +69,7 @@ export default {
 		this.fetchInputs()
 	},
 	methods: {
+		t,
 		addInput() {
 			if (this.inputName.trim().length === 0) {
 				return;

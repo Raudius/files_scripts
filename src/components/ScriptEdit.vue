@@ -12,22 +12,22 @@
 			<div class="script-details">
 				<input type="text"
 				   class="input-script-name"
-				   placeholder="Script name"
+				   :placeholder="t('Script name')"
 				   v-model="scriptTitle"
 				>
 				<textarea
 					class="input-script-description"
-					placeholder="A short description of what this action will do..."
+					:placeholder="t('A short description of what this action will do...')"
 					v-model="scriptDescription"
 					rows="6"
 				></textarea>
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
-					Enable script
+					{{ t('Enable script') }}
 				</CheckboxRadioSwitch>
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
-					Request output location
+					{{ t('Request output location') }}
 				</CheckboxRadioSwitch>
 <!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
@@ -60,6 +60,7 @@ import {mapState} from "vuex";
 import {showError, showSuccess} from "@nextcloud/dialogs";
 import {ScriptInput} from "../types/script";
 import {api} from "../api/script";
+import {translate as t} from "../l10n";
 const CodeMirror = require('vue-codemirror').codemirror;
 
 export default {
@@ -130,16 +131,17 @@ export default {
 	},
 
 	methods: {
+		t,
 		saveScript() {
 			const self = this;
 			this.saving = true
 			this.saveScriptAsync()
 				.then(() => {
 					self.dirtyInputs = false;
-					showSuccess('Saved', { timeout: 2000 })
+					showSuccess(t('Saved'), { timeout: 2000 })
 				})
 				.catch((error) => {
-					let message = 'An error occurred during saving'
+					let message = t('An error occurred during saving')
 					if (error.response && error.response.data.error) {
 						message = error.response.data.error
 					}

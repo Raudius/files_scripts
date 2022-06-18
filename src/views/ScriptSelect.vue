@@ -1,7 +1,7 @@
 <template>
 	<Modal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
-			<h2>Select action to perform</h2>
+			<h2>{{ t('Select action to perform') }}</h2>
 			<div v-if="this.scripts === null" class="icon-loading"></div>
 			<div v-else>
 				<div class="section-wrapper">
@@ -10,7 +10,7 @@
 						class="section-details"
 						v-model="selectedScript"
 						:options="scripts"
-						placeholder="Select an action to perform"
+						:placeholder="t('Select an action to perform')"
 						track-by="id"
 						label="title"
 						@change="selectScript"
@@ -19,7 +19,7 @@
 
 				<div class="section-wrapper" v-if="selectedScript && selectedScript.requestDirectory">
 					<Folder class="section-label" :size="20" />
-					<input type="text" style="cursor: pointer;" class="section-details" v-model="outputDirectory" @click="pickOutputDirectory" placeholder="Choose a folder..." />
+					<input type="text" style="cursor: pointer;" class="section-details" v-model="outputDirectory" @click="pickOutputDirectory" :placeholder="t('Choose a folder...')" />
 				</div>
 
 				<div class="section-wrapper" v-for="scriptInput in scriptInputs">
@@ -35,7 +35,7 @@
 					<div v-if="loadingScriptInputs || isRunning" class="input-loader icon-loading display-inline"></div>
 					<Button class="display-inline" type="primary" :disabled="!readyToRun" @click="run">
 						<template #icon> <Play :size="20" /> </template>
-						Execute
+						{{ t('Execute') }}
 					</Button>
 				</div>
 			</div>
@@ -55,6 +55,7 @@ import Folder from 'vue-material-design-icons/Folder.vue'
 import {showError, FilePickerBuilder, showSuccess} from "@nextcloud/dialogs";
 import {api} from "../api/script";
 import * as path from "path";
+import {translate as t} from "../l10n";
 
 export default {
 	name: 'ScriptSelect',
@@ -74,7 +75,6 @@ export default {
 			selectedScript: null,
 			selectedFiles: [],
 			outputDirectory: null,
-			readableName: 'test',
 			scriptInputs: [],
 			loadingScriptInputs: false
 		}
@@ -95,25 +95,8 @@ export default {
 		}
 	},
 
-	async mounted() {
-		const self = this
-		const FilesPlugin = {
-			attach(fileList) {
-
-				fileList.registerMultiSelectFileAction({
-					name: 'files_actions',
-					displayName: 'Run action',
-					iconClass: 'icon-files_scripts',
-					order: 1001,
-					action: (files) => {
-						self.showModal = true
-						self.selectedFiles = files
-					},
-				})
-			}
-		}
-
-		await OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
+	mounted() {
+		this.attachMenuOption()
 	},
 	watch: {
 		showModal(newVal) {
@@ -122,6 +105,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		closeModal() {
 			this.showModal = false
 			this.isRunning = false
@@ -147,19 +131,18 @@ export default {
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
 				OCA.Files.App.fileList.changeDirectory(currentDir, true, true);
 
-				showSuccess('Action completed!')
+				showSuccess(t('Action completed!'))
 				this.closeModal()
 			} catch (response) {
 				const errorObj = response?.response?.data
-				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : "Action failed unexpectedly."
-
+				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('Action failed unexpectedly.')
 				showError(errorMsg)
 			}
 			this.isRunning = false;
 		},
 
 		async pickOutputDirectory() {
-			const picker = (new FilePickerBuilder('Choose a folder...'))
+			const picker = (new FilePickerBuilder(t('Choose a folder...')))
 				.allowDirectories(true)
 				.setMimeTypeFilter(['httpd/unix-directory'])
 				.startAt(this.outputDirectory)
@@ -169,8 +152,27 @@ export default {
 				const dir = await picker.pick() || '/'
 				this.outputDirectory = path.normalize(dir);
 			} catch (error) {
-				showError(error.message || 'Unknown error')
+				showError(error.message || t('Unknown error'))
 			}
+		},
+		attachMenuOption() {
+			const self = this
+			const FilesPlugin = {
+				attach(fileList) {
+					fileList.registerMultiSelectFileAction({
+						name: 'files_actions',
+						displayName: t('Run action'),
+						iconClass: 'icon-files_scripts',
+						order: 1001,
+						action: (files) => {
+							self.showModal = true
+							self.selectedFiles = files
+						},
+					})
+				}
+			}
+
+			OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
 		}
 	},
 }

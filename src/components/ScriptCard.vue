@@ -9,10 +9,10 @@
 		<template #subtitle>{{ script.description }}</template>
 		<template #actions>
 			<ActionButton icon="icon-rename" @click="editScript" :closeAfterClick="true">
-				Edit
+				{{ t('Edit') }}
 			</ActionButton>
 			<ActionButton icon="icon-delete" @click="deleteScript" :closeAfterClick="true">
-				Delete
+				{{ t('Delete') }}
 			</ActionButton>
 		</template>
 	</ListItem>
@@ -22,6 +22,7 @@
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 import {Script} from '../types/script'
+import {translate as t} from "../l10n";
 
 export default {
 	name: 'ScriptCard',
@@ -30,8 +31,9 @@ export default {
 	},
 
 	methods: {
+		t,
 		enabledText() {
-			return this.script.enabled ? 'Enabled' : 'Disabled';
+			return this.script.enabled ? t('Enabled') : t('Disabled');
 		},
 		editScript() {
 			this.$emit('select', this.script)

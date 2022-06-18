@@ -14,7 +14,7 @@ use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
-use OCP\Files\Node;
+use OCP\IL10N;
 use OCP\IRequest;
 
 class ScriptController extends Controller {
@@ -23,14 +23,17 @@ class ScriptController extends Controller {
 	private ScriptInputMapper $scriptInputMapper;
 	private IRootFolder $rootFolder;
 	private ScriptService $scriptService;
+	private IL10N $l;
 
 	public function __construct(
-		$appName, IRequest $request,
+		$appName,
+		IRequest $request,
 		?string $userId,
 		ScriptMapper $scriptMapper,
 		ScriptInputMapper $scriptInputMapper,
 		ScriptService $scriptService,
-		IRootFolder $rootFolder
+		IRootFolder $rootFolder,
+		IL10N $l
 	) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
@@ -38,6 +41,7 @@ class ScriptController extends Controller {
 		$this->scriptInputMapper = $scriptInputMapper;
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
+		$this->l = $l;
 	}
 
 	/**
@@ -79,7 +83,7 @@ class ScriptController extends Controller {
 		try {
 			$this->scriptMapper->insert($script);
 		} catch (Exception $e) {
-			return new JSONResponse(['error' => $e->getMessage()], Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse($script);
@@ -114,7 +118,7 @@ class ScriptController extends Controller {
 		try {
 			$this->scriptMapper->update($script);
 		} catch (Exception $e) {
-			return new JSONResponse(['error' => $e->getMessage()], Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);
 		}
 		return new JSONResponse($script);
 	}
@@ -125,7 +129,7 @@ class ScriptController extends Controller {
 	public function run(int $id, string $outputDirectory = null, array $inputs = [], array $files = []): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script || !$script->getEnabled()) {
-			return new JSONResponse(['error' => 'Script does not exist or is disabled.'], Http::STATUS_NOT_FOUND);
+			return new JSONResponse(['error' => $this->l->t('Action does not exist or is disabled.')], Http::STATUS_NOT_FOUND);
 		}
 
 		$userFolder = $this->rootFolder->getUserFolder($this->userId);
@@ -145,6 +149,8 @@ class ScriptController extends Controller {
 			(new Interpreter($script, $userFolder))->execute($outputDirectory, $scriptInputs, $fileNodes);
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
+		} catch (\Exception $e) {
+			return new JSONResponse(['error' => $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();
@@ -156,7 +162,7 @@ class ScriptController extends Controller {
 	public function destroy(int $id): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
-			return new JSONResponse(['error' => 'Script does not exist.'], Http::STATUS_NOT_FOUND);
+			return new JSONResponse([], Http::STATUS_NOT_FOUND);
 		}
 
 		$this->scriptMapper->delete($script);

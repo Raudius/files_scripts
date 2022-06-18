@@ -5,12 +5,15 @@ namespace OCA\FilesScripts\Service;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
+use OCP\IL10N;
 
 class ScriptService {
 	private ScriptMapper $scriptMapper;
+	private IL10N $l;
 
-	public function __construct(ScriptMapper $scriptMapper) {
+	public function __construct(ScriptMapper $scriptMapper, IL10N $l) {
 		$this->scriptMapper = $scriptMapper;
+		$this->l = $l;
 	}
 
 	/**
@@ -23,12 +26,12 @@ class ScriptService {
 
 		$title = trim($script->getTitle());
 		if (empty($title)) {
-			$errors[] = 'Title is empty.';
+			$errors[] = $this->l->t('Title is empty.');
 		}
 
 		$sameTitle = $this->scriptMapper->findByTitle($title);
 		if ($sameTitle && $sameTitle->getId() !== $script->getId()) {
-			$errors[] = 'A script already has this title.';
+			$errors[] = $this->l->t('A script already exists with this title.');
 		}
 
 		return $errors;

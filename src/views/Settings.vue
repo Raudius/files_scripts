@@ -2,8 +2,8 @@
 	<div>
 		<ScriptEdit />
 		<SettingsSection
-			title="Custom actions"
-			description="Here you can define custom actions which users may perform on their files. Actions are small Lua scripts that can create, modify, and/or delete files programatically. For more details on how you can create actions visit the documentation. abc"
+			:title="t('File actions')"
+			:description="t('File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="#"
 		>
 			<div class="section">
@@ -11,7 +11,7 @@
 					<template #icon>
 						<Plus :size="20" />
 					</template>
-					Create custom action
+					{{ t('New action') }}
 				</Button>
 
 				<ul class="script-cards">
@@ -28,11 +28,11 @@
 
 				<div v-if="isLoading" class="icon-loading"></div>
 				<EmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
-					No actions
+					{{ t('No actions') }}
 					<template #icon>
 						<FileCog />
 					</template>
-					<template #desc>No custom actions exist.</template>
+					<template #desc>{{ t('No file actions exist.') }}</template>
 				</EmptyContent>
 			</div>
 
@@ -50,6 +50,7 @@ import ScriptEdit from '../components/ScriptEdit.vue';
 import ScriptCard from '../components/ScriptCard.vue';
 import {mapState} from 'vuex'
 import {Script} from "../types/script";
+import {translate as t} from "../l10n";
 
 export default {
 	name: 'Settings',
@@ -78,6 +79,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		newScript() {
 			this.$store.commit('newScript')
 		},

@@ -9,20 +9,25 @@ use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
+use OCP\IL10N;
 use OCP\IRequest;
 
 class ScriptInputController extends Controller {
 	private ScriptMapper $scriptMapper;
 	private ScriptInputMapper $scriptInputMapper;
+	private IL10N $l;
 
 	public function __construct(
-		$appName, IRequest $request,
+		$appName,
+		IRequest $request,
 		ScriptMapper $scriptMapper,
-		ScriptInputMapper $scriptInputMapper
+		ScriptInputMapper $scriptInputMapper,
+		IL10N $l
 	) {
 		parent::__construct($appName, $request);
 		$this->scriptMapper = $scriptMapper;
 		$this->scriptInputMapper = $scriptInputMapper;
+		$this->l = $l;
 	}
 
 	/**
@@ -35,7 +40,7 @@ class ScriptInputController extends Controller {
 	public function createAll(int $scriptId, $scriptInputs): Response {
 		$script = $this->scriptMapper->find($scriptId);
 		if (!$script) {
-			return new JSONResponse(['error' => 'Unknown script ID.'], Http::STATUS_NOT_FOUND);
+			return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_NOT_FOUND);
 		}
 
 		$this->scriptInputMapper->deleteByScriptId($scriptId);
@@ -45,16 +50,20 @@ class ScriptInputController extends Controller {
 			$scriptInput->setDescription($scriptInputArr['description']);
 			$scriptInput->setScriptId($scriptId);
 
-			$this->scriptInputMapper->insert($scriptInput);
+			try {
+				$this->scriptInputMapper->insert($scriptInput);
+			} catch (Exception $e) {
+				return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_BAD_REQUEST);
+			}
 		}
 
 		return new JSONResponse();
 	}
 
-	public function create (string $name, string $description, int $scriptId): Response {
+	public function create(string $name, string $description, int $scriptId): Response {
 		$script = $this->scriptMapper->find($scriptId);
 		if (!$script) {
-			return new JSONResponse(['error' => 'Unknown script ID.'], Http::STATUS_NOT_FOUND);
+			return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_NOT_FOUND);
 		}
 		$scriptInput = new ScriptInput();
 		$scriptInput->setName($name);
@@ -64,7 +73,7 @@ class ScriptInputController extends Controller {
 		try {
 			$this->scriptInputMapper->insert($scriptInput);
 		} catch (Exception $e) {
-			return new JSONResponse(['error' => 'An error occurred when creating the script argument'], Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse($script);
@@ -76,7 +85,7 @@ class ScriptInputController extends Controller {
 	public function destroy(int $id): Response {
 		$scriptInput = $this->scriptInputMapper->find($id);
 		if (!$scriptInput) {
-			return new JSONResponse();
+			return new JSONResponse([], Http::STATUS_NOT_FOUND);
 		}
 
 		$this->scriptInputMapper->delete($scriptInput);

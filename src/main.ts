@@ -12,8 +12,8 @@ const scriptsStore = require('./store/scripts').store
 
 declare global {
 	const OC, OCA: any
-	const t: (ctxt: String, str: String, params?: Object) => String
-	const n: (ctxt: String, str: String, params?: Object) => String
+	const t: (...args) => string
+	const n: (...args) => string
 	const appName: string
 	let __webpack_public_path__: string
 }

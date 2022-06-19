@@ -9,12 +9,12 @@
         }
     ],
     "require": {
-		"raudius/phpdf": "^1.0",
+		"raudius/phpdf": "^1.0.1",
 		"ext-json": "*",
       	"ext-lua": "*",
 		"ext-curl": "*",
         "mpdf/mpdf": "^8.1",
-        "mustache/mustache": "^2.14",
+        "mustache/mustache": "^2.14"
     },
     "require-dev": {
 		"roave/security-advisories": "dev-latest",

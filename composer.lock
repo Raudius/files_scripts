@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35c37e53c42c965580d99e58def8ef39",
+    "content-hash": "b5048ce21fd60ff90cfe135fe67bc991",
     "packages": [
         {
             "name": "d11wtq/boris",
@@ -495,16 +495,16 @@
         },
         {
             "name": "raudius/phpdf",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Raudius/phpdf.git",
-                "reference": "4ac8934c0b10a61ecf9a48a65f5265c25ed4375e"
+                "reference": "e78d97b8e474685520702797df488fc3dbf61b2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Raudius/phpdf/zipball/4ac8934c0b10a61ecf9a48a65f5265c25ed4375e",
-                "reference": "4ac8934c0b10a61ecf9a48a65f5265c25ed4375e",
+                "url": "https://api.github.com/repos/Raudius/phpdf/zipball/e78d97b8e474685520702797df488fc3dbf61b2d",
+                "reference": "e78d97b8e474685520702797df488fc3dbf61b2d",
                 "shasum": ""
             },
             "require": {
@@ -528,6 +528,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC0-1.0"
+            ],
             "description": "Another mediocre PHP library to modify PDFs.",
             "keywords": [
                 "pdf",
@@ -536,9 +539,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Raudius/phpdf/issues",
-                "source": "https://github.com/Raudius/phpdf/tree/v1.0.0"
+                "source": "https://github.com/Raudius/phpdf/tree/v1.0.1"
             },
-            "time": "2022-05-24T21:18:00+00:00"
+            "time": "2022-06-19T21:38:27+00:00"
         },
         {
             "name": "setasign/fpdi",
@@ -5002,7 +5005,8 @@
     "prefer-lowest": false,
     "platform": {
         "ext-json": "*",
-        "ext-lua": "*"
+        "ext-lua": "*",
+        "ext-curl": "*"
     },
     "platform-dev": [],
     "platform-overrides": {

@@ -4,6 +4,7 @@
     - [get_input_files](#get_input_files)  
 
   - **[Util:](#Util)** Utility functions for scripting convenience
+    - [json](#json)  
     - [sort_by](#sort_by)  
 
   - **[Template:](#Template)** Generate files from templates
@@ -48,11 +49,16 @@ Returns the target directory node. If none is provided, returns nil.
   
 Returns a list of the selected files: these are the files the user selects before running the action.
 ## Util
+### json
+
+`json(Table table): String`  
+  
+Returns the json encoding of the given table. If the encoding fails, `nil` is returned.
 ### sort_by
 
 `sort_by(Table items, String key, [Bool ascending]=true): Table`  
   
-Sorts a Lua table by key. This is only meant for "arrays" (tables with sequential integer keys) and not for "maps" because Lua does not guarantee sorting for associative Tables.  
+Sorts a Lua table by an attribute. This is only meant for "arrays" (tables with sequential integer keys) and not for "maps" because Lua cannot guarantee sorting for associative Tables.  
   
 Example:  
 ```  

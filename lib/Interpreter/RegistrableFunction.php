@@ -88,6 +88,33 @@ abstract class RegistrableFunction {
 	}
 
 	/**
+	 * Normalises the array from Lua 1-indexed array to a PHP array.
+	 */
+	protected function normaliseArray(array $array): array {
+		$result = [];
+
+		$isSequential = true;
+		$expectedIdx = 1;
+
+		foreach ($array as $idx => $item) {
+			if (is_array($item)) {
+				$item = $this->normaliseArray($item);
+			}
+			$result[$idx] = $item;
+
+			if ($idx !== $expectedIdx) {
+				$isSequential = false;
+			}
+			$expectedIdx++;
+		}
+
+		if ($isSequential) {
+			return array_values($result);
+		}
+		return $result;
+	}
+
+	/**
 	 * @throws AbortException
 	 */
 	abstract public function run();

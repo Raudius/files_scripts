@@ -19,6 +19,7 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
+use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
@@ -52,7 +53,8 @@ class FunctionProvider {
 		Mustache $f20,
 		Sort_By $f21,
 		Json $f22,
-		Http_Request $f23
+		Http_Request $f23,
+		Pdf_Pages $f24
 	) {
 		$this->functions = func_get_args();
 	}

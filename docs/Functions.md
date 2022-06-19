@@ -17,6 +17,7 @@
 
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
     - [pdf_merge](#pdf_merge)  
+    - [pdf_pages](#pdf_pages)  
     - [pdf_overlay](#pdf_overlay)  
     - [pdf_decrypt](#pdf_decrypt)  
 
@@ -105,6 +106,13 @@ Merges any PDF documents in the given `files` array. The output file is saved to
 The output's file name can be specified, if not specified the name `{timestamp}_merged.pdf` is used.  
   
 The output file's node is returned, or `nil` if operation failed.
+### pdf_pages
+
+`pdf_pages(Node file, String page_range, [String new_file_name]=nil): Node|nil`  
+  
+Creates a new PDF only containing the specified pages. Page range parameter allows multiple formats see [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).  
+  
+Returns the output file's node object, or `nil` if operation failed.
 ### pdf_overlay
 
 `pdf_overlay(Node target, Node overlay, [String new_file_name]=null, [Bool repeat]=true): Node`  

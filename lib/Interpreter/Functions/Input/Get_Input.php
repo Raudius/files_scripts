@@ -4,7 +4,9 @@ namespace OCA\FilesScripts\Interpreter\Functions\Input;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 /**
- * Returns a table containing the user inputs.
+ * `get_input(): Table`
+ *
+ * Returns a Lua table containing the user inputs.
  */
 class Get_Input extends RegistrableFunction {
 

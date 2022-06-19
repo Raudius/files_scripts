@@ -12,9 +12,12 @@ use ReflectionClass;
 abstract class RegistrableFunction {
 	private ?Context $context;
 
+	public static function getFunctionName(): string {
+		return strtolower((new ReflectionClass(static::class))->getShortName());
+	}
+
 	final public function register($lua, $context): void {
-		$name = strtolower((new ReflectionClass($this))->getShortName());
-		$lua->registerCallback($name, [$this, 'run']);
+		$lua->registerCallback(static::getFunctionName(), [$this, 'run']);
 		$this->context = $context;
 	}
 

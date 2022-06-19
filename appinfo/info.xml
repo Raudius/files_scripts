@@ -10,7 +10,8 @@ Allows administrators to write small scripts which users can run through file ac
 - **⚡️Empower users:** Make hard tasks easy, straight from the Files app.
 - **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!
 
-⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.
+⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently.
+Some functionality requires additional configuration. Make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
     <version>1.0.0</version>

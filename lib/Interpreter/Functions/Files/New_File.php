@@ -6,13 +6,15 @@ use OCP\Files\Folder;
 use OCP\Files\NotPermittedException;
 
 /**
- * Creates a new file and returns the file node.
- * If file creation fails, returns null
+ * `new_file(Node folder, String name, [String content]=nil): Node|nil`
+ *
+ * Creates a new file at specified folder.
+ * If successful, returns the newly created file node. If file creation fails, returns `nil`.
  */
 class New_File extends RegistrableFunction {
-	public function run($node=null, $name=null, $content=null): ?array {
+	public function run(array $node=null, string $name=null, string $content=null): ?array {
 		$folder = $this->getNode($this->getPath($node));
-		if (false === $folder instanceof Folder) {
+		if (false === $folder instanceof Folder || !$name) {
 			return null;
 		}
 

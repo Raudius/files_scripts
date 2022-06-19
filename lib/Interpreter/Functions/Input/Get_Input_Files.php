@@ -5,7 +5,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\Node;
 
 /**
- * Returns an array with the selected files: these are the files the user selects before running the action.
+ * `get_input_files(): Node[]`
+ *
+ * Returns a list of the selected files: these are the files the user selects before running the action.
  */
 class Get_Input_Files extends RegistrableFunction {
 	public function run(): array {

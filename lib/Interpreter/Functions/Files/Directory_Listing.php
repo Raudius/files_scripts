@@ -7,7 +7,9 @@ use OCP\Files\Folder;
 use OCP\Files\NotFoundException;
 
 /**
+ * `directory_listing(Node folder): Node[]`
  *
+ * Returns a list of the directory contents, if the given node is not a folder, returns an empty list.
  */
 class Directory_Listing extends RegistrableFunction {
 	public function run(?array $node=[]): array {

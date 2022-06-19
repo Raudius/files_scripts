@@ -18,7 +18,8 @@
     "require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"phpunit/phpunit": "^8.5",
-        "nextcloud/coding-standard": "^0.5.0"
+        "nextcloud/coding-standard": "^0.5.0",
+        "symfony/class-loader": "^3.4"
 	},
     "config": {
         "optimize-autoloader": true,
@@ -31,5 +32,8 @@
         "lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
         "cs:check": "php-cs-fixer fix --dry-run --diff",
         "cs:fix": "php-cs-fixer fix"
-    }
+    },
+	"autoload-dev": {
+		"classmap": ["lib/"]
+	}
 }

@@ -4,6 +4,8 @@ namespace OCA\FilesScripts\Interpreter\Functions\Input;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 /**
+ * `get_target_folder(): Node|nil`
+ *
  * Returns the target directory node. If none is provided, returns nil.
  */
 class Get_Target_Folder extends RegistrableFunction {

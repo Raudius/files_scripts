@@ -6,10 +6,10 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\Folder;
 
 /**
- * meta_data(Node node)
+ * `meta_data(Node node): Node`
  *
- * Returns the meta-data for a given file or directory. The meta-data contains:
- * 	- `size`: the size of the file (in bytes)
+ * Returns an inflated Node object with additional meta-data information for the given file or directory. The additional meta-data attributes are:
+ *  - `size`: the size of the file (in bytes)
  *  - `mimetype`: the mime-type of the file,
  *  - `etag`: the entity tag of the file.
  *  - `utime`: the UNIX-timestamp at which the file was uploaded to the server

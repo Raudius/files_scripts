@@ -6,11 +6,12 @@ use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
 
 /**
- * Returns the parent path for the given file or directory.
- * The root of the "filesystem" is considered to be the root directory of the user who triggered the script.
- * When attempting to get the parent of the root directory, the root directory is returned.
+ * `get_parent(Node node): Node`
  *
- * If the passed node cannot be found, null is returned.
+ * Returns the parent folder for the given file or directory.
+ * The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.
+ *
+ * If the given file cannot be found, `nil` is returned.
  */
 class Get_Parent extends RegistrableFunction {
 	public function run($node=null): ?array {

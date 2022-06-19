@@ -5,7 +5,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\File;
 
 /**
+ * `is_file(Node node): Bool`
  *
+ * Returns whether the given node is a file.
  */
 class Is_File extends RegistrableFunction {
 	public function run(?array $node=[]): bool {

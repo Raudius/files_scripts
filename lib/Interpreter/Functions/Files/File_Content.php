@@ -6,17 +6,9 @@ use OCP\Files\NotPermittedException;
 use OCP\Lock\LockedException;
 
 /**
- * meta_data(Node node)
+ * `file_content(Node node): String|nil`
  *
- * Returns the meta-data for a given file or directory. The meta-data contains:
- * 	- `size`: the size of the file (in bytes)
- *  - `mime_type`: the mime-type of the file
- *  - `uploaded_at`: the UNIX-timestamp at which the file was uploaded to the server
- *  - `created_at`: the UNIX-timestamp at which the file was created
- *  - `modified_at`: the UNIX-timestamp at which the file was last modified
- *  - `can_read`: whether the user can read the file or can read files from the directory
- *  - `can_delete`: whether the user can delete the file or can delete files from the directory
- *  - `can_update`: whether the user can modify the file or can write to the directory
+ * Returns the string content of the file. If the node is a directory or the file does not exist, `nil` is returned.
  */
 class File_Content extends RegistrableFunction {
 	public function run($node=null): ?string {

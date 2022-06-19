@@ -155,7 +155,7 @@ class ScriptController extends Controller {
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
 		} catch (\Exception $e) {
-			return new JSONResponse(['error' => $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(['error' => $e->getMessage(), $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();

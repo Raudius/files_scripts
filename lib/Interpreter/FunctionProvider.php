@@ -21,6 +21,7 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
+use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort_By;
 
@@ -50,7 +51,8 @@ class FunctionProvider {
 		Html_To_Pdf $f19,
 		Mustache $f20,
 		Sort_By $f21,
-		Json $f22
+		Json $f22,
+		Http_Request $f23
 	) {
 		$this->functions = func_get_args();
 	}

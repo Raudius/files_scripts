@@ -6,6 +6,7 @@
   - **[Util:](#Util)** Utility functions for scripting convenience
     - [json](#json)  
     - [sort_by](#sort_by)  
+    - [http_request](#http_request)  
 
   - **[Template:](#Template)** Generate files from templates
     - [mustache](#mustache)  
@@ -66,6 +67,12 @@ fruits = {{name="grape"}, {name="apple"}, {name="banana"}, {name="orange"}}
 fruits = sort_by(fruits, "name", true)  
 -- {{name="apple"}, {name="banana"},{name="grape"},{name="orange"}}  
 ```
+### http_request
+
+`http_get(String url, [String method]='GET', [Table data]={}): String`  
+  
+Performs an HTTP request to the given URL using the given method and data.  
+Returns the response. If the content could not be fetched, `nil` is returned.
 ## Template
 ### mustache
 

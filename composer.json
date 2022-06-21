@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-		"raudius/phpdf": "^1.0.1",
+		"raudius/phpdf": "^1.0.2",
 		"ext-json": "*",
       	"ext-lua": "*",
 		"ext-curl": "*",

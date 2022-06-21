@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5048ce21fd60ff90cfe135fe67bc991",
+    "content-hash": "ce5334a0941c4ef1e83ba80c0f09a17c",
     "packages": [
         {
             "name": "d11wtq/boris",
@@ -495,16 +495,16 @@
         },
         {
             "name": "raudius/phpdf",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Raudius/phpdf.git",
-                "reference": "e78d97b8e474685520702797df488fc3dbf61b2d"
+                "reference": "1d5d3f56078e7e9d6512b4cc5bf8f06e86ae6adf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Raudius/phpdf/zipball/e78d97b8e474685520702797df488fc3dbf61b2d",
-                "reference": "e78d97b8e474685520702797df488fc3dbf61b2d",
+                "url": "https://api.github.com/repos/Raudius/phpdf/zipball/1d5d3f56078e7e9d6512b4cc5bf8f06e86ae6adf",
+                "reference": "1d5d3f56078e7e9d6512b4cc5bf8f06e86ae6adf",
                 "shasum": ""
             },
             "require": {
@@ -539,9 +539,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Raudius/phpdf/issues",
-                "source": "https://github.com/Raudius/phpdf/tree/v1.0.1"
+                "source": "https://github.com/Raudius/phpdf/tree/v1.0.2"
             },
-            "time": "2022-06-19T21:38:27+00:00"
+            "time": "2022-06-20T16:18:41+00:00"
         },
         {
             "name": "setasign/fpdi",
@@ -2140,12 +2140,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0a2664d739af6996ce1a24a35cb59ed2bbd27f4b"
+                "reference": "bd1c2ed6f37c9a9e81417b8367865c0bbeabed55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0a2664d739af6996ce1a24a35cb59ed2bbd27f4b",
-                "reference": "0a2664d739af6996ce1a24a35cb59ed2bbd27f4b",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bd1c2ed6f37c9a9e81417b8367865c0bbeabed55",
+                "reference": "bd1c2ed6f37c9a9e81417b8367865c0bbeabed55",
                 "shasum": ""
             },
             "conflict": {
@@ -2286,7 +2286,7 @@
                 "gree/jose": "<=2.2",
                 "gregwar/rst": "<1.0.3",
                 "grumpydictator/firefly-iii": "<5.6.5",
-                "guzzlehttp/guzzle": "<6.5.7|>=7,<7.4.4",
+                "guzzlehttp/guzzle": "<6.5.8|>=7,<7.4.5",
                 "guzzlehttp/psr7": "<1.8.4|>=2,<2.1.1",
                 "helloxz/imgurl": "= 2.31|<=2.31",
                 "hillelcoren/invoice-ninja": "<5.3.35",
@@ -2633,7 +2633,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-17T21:04:24+00:00"
+            "time": "2022-06-21T17:12:40+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

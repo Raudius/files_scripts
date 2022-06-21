@@ -17,6 +17,7 @@ use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
 use OCP\IL10N;
 use OCP\IRequest;
+use Psr\Log\LoggerInterface;
 
 class ScriptController extends Controller {
 	private ?string $userId;
@@ -26,6 +27,7 @@ class ScriptController extends Controller {
 	private ScriptService $scriptService;
 	private IL10N $l;
 	private Interpreter $interpreter;
+	private LoggerInterface $logger;
 
 	public function __construct(
 		$appName,
@@ -36,7 +38,8 @@ class ScriptController extends Controller {
 		ScriptService $scriptService,
 		IRootFolder $rootFolder,
 		IL10N $l,
-		Interpreter $interpreter
+		Interpreter $interpreter,
+		LoggerInterface $logger
 	) {
 		parent::__construct($appName, $request);
 		$this->userId = $userId;
@@ -46,6 +49,7 @@ class ScriptController extends Controller {
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
 		$this->interpreter = $interpreter;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -87,6 +91,10 @@ class ScriptController extends Controller {
 		try {
 			$this->scriptMapper->insert($script);
 		} catch (Exception $e) {
+			$this->logger->error('File scripts insert error', [
+				'message' => $e->getMessage(),
+				'trace' => $e->getTraceAsString()
+			]);
 			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);
 		}
 
@@ -122,6 +130,10 @@ class ScriptController extends Controller {
 		try {
 			$this->scriptMapper->update($script);
 		} catch (Exception $e) {
+			$this->logger->error('File scripts save error', [
+				'message' => $e->getMessage(),
+				'trace' => $e->getTraceAsString()
+			]);
 			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);
 		}
 		return new JSONResponse($script);
@@ -146,7 +158,7 @@ class ScriptController extends Controller {
 
 		$scriptInputs = [];
 		foreach ($inputs as $input) {
-			$scriptInputs[$input['name']] = $input['value'];
+			$scriptInputs[$input['name']] = $input['value'] ?? null;
 		}
 
 		try {
@@ -155,7 +167,11 @@ class ScriptController extends Controller {
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
 		} catch (\Exception $e) {
-			return new JSONResponse(['error' => $e->getMessage(), $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
+			$this->logger->error('File scripts runtime error', [
+				'message' => $e->getMessage(),
+				'trace' => $e->getTraceAsString()
+			]);
+			return new JSONResponse(['error' => $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();

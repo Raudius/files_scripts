@@ -16,7 +16,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * **Note:** if you input an associative Table, the keys will be removed in the process.
  *
  * Example:
- * ```
+ * ```lua
  * fruits = {"grape", "apple", "banana", "orange"}
  * fruits = sort(fruits)
  * -- {"apple", "banana", "grape", "orange"}

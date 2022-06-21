@@ -1,7 +1,3 @@
-# Scripting API
-
-All these functions are made accessible along with [Lua's built-in library](https://www.lua.org/manual/5.3/). Any additional Lua libraries globablly installed in the servers should also be available, however I would strongly discourage using these (particularly for modifying files) unless you really know what you are doing.
-
   - **[Input:](#Input)** Retreiving user inputs
     - [get_input](#get_input)  
     - [get_target_folder](#get_target_folder)  
@@ -69,7 +65,7 @@ This function may be slightly more convenient than Lua's own: [table.sort](https
 **Note:** if you input an associative Table, the keys will be removed in the process.  
   
 Example:  
-```  
+```lua  
 fruits = {"grape", "apple", "banana", "orange"}  
 fruits = sort(fruits)  
 -- {"apple", "banana", "grape", "orange"}  

@@ -27,7 +27,7 @@
 				</CheckboxRadioSwitch>
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
-					{{ t('Request output location') }}
+					{{ t('Request target folder') }}
 				</CheckboxRadioSwitch>
 <!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">

@@ -1,11 +1,15 @@
+# Scripting API
+
+All these functions are made accessible along with [Lua's built-in library](https://www.lua.org/manual/5.3/). Any additional Lua libraries globablly installed in the servers should also be available, however I would strongly discourage using these (particularly for modifying files) unless you really know what you are doing.
+
   - **[Input:](#Input)** Retreiving user inputs
     - [get_input](#get_input)  
     - [get_target_folder](#get_target_folder)  
     - [get_input_files](#get_input_files)  
 
   - **[Util:](#Util)** Utility functions for scripting convenience
+    - [sort](#sort)  
     - [json](#json)  
-    - [sort_by](#sort_by)  
     - [http_request](#http_request)  
 
   - **[Template:](#Template)** Generate files from templates
@@ -51,29 +55,44 @@ Returns the target directory node. If none is provided, returns nil.
   
 Returns a list of the selected files: these are the files the user selects before running the action.
 ## Util
-### json
+### sort
 
-`json(Table table): String`  
+`sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  
   
-Returns the json encoding of the given table. If the encoding fails, `nil` is returned.
-### sort_by
-
-`sort_by(Table items, String key, [Bool ascending]=true): Table`  
+Sorts a Lua table and returns the result.  
+If the argument `key` is returned it will sort the elements using that key (see example below).  
+If the `ascending` argument is set to `false`, the ordering will be reversed (largest first).  
   
-Sorts a Lua table by an attribute. This is only meant for "arrays" (tables with sequential integer keys) and not for "maps" because Lua cannot guarantee sorting for associative Tables.  
+This function uses [PHP's](https://www.php.net/manual/en/types.comparisons.php) default type comparison  
+This function may be slightly more convenient than Lua's own: [table.sort](https://www.lua.org/manual/5.3/manual.html#pdf-table.sort), such as in cases where you need the ascending/descending parameter.  
+  
+**Note:** if you input an associative Table, the keys will be removed in the process.  
   
 Example:  
 ```  
+fruits = {"grape", "apple", "banana", "orange"}  
+fruits = sort(fruits)  
+-- {"apple", "banana", "grape", "orange"}  
+  
 fruits = {{name="grape"}, {name="apple"}, {name="banana"}, {name="orange"}}  
-fruits = sort_by(fruits, "name", true)  
+fruits = sort(fruits, "name", true)  
 -- {{name="apple"}, {name="banana"},{name="grape"},{name="orange"}}  
 ```
+### json
+
+`json(Table|string input): String|Table|nil`  
+  
+If the input is a string, returns a Table of the JSON represented in the string.  
+If the input is a table, returns the JSON representation of that object.  
+If encoding/decoding fails, `nil` is returned.
 ### http_request
 
 `http_get(String url, [String method]='GET', [Table data]={}): String`  
   
 Performs an HTTP request to the given URL using the given method and data.  
-Returns the response. If the content could not be fetched, `nil` is returned.
+Returns the response. If the content could not be fetched, `nil` is returned.  
+  
+**Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
 ## Template
 ### mustache
 

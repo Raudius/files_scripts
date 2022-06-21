@@ -24,7 +24,7 @@ use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
-use OCA\FilesScripts\Interpreter\Functions\Util\Sort_By;
+use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
 
 class FunctionProvider {
 	/** @var RegistrableFunction[] */
@@ -41,20 +41,20 @@ class FunctionProvider {
 		File_Content $f8,
 		Directory_Listing $f9,
 		Is_File $f10,
-		Is_Folder $f11,
-		Pdf_Merge $f12,
-		Pdf_Overlay $f13,
-		Pdf_Decrypt $f14,
-		Abort $f15,
-		Get_Input $f16,
-		Get_Input_Files $f17,
+		Is_Folder         $f11,
+		Pdf_Merge         $f12,
+		Pdf_Overlay       $f13,
+		Pdf_Decrypt       $f14,
+		Abort             $f15,
+		Get_Input         $f16,
+		Get_Input_Files   $f17,
 		Get_Target_Folder $f18,
-		Html_To_Pdf $f19,
-		Mustache $f20,
-		Sort_By $f21,
-		Json $f22,
-		Http_Request $f23,
-		Pdf_Pages $f24
+		Html_To_Pdf       $f19,
+		Mustache          $f20,
+		Sort              $f21,
+		Json              $f22,
+		Http_Request      $f23,
+		Pdf_Pages         $f24
 	) {
 		$this->functions = func_get_args();
 	}

@@ -12,7 +12,11 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * Returns the resulting string.
  */
 class Mustache extends RegistrableFunction {
-	public function run(string $template = '', array $vars = []): string {
+	public function run(string $template = '', $vars = []): string {
+		if (!$vars) {
+			$vars = [];
+		}
+
 		return (new Mustache_Engine(array('entity_flags' => ENT_QUOTES)))->render($template, $vars);
 	}
 }

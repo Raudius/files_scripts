@@ -115,6 +115,22 @@ abstract class RegistrableFunction {
 	}
 
 	/**
+	 * Will make sure the array index starts with 1.
+	 *
+	 * @param array $linkedList
+	 * @return array
+	 */
+	protected function reindex(array $linkedList): array {
+		if (isset($linkedList[0])) {
+			array_unshift($linkedList, null);
+			unset($linkedList[0]);
+		}
+
+		return $linkedList;
+	}
+
+	/**
+	 * @return mixed
 	 * @throws AbortException
 	 */
 	abstract public function run();

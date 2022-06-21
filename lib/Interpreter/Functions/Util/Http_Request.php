@@ -8,9 +8,10 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *
  * Performs an HTTP request to the given URL using the given method and data.
  * Returns the response. If the content could not be fetched, `nil` is returned.
+ *
+ * **Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
  */
-class Http_Request extends RegistrableFunction
-{
+class Http_Request extends RegistrableFunction {
 	public function run(string $url = '', string $method = 'get', array $fields = []): ?string {
 		$curl = curl_init($url);
 

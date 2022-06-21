@@ -4,7 +4,7 @@
 		<SettingsSection
 			:title="t('File actions')"
 			:description="t('File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
-			doc-url="#"
+			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md"
 		>
 			<div class="section">
 				<Button type="primary" @click="newScript">

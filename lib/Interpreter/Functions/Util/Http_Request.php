@@ -12,7 +12,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * **Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
  */
 class Http_Request extends RegistrableFunction {
-	public function run(string $url = '', string $method = 'get', array $fields = []): ?string {
+	public function run($url = '', $method = 'get', $fields = []): ?string {
 		$curl = curl_init($url);
 
 		$this->setCurlMethod($curl, $method);

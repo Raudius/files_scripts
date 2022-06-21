@@ -11,7 +11,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * If encoding/decoding fails, `nil` is returned.
  */
 class Json extends RegistrableFunction {
-	public function run($input = []) {
+	public function run($input = null) {
 		if (is_string($input)) {
 			return json_decode($input) ?: null;
 		}

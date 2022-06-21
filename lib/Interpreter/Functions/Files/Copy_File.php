@@ -15,10 +15,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Copy_File extends RegistrableFunction {
 	public function run(
-		array $file=null,
-		string $folderPath=null,
-		string $name=null,
-		bool $overwrite=false
+		$file=null,
+		$folderPath=null,
+		$name=null
 	): bool {
 		$fileNode = $this->getFile($this->getPath($file));
 		$folderNode = $this->getFolder($folderPath);

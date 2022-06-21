@@ -10,7 +10,7 @@ use OCP\Files\File;
  * Returns whether the given node is a file.
  */
 class Is_File extends RegistrableFunction {
-	public function run(?array $node=[]): bool {
+	public function run($node=[]): bool {
 		return $this->getNode($this->getPath($node)) instanceof File;
 	}
 }

@@ -26,7 +26,7 @@ class Html_To_Pdf extends RegistrableFunction {
 		$this->tempManager = $templateManager;
 	}
 
-	public function run(string $html = '', array $config = [], array $pos = []): ?string {
+	public function run($html = '', $config = [], $pos = []): ?string {
 		try {
 			// Normalise format array (Lua uses 1-index)
 			if (is_array($config['format'])) {

@@ -11,7 +11,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * assumed to be directory. The function will return whether the file exists in the directory.
  */
 class Exists extends RegistrableFunction {
-	public function run(?array $node=[], string $fileName=null): bool {
+	public function run($node=[], $fileName=null): bool {
 		if (!$node) {
 			return false;
 		}

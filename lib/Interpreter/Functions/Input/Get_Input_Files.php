@@ -12,7 +12,7 @@ use OCP\Files\Node;
 class Get_Input_Files extends RegistrableFunction {
 	public function run(): array {
 		return array_map(
-			function (Node $file): array {
+			function ($file): array {
 				return $this->getNodeData($file);
 			},
 			$this->getContext()->getInputFiles()

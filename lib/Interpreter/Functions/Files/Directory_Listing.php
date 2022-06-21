@@ -12,7 +12,7 @@ use OCP\Files\NotFoundException;
  * Returns a list of the directory contents, if the given node is not a folder, returns an empty list.
  */
 class Directory_Listing extends RegistrableFunction {
-	public function run(?array $node=[]): array {
+	public function run($node=[]): array {
 		$folder = $this->getNode($this->getPath($node));
 		if (false === $folder instanceof Folder) {
 			return [];

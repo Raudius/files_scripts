@@ -10,7 +10,7 @@ use OCP\Files\Folder;
  * Returns whether the given node is a folder.
  */
 class Is_Folder extends RegistrableFunction {
-	public function run(?array $node=[]): bool {
+	public function run($node=[]): bool {
 		return $this->getNode($this->getPath($node)) instanceof Folder;
 	}
 }

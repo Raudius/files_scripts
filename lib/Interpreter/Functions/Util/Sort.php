@@ -27,7 +27,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * ```
  */
 class Sort extends RegistrableFunction {
-	public function run(array $items = [], string $key = null, bool $asc = true): array {
+	public function run($items = [], $key = null, $asc = true): array {
 		$items = array_values($items);
 		usort(
 			$items,

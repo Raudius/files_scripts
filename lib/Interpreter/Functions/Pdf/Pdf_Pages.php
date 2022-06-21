@@ -16,7 +16,7 @@ use raudius\phpdf\PhpdfException;
  * Returns the output file's node object, or `nil` if operation failed.
  */
 class Pdf_Pages extends RegistrableFunction {
-	public function run(array $file=[], string $pages='', string $fileName=null): ?array {
+	public function run($file=[], $pages='', $fileName=null): ?array {
 		$fileName = $fileName ?? (time() . '_trimmed.pdf');
 		$fileNode = $this->getNode($this->getPath($file));
 

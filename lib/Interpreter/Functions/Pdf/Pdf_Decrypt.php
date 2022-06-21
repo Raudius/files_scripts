@@ -14,7 +14,7 @@ use raudius\phpdf\Phpdf;
  * Returns the node object for the resulting file.
  */
 class Pdf_Decrypt extends RegistrableFunction {
-	public function run(array $targetFile=[], string $password=null, string $newFileName=null): ?array {
+	public function run($targetFile=[], $password=null, $newFileName=null): ?array {
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		if (!$targetFileNode) {
 			return null;

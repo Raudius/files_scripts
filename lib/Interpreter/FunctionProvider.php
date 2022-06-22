@@ -21,6 +21,7 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
+use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Page_Count;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
@@ -58,7 +59,8 @@ class FunctionProvider {
 		Http_Request $f23,
 		Pdf_Pages $f24,
 		File_Delete $f25,
-		Node_Exists $f26
+		Node_Exists $f26,
+		Pdf_Page_Count $f27
 	) {
 		$this->functions = func_get_args();
 	}

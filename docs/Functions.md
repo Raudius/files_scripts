@@ -19,6 +19,7 @@
     - [pdf_merge](#pdf_merge)  
     - [pdf_pages](#pdf_pages)  
     - [pdf_overlay](#pdf_overlay)  
+    - [pdf_page_count](#pdf_page_count)  
     - [pdf_decrypt](#pdf_decrypt)  
 
   - **[Files:](#Files)** File operations within the Nextcloud environment
@@ -140,6 +141,12 @@ By default, the overlay repeats (after we run out of overlay pages we start agai
 A new file can be created by specifying the `new_file_name` parameter (the file will be created on the target file's folder). By default, the target file gets overwritten.  
   
 Returns the node object of the resulting file.
+### pdf_page_count
+
+`pdf_page_count(Node node): Int`  
+  
+Returns the number of pages in the PDF document.  
+If the document is not a valid PDF document, -1 is returned.
 ### pdf_decrypt
 
 `pdf_decrypt(Node file, [String password]=nil, [String new_file_name]=nil): Node|nil`  

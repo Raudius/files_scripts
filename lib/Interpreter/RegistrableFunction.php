@@ -34,7 +34,7 @@ abstract class RegistrableFunction {
 	}
 
 	final protected function getPath(array $data): string {
-		return ($data['path'] ?? '') . '/' . ($data['name'] ?? '');
+		return ($data['path'] ?? '<no-path>') . '/' . ($data['name'] ?? '<no-name>');
 	}
 
 	final protected function getNode(string $path): ?Node {

@@ -1,40 +1,42 @@
 {
-    "name": "raudius/files_scripts",
-    "type": "project",
-    "license": "AGPL",
-    "authors": [
-        {
-            "name": "Raul Ferreira Fuentes",
-            "email": "r.ferreira.fuentes@gmail.com"
-        }
-    ],
-    "require": {
+	"name": "raudius/files_scripts",
+	"type": "project",
+	"license": "AGPL",
+	"authors": [
+		{
+			"name": "Raul Ferreira Fuentes",
+			"email": "r.ferreira.fuentes@gmail.com"
+		}
+	],
+	"require": {
 		"raudius/phpdf": "^1.0.2",
 		"ext-json": "*",
-      	"ext-lua": "*",
+		"ext-lua": "*",
 		"ext-curl": "*",
-        "mpdf/mpdf": "^8.1",
-        "mustache/mustache": "^2.14"
-    },
-    "require-dev": {
+		"mpdf/mpdf": "^8.1",
+		"mustache/mustache": "^2.14"
+	},
+	"require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"phpunit/phpunit": "^8.5",
-        "nextcloud/coding-standard": "^0.5.0",
-        "symfony/class-loader": "^3.4"
+		"nextcloud/coding-standard": "^0.5.0",
+		"symfony/class-loader": "^3.4"
 	},
-    "config": {
-        "optimize-autoloader": true,
-        "classmap-authoritative": true,
-        "platform": {
-            "php": "7.4"
-        }
-    },
-    "scripts": {
-        "lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
-        "cs:check": "php-cs-fixer fix --dry-run --diff",
-        "cs:fix": "php-cs-fixer fix"
-    },
+	"config": {
+		"optimize-autoloader": true,
+		"classmap-authoritative": true,
+		"platform": {
+			"php": "7.4"
+		}
+	},
+	"scripts": {
+		"lint": "find . -name \\*.php -not -path './vendor/*' -not -path './build/*' -print0 | xargs -0 -n1 php -l",
+		"cs:check": "php-cs-fixer fix --dry-run --diff",
+		"cs:fix": "php-cs-fixer fix"
+	},
 	"autoload-dev": {
-		"classmap": ["lib/"]
+		"classmap": [
+			"lib/"
+		]
 	}
 }

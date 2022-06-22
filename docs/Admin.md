@@ -28,7 +28,7 @@ end
 ### [Scripting API](Functions.md)
 Since the app is still new, the scripting API is prone to changing, so I am hesitant to write extensive documentation/tutorials on how to use it. If you have any questions feel free to open a GitHub ticket.
 
-You can also find example scripts in the [`examples/` folder](/examples), these will be also included when you first install the app.
+You can also find example scripts in the [`examples/`](/examples)  folder, these will be also included when you first install the app.
 
 ### Dealing with files / folders
 The scripting API has been extended with Nextcloud-specific functions. These functions may require a "Folder" or a "File" as an input. Lua of course does not know what a file or a folder are, so instead we rely on Lua tables to carry the information required to represent these objects.

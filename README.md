@@ -10,11 +10,11 @@ The File actions app is a scripting tool, which administrators can employ to giv
 ## Installation & Configuration
 
 ### The usual suspects:
-  * Nextcloud 23+
-  * PHP 7.3+
+  * Nextcloud >=23
+  * PHP >=7.3
 
 ### Optional:
-  * QPDF 9.1.1+ (needed for [PDF functions](docs/Functions.md#Pdf))
+  * QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
 ```shell
 sudo apt-get install qpdf
 ```
@@ -47,6 +47,6 @@ Contributions to the app are most welcome, the main areas where help is needed a
   * 🌍 **Translations**  
 The app can be translated through the [Nextcloud community](https://www.transifex.com/nextcloud/nextcloud/content/) in Transifex
   * 🛠 **Scripting API**  
-If there is something you need that is currently not possible (or complex) to do with scripting API, please open a GitHub ticket. 
+If there is something you need that is currently not possible (or complex) to do with scripting API, please open a GitHub ticket, or even better, a pull request! 
   * 📃 **Documentation**  
-The documentation of this project is still quite lacking. If you ha
+The documentation of this project is still quite lacking. If you have any suggestions or improvements please do help out!

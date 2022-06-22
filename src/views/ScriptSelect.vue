@@ -97,7 +97,8 @@ export default {
 	},
 
 	mounted() {
-		this.attachMenuOption()
+		this.$store.dispatch('fetchScripts')
+			.then(this.attachMenuOption)
 	},
 	watch: {
 		showModal(newVal) {
@@ -157,6 +158,9 @@ export default {
 			}
 		},
 		attachMenuOption() {
+			if (!this.scripts || this.scripts.length === 0) {
+				return; // No enabled scripts: no need to attach the options
+			}
 			const self = this;
 			registerMultiSelect(function (files) {
 				self.showModal = true

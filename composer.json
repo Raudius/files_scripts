@@ -17,7 +17,6 @@
 		"mustache/mustache": "^2.14"
 	},
 	"require-dev": {
-		"roave/security-advisories": "dev-latest",
 		"phpunit/phpunit": "^8.5",
 		"nextcloud/coding-standard": "^0.5.0",
 		"symfony/class-loader": "^3.4"

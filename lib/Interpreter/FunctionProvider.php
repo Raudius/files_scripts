@@ -64,7 +64,6 @@ class FunctionProvider {
 	}
 
 	public function getFunctions(): array {
-		$this->{functions};
 		return $this->functions;
 	}
 

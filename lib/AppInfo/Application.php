@@ -3,6 +3,7 @@ namespace OCA\FilesScripts\AppInfo;
 
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCA\FilesScripts\Listener\LoadAdditionalListener;
+use OCA\FilesScripts\Middleware\DefaultScriptsMiddleware;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -18,6 +19,7 @@ class Application extends App implements IBootstrap {
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerEventListener(LoadAdditionalScriptsEvent::class, LoadAdditionalListener::class);
+		$context->registerMiddleware(DefaultScriptsMiddleware::class);
 	}
 
 	public function boot(IBootContext $context): void {}

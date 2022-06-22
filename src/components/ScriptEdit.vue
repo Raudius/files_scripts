@@ -62,6 +62,7 @@ import {ScriptInput} from "../types/script";
 import {api} from "../api/script";
 import {translate as t} from "../l10n";
 const CodeMirror = require('vue-codemirror').codemirror;
+const cm = require('vue-codemirror').CodeMirror;
 
 export default {
 	name: 'ScriptEdit',
@@ -85,8 +86,9 @@ export default {
 				tabSize: 4,
 				styleActiveLine: true,
 				lineNumbers: true,
+				fixedGutter: false,
 				line: true,
-				foldGutter: true,
+				foldGutter: false,
 				styleSelectedText: true,
 				matchBrackets: true,
 				showCursorWhenSelecting: true,
@@ -175,14 +177,29 @@ export default {
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
 		},
+	},
+
+	watch: {
+		showModal(newValue) {
+			// Hack to fix codemirror rendering issue
+			if (newValue === true) {
+				setTimeout(() => {
+					var evt = document.createEvent('UIEvents');
+					evt.initUIEvent('resize', true, false,window,0);
+					window.dispatchEvent(evt);
+				}, 500);
+			}
+		}
 	}
 }
 </script>
 
+
 <style scoped>
-@import 'codemirror/lib/codemirror.css';
-@import 'codemirror/theme/idea.css';
 @import 'codemirror/theme/material-darker.css';
+@import 'codemirror/theme/idea.css';
+
+@import 'codemirror/lib/codemirror.css';
 @import '../../css/codemirror.css';
 
 .container-script-edit {

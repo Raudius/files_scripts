@@ -56,6 +56,7 @@ import {showError, FilePickerBuilder, showSuccess} from "@nextcloud/dialogs";
 import {api} from "../api/script";
 import * as path from "path";
 import {translate as t} from "../l10n";
+import {registerFileSelect, registerMultiSelect} from "../files";
 
 export default {
 	name: 'ScriptSelect',
@@ -156,23 +157,15 @@ export default {
 			}
 		},
 		attachMenuOption() {
-			const self = this
-			const FilesPlugin = {
-				attach(fileList) {
-					fileList.registerMultiSelectFileAction({
-						name: 'files_actions',
-						displayName: t('Run action'),
-						iconClass: 'icon-files_scripts',
-						order: 1001,
-						action: (files) => {
-							self.showModal = true
-							self.selectedFiles = files
-						},
-					})
-				}
-			}
-
-			OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
+			const self = this;
+			registerMultiSelect(function (files) {
+				self.showModal = true
+				self.selectedFiles = files
+			});
+			registerFileSelect(function (file, context) {
+				self.showModal = true
+				self.selectedFiles = [context.fileInfoModel.attributes]
+			});
 		}
 	},
 }

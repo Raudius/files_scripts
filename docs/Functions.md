@@ -23,11 +23,13 @@
 
   - **[Files:](#Files)** File operations within the Nextcloud environment
     - [meta_data](#meta_data)  
+    - [node_exists](#node_exists)  
     - [new_file](#new_file)  
     - [file_content](#file_content)  
     - [is_file](#is_file)  
     - [copy_file](#copy_file)  
     - [is_folder](#is_folder)  
+    - [file_delete](#file_delete)  
     - [full_path](#full_path)  
     - [directory_listing](#directory_listing)  
     - [root](#root)  
@@ -159,6 +161,11 @@ Returns an inflated Node object with additional meta-data information for the gi
  - `can_read`: whether the user can read the file or can read files from the directory  
  - `can_delete`: whether the user can delete the file or can delete files from the directory  
  - `can_update`: whether the user can modify the file or can write to the directory
+### node_exists
+
+`node_exists(Node node): Bool`  
+  
+Returns whether a node object represents a real file or folder.
 ### new_file
 
 `new_file(Node folder, String name, [String content]=nil): Node|nil`  
@@ -190,6 +197,14 @@ Returns whether the operation was successful.
 `is_folder(Node node): Bool`  
   
 Returns whether the given node is a folder.
+### file_delete
+
+`file_delete(Node node, [Bool success_if_not_found]=true): Bool`  
+  
+Deletes the specified file/folder node.  
+Returns whether deletion succeeded.  
+  
+By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
 ### full_path
 
 `full_path(Node node): String|nil`  
@@ -200,9 +215,13 @@ Returns the full path of the given file or directory including the node's name.
 If the file does not exist `nil` is returned.
 ### directory_listing
 
-`directory_listing(Node folder): Node[]`  
+`directory_listing(Node folder, [String filter_type]='all'): Node[]`  
   
-Returns a list of the directory contents, if the given node is not a folder, returns an empty list.
+Returns a list of the directory contents, if the given node is not a folder, returns an empty list.  
+Optionally a second argument can be provided to filter out files or folders:  
+	- If `"file"` is provided: only files are returned  
+ - If `"folder"` is provided: only folders are returned  
+ - If any other value is provided: both files and folders are returned.
 ### root
 
 `root(): Node`  

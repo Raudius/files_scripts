@@ -45,7 +45,7 @@ class Version0100Date20220613 extends SimpleMigrationStep {
 			]);
 			$table->addColumn('enabled', 'boolean', [
 				'notnull' => false,
-				'default' => true
+				'default' => false
 			]);
 			$table->addColumn('background', 'boolean', [
 				'notnull' => false,

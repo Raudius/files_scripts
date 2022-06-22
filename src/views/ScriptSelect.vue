@@ -57,6 +57,7 @@ import {api} from "../api/script";
 import * as path from "path";
 import {translate as t} from "../l10n";
 import {registerFileSelect, registerMultiSelect} from "../files";
+import {ScriptInput} from "../types/script";
 
 export default {
 	name: 'ScriptSelect',
@@ -120,6 +121,9 @@ export default {
 
 			this.loadingScriptInputs = true;
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
+			this.scriptInputs = this.scriptInputs.map((scriptInput: ScriptInput) => {
+				return {...scriptInput, value: ''}
+			})
 			this.loadingScriptInputs = false;
 		},
 		async run() {

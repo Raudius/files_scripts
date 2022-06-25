@@ -11,7 +11,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * The `Date` object is a Lua table containing the following values:
  * ```lua
  * date = {
- * 	 year= 2022,
+ *   year= 2022,
  *   month= 06,
  *   day= 25,
  *   hour= 16,
@@ -19,7 +19,6 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *   second= 27
  * }
  * ```
- *
  */
 class Create_Date_Time extends RegistrableFunction {
 	public function run($year=null, $month=1, $day=1, $hour=0, $minute=0, $second=0) {

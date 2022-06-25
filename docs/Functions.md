@@ -4,8 +4,11 @@
     - [get_input_files](#get_input_files)  
 
   - **[Util:](#Util)** Utility functions for scripting convenience
+    - [format_date_time](#format_date_time)  
+    - [format_price](#format_price)  
     - [sort](#sort)  
     - [json](#json)  
+    - [create_date_time](#create_date_time)  
     - [http_request](#http_request)  
 
   - **[Template:](#Template)** Generate files from templates
@@ -54,6 +57,26 @@ Returns the target directory node. If none is provided, returns nil.
   
 Returns a list of the selected files: these are the files the user selects before running the action.
 ## Util
+### format_date_time
+
+`format_date_time(Date date, [String locale], [String timezone], [String pattern]): String`  
+  
+Returns a formatted date string.  
+  
+  - **Date:** See [create_date_time](#create_date_time)  
+  - **Locale:** A valid CLDR locale (if nil, the default PHP local will be used).  
+  - **Timezone:** A string containing any value in the ICU timezone database, or any offset of "GMT" (e.g `GMT-05:30`)  
+  - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax).
+### format_price
+
+`format_price(Number value, [String symbol], [String currency], [String locale]): String`  
+  
+Formats a number to a formatted string. The symbol, currency and locale can be specified for more precise formatting.  
+By default, locale is set to `en`, and no symbol/currency are specified.  
+  
+**Symbol:** any string is allowed. It is be used as the currency symbol in the output string  
+**Currency:** a string containing a valid ISO 4217 currency code. It is used for calculating currency subdivisions (cents, pennies, etc.)  
+**Locale:** a string containing a valid CLDR locale. It is used for formatting in a locale specific way (e.g. symbol before or after value)
 ### sort
 
 `sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  
@@ -84,6 +107,23 @@ fruits = sort(fruits, "name", true)
 If the input is a string, returns a Table of the JSON represented in the string.  
 If the input is a table, returns the JSON representation of that object.  
 If encoding/decoding fails, `nil` is returned.
+### create_date_time
+
+`create_date_time(Number year, [Number month], [Number day], [Number hour], [Number minute], [Number second]): Date`  
+  
+Creates a `Date` object containing date and time information. If no values are specified the current date-time is returned.  
+  
+The `Date` object is a Lua table containing the following values:  
+```lua  
+date = {  
+  year= 2022,  
+  month= 06,  
+  day= 25,  
+  hour= 16,  
+  minute= 48,  
+  second= 27  
+}  
+```
 ### http_request
 
 `http_get(String url, [String method]='GET', [Table data]={}): String`  

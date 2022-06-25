@@ -2,8 +2,10 @@
 namespace OCA\FilesScripts;
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use ReflectionClass;
 use ReflectionException;
+use SebastianBergmann\CodeCoverage\Report\PHP;
 use Symfony\Component\ClassLoader\ClassMapGenerator;
 
 const DOC_FILE = __DIR__ . '/../docs/Functions.md';
@@ -27,14 +29,19 @@ $functionDocs = [];
 foreach ($functionClasses as $functionClass) {
 	$type = getFunctionType($functionClass);
 	$doc = getClassDoc($functionClass);
-	$functionName = $functionClass::getFunctionName();
+	if (!is_a($functionClass,RegistrableFunction::class, true)) {
+		echo "Skipped: " . $functionClass . PHP_EOL;
+		continue;
+	}
 
+	$functionName = $functionClass::getFunctionName();
 	$functionDocs[$type][$functionName] = <<<MD
 ### $functionName
 
 $doc
 
 MD;
+
 }
 
 $stream = fopen(DOC_FILE, "wb");

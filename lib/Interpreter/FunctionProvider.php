@@ -25,6 +25,9 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Page_Count;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
+use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
+use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
+use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
@@ -60,7 +63,10 @@ class FunctionProvider {
 		Pdf_Pages $f24,
 		File_Delete $f25,
 		Node_Exists $f26,
-		Pdf_Page_Count $f27
+		Pdf_Page_Count $f27,
+		Format_Price $f28,
+		Create_Date_Time $f29,
+		Format_Date_Time $f30
 	) {
 		$this->functions = func_get_args();
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace  OCA\FilesScripts\Interpreter;
 
+use DateTime;
 use OC\Files\Filesystem;
 use OCP\Files\File;
 use OCP\Files\Folder;
@@ -8,6 +9,7 @@ use OCP\Files\InvalidPathException;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
 use ReflectionClass;
+use Sabre\VObject\Property\VCard\Date;
 
 abstract class RegistrableFunction {
 	private ?Context $context;
@@ -117,16 +119,46 @@ abstract class RegistrableFunction {
 	/**
 	 * Will make sure the array index starts with 1.
 	 *
-	 * @param array $linkedList
+	 * @param array $array
 	 * @return array
 	 */
-	protected function reindex(array $linkedList): array {
-		if (isset($linkedList[0])) {
-			array_unshift($linkedList, null);
-			unset($linkedList[0]);
+	protected function reindex(array $array): array {
+		if (isset($array[0])) {
+			array_unshift($array, null);
+			unset($array[0]);
 		}
 
-		return $linkedList;
+		foreach ($array as $key => $item) {
+			if (is_array($item)) {
+				$item = $this->reindex($item);
+			}
+
+			$array[$key] = $item;
+		}
+
+		return $array;
+	}
+
+	protected function packDate(DateTime $date): array {
+		return [
+			'year' => (int) $date->format('Y'),
+			'month' => (int) $date->format('m'),
+			'day' => (int) $date->format('d'),
+			'hour' => (int) $date->format('H'),
+			'minute' => (int) $date->format('i'),
+			'second' => (int) $date->format('s')
+		];
+	}
+
+	protected function unpackDate($date): DateTime {
+		$date = is_array($date) ? $date : [];
+		$datetime = date_create();
+		if (isset($date['year'], $date['month'], $date['day'])) {
+			$datetime->setDate($date['year'], $date['month'], $date['day']);
+			$datetime->setTime($date['hour'] ?? 0, $date['minute'] ?? 0, $date['second'] ?? 0);
+		}
+
+		return $datetime;
 	}
 
 	/**

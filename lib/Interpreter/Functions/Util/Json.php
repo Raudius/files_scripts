@@ -13,11 +13,12 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 class Json extends RegistrableFunction {
 	public function run($input = null) {
 		if (is_string($input)) {
-			return json_decode($input) ?: null;
+			$decoded = json_decode($input, true);
+
+			return $decoded ? $this->reindex($decoded) : null;
 		}
 
 		if (is_array($input)) {
-			$input = $this->normaliseArray($input);
 			return json_encode($input) ?: null;
 		}
 

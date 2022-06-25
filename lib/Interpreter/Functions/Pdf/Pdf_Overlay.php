@@ -17,7 +17,10 @@ use raudius\phpdf\Phpdf;
  * Returns the node object of the resulting file.
  */
 class Pdf_Overlay extends RegistrableFunction {
+	use CheckDependency;
+
 	public function run($targetFile=[], $overlayFile=[], $newFileName=null, $repeat=true): ?array {
+		$this->checkDependency();
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		$overlayFileNode = $this->getFile($this->getPath($overlayFile));
 		if (!$targetFileNode || !$overlayFileNode) {

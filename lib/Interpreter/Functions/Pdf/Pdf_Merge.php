@@ -17,7 +17,10 @@ use raudius\phpdf\PhpdfException;
  * The output file's node is returned, or `nil` if operation failed.
  */
 class Pdf_Merge extends RegistrableFunction {
+	use CheckDependency;
+
 	public function run($files=[], $folder=[], $fileName=null): ?array {
+		$this->checkDependency();
 		$fileName = $fileName ?? (time() . '_merged.pdf');
 
 		$targetFolder = $this->getFolder($this->getPath($folder));

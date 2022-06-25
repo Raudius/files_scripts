@@ -12,7 +12,10 @@ use function raudius\phpdf\getPageCount;
  * If the document is not a valid PDF document, -1 is returned.
  */
 class Pdf_Page_Count extends RegistrableFunction {
+	use CheckDependency;
+
 	public function run($targetFile=[]): int {
+		$this->checkDependency();
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		if (!$targetFileNode) {
 			return -1;

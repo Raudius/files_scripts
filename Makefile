@@ -77,24 +77,27 @@ test:
 	./vendor/phpunit/phpunit/phpunit -c phpunit.xml
 	./vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
 
-# Build a release package
-build: npm-update build-js-production composer
+prepare-build:
 	mkdir -p $(RELEASE_DIR)
-	rsync -a --delete --delete-excluded \
+	rsync -a --delete --delete-excluded --verbose\
 		--exclude=".[a-z]*" \
 		--exclude="Makefile" \
 		--exclude="Dockerfile" \
-		--exclude="build" \
-		--exclude="docs" \
-		--exclude="screenshots" \
-		--exclude="src" \
-		--exclude="bin" \
+		--exclude /$(APP_NAME)/build \
+		--exclude /$(APP_NAME)/docs \
+		--exclude /$(APP_NAME)/screenshots \
+		--exclude /$(APP_NAME)/bin \
+		--exclude /$(APP_NAME)/src \
 		--exclude="composer.*" \
 		--exclude="package*.json" \
 		--exclude="*config.js" \
 		--exclude="*config.json" \
 		--exclude="*.md" \
 	$(PROJECT_DIR) $(RELEASE_DIR)/
+
+
+# Build a release package
+build: npm-update build-js-production composer prepare-build
 	@if [ -f $(CERT_DIR)/$(APP_NAME).key ]; then \
 		echo "Signing code…"; \
 		$(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
@@ -109,4 +112,4 @@ build: npm-update build-js-production composer
 		openssl dgst -sha512 -sign $(CERT_DIR)/$(APP_NAME).key \
 			$(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz | openssl base64; \
 	fi
-	rm -rf $(RELEASE_DIR)/$(APP_NAME)
+# rm -rf $(RELEASE_DIR)/$(APP_NAME)

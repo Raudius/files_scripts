@@ -11,7 +11,7 @@
 	],
 	"items": [
 		{ "item": "Item 1", "price": 34.99 },
-		{ "item": "Item 4", "price": 159.99 },
+		{ "item": "Item 2", "price": 159.99 },
 		{ "item": "Item 3", "price": 0.99 }
 	]
 }
@@ -21,7 +21,11 @@
 -----------------------------
 --- Init global variables ---
 today = create_date_time()
+
 html = http_request('https://raw.githubusercontent.com/Raudius/files_scripts/master/examples/invoice.mustache')
+if (not html or string.len(html) < 1) then
+	abort('Could not fetch the invoice template.')
+end
 
 ----------------------
 --- Formats a date ---
@@ -44,9 +48,9 @@ function generate_invoice(data)
 	-- Total calculation
 	local rows_formatted = {}
 	local total_rows = 0
-	for k, v in pairs(data.items) do
+	for k,v in pairs(data.items) do
 		total_rows = total_rows + v.price
-		rows_formatted[k] = { item = v.item, price = fprice(v.price) }
+		rows_formatted[k]= { item= v.item, price= fprice(v.price) }
 	end
 
 	-- VAT calculation
@@ -68,7 +72,7 @@ end
 -------------------------------------------------
 --- Generates the invoice for each input file ---
 function generate_invoices()
-	for k, v in pairs(get_input_files()) do
+	for k,v in pairs(get_input_files()) do
 		local in_data = json(file_content(v))
 		if (in_data and type(in_data) == 'table') then
 			generate_invoice(in_data)
@@ -78,8 +82,5 @@ function generate_invoices()
 	end
 end
 
-if (not html or string.len(html) < 1) then
-	abort('Could not fetch the invoice template.')
-end
-
+-- Run
 generate_invoices()

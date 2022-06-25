@@ -8,6 +8,7 @@ use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCP\AppFramework\Middleware;
+use OCP\DB\Exception;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 
@@ -37,6 +38,11 @@ class DefaultScriptsMiddleware extends Middleware {
 			'program' => '../../examples/directory_tree.lua',
 			'name' => 'Directory tree',
 			'description' => 'Creates a file "tree.txt" containing the recursive directory listing of the selected files and folders.',
+		],
+		[
+			'program' => '../../examples/generate_invoice.lua',
+			'name' => 'Generate invoice',
+			'description' => 'Creates an invoice from valid JSON files containing order data (see script comments for more details).',
 		],
 	];
 
@@ -78,7 +84,7 @@ class DefaultScriptsMiddleware extends Middleware {
 		foreach (self::DEFAULT_SCRIPTS as $scriptData) {
 			try {
 				$this->createDefaultScript($scriptData);
-			} catch (\OCP\DB\Exception $e) {
+			} catch (Exception $e) {
 				$this->logger->error('Files scripts could not create default script', [
 					'error' => $e->getMessage(),
 					'trace' => $e->getTraceAsString(),
@@ -91,7 +97,7 @@ class DefaultScriptsMiddleware extends Middleware {
 	/**
 	 * @param array $scriptData
 	 * @return void
-	 * @throws \OCP\DB\Exception
+	 * @throws Exception
 	 */
 	private function createDefaultScript(array $scriptData): void {
 		$program = file_get_contents(__DIR__ . '/' .$scriptData['program']) ?: null;

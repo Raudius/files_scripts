@@ -5,30 +5,19 @@
     <title></title>
     <style type="text/css">
         p {
-            margin-bottom: 0.1in;
-            line-height: 115%;
-            background: transparent
+            margin-bottom: 0.1in; line-height: 115%; background: transparent;
         }
-
         h1 {
-            margin-bottom: 0.08in;
-            background: transparent;
-            page-break-after: avoid
+            margin-bottom: 0.08in; background: transparent; page-break-after: avoid
         }
-
         h1.western {
-            font-family: "Liberation Sans", sans-serif;
-            font-size: 18pt;
-            font-weight: bold
+            font-family: "Liberation Sans", sans-serif; font-size: 18pt; font-weight: bold
         }
         body {
-            font-family: "sans-serif";
-            font-size: 10pt;
+            font-family: "sans-serif"; font-size: 10pt;
         }
         table {
             width: 100%;
-        }
-        .table-bordered {
         }
         .table-bordered td {
             border: 1px solid #000000; padding: 0.04in;
@@ -38,8 +27,6 @@
 
 <body>
 <table cellpadding="4" cellspacing="0">
-    <col width="128*"/>
-    <col width="128*"/>
     <tr valign="top">
         <td width="50%">
             <p style="text-align: left;" >
@@ -61,20 +48,15 @@
     </tr>
 </table>
 
-
 <h1 class="western">Invoice</h1>
-
-
 <!-- Customer details -->
 <table>
-    <col width="31*"/>
-    <col width="225*"/>
-    {{# details}}
+    {{# customer_details}}
     <tr valign="top">
         <td width="12%">{{key}}:</td>
         <td width="88%">{{value}}</td>
     </tr>
-    {{/ details}}
+    {{/ customer_details}}
 </table>
 
 <p>
@@ -82,21 +64,12 @@
     <br/>
 </p>
 
-
-<!-- Invoice rows HEADER -->
-<table cellpadding="4" cellspacing="0" class="table-bordered">
-    <tr valign="top">
-        <td width="80%">
-            <p align="center"><b>Item</b></p>
-        </td>
-        <td width="20%">
-            <p><b>Price</b></p>
-        </td>
-    </tr>
-</table>
-
 <!-- Invoice rows -->
 <table cellpadding="4" cellspacing="0" class="table-bordered">
+	<tr valign="top">
+		<th width="80%" align="center"> <p><b>Item</b></p> </th>
+		<th width="20%"> <p><b>Price</b></p> </th>
+	</tr>
     {{#rows}}
     <tr valign="top">
         <td width="80%" height="2" >
@@ -132,11 +105,9 @@
         </td>
     </tr>
 
-
     <tr valign="top">
         <td width="79%" height="20"></td>
     </tr>
-
 
     <tr valign="top" style="font-size: 15pt !important;">
         <td width="79%" height="4" align="right">
@@ -154,10 +125,8 @@
 <p align="center" style="font-size: 9pt; line-height: 14pt;">
     <i>Company Inc. - [Company address]</i>
     <br/>
-
     <i><b>Phone:</b> +01 234 567 890 / +01 987 654 321</i>
     <br/>
-
     <i><b>E-Mail:</b> email@address.com</i>
     <br/>
 </p>

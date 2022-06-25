@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        p {
+            margin-bottom: 0.1in;
+            line-height: 115%;
+            background: transparent
+        }
+
+        h1 {
+            margin-bottom: 0.08in;
+            background: transparent;
+            page-break-after: avoid
+        }
+
+        h1.western {
+            font-family: "Liberation Sans", sans-serif;
+            font-size: 18pt;
+            font-weight: bold
+        }
+        body {
+            font-family: "sans-serif";
+            font-size: 10pt;
+        }
+        table {
+            width: 100%;
+        }
+        .table-bordered {
+        }
+        .table-bordered td {
+            border: 1px solid #000000; padding: 0.04in;
+        }
+    </style>
+</head>
+
+<body>
+<table cellpadding="4" cellspacing="0">
+    <col width="128*"/>
+    <col width="128*"/>
+    <tr valign="top">
+        <td width="50%">
+            <p style="text-align: left;" >
+                <img src="" alt="[Company logo]" height="150" border="0"/>
+            </p>
+        </td>
+        <td width="50%" align="right">
+            <p>
+                <br/>
+            </p>
+            <p style="margin-bottom: 0in; font-style: normal; text-decoration: none">
+                <b>Invoice number: <span style="color: #c9211e;">{{invoice_number}}</span></b>
+            </p>
+            <p style="font-style: normal; font-weight: normal; text-decoration: none">
+                <br/>
+                {{invoice_date}}
+            </p>
+        </td>
+    </tr>
+</table>
+
+
+<h1 class="western">Invoice</h1>
+
+
+<!-- Customer details -->
+<table>
+    <col width="31*"/>
+    <col width="225*"/>
+    {{# details}}
+    <tr valign="top">
+        <td width="12%">{{key}}:</td>
+        <td width="88%">{{value}}</td>
+    </tr>
+    {{/ details}}
+</table>
+
+<p>
+    <br/>
+    <br/>
+</p>
+
+
+<!-- Invoice rows HEADER -->
+<table cellpadding="4" cellspacing="0" class="table-bordered">
+    <tr valign="top">
+        <td width="80%">
+            <p align="center"><b>Item</b></p>
+        </td>
+        <td width="20%">
+            <p><b>Price</b></p>
+        </td>
+    </tr>
+</table>
+
+<!-- Invoice rows -->
+<table cellpadding="4" cellspacing="0" class="table-bordered">
+    {{#rows}}
+    <tr valign="top">
+        <td width="80%" height="2" >
+            {{item}}
+        </td>
+        <td width="20%">
+            {{price}}
+        </td>
+    </tr>
+    {{/rows}}
+</table>
+
+
+<!-- Total calculation -->
+<table cellpadding="6" cellspacing="0">
+    <tr valign="top">
+        <td width="79%" height="4" align="right">
+            <p style="text-align: right;"><i>Total (excl. VAT)</i></p>
+        </td>
+        <td width="1%"></td>
+        <td width="20%">
+            <p>{{total_rows}}</p>
+        </td>
+    </tr>
+
+    <tr valign="top">
+        <td width="79%" height="4" align="right">
+            <p style="text-align: right;"><i>VAT {{vat_percent}}%</i></p>
+        </td>
+        <td width="1%"></td>
+        <td width="20%">
+            {{vat}}
+        </td>
+    </tr>
+
+
+    <tr valign="top">
+        <td width="79%" height="20"></td>
+    </tr>
+
+
+    <tr valign="top" style="font-size: 15pt !important;">
+        <td width="79%" height="4" align="right">
+            <b>Total</b>
+        </td>
+        <td width="1%"></td>
+        <td width="20%">
+            <p>{{total}}</p>
+        </td>
+    </tr>
+</table>
+
+<hr/>
+
+<p align="center" style="font-size: 9pt; line-height: 14pt;">
+    <i>Company Inc. - [Company address]</i>
+    <br/>
+
+    <i><b>Phone:</b> +01 234 567 890 / +01 987 654 321</i>
+    <br/>
+
+    <i><b>E-Mail:</b> email@address.com</i>
+    <br/>
+</p>
+</body>
+</html>

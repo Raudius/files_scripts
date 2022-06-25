@@ -4,6 +4,7 @@ namespace OCA\FilesScripts\Interpreter\Functions\Template;
 use Mpdf\Mpdf;
 use Mpdf\MpdfException;
 use Mpdf\Output\Destination;
+use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\ITempManager;
 
@@ -29,10 +30,9 @@ class Html_To_Pdf extends RegistrableFunction {
 	public function run($html = '', $config = [], $pos = []): ?string {
 		try {
 			// Normalise format array (Lua uses 1-index)
-			if (is_array($config['format'])) {
+			if (is_array($config['format']) && !empty($config)) {
 				$config['format'] = array_values($config['format']);
 			}
-
 			$config['tempDir'] = $this->tempManager->getTemporaryFolder();
 			$mpdf = new Mpdf($config);
 
@@ -43,7 +43,7 @@ class Html_To_Pdf extends RegistrableFunction {
 				$mpdf->WriteHTML($html);
 			}
 			return $mpdf->Output('', Destination::STRING_RETURN);
-		} catch (MpdfException $e) {
+		} catch (\Throwable $e) {
 			return null;
 		}
 	}

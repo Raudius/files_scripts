@@ -13,9 +13,10 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Mustache extends RegistrableFunction {
 	public function run($template = '', $vars = []): string {
-		if (!$vars) {
+		if (!$vars || !is_array($vars)) {
 			$vars = [];
 		}
+		$vars = $this->normaliseArray($vars);
 
 		return (new Mustache_Engine(array('entity_flags' => ENT_QUOTES)))->render($template, $vars);
 	}

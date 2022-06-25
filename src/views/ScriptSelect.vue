@@ -190,7 +190,7 @@ export default {
 }
 
 .display-inline {
-	display: inline;
+	display: inline !important;
 	margin-left: 24px;
 }
 

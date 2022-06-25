@@ -1,19 +1,23 @@
 import {translate as t} from "./l10n";
 
 export function registerMultiSelect(action) {
-	const FilesPlugin = {
-		attach(fileList) {
-			fileList.registerMultiSelectFileAction({
-				name: 'files_actions',
-				displayName: t('Run action'),
-				iconClass: 'icon-files_scripts',
-				order: 1001,
-				action
-			})
-		}
+	const actionObj = {
+		name: 'files_scripts_multi_action',
+		displayName: t('Run action'),
+		iconClass: 'icon-files_scripts',
+		order: 1001,
+		action
 	}
 
-	OC.Plugins.register('OCA.Files.FileList', FilesPlugin)
+	if (OCA.Files.App.fileList) {
+		OCA.Files.App.fileList.registerMultiSelectFileAction(actionObj)
+	} else {
+		OC.Plugins.register('OCA.Files.FileList', {
+			attach(fileList) {
+				fileList.registerMultiSelectFileAction(actionObj)
+			}
+		})
+	}
 }
 
 export function registerFileSelect(actionHandler) {

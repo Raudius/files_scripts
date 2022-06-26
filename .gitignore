@@ -4,4 +4,7 @@
 /build/
 node_modules/
 /.php_cs.cache
+*.phpunit.result.cache
+*clover.xml
+tests/.phpunit.result.cache
 /js/

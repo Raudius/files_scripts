@@ -88,6 +88,8 @@ prepare-build:
 		--exclude /$(APP_NAME)/screenshots \
 		--exclude /$(APP_NAME)/bin \
 		--exclude /$(APP_NAME)/src \
+		--exclude /$(APP_NAME)/node_modules \
+		--exclude /$(APP_NAME)/tests \
 		--exclude="composer.*" \
 		--exclude="package*.json" \
 		--exclude="*config.js" \

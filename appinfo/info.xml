@@ -13,8 +13,7 @@ Allows administrators to write small scripts which users can run through file ac
 
 ⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.
 
-⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently.
-Some functionality requires additional configuration. Make sure to read the documentation thoroughly before scripting.
+⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
     <version>1.0.0</version>
@@ -34,7 +33,7 @@ Some functionality requires additional configuration. Make sure to read the docu
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/2.png</screenshot>
 
     <dependencies>
-        <nextcloud min-version="23" max-version="25"/>
+        <nextcloud min-version="23" max-version="24"/>
     </dependencies>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b39495a988790c4a55ad739e63543e0f",
+    "content-hash": "e3df4a48a8a3bbcaea557d40f2c0cbce",
     "packages": [
         {
             "name": "d11wtq/boris",
@@ -4501,6 +4501,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": "^7.4|^8.0",
         "ext-json": "*",
         "ext-lua": "*",
         "ext-curl": "*",

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Util;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -21,9 +22,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * ```
  */
 class Create_Date_Time extends RegistrableFunction {
-	public function run($year=null, $month=1, $day=1, $hour=0, $minute=0, $second=0) {
+	public function run($year = null, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0) {
 		$date = date_create();
-		if($year !== null) {
+		if ($year !== null) {
 			$date = $date->setDate($year, $month, $day);
 			$date = $date->setTime($hour, $minute, $second);
 		}

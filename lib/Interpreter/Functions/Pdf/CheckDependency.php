@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use OCA\FilesScripts\Interpreter\AbortException;

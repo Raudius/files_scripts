@@ -1,13 +1,11 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Template;
 
 use Mpdf\Mpdf;
-use Mpdf\MpdfException;
 use Mpdf\Output\Destination;
-use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\ITempManager;
-
 
 /**
  * `html_to_pdf(String html, [Table config]={}, [Table position]={}): string|nil`
@@ -20,7 +18,6 @@ use OCP\ITempManager;
  * Returns the PDF as a string (or `nil` if PDF generation failed).
  */
 class Html_To_Pdf extends RegistrableFunction {
-
 	private ITempManager $tempManager;
 
 	public function __construct(ITempManager $templateManager) {

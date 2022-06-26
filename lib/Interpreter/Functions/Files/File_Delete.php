@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -15,7 +16,7 @@ use OCP\Files\NotPermittedException;
  * By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
  */
 class File_Delete extends RegistrableFunction {
-	public function run($node=[], $successIfNotFound=true): bool {
+	public function run($node = [], $successIfNotFound = true): bool {
 		$file = null;
 		try {
 			$file = $this->getNode($this->getPath($node));

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -12,7 +13,7 @@ use OCP\Files\NotPermittedException;
  * If successful, returns the newly created file node. If file creation fails, returns `nil`.
  */
 class New_File extends RegistrableFunction {
-	public function run($node=null, $name=null, $content=null): ?array {
+	public function run($node = null, $name = null, $content = null): ?array {
 		$folder = $this->getNode($this->getPath($node));
 		if (false === $folder instanceof Folder || !$name) {
 			return null;

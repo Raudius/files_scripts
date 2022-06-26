@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -18,7 +19,7 @@ use raudius\phpdf\PhpdfException;
 class Pdf_Pages extends RegistrableFunction {
 	use CheckDependency;
 
-	public function run($file=[], $pages='', $fileName=null): ?array {
+	public function run($file = [], $pages = '', $fileName = null): ?array {
 		$this->checkDependency();
 		$fileName = $fileName ?? (time() . '_trimmed.pdf');
 		$fileNode = $this->getNode($this->getPath($file));

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Util;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -41,5 +42,4 @@ class Sort extends RegistrableFunction {
 
 		return $this->reindex($items);
 	}
-
 }

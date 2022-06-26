@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Controller;
 
 use OCA\FilesScripts\Db\Script;
@@ -66,7 +67,7 @@ class ScriptController extends Controller {
 		return new DataResponse($this->scriptInputMapper->findAllByScriptId($id));
 	}
 
-	public function create (
+	public function create(
 		string $title,
 		string $description,
 		string $program,

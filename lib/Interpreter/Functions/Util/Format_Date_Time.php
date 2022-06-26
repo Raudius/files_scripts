@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Util;
 
 use IntlDateFormatter;
@@ -15,7 +16,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *   - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax).
  */
 class Format_Date_Time extends RegistrableFunction {
-	public function run($date=[], $locale=null, $timezone=null, $pattern='') {
+	public function run($date = [], $locale = null, $timezone = null, $pattern = '') {
 		$locale = is_string($locale) ? $locale : null;
 		$fmt = datefmt_create(
 			$locale,

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Middleware;
 
 use OCA\FilesScripts\AppInfo\Application;

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OC\Log\File;
@@ -19,7 +20,7 @@ use OCP\Files\Folder;
  *  - `can_update`: whether the user can modify the file or can write to the directory
  */
 class Meta_Data extends RegistrableFunction {
-	public function run($node=null): array {
+	public function run($node = null): array {
 		$node = $this->getNode($this->getPath($node));
 		if (!$node) {
 			return [];

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;

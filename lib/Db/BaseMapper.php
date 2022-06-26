@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Db;
 
 use OCP\AppFramework\Db\DoesNotExistException;
@@ -8,7 +9,6 @@ use OCP\AppFramework\Db\QBMapper;
 use OCP\DB\Exception;
 
 abstract class BaseMapper extends QBMapper {
-
 	protected function deleteBy(string $column, $value) {
 		$entities = $this->findAllBy($column, $value);
 		foreach ($entities as $entity) {

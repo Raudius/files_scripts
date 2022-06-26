@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Input;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -19,7 +20,7 @@ use raudius\phpdf\PhpdfException;
 class Pdf_Merge extends RegistrableFunction {
 	use CheckDependency;
 
-	public function run($files=[], $folder=[], $fileName=null): ?array {
+	public function run($files = [], $folder = [], $fileName = null): ?array {
 		$this->checkDependency();
 		$fileName = $fileName ?? (time() . '_merged.pdf');
 

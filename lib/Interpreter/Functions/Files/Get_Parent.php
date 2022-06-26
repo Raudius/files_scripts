@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -14,7 +15,7 @@ use OCP\Files\NotFoundException;
  * If the given file cannot be found, `nil` is returned.
  */
 class Get_Parent extends RegistrableFunction {
-	public function run($node=null): ?array {
+	public function run($node = null): ?array {
 		$node = $this->getNode($this->getPath($node));
 		if (!$node) {
 			return null;

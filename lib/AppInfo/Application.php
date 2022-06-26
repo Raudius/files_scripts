@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\AppInfo;
 
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
@@ -22,5 +23,6 @@ class Application extends App implements IBootstrap {
 		$context->registerMiddleware(DefaultScriptsMiddleware::class);
 	}
 
-	public function boot(IBootContext $context): void {}
+	public function boot(IBootContext $context): void {
+	}
 }

@@ -1,9 +1,9 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Template;
 
 use Mustache_Engine;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
-
 
 /**
  * `mustache(String template, [Table variables]={}): String`
@@ -18,6 +18,6 @@ class Mustache extends RegistrableFunction {
 		}
 		$vars = $this->normaliseArray($vars);
 
-		return (new Mustache_Engine(array('entity_flags' => ENT_QUOTES)))->render($template, $vars);
+		return (new Mustache_Engine(['entity_flags' => ENT_QUOTES]))->render($template, $vars);
 	}
 }

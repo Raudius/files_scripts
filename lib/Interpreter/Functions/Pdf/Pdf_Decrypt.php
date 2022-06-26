@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use Exception;
@@ -16,7 +17,7 @@ use raudius\phpdf\Phpdf;
 class Pdf_Decrypt extends RegistrableFunction {
 	use CheckDependency;
 
-	public function run($targetFile=[], $password=null, $newFileName=null): ?array {
+	public function run($targetFile = [], $password = null, $newFileName = null): ?array {
 		$this->checkDependency();
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		if (!$targetFileNode) {

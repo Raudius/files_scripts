@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -14,7 +15,7 @@ use function raudius\phpdf\getPageCount;
 class Pdf_Page_Count extends RegistrableFunction {
 	use CheckDependency;
 
-	public function run($targetFile=[]): int {
+	public function run($targetFile = []): int {
 		$this->checkDependency();
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		if (!$targetFileNode) {

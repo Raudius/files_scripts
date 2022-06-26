@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -16,7 +17,7 @@ use OCP\Files\NotFoundException;
  *  - If any other value is provided: both files and folders are returned.
  */
 class Directory_Listing extends RegistrableFunction {
-	public function run($node=[], $filterType=null): array {
+	public function run($node = [], $filterType = null): array {
 		$folder = $this->getNode($this->getPath($node));
 		if (false === $folder instanceof Folder) {
 			return [];

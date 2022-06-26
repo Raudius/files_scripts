@@ -7,7 +7,6 @@ use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
 class AdminSection implements IIconSection {
-
 	private IURLGenerator $urlGenerator;
 	private IL10N $l;
 

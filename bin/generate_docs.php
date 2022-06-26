@@ -1,11 +1,12 @@
 <?php
+
 namespace OCA\FilesScripts;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use ReflectionClass;
 use ReflectionException;
-use SebastianBergmann\CodeCoverage\Report\PHP;
 use Symfony\Component\ClassLoader\ClassMapGenerator;
 
 const DOC_FILE = __DIR__ . '/../docs/Functions.md';
@@ -41,7 +42,6 @@ foreach ($functionClasses as $functionClass) {
 $doc
 
 MD;
-
 }
 
 $stream = fopen(DOC_FILE, "wb");

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Controller;
 
 use OCA\FilesScripts\Db\ScriptInput;

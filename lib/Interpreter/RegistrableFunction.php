@@ -1,4 +1,5 @@
 <?php
+
 namespace  OCA\FilesScripts\Interpreter;
 
 use DateTime;
@@ -9,7 +10,6 @@ use OCP\Files\InvalidPathException;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
 use ReflectionClass;
-use Sabre\VObject\Property\VCard\Date;
 
 abstract class RegistrableFunction {
 	private ?Context $context;

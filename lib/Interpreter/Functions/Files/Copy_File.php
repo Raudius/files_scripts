@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -15,9 +16,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Copy_File extends RegistrableFunction {
 	public function run(
-		$file=null,
-		$folderPath=null,
-		$name=null
+		$file = null,
+		$folderPath = null,
+		$name = null
 	): bool {
 		$fileNode = $this->getFile($this->getPath($file));
 		$folderNode = $this->getFolder($folderPath);
@@ -38,5 +39,4 @@ class Copy_File extends RegistrableFunction {
 		}
 		return true;
 	}
-
 }

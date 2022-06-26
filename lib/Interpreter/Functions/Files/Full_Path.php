@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
@@ -13,7 +14,7 @@ use OCP\Files\NotFoundException;
  * If the file does not exist `nil` is returned.
  */
 class Full_Path extends RegistrableFunction {
-	public function run($node=null): ?string {
+	public function run($node = null): ?string {
 		$node = $this->getNode($this->getPath($node));
 		try {
 			return $node ? $this->getRootFolder()->getRelativePath($node->getPath()) : null;

@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter;
 
 use OCP\Files\Folder;

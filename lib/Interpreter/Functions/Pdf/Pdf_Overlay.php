@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Pdf;
 
 use Exception;
@@ -19,7 +20,7 @@ use raudius\phpdf\Phpdf;
 class Pdf_Overlay extends RegistrableFunction {
 	use CheckDependency;
 
-	public function run($targetFile=[], $overlayFile=[], $newFileName=null, $repeat=true): ?array {
+	public function run($targetFile = [], $overlayFile = [], $newFileName = null, $repeat = true): ?array {
 		$this->checkDependency();
 		$targetFileNode = $this->getFile($this->getPath($targetFile));
 		$overlayFileNode = $this->getFile($this->getPath($overlayFile));

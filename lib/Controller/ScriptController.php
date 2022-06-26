@@ -2,6 +2,7 @@
 
 namespace OCA\FilesScripts\Controller;
 
+use Lua;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
@@ -57,7 +58,18 @@ class ScriptController extends Controller {
 	 * @NoAdminRequired
 	 */
 	public function index(): Response {
-		return new DataResponse($this->scriptMapper->findAll());
+		$scripts = $this->scriptMapper->findAll();
+		if (!$this->isLuaInstalled()) {
+			$scripts = array_map(
+				static function (Script $script): Script {
+					$script->setEnabled(false);
+					return $script;
+				},
+				$scripts
+			);
+		}
+
+		return new DataResponse($scripts);
 	}
 
 	/**
@@ -75,6 +87,10 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
+		if (!$this->isLuaInstalled()) {
+			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
+		}
+
 		$script = new Script();
 		$script->setTitle($title);
 		$script->setDescription($description);
@@ -111,6 +127,10 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
+		if (!$this->isLuaInstalled()) {
+			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
+		}
+
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
 			return new JSONResponse([], Http::STATUS_NOT_FOUND);
@@ -189,5 +209,12 @@ class ScriptController extends Controller {
 
 		$this->scriptMapper->delete($script);
 		return new JSONResponse();
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isLuaInstalled(): bool {
+		return class_exists(Lua::class);
 	}
 }

@@ -11,7 +11,7 @@ The File actions app is a scripting tool, which administrators can employ to giv
 
 ### The usual suspects:
   * Nextcloud >=23
-  * PHP >=7.3
+  * PHP >=7.4
 
 ### Optional:
   * QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))

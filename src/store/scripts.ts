@@ -1,6 +1,6 @@
-import Vuex, {ActionTree, GetterTree, MutationTree} from 'vuex'
-import {Script, defaultScript} from "../types/script";
-import {api} from "../api/script";
+import Vuex from 'vuex'
+import { Script, defaultScript } from '../types/script'
+import { api } from '../api/script'
 
 export interface State {
 	loadingScriptId: number;
@@ -8,15 +8,15 @@ export interface State {
 	selectedScript: Script;
 }
 
-const getters = <GetterTree<State, any>>{
+const getters = {
 	getEnabledScripts(state: State) {
 		return state.scripts
 			? state.scripts.filter(s => s.enabled)
 			: null
-	}
-};
+	},
+}
 
-const mutations = <MutationTree<State>> {
+const mutations = {
 	setScripts(state: State, scripts: Script[]) {
 		state.scripts = scripts
 	},
@@ -52,15 +52,15 @@ const mutations = <MutationTree<State>> {
 			description: newValues.description ?? state.selectedScript.description,
 			enabled: newValues.enabled ?? state.selectedScript.enabled,
 		}
-	}
+	},
 }
 
-const actions = <ActionTree<State, any>> {
+const actions = {
 	async fetchScripts({ commit }) {
 		commit('setScripts', await api.getScripts())
 	},
 
-	async saveScript({dispatch, commit, state}) {
+	async saveScript({ dispatch, commit, state }) {
 		const script = state.selectedScript
 		if (script.id) {
 			await api.updateScript(script)
@@ -71,22 +71,22 @@ const actions = <ActionTree<State, any>> {
 		dispatch('fetchScripts')
 	},
 
-	async deleteScript({dispatch, commit, state}, script) {
+	async deleteScript({ dispatch, commit, state }, script) {
 		commit('clearAll')
 		if (script.id) {
-			await api.deleteScript(script);
+			await api.deleteScript(script)
 		}
 		dispatch('fetchScripts')
 	},
-};
+}
 
 export const store = new Vuex.Store({
 	state: {
 		loadingScriptId: null,
-		scripts:  null,
-		selectedScript:  null,
+		scripts: null,
+		selectedScript: null,
 	} as State,
-	getters: getters,
-	mutations: mutations,
-	actions: actions
+	getters,
+	mutations,
+	actions,
 })

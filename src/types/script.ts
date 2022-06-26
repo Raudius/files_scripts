@@ -16,6 +16,9 @@ export interface ScriptInput {
 	value: string
 }
 
+/**
+ * Generates an empty Script.
+ */
 export function defaultScript(): Script {
 	return {
 		id: null,
@@ -25,15 +28,5 @@ export function defaultScript(): Script {
 		program: '',
 		background: false,
 		requestDirectory: false,
-	}
-}
-
-export function defaultScriptInput(scriptId: number = null): ScriptInput {
-	return {
-		id: null,
-		scriptId: scriptId,
-		name: '',
-		description: '',
-		value: '',
 	}
 }

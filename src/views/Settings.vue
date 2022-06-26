@@ -1,11 +1,9 @@
 <template>
 	<div>
 		<ScriptEdit />
-		<SettingsSection
-			:title="t('File actions')"
+		<SettingsSection :title="t('File actions')"
 			:description="t('File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
-			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md"
-		>
+			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 			<div class="section">
 				<Button type="primary" @click="newScript">
 					<template #icon>
@@ -15,27 +13,26 @@
 				</Button>
 
 				<ul class="script-cards">
-					<ScriptCard
-						v-for="script in scripts"
-						v-bind:key="script.id"
-						v-bind:script="script"
+					<ScriptCard v-for="script in scripts"
 						:id="script.id"
+						:key="script.id"
+						:script="script"
 						:title="script.title"
-						v-on:delete="deleteScript"
-						v-on:select="selectScript"
-					/>
+						@delete="deleteScript"
+						@select="selectScript" />
 				</ul>
 
-				<div v-if="isLoading" class="icon-loading"></div>
+				<div v-if="isLoading" class="icon-loading" />
 				<EmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
 					{{ t('No actions') }}
 					<template #icon>
 						<FileCog />
 					</template>
-					<template #desc>{{ t('No file actions exist.') }}</template>
+					<template #desc>
+						{{ t('No file actions exist.') }}
+					</template>
 				</EmptyContent>
 			</div>
-
 		</SettingsSection>
 	</div>
 </template>
@@ -46,11 +43,11 @@ import FileCog from 'vue-material-design-icons/FileCog.vue'
 import Button from '@nextcloud/vue/dist/Components/Button'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
-import ScriptEdit from '../components/ScriptEdit.vue';
-import ScriptCard from '../components/ScriptCard.vue';
-import {mapState} from 'vuex'
-import {Script} from "../types/script";
-import {translate as t} from "../l10n";
+import ScriptEdit from '../components/ScriptEdit.vue'
+import ScriptCard from '../components/ScriptCard.vue'
+import { mapState } from 'vuex'
+import { Script } from '../types/script'
+import { translate as t } from '../l10n'
 
 export default {
 	name: 'Settings',
@@ -61,21 +58,21 @@ export default {
 		ScriptEdit,
 		ScriptCard,
 		Plus,
-		FileCog
-	},
-
-	mounted() {
-		this.$store.dispatch('fetchScripts')
+		FileCog,
 	},
 
 	computed: {
 		...mapState({
 			selectedScript: 'selectedScript',
-			scripts: 'scripts'
+			scripts: 'scripts',
 		}),
-		isLoading: function () {
-			return this.scripts === null;
-		}
+		isLoading() {
+			return this.scripts === null
+		},
+	},
+
+	mounted() {
+		this.$store.dispatch('fetchScripts')
 	},
 
 	methods: {
@@ -88,12 +85,12 @@ export default {
 		},
 		deleteScript(script: Script) {
 			this.$store.dispatch('deleteScript', script)
-		}
-	}
+		},
+	},
 }
 
 </script>
-<style scoped>
+<style scoped lang="scss">
 .empty-content {
 	margin-top: 0;
 }

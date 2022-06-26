@@ -1,14 +1,14 @@
-import axios from "@nextcloud/axios";
-import {generateUrl} from "@nextcloud/router";
-import {Script, ScriptInput} from "../types/script";
+import axios from '@nextcloud/axios'
+import { generateUrl } from '@nextcloud/router'
+import { Script, ScriptInput } from '../types/script'
 
 export const api = {
 	async getScripts(): Promise<Script[]> {
-		return (await axios.get(generateUrl('/apps/files_scripts/scripts'))).data;
+		return (await axios.get(generateUrl('/apps/files_scripts/scripts'))).data
 	},
 
 	async createScript(script: Script): Promise<any> {
-		return (await axios.post(generateUrl('/apps/files_scripts/scripts'), script)).data;
+		return (await axios.post(generateUrl('/apps/files_scripts/scripts'), script)).data
 	},
 
 	async updateScript(script: Script): Promise<any> {
@@ -20,7 +20,7 @@ export const api = {
 	},
 
 	async runScript(script: Script, outputDirectory: string, inputs: ScriptInput[], files: any[]): Promise<any> {
-		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), {outputDirectory, inputs, files})).data
+		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), { outputDirectory, inputs, files })).data
 	},
 
 	async getScriptInputs(scriptId: Number): Promise<ScriptInput[]> {
@@ -28,6 +28,6 @@ export const api = {
 	},
 
 	async updateScriptInputs(script, scriptInputs) {
-		return (await axios.post(generateUrl('/apps/files_scripts/script_inputs/' + script.id), {scriptInputs})).data
-	}
+		return (await axios.post(generateUrl('/apps/files_scripts/script_inputs/' + script.id), { scriptInputs })).data
+	},
 }

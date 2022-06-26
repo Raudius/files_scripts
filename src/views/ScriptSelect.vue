@@ -2,39 +2,50 @@
 	<Modal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
 			<h2>{{ t('Select action to perform') }}</h2>
-			<div v-if="this.scripts === null" class="icon-loading"></div>
+			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
 				<div class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
-					<Multiselect
+					<Multiselect v-model="selectedScript"
 						class="section-details"
-						v-model="selectedScript"
 						:options="scripts"
 						:placeholder="t('Select an action to perform')"
 						track-by="id"
 						label="title"
-						@change="selectScript"
-					/>
+						@change="selectScript" />
 				</div>
 
-				<div class="section-wrapper" v-if="selectedScript && selectedScript.requestDirectory">
+				<div v-if="selectedScript && selectedScript.requestDirectory" class="section-wrapper">
 					<Folder class="section-label" :size="20" />
-					<input type="text" style="cursor: pointer;" class="section-details" v-model="outputDirectory" @click="pickOutputDirectory" :placeholder="t('Choose a folder...')" />
+					<input v-model="outputDirectory"
+						type="text"
+						style="cursor: pointer;"
+						class="section-details"
+						:placeholder="t('Choose a folder...')"
+						@click="pickOutputDirectory">
 				</div>
 
-				<div class="section-wrapper" v-for="scriptInput in scriptInputs">
+				<div v-for="scriptInput in scriptInputs" :key="scriptInput.id" class="section-wrapper">
 					<ConsoleLine class="section-label" :size="20" />
-					<input type="text" class="section-details" v-model="scriptInput.value" :placeholder="scriptInput.description" />
+					<input v-model="scriptInput.value"
+						type="text"
+						class="section-details"
+						:placeholder="scriptInput.description">
 				</div>
 
 				<div class="script-info">
-					{{ this.selectedDescription }}
+					{{ selectedDescription }}
 				</div>
 
 				<div style="text-align: right;">
-					<div v-if="loadingScriptInputs || isRunning" class="input-loader icon-loading display-inline"></div>
-					<Button class="display-inline" type="primary" :disabled="!readyToRun" @click="run">
-						<template #icon> <Play :size="20" /> </template>
+					<div v-if="loadingScriptInputs || isRunning" class="input-loader icon-loading display-inline" />
+					<Button class="display-inline"
+						type="primary"
+						:disabled="!readyToRun"
+						@click="run">
+						<template #icon>
+							<Play :size="20" />
+						</template>
 						{{ t('Execute') }}
 					</Button>
 				</div>
@@ -52,12 +63,12 @@ import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
-import {showError, FilePickerBuilder, showSuccess} from "@nextcloud/dialogs";
-import {api} from "../api/script";
-import * as path from "path";
-import {translate as t} from "../l10n";
-import {registerFileSelect, registerMultiSelect} from "../files";
-import {ScriptInput} from "../types/script";
+import { showError, FilePickerBuilder, showSuccess } from '@nextcloud/dialogs'
+import { api } from '../api/script'
+import * as path from 'path'
+import { translate as t } from '../l10n'
+import { registerFileSelect, registerMultiSelect } from '../files'
+import { ScriptInput } from '../types/script'
 
 export default {
 	name: 'ScriptSelect',
@@ -68,7 +79,7 @@ export default {
 		FileCog,
 		ConsoleLine,
 		Folder,
-		Play
+		Play,
 	},
 	data() {
 		return {
@@ -78,7 +89,7 @@ export default {
 			selectedFiles: [],
 			outputDirectory: null,
 			scriptInputs: [],
-			loadingScriptInputs: false
+			loadingScriptInputs: false,
 		}
 	},
 
@@ -93,18 +104,18 @@ export default {
 			return this.selectedScript
 				&& (!this.selectedScript.requestDirectory || this.outputDirectory)
 				&& !this.loadingScriptInputs
-				&& !this.isRunning;
-		}
+				&& !this.isRunning
+		},
+	},
+	watch: {
+		showModal(newVal) {
+			(newVal === true && !this.scripts) && this.$store.dispatch('fetchScripts')
+		},
 	},
 
 	mounted() {
 		this.$store.dispatch('fetchScripts')
 			.then(this.attachMenuOption)
-	},
-	watch: {
-		showModal(newVal) {
-			(newVal === true && !this.scripts) && this.$store.dispatch('fetchScripts')
-		}
 	},
 
 	methods: {
@@ -119,23 +130,23 @@ export default {
 		async selectScript(script) {
 			this.outputDirectory = this.selectedFiles[0].path ?? '/'
 
-			this.loadingScriptInputs = true;
+			this.loadingScriptInputs = true
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
 			this.scriptInputs = this.scriptInputs.map((scriptInput: ScriptInput) => {
-				return {...scriptInput, value: ''}
+				return { ...scriptInput, value: '' }
 			})
-			this.loadingScriptInputs = false;
+			this.loadingScriptInputs = false
 		},
 		async run() {
 			if (this.isRunning) {
-				return;
+				return
 			}
-			this.isRunning = true;
+			this.isRunning = true
 			try {
-				await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles);
+				await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles)
 
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
-				OCA.Files.App.fileList.changeDirectory(currentDir, true, true);
+				OCA.Files.App.fileList.changeDirectory(currentDir, true, true)
 
 				showSuccess(t('Action completed!'))
 				this.closeModal()
@@ -144,7 +155,7 @@ export default {
 				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('Action failed unexpectedly.')
 				showError(errorMsg)
 			}
-			this.isRunning = false;
+			this.isRunning = false
 		},
 
 		async pickOutputDirectory() {
@@ -156,25 +167,25 @@ export default {
 
 			try {
 				const dir = await picker.pick() || '/'
-				this.outputDirectory = path.normalize(dir);
+				this.outputDirectory = path.normalize(dir)
 			} catch (error) {
 				showError(error.message || t('Unknown error'))
 			}
 		},
 		attachMenuOption() {
 			if (!this.scripts || this.scripts.length === 0) {
-				return; // No enabled scripts: no need to attach the options
+				return // No enabled scripts: no need to attach the options
 			}
-			const self = this;
-			registerMultiSelect(function (files) {
+			const self = this
+			registerMultiSelect(function(files) {
 				self.showModal = true
 				self.selectedFiles = files
-			});
-			registerFileSelect(function (file, context) {
+			})
+			registerFileSelect(function(file, context) {
 				self.showModal = true
 				self.selectedFiles = [context.fileInfoModel.attributes]
-			});
-		}
+			})
+		},
 	},
 }
 </script>
@@ -204,7 +215,7 @@ export default {
 	margin-top: 10px;
 
 	.section-label {
-		background-position: 0px center;
+		background-position: 0 center;
 		width: 28px;
 		flex-shrink: 0;
 		text-align: center;

@@ -1,26 +1,27 @@
 <template>
-	<Modal v-if="showModal" size="full" @close="closeModal" :spread-navigation="true">
+	<Modal v-if="showModal"
+		size="full"
+		:spread-navigation="true"
+		@close="closeModal">
 		<Actions>
 			<ActionButton @click="saveScript">
-				<template #icon><Save :size="20" /></template>
+				<template #icon>
+					<Save :size="20" />
+				</template>
 			</ActionButton>
 		</Actions>
-		<div v-if="saving" style="display: inline-block;" class="icon-loading"></div>
-
+		<div v-if="saving" style="display: inline-block;" class="icon-loading" />
 
 		<div class="container-script-edit">
 			<div class="script-details">
-				<input type="text"
-				   class="input-script-name"
-				   :placeholder="t('Script name')"
-				   v-model="scriptTitle"
-				>
-				<textarea
+				<input v-model="scriptTitle"
+					type="text"
+					class="input-script-name"
+					:placeholder="t('Script name')">
+				<textarea v-model="scriptDescription"
 					class="input-script-description"
 					:placeholder="t('A short description of what this action will do...')"
-					v-model="scriptDescription"
-					rows="6"
-				></textarea>
+					rows="6" />
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
 					{{ t('Enable script') }}
@@ -29,25 +30,24 @@
 				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
 					{{ t('Request target folder') }}
 				</CheckboxRadioSwitch>
-<!-- TODO: Uncomment when background jobs gets implemented
+				<!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
 					Run in background
 				</CheckboxRadioSwitch>
 -->
-				<EditInputs v-bind:script-id="this.script.id" v-on:changed="updateInputs" />
+				<EditInputs :script-id="script.id" @changed="updateInputs" />
 			</div>
 
-
 			<div class="script-editor">
-				<CodeMirror style="height: 100%" v-model="scriptProgram" :options="cmOption" />
+				<CodeMirror v-model="scriptProgram" style="height: 100%" :options="cmOption" />
 			</div>
 		</div>
 	</Modal>
 </template>
 
 <script lang="ts">
-import CheckboxRadioSwitch from "@nextcloud/vue/dist/Components/CheckboxRadioSwitch";
-import Save from "vue-material-design-icons/ContentSave.vue";
+import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
+import Save from 'vue-material-design-icons/ContentSave.vue'
 import Modal from '@nextcloud/vue/dist/Components/Modal'
 import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
@@ -56,13 +56,12 @@ import EditInputs from './ScriptEdit/EditInputs.vue'
 import 'codemirror/mode/lua/lua.js'
 import 'codemirror/addon/edit/matchbrackets.js'
 import 'codemirror/addon/hint/show-hint.js'
-import {mapState} from "vuex";
-import {showError, showSuccess} from "@nextcloud/dialogs";
-import {ScriptInput} from "../types/script";
-import {api} from "../api/script";
-import {translate as t} from "../l10n";
-const CodeMirror = require('vue-codemirror').codemirror;
-const cm = require('vue-codemirror').CodeMirror;
+import { mapState } from 'vuex'
+import { showError, showSuccess } from '@nextcloud/dialogs'
+import { ScriptInput } from '../types/script'
+import { api } from '../api/script'
+import { translate as t } from '../l10n'
+const CodeMirror = require('vue-codemirror').codemirror
 
 export default {
 	name: 'ScriptEdit',
@@ -73,10 +72,10 @@ export default {
 		ActionButton,
 		CodeMirror,
 		CheckboxRadioSwitch,
-		EditInputs
+		EditInputs,
 	},
 	data() {
-		const darkMode = document.body.classList.contains('theme--dark');
+		const darkMode = document.body.classList.contains('theme--dark')
 
 		return {
 			scriptInputs: [],
@@ -102,32 +101,45 @@ export default {
 		}
 	},
 	computed: {
-		...mapState({script: 'selectedScript'}),
-		showModal: function (): boolean {
+		...mapState({ script: 'selectedScript' }),
+		showModal(): boolean {
 			return !!this.script
 		},
 		scriptTitle: {
 			get() {
 				return this.script.title
 			},
-			set (value) {
-				this.$store.commit('updateCurrentScript', {title: value})
-			}
+			set(value) {
+				this.$store.commit('updateCurrentScript', { title: value })
+			},
 		},
 		scriptProgram: {
 			get() {
 				return this.script.program
 			},
-			set (value) {
-				this.$store.commit('updateCurrentScript', {program: value})
-			}
+			set(value) {
+				this.$store.commit('updateCurrentScript', { program: value })
+			},
 		},
 		scriptDescription: {
 			get() {
 				return this.script.description
 			},
-			set (value) {
-				this.$store.commit('updateCurrentScript', {description: value})
+			set(value) {
+				this.$store.commit('updateCurrentScript', { description: value })
+			},
+		},
+	},
+
+	watch: {
+		showModal(newValue) {
+			// Hack to fix codemirror rendering issue
+			if (newValue === true) {
+				setTimeout(() => {
+					const evt = document.createEvent('UIEvents')
+					evt.initUIEvent('resize', true, false, window, 0)
+					window.dispatchEvent(evt)
+				}, 500)
 			}
 		},
 	},
@@ -135,11 +147,11 @@ export default {
 	methods: {
 		t,
 		saveScript() {
-			const self = this;
+			const self = this
 			this.saving = true
 			this.saveScriptAsync()
 				.then(() => {
-					self.dirtyInputs = false;
+					self.dirtyInputs = false
 					showSuccess(t('Saved'), { timeout: 2000 })
 				})
 				.catch((error) => {
@@ -150,7 +162,7 @@ export default {
 					showError(message)
 				})
 				.then(() => {
-					this.saving = false;
+					this.saving = false
 				})
 		},
 		async saveScriptAsync() {
@@ -160,13 +172,13 @@ export default {
 			}
 		},
 		updateInputs(scriptInputs: ScriptInput[]) {
-			this.scriptInputs = scriptInputs;
-			this.dirtyInputs = true;
+			this.scriptInputs = scriptInputs
+			this.dirtyInputs = true
 		},
 		closeModal() {
 			this.$store.commit('clearSelected')
-			this.dirtyInputs = false;
-			this.scriptInputs = [];
+			this.dirtyInputs = false
+			this.scriptInputs = []
 		},
 		toggleEnabled() {
 			this.$store.commit('selectedToggleValue', 'enabled')
@@ -178,22 +190,8 @@ export default {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
 		},
 	},
-
-	watch: {
-		showModal(newValue) {
-			// Hack to fix codemirror rendering issue
-			if (newValue === true) {
-				setTimeout(() => {
-					var evt = document.createEvent('UIEvents');
-					evt.initUIEvent('resize', true, false,window,0);
-					window.dispatchEvent(evt);
-				}, 500);
-			}
-		}
-	}
 }
 </script>
-
 
 <style scoped>
 @import 'codemirror/theme/material-darker.css';

@@ -17,6 +17,7 @@ use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
+use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use Psr\Log\LoggerInterface;
@@ -30,6 +31,7 @@ class ScriptController extends Controller {
 	private IL10N $l;
 	private Interpreter $interpreter;
 	private LoggerInterface $logger;
+	private IConfig $config;
 
 	public function __construct(
 		$appName,
@@ -41,6 +43,7 @@ class ScriptController extends Controller {
 		IRootFolder $rootFolder,
 		IL10N $l,
 		Interpreter $interpreter,
+		IConfig $config,
 		LoggerInterface $logger
 	) {
 		parent::__construct($appName, $request);
@@ -51,6 +54,7 @@ class ScriptController extends Controller {
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
 		$this->interpreter = $interpreter;
+		$this->config = $config;
 		$this->logger = $logger;
 	}
 
@@ -192,7 +196,12 @@ class ScriptController extends Controller {
 				'message' => $e->getMessage(),
 				'trace' => $e->getTraceAsString()
 			]);
-			return new JSONResponse(['error' => $this->l->t('An unknown error occurred when running the action.')], HTTP::STATUS_BAD_REQUEST);
+
+			$error = $this->config->getSystemValue('debug', true)
+				? $e->getMessage()
+				: $this->l->t('An unexpected error occurred when running the action.');
+
+			return new JSONResponse(['error' => $error], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();

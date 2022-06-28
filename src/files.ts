@@ -8,7 +8,7 @@ import { translate as t } from './l10n'
 export function registerMultiSelect(action) {
 	const actionObj = {
 		name: 'files_scripts_multi_action',
-		displayName: t('More actions'),
+		displayName: t('files_scripts', 'More actions'),
 		iconClass: 'icon-files_scripts',
 		order: 1001,
 		action,
@@ -33,7 +33,7 @@ export function registerMultiSelect(action) {
 export function registerFileSelect(actionHandler) {
 	OCA.Files.fileActions.registerAction({
 		name: 'files_scripts_action',
-		displayName: t('More actions'),
+		displayName: t('files_scripts', 'More actions'),
 		mime: 'all',
 		permissions: OC.PERMISSION_READ,
 		iconClass: 'icon-files_scripts',

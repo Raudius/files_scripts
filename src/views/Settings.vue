@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<ScriptEdit />
-		<SettingsSection :title="t('File actions')"
-			:description="t('File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
+		<SettingsSection :title="t('files_scripts', 'File actions')"
+			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 			<div class="section">
 				<Button type="primary" @click="newScript">
 					<template #icon>
 						<Plus :size="20" />
 					</template>
-					{{ t('New action') }}
+					{{ t('files_scripts', 'New action') }}
 				</Button>
 
 				<ul class="script-cards">

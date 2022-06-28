@@ -9,10 +9,10 @@
 		</template>
 		<template #actions>
 			<ActionButton icon="icon-rename" :close-after-click="true" @click="editScript">
-				{{ t('Edit') }}
+				{{ t('files_scripts', 'Edit') }}
 			</ActionButton>
 			<ActionButton icon="icon-delete" :close-after-click="true" @click="deleteScript">
-				{{ t('Delete') }}
+				{{ t('files_scripts', 'Delete') }}
 			</ActionButton>
 		</template>
 	</ListItem>
@@ -37,7 +37,7 @@ export default {
 	methods: {
 		t,
 		enabledText() {
-			return this.script.enabled ? t('Enabled') : t('Disabled')
+			return this.script.enabled ? t('files_scripts', 'Enabled') : t('files_scripts', 'Disabled')
 		},
 		editScript() {
 			this.$emit('select', this.script)

@@ -17,18 +17,18 @@
 				<input v-model="scriptTitle"
 					type="text"
 					class="input-script-name"
-					:placeholder="t('Script name')">
+					:placeholder="t('files_scripts', 'Script name')">
 				<textarea v-model="scriptDescription"
 					class="input-script-description"
-					:placeholder="t('A short description of what this action will do...')"
+					:placeholder="t('files_scripts', 'A short description of what this action will do...')"
 					rows="6" />
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
-					{{ t('Enable script') }}
+					{{ t('files_scripts', 'Enable script') }}
 				</CheckboxRadioSwitch>
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
-					{{ t('Request target folder') }}
+					{{ t('files_scripts', 'Request target folder') }}
 				</CheckboxRadioSwitch>
 				<!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
@@ -152,10 +152,10 @@ export default {
 			this.saveScriptAsync()
 				.then(() => {
 					self.dirtyInputs = false
-					showSuccess(t('Saved'), { timeout: 2000 })
+					showSuccess(t('files_scripts', 'Saved'), { timeout: 2000 })
 				})
 				.catch((error) => {
-					let message = t('An error occurred during saving')
+					let message = t('files_scripts', 'An error occurred during saving')
 					if (error.response && error.response.data.error) {
 						message = error.response.data.error
 					}

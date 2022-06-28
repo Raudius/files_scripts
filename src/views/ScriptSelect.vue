@@ -1,7 +1,7 @@
 <template>
 	<Modal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
-			<h2>{{ t('Select action to perform') }}</h2>
+			<h2>{{ t('files_scripts', 'Select action to perform') }}</h2>
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
 				<div class="section-wrapper">
@@ -9,7 +9,7 @@
 					<Multiselect v-model="selectedScript"
 						class="section-details"
 						:options="scripts"
-						:placeholder="t('Select an action to perform')"
+						:placeholder="t('files_scripts', 'Select an action to perform')"
 						track-by="id"
 						label="title"
 						@change="selectScript" />
@@ -21,7 +21,7 @@
 						type="text"
 						style="cursor: pointer;"
 						class="section-details"
-						:placeholder="t('Choose a folder...')"
+						:placeholder="t('files_scripts', 'Choose a folder...')"
 						@click="pickOutputDirectory">
 				</div>
 
@@ -46,7 +46,7 @@
 						<template #icon>
 							<Play :size="20" />
 						</template>
-						{{ t('Execute') }}
+						{{ t('files_scripts', 'Execute') }}
 					</Button>
 				</div>
 			</div>
@@ -148,18 +148,18 @@ export default {
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
 				OCA.Files.App.fileList.changeDirectory(currentDir, true, true)
 
-				showSuccess(t('Action completed!'))
+				showSuccess(t('files_scripts', 'Action completed!'))
 				this.closeModal()
 			} catch (response) {
 				const errorObj = response?.response?.data
-				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('Action failed unexpectedly.')
+				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('files_scripts', 'Action failed unexpectedly.')
 				showError(errorMsg)
 			}
 			this.isRunning = false
 		},
 
 		async pickOutputDirectory() {
-			const picker = (new FilePickerBuilder(t('Choose a folder...')))
+			const picker = (new FilePickerBuilder(t('files_scripts', 'Choose a folder...')))
 				.allowDirectories(true)
 				.setMimeTypeFilter(['httpd/unix-directory'])
 				.startAt(this.outputDirectory)
@@ -169,7 +169,7 @@ export default {
 				const dir = await picker.pick() || '/'
 				this.outputDirectory = path.normalize(dir)
 			} catch (error) {
-				showError(error.message || t('Unknown error'))
+				showError(error.message || t('files_scripts', 'Unknown error'))
 			}
 		},
 		attachMenuOption() {

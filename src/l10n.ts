@@ -1,9 +1,10 @@
 /**
  * Translates a string.
  *
+ * @param {String} ctxt Translation context
  * @param {string} str String to be translated
- * @param {object} params Transaltion parameters
+ * @param {object} params Translation parameters
  */
-export function translate(str: String, params?: Object) {
-	return t('files_scripts', str, params)
+export function translate(ctxt: String, str: String, params?: Object) {
+	return t(ctxt, str, params)
 }

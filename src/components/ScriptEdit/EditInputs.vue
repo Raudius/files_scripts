@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<h3>{{ t('User inputs') }}</h3>
+		<h3>{{ t('files_scripts', 'User inputs') }}</h3>
 		<div class="section-description">
-			{{ t('Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function.') }}
+			{{ t('files_scripts', 'Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function.') }}
 		</div>
 
 		<div v-if="loading" class="icon-loading" />
@@ -10,11 +10,11 @@
 			<input v-model="inputName"
 				type="text"
 				class="input-name"
-				:placeholder="t('Variable name')">
+				:placeholder="t('files_scripts', 'Variable name')">
 			<input v-model="inputDescription"
 				type="text"
 				class="input-description"
-				:placeholder="t('User prompt...')">
+				:placeholder="t('files_scripts', 'User prompt...')">
 			<div class="input-action">
 				<Actions>
 					<ActionButton @click="addInput()">

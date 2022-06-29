@@ -14,7 +14,7 @@
 			<input v-model="inputDescription"
 				type="text"
 				class="input-description"
-				:placeholder="t('files_scripts', 'User prompt...')">
+				:placeholder="t('files_scripts', 'User prompt …')">
 			<div class="input-action">
 				<Actions>
 					<ActionButton @click="addInput()">

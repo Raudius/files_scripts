@@ -21,7 +21,7 @@
 						type="text"
 						style="cursor: pointer;"
 						class="section-details"
-						:placeholder="t('files_scripts', 'Choose a folder...')"
+						:placeholder="t('files_scripts', 'Choose a folder …')"
 						@click="pickOutputDirectory">
 				</div>
 
@@ -159,7 +159,7 @@ export default {
 		},
 
 		async pickOutputDirectory() {
-			const picker = (new FilePickerBuilder(t('files_scripts', 'Choose a folder...')))
+			const picker = (new FilePickerBuilder(t('files_scripts', 'Choose a folder …')))
 				.allowDirectories(true)
 				.setMimeTypeFilter(['httpd/unix-directory'])
 				.startAt(this.outputDirectory)

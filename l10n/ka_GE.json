@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "შეცვლა",
+    "Delete" : "წაშლა",
+    "Enabled" : "მოქმედია",
+    "Disabled" : "არაა მოქმედი",
+    "Saved" : "შენახულია",
+    "Unknown error" : "უცნობი შეცდომა",
+    "More actions" : "მეტი ქმედება"
+},"pluralForm" :"nplurals=2; plural=(n!=1);"
+}

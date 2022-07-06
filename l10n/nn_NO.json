@@ -1,0 +1,8 @@
+{ "translations": {
+    "Edit" : "Rediger",
+    "Delete" : "Slett",
+    "Enabled" : "Aktivert",
+    "Saved" : "Lagra",
+    "Unknown error" : "Ukjend feil"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

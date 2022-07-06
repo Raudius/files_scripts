@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "Chỉnh sửa",
+    "Delete" : "Xóa",
+    "Enabled" : "Đá kích hoạt",
+    "Disabled" : "Đã vô hiệu",
+    "Saved" : "Đã lưu",
+    "Unknown error" : "Lỗi không xác định",
+    "More actions" : "Nhiều hành động hơn"
+},"pluralForm" :"nplurals=1; plural=0;"
+}

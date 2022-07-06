@@ -1,0 +1,9 @@
+{ "translations": {
+    "Edit" : "Dəyişiklik et",
+    "Delete" : "Sil",
+    "Enabled" : "İşə salınıb",
+    "Disabled" : "Dayandırılıb",
+    "Saved" : "Saxlanıldı",
+    "Unknown error" : "Bəlli olmayan səhv baş verdi"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

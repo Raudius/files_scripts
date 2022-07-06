@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "Editar",
+    "Delete" : "Desaniciar",
+    "Enabled" : "Habilitar",
+    "Disabled" : "Deshabilitáu",
+    "Saved" : "Guardáu",
+    "Unknown error" : "Fallu desconocíu",
+    "More actions" : "Más aiciones"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

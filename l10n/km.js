@@ -1,0 +1,11 @@
+OC.L10N.register(
+    "files_scripts",
+    {
+    "Edit" : "កែប្រែ",
+    "Delete" : "លុប",
+    "Enabled" : "បាន​បើក",
+    "Disabled" : "បាន​បិទ",
+    "Saved" : "បាន​រក្សាទុក",
+    "Unknown error" : "មិន​ស្គាល់​កំហុស"
+},
+"nplurals=1; plural=0;");

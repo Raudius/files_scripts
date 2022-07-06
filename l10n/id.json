@@ -1,0 +1,9 @@
+{ "translations": {
+    "Edit" : "Sunting",
+    "Delete" : "Hapus",
+    "Enabled" : "Diaktifkan",
+    "Disabled" : "Dinonaktifkan",
+    "Saved" : "Disimpan",
+    "Unknown error" : "Kesalahan tidak diketahui"
+},"pluralForm" :"nplurals=1; plural=0;"
+}

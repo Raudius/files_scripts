@@ -18,7 +18,11 @@ OC.L10N.register(
     "Enable script" : "Gaitu scripta",
     "Request target folder" : "Eskatu helburu-karpeta",
     "Saved" : "Gordeta",
+    "Choose a folder …" : "Aukeratu karpeta bat ...",
+    "Execute" : "Exekutatu",
+    "Action completed!" : "Ekintza burututa",
     "Unknown error" : "Errore ezezaguna",
+    "New action" : "Ekintza berria",
     "More actions" : "Ekintza gehiago"
 },
 "nplurals=2; plural=(n != 1);");

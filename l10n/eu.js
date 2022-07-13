@@ -9,6 +9,7 @@ OC.L10N.register(
     "Title is empty." : "Izenburua hutsik dago.",
     "A script already exists with this title." : "Script bat existitzen da izenburu honekin.",
     "File actions" : "Fitxategi ekintzak",
+    "Scripting tool which allows administrators to expand the file options menu." : "Scripting tresna, administratzaileei fitxategien aukera menua zabaltzeko aukera ematen diena.",
     "Edit" : "Aldatu",
     "Delete" : "Ezabatu",
     "Enabled" : "Gaituta",

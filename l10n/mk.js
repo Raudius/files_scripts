@@ -6,6 +6,7 @@ OC.L10N.register(
     "Enabled" : "Овозможено",
     "Disabled" : "Оневозможено",
     "Saved" : "Зачувано",
-    "Unknown error" : "Непозната грешка"
+    "Unknown error" : "Непозната грешка",
+    "More actions" : "Повеќе акции"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

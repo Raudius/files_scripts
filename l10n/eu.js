@@ -16,6 +16,7 @@ OC.L10N.register(
     "Disabled" : "Desgaituta",
     "User inputs" : "Erabiltzailearen sarrerak",
     "Variable name" : "Aldagaiaren izena",
+    "User prompt …" : "Erabiltzaile-gonbita ...",
     "Script name" : "Scriptaren izena",
     "A short description of what this action will do …" : "Ekintza honek zer egingo duenaren deskribapen laburra …",
     "Enable script" : "Gaitu scripta",

@@ -30,6 +30,7 @@
     "Action completed!" : "Ekintza burututa",
     "Action failed unexpectedly." : "Ekintzak ustekabean huts egin du.",
     "Unknown error" : "Errore ezezaguna",
+    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Fitxategi ekintzak automatikoki fitxategiak sortu, aldatu edota ezabatu ditzakeen Lua script txikiak dira. Ekintza hauek erabiltzaileek abiarazi ditzake haien fitxategietan. Irakurri dokumentazioa informazio gehiagorako mesedez.",
     "New action" : "Ekintza berria",
     "More actions" : "Ekintza gehiago"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

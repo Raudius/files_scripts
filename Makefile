@@ -9,7 +9,8 @@ PROJECT_DIR:=$(CURDIR)/../$(APP_NAME)
 BUILD_DIR:=$(CURDIR)/build
 BUILD_TOOLS_DIR:=$(BUILD_DIR)/tools
 RELEASE_DIR:=$(BUILD_DIR)/release
-CERT_DIR:=$(HOME)/.nextcloud/certificates
+CERT_DIR:=$(HOME)/.keys
+OCC?=php ../../occ
 
 all: dev-setup lint build-js-production test
 
@@ -95,17 +96,17 @@ prepare-build:
 		--exclude="*config.js" \
 		--exclude="*config.json" \
 		--exclude="*.md" \
-	$(PROJECT_DIR) $(RELEASE_DIR)/
+	$(PROJECT_DIR) $(RELEASE_DIR)/ \
+	&& chmod -R 777 $(RELEASE_DIR)/
 
+# Signs the build files
+sign-build:
+	sudo -u \#33 -- $(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
+    			--certificate="$(CERT_DIR)/$(APP_NAME).crt" \
+    			--path="$(RELEASE_DIR)/$(APP_NAME)";
 
-# Build a release package
-build: npm-update build-js-production composer prepare-build
-	@if [ -f $(CERT_DIR)/$(APP_NAME).key ]; then \
-		echo "Signing code…"; \
-		$(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
-			--certificate="$(CERT_DIR)/$(APP_NAME).crt" \
-			--path="$(RELEASE_DIR)/$(APP_NAME)"; \
-	fi
+# Packages the build into a release tarball, then signs the tarball.
+package-build:
 	tar -czf $(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz \
 		-C $(RELEASE_DIR) $(APP_NAME)
 	# Sign the release tarball
@@ -114,4 +115,10 @@ build: npm-update build-js-production composer prepare-build
 		openssl dgst -sha512 -sign $(CERT_DIR)/$(APP_NAME).key \
 			$(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz | openssl base64; \
 	fi
-# rm -rf $(RELEASE_DIR)/$(APP_NAME)
+
+# Deletes any unnecessary files after the build is completed
+clean-up-build:
+	rm -rf $(RELEASE_DIR)/$(APP_NAME)
+
+# Build a release package
+build: npm-update build-js-production composer prepare-build sign-build package-build clean-up-build

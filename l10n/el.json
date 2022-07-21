@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "Επεξεργασία",
+    "Delete" : "Διαγραφή",
+    "Enabled" : "Ενεργοποιημένο",
+    "Disabled" : "Απενεργοποιημένο",
+    "Saved" : "Αποθηκεύτηκε",
+    "Unknown error" : "Άγνωστο σφάλμα",
+    "More actions" : "Περισσότερες ενέργειες"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

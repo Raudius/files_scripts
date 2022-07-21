@@ -1,0 +1,9 @@
+{ "translations": {
+    "Edit" : "засварлах",
+    "Delete" : "Устгах",
+    "Enabled" : "Идэвхижүүлэх",
+    "Disabled" : "идэвхигүй",
+    "Saved" : "Хадгалах",
+    "Unknown error" : "үл мэдэгдэх алдаа"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,9 @@
+{ "translations": {
+    "Edit" : "সম্পাদনা",
+    "Delete" : "মুছে",
+    "Enabled" : "কার্যকর",
+    "Disabled" : "অকার্যকর",
+    "Saved" : "সংরক্ষণ করা হলো",
+    "Unknown error" : "অজানা জটিলতা"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

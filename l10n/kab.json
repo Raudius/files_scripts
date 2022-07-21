@@ -1,0 +1,6 @@
+{ "translations": {
+    "Edit" : "Ẓreg",
+    "Delete" : "Kkes",
+    "Unknown error" : "Erreur inconnue"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,9 @@
+{ "translations": {
+    "Edit" : "Redigeeri",
+    "Delete" : "Kustuta",
+    "Enabled" : "Lubatud",
+    "Disabled" : "Keelatud",
+    "Saved" : "Salvestatud",
+    "Unknown error" : "Tundmatu viga"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

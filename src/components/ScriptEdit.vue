@@ -20,7 +20,7 @@
 					:placeholder="t('files_scripts', 'Script name')">
 				<textarea v-model="scriptDescription"
 					class="input-script-description"
-					:placeholder="t('files_scripts', 'A short description of what this action will do...')"
+					:placeholder="t('files_scripts', 'A short description of what this action will do …')"
 					rows="6" />
 
 				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">

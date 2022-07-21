@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "Modifi",
+    "Delete" : "Forigi",
+    "Enabled" : "Ŝaltita",
+    "Disabled" : "Malŝaltita",
+    "Saved" : "Konservita",
+    "Unknown error" : "Nekonata eraro",
+    "More actions" : "Pliaj agoj"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

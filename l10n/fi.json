@@ -1,0 +1,10 @@
+{ "translations": {
+    "Edit" : "Muokkaa",
+    "Delete" : "Poista",
+    "Enabled" : "Käytössä",
+    "Disabled" : "Pois käytöstä",
+    "Saved" : "Tallennettu",
+    "Unknown error" : "Tuntematon virhe",
+    "More actions" : "Lisää toimintoja"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

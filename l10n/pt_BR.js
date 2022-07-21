@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Lua extension not installed on the server." : "A extensão \"Lua\" não está instalada no servidor.",
     "An error occurred when saving the action." : "Ocorreu um erro ao salvar a ação.",
-    "Action does not exist or is disabled." : "Ação não existe ou está desativada.",
+    "Action does not exist or is disabled." : "Ação não existe ou está desativado.",
     "An unexpected error occurred when running the action." : "Um erro inesperado ocorreu ao rodar essa ação.",
     "Failed to create the action variables." : "Falha ao criar variáveis da ação.",
     "Title is empty." : "Título está vazio.",

@@ -130,19 +130,24 @@ export default {
 h3 {
 	margin-top: 24px;
 }
+
 .section-description {
 	opacity: .7;
 	margin-bottom: 16px;
 }
+
 .script-input {
 	display: flex;
 }
+
 .input-name {
 	flex: 0 1 30%;
 }
+
 .input-description {
 	flex: 1 2 60%;
 }
+
 .input-action {
 	flex: 0 0 10%;
 }

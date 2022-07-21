@@ -64,9 +64,10 @@ make
 sudo cp ./.libs/lua.so /usr/lib/php/20200930/
 ```
 
-Don't forget to append `extension=lua.so` to your php.ini!
-
 </details>
+
+
+Don't forget to append `extension=lua.so` to your php.ini!
 
 ## Documentation
 

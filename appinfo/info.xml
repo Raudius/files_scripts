@@ -34,6 +34,7 @@ Allows administrators to write small scripts which users can run through file ac
 
     <dependencies>
         <nextcloud min-version="23" max-version="24"/>
+		<php min-version="7.4" />
     </dependencies>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>

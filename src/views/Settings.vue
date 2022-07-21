@@ -94,9 +94,11 @@ export default {
 .empty-content {
 	margin-top: 0;
 }
+
 .script-cards {
 	margin-top: 16px
 }
+
 .section {
 	border-top: 1px solid var(--color-border);
 	margin-top: 30px;

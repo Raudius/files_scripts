@@ -204,6 +204,7 @@ export default {
 	display: flex;
 	margin: 10px;
 }
+
 .script-details {
 	flex: 0 0 25%;
 	height: 90vh;
@@ -222,6 +223,7 @@ export default {
 	width: 100%;
 	font-size: large;
 }
+
 .input-script-description {
 	width: 100%;
 	resize: vertical;

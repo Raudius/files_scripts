@@ -22,11 +22,17 @@ sudo apt-get install qpdf
 ### The big one:
  * Lua + PHP Lua plugin
 ```shell
-sudo apt-get install php-pear
-sudo apt-get install php7-dev
 sudo apt-get install lua5.3
 sudo apt-get install liblua5.3-0
 sudo apt-get install liblua5.3-dev
+```
+
+<details>
+<summary>Lua plugin for PHP7</summary>
+
+```shell
+sudo apt-get install php-pear
+sudo apt-get install php7-dev
 
 sudo cp /usr/include/lua5.3/lua.h /usr/include
 sudo ln -s /usr/include/lua5.3/ /usr/include/lua
@@ -35,6 +41,32 @@ sudo cp /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/lib/liblua.so
 
 sudo pecl install lua-2.0.7
 ```
+
+</details>
+
+<details>
+<summary>Lua plugin for PHP8</summary>
+Since the Lua plugin is not yet officially supported for PHP8, we need to build it.
+
+```shell
+sudo apt-get install php-pear
+sudo apt-get install php-dev
+
+cd ~
+git clone https://github.com/singlecomm/php-lua.git
+git checkout php8
+phpize && ./configure --with-lua-version=5.3
+make
+
+# The destination path may change depending on your PHP version
+# You can find your extension directory by using:
+# php -i | grep extension_dir
+sudo cp ./.libs/lua.so /usr/lib/php/20200930/
+```
+
+Don't forget to append `extension=lua.so` to your php.ini!
+
+</details>
 
 ## Documentation
 

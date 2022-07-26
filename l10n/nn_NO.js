@@ -4,6 +4,7 @@ OC.L10N.register(
     "Edit" : "Rediger",
     "Delete" : "Slett",
     "Enabled" : "Aktivert",
+    "Disabled" : "Deaktivert",
     "Saved" : "Lagra",
     "Unknown error" : "Ukjend feil"
 },

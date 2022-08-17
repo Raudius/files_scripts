@@ -10,7 +10,7 @@
 	],
 	"require": {
 		"php": "^7.4",
-		"raudius/phpdf": "^1.0.2",
+		"raudius/phpdf": "^1.0.3",
 		"ext-json": "*",
 		"ext-lua": "*",
 		"ext-curl": "*",
@@ -20,8 +20,7 @@
     },
 	"require-dev": {
 		"phpunit/phpunit": "^9.3.11",
-		"nextcloud/coding-standard": "^0.5.0",
-		"symfony/class-loader": "^3.4"
+		"nextcloud/coding-standard": "^0.5.0"
 	},
 	"config": {
 		"optimize-autoloader": true,

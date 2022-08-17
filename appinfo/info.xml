@@ -27,6 +27,8 @@ Allows administrators to write small scripts which users can run through file ac
 	</documentation>
 
     <category>files</category>
+	<category>workflow</category>
+
 	<bugs>https://github.com/raudius/files_scripts/issues</bugs>
 	<repository>https://github.com/raudius/files_scripts.git</repository>
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/1.png</screenshot>

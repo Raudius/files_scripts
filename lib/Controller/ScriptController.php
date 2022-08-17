@@ -9,7 +9,6 @@ use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\Context;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\FilesScripts\Interpreter\AbortException;
-use OCA\FilesScripts\Interpreter\Interpreter;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
@@ -17,7 +16,6 @@ use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IRequest;
 use Psr\Log\LoggerInterface;
@@ -29,9 +27,7 @@ class ScriptController extends Controller {
 	private IRootFolder $rootFolder;
 	private ScriptService $scriptService;
 	private IL10N $l;
-	private Interpreter $interpreter;
 	private LoggerInterface $logger;
-	private IConfig $config;
 
 	public function __construct(
 		$appName,
@@ -42,8 +38,6 @@ class ScriptController extends Controller {
 		ScriptService $scriptService,
 		IRootFolder $rootFolder,
 		IL10N $l,
-		Interpreter $interpreter,
-		IConfig $config,
 		LoggerInterface $logger
 	) {
 		parent::__construct($appName, $request);
@@ -53,8 +47,6 @@ class ScriptController extends Controller {
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
-		$this->interpreter = $interpreter;
-		$this->config = $config;
 		$this->logger = $logger;
 	}
 
@@ -186,22 +178,11 @@ class ScriptController extends Controller {
 			$scriptInputs[$input['name']] = $input['value'] ?? null;
 		}
 
+		$context = new Context($userFolder, $scriptInputs, $fileNodes, $outputDirectory);
 		try {
-			$context = new Context($userFolder, $scriptInputs, $fileNodes, $outputDirectory);
-			$this->interpreter->execute($script, $context);
+			$this->scriptService->runScript($script, $context);
 		} catch (AbortException $e) {
 			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
-		} catch (\Exception $e) {
-			$this->logger->error('File scripts runtime error', [
-				'message' => $e->getMessage(),
-				'trace' => $e->getTraceAsString()
-			]);
-
-			$error = $this->config->getSystemValue('debug', true)
-				? $e->getMessage()
-				: $this->l->t('An unexpected error occurred when running the action.');
-
-			return new JSONResponse(['error' => $error], HTTP::STATUS_BAD_REQUEST);
 		}
 
 		return new JSONResponse();

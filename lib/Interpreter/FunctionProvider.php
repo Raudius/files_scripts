@@ -8,6 +8,8 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Delete;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Move;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Unlock;
 use OCA\FilesScripts\Interpreter\Functions\Files\Full_Path;
 use OCA\FilesScripts\Interpreter\Functions\Files\Get_Parent;
 use OCA\FilesScripts\Interpreter\Functions\Files\Is_File;
@@ -31,9 +33,11 @@ use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
+use OCA\FilesScripts\Interpreter\Functions\Util\Log;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
+use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
 
-class FunctionProvider {
+class FunctionProvider implements IFunctionProvider {
 	/** @var RegistrableFunction[] */
 	private array $functions;
 
@@ -67,7 +71,11 @@ class FunctionProvider {
 		Pdf_Page_Count $f27,
 		Format_Price $f28,
 		Create_Date_Time $f29,
-		Format_Date_Time $f30
+		Format_Date_Time $f30,
+		File_Unlock $f31,
+		File_Move $f32,
+		Wait $f33,
+		Log $f34
 	) {
 		$this->functions = func_get_args();
 	}

@@ -25,10 +25,6 @@ class Context {
 		$this->targetDirectory = $targetDirectory;
 	}
 
-	public function setUp(
-	): void {
-	}
-
 	public function getTargetDirectory(): ?Folder {
 		if (!$this->targetDirectory) {
 			return null;

@@ -7,7 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use ReflectionClass;
 use ReflectionException;
-use Symfony\Component\ClassLoader\ClassMapGenerator;
+use Composer\ClassMapGenerator\ClassMapGenerator;
 
 const DOC_FILE = __DIR__ . '/../docs/Functions.md';
 const FUNCTIONS_DIR = __DIR__ . '/../lib/Interpreter/Functions/';
@@ -46,32 +46,37 @@ MD;
 
 $stream = fopen(DOC_FILE, "wb");
 fwrite($stream, generateToC($functionDocs));
-foreach ($functionDocs as $type => $function) {
+foreach_alphabetically($functionDocs, function ($type, $function) use (&$stream) {
 	fwrite($stream, <<<MD
 ## $type
 
 MD
-);
+	);
 
-	foreach ($function as $doc) {
+	foreach_alphabetically($function, function ($name, $doc) use (&$stream) {
 		fwrite($stream, $doc);
-	}
-}
+	});
+});
 fclose($stream);
+
 
 
 /*
  * Script helper functions
  */
 function generateToC(array $groupedFunctions): string {
+
 	$toc = '';
-	foreach ($groupedFunctions as $type => $functions) {
-		$toc .= "  - **[$type:](#$type)** " . (TYPE_DESCRIPTIONS[$type] ?? '') . "\n";
-		foreach ($functions as $name => $_) {
-			$toc .= "    - [$name](#$name)  \n";
+	foreach_alphabetically($groupedFunctions, function ($type, $functions) use (&$toc) {
+			$toc .= "  - **[$type:](#$type)** " . (TYPE_DESCRIPTIONS[$type] ?? '') . "\n";
+
+			foreach_alphabetically($functions, function ($name, $_) use (&$toc) {
+				$toc .= "    - [$name](#$name)  \n";
+			});
+
+			$toc .= "\n";
 		}
-		$toc .= "\n";
-	}
+	);
 
 	return $toc;
 }
@@ -91,4 +96,13 @@ function getClassDoc(string $class): string {
 function getFunctionType(string $class): string {
 	preg_match('/\\\Functions\\\(\w+)\\\\/', $class, $matches, PREG_UNMATCHED_AS_NULL);
 	return $matches[1];
+}
+
+function foreach_alphabetically($items, $function) {
+	$keys = array_keys($items);
+	sort($keys);
+
+	foreach ($keys as $key) {
+		$function($key, $items[$key]);
+	}
 }

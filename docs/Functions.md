@@ -1,62 +1,259 @@
-  - **[Input:](#Input)** Retreiving user inputs
-    - [get_input](#get_input)  
-    - [get_target_folder](#get_target_folder)  
-    - [get_input_files](#get_input_files)  
-
-  - **[Util:](#Util)** Utility functions for scripting convenience
-    - [format_date_time](#format_date_time)  
-    - [format_price](#format_price)  
-    - [sort](#sort)  
-    - [json](#json)  
-    - [create_date_time](#create_date_time)  
-    - [http_request](#http_request)  
-
-  - **[Template:](#Template)** Generate files from templates
-    - [mustache](#mustache)  
-    - [html_to_pdf](#html_to_pdf)  
-
   - **[Error:](#Error)** Reporting and logging
     - [abort](#abort)  
 
+  - **[Files:](#Files)** File operations within the Nextcloud environment
+    - [copy_file](#copy_file)  
+    - [directory_listing](#directory_listing)  
+    - [exists](#exists)  
+    - [file_content](#file_content)  
+    - [file_delete](#file_delete)  
+    - [file_move](#file_move)  
+    - [file_unlock](#file_unlock)  
+    - [full_path](#full_path)  
+    - [get_parent](#get_parent)  
+    - [is_file](#is_file)  
+    - [is_folder](#is_folder)  
+    - [meta_data](#meta_data)  
+    - [new_file](#new_file)  
+    - [node_exists](#node_exists)  
+    - [root](#root)  
+
+  - **[Input:](#Input)** Retreiving user inputs
+    - [get_input](#get_input)  
+    - [get_input_files](#get_input_files)  
+    - [get_target_folder](#get_target_folder)  
+
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
+    - [pdf_decrypt](#pdf_decrypt)  
     - [pdf_merge](#pdf_merge)  
-    - [pdf_pages](#pdf_pages)  
     - [pdf_overlay](#pdf_overlay)  
     - [pdf_page_count](#pdf_page_count)  
-    - [pdf_decrypt](#pdf_decrypt)  
+    - [pdf_pages](#pdf_pages)  
 
-  - **[Files:](#Files)** File operations within the Nextcloud environment
-    - [meta_data](#meta_data)  
-    - [node_exists](#node_exists)  
-    - [new_file](#new_file)  
-    - [file_content](#file_content)  
-    - [is_file](#is_file)  
-    - [copy_file](#copy_file)  
-    - [is_folder](#is_folder)  
-    - [file_delete](#file_delete)  
-    - [full_path](#full_path)  
-    - [directory_listing](#directory_listing)  
-    - [root](#root)  
-    - [exists](#exists)  
-    - [get_parent](#get_parent)  
+  - **[Template:](#Template)** Generate files from templates
+    - [html_to_pdf](#html_to_pdf)  
+    - [mustache](#mustache)  
 
+  - **[Util:](#Util)** Utility functions for scripting convenience
+    - [create_date_time](#create_date_time)  
+    - [format_date_time](#format_date_time)  
+    - [format_price](#format_price)  
+    - [http_request](#http_request)  
+    - [json](#json)  
+    - [log](#log)  
+    - [sort](#sort)  
+    - [wait](#wait)  
+
+## Error
+### abort
+
+`abort(String message): void`  
+  
+Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
+## Files
+### copy_file
+
+`copy_file(Node file, String folder_path, [String name]=nil): Bool`  
+  
+Copies the given `file` to the specified `folder_path`.  
+Optionally a new name can be specified for the file, if none is specified the original name is used.  
+  
+If the target file already exists, the operation will not succeed.  
+  
+Returns whether the operation was successful.
+### directory_listing
+
+`directory_listing(Node folder, [String filter_type]='all'): Node[]`  
+  
+Returns a list of the directory contents, if the given node is not a folder, returns an empty list.  
+Optionally a second argument can be provided to filter out files or folders:  
+ - If `"file"` is provided: only files are returned  
+ - If `"folder"` is provided: only folders are returned  
+ - If any other value is provided: both files and folders are returned.
+### exists
+
+`exists(Node node, [String file_name]=nil): Bool`  
+  
+Returns whether a file or directory exists.  
+Optionally the name of a file can be specified as a second argument, in which case the first argument will be  
+assumed to be directory. The function will return whether the file exists in the directory.
+### file_content
+
+`file_content(Node node): String|nil`  
+  
+Returns the string content of the file. If the node is a directory or the file does not exist, `nil` is returned.
+### file_delete
+
+`file_delete(Node node, [Bool success_if_not_found]=true): Bool`  
+  
+Deletes the specified file/folder node.  
+Returns whether deletion succeeded.  
+  
+By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+### file_move
+
+`file_move(Node file, [String folder = nil], [String new_name = nil]): Node|null`  
+  
+Moves the given `file` to the specified `folder`.  
+If no folder is given, the current folder is used (file rename).  
+If no new_name is given, the old name is used.  
+  
+If the target file already exists, the operation will not succeed.  
+  
+Returns the resulting file, or nil if the operation failed.
+### file_unlock
+
+`file_unlock(Node node, [Bool success_if_not_found]=true): Bool`  
+  
+Lifts a file lock from the specified file/folder node.  
+Returns whether operation succeeded.  
+  
+By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+### full_path
+
+`full_path(Node node): String|nil`  
+  
+Returns the full path of the given file or directory including the node's name.  
+*Example:* for a file `abc.txt` in directory `/path/to/file` the full path is: `/path/to/file/abc.txt`.  
+  
+If the file does not exist `nil` is returned.
+### get_parent
+
+`get_parent(Node node): Node`  
+  
+Returns the parent folder for the given file or directory.  
+The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.  
+  
+If the given file cannot be found, `nil` is returned.
+### is_file
+
+`is_file(Node node): Bool`  
+  
+Returns whether the given node is a file.
+### is_folder
+
+`is_folder(Node node): Bool`  
+  
+Returns whether the given node is a folder.
+### meta_data
+
+`meta_data(Node node): Node`  
+  
+Returns an inflated Node object with additional meta-data information for the given file or directory. The additional meta-data attributes are:  
+ - `size`: the size of the file (in bytes)  
+ - `mimetype`: the mime-type of the file,  
+ - `etag`: the entity tag of the file.  
+ - `utime`: the UNIX-timestamp at which the file was uploaded to the server  
+ - `mtime`: the UNIX-timestamp at which the file was last modified  
+ - `can_read`: whether the user can read the file or can read files from the directory  
+ - `can_delete`: whether the user can delete the file or can delete files from the directory  
+ - `can_update`: whether the user can modify the file or can write to the directory
+### new_file
+
+`new_file(Node folder, String name, [String content]=nil): Node|nil`  
+  
+Creates a new file at specified folder.  
+If successful, returns the newly created file node. If file creation fails, returns `nil`.
+### node_exists
+
+`node_exists(Node node): Bool`  
+  
+Returns whether a node object represents a real file or folder.
+### root
+
+`root(): Node`  
+  
+Returns the node object for the user's root directory.
 ## Input
 ### get_input
 
 `get_input(): Table`  
   
 Returns a Lua table containing the user inputs.
-### get_target_folder
-
-`get_target_folder(): Node|nil`  
-  
-Returns the target directory node. If none is provided, returns nil.
 ### get_input_files
 
 `get_input_files(): Node[]`  
   
 Returns a list of the selected files: these are the files the user selects before running the action.
+### get_target_folder
+
+`get_target_folder(): Node|nil`  
+  
+Returns the target directory node. If none is provided, returns nil.
+## Pdf
+### pdf_decrypt
+
+`pdf_decrypt(Node file, [String password]=nil, [String new_file_name]=nil): Node|nil`  
+  
+Removes protections from the PDF file. If `new_file_name` is specified a new file is created, otherwise the existing file gets overwritten.  
+  
+Returns the node object for the resulting file.
+### pdf_merge
+
+`pdf_merge(Node[] files, Node folder, [String new_file_name]=nil): Node|nil`  
+  
+Merges any PDF documents in the given `files` array. The output file is saved to the specified folder.  
+The output's file name can be specified, if not specified the name `{timestamp}_merged.pdf` is used.  
+  
+The output file's node is returned, or `nil` if operation failed.
+### pdf_overlay
+
+`pdf_overlay(Node target, Node overlay, [String new_file_name]=null, [Bool repeat]=true): Node`  
+  
+Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially: page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...  
+By default, the overlay repeats (after we run out of overlay pages we start again from page 1), this can be changed by setting the `repeat` parameter to `false`.  
+  
+A new file can be created by specifying the `new_file_name` parameter (the file will be created on the target file's folder). By default, the target file gets overwritten.  
+  
+Returns the node object of the resulting file.
+### pdf_page_count
+
+`pdf_page_count(Node node): Int`  
+  
+Returns the number of pages in the PDF document.  
+If the document is not a valid PDF document, -1 is returned.
+### pdf_pages
+
+`pdf_pages(Node file, String page_range, [String new_file_name]=nil): Node|nil`  
+  
+Creates a new PDF only containing the specified pages. Page range parameter allows multiple formats see [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).  
+  
+Returns the output file's node object, or `nil` if operation failed.
+## Template
+### html_to_pdf
+
+`html_to_pdf(String html, [Table config]={}, [Table position]={}): string|nil`  
+  
+Renders the HTML onto a PDF file.  
+  
+A configuration table can be passed to configure various aspects of PDF generation. For more information see the [MPDF documentation](https://mpdf.github.io/reference/mpdf-variables/overview.html).  
+The position (x, y, w, h) of where to render the HTML onto the page can also be provided. For more information see the [MPDF documentation](https://mpdf.github.io/reference/mpdf-functions/writefixedposhtml.html)  
+  
+Returns the PDF as a string (or `nil` if PDF generation failed).
+### mustache
+
+`mustache(String template, [Table variables]={}): String`  
+  
+Renders a [Mustache](https://mustache.github.io) template.  
+Returns the resulting string.
 ## Util
+### create_date_time
+
+`create_date_time(Number year, [Number month], [Number day], [Number hour], [Number minute], [Number second]): Date`  
+  
+Creates a `Date` object containing date and time information. If no values are specified the current date-time is returned.  
+  
+The `Date` object is a Lua table containing the following values:  
+```lua  
+date = {  
+  year= 2022,  
+  month= 06,  
+  day= 25,  
+  hour= 16,  
+  minute= 48,  
+  second= 27  
+}  
+```
 ### format_date_time
 
 `format_date_time(Date date, [String locale], [String timezone], [String pattern]): String`  
@@ -77,6 +274,29 @@ By default, locale is set to `en`, and no symbol/currency are specified.
 **Symbol:** any string is allowed. It is be used as the currency symbol in the output string  
 **Currency:** a string containing a valid ISO 4217 currency code. It is used for calculating currency subdivisions (cents, pennies, etc.)  
 **Locale:** a string containing a valid CLDR locale. It is used for formatting in a locale specific way (e.g. symbol before or after value)
+### http_request
+
+`http_get(String url, [String method]='GET', [Table data]={}): String`  
+  
+Performs an HTTP request to the given URL using the given method and data.  
+Returns the response. If the content could not be fetched, `nil` is returned.  
+  
+**Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
+### json
+
+`json(Table|string input): String|Table|nil`  
+  
+If the input is a string, returns a Table of the JSON represented in the string.  
+If the input is a table, returns the JSON representation of that object.  
+If encoding/decoding fails, `nil` is returned.
+### log
+
+`log(String message, [Int level=1], [Table context={}]): void`  
+  
+Logs a message to the Nextcloud log.  
+  
+You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
+You may append some context to the log by passing a table containing the relevant data.
 ### sort
 
 `sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  
@@ -100,192 +320,8 @@ fruits = {{name="grape"}, {name="apple"}, {name="banana"}, {name="orange"}}
 fruits = sort(fruits, "name", true)  
 -- {{name="apple"}, {name="banana"},{name="grape"},{name="orange"}}  
 ```
-### json
+### wait
 
-`json(Table|string input): String|Table|nil`  
+`wait(Number seconds): void`  
   
-If the input is a string, returns a Table of the JSON represented in the string.  
-If the input is a table, returns the JSON representation of that object.  
-If encoding/decoding fails, `nil` is returned.
-### create_date_time
-
-`create_date_time(Number year, [Number month], [Number day], [Number hour], [Number minute], [Number second]): Date`  
-  
-Creates a `Date` object containing date and time information. If no values are specified the current date-time is returned.  
-  
-The `Date` object is a Lua table containing the following values:  
-```lua  
-date = {  
-  year= 2022,  
-  month= 06,  
-  day= 25,  
-  hour= 16,  
-  minute= 48,  
-  second= 27  
-}  
-```
-### http_request
-
-`http_get(String url, [String method]='GET', [Table data]={}): String`  
-  
-Performs an HTTP request to the given URL using the given method and data.  
-Returns the response. If the content could not be fetched, `nil` is returned.  
-  
-**Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
-## Template
-### mustache
-
-`mustache(String template, [Table variables]={}): String`  
-  
-Renders a [Mustache](https://mustache.github.io) template.  
-Returns the resulting string.
-### html_to_pdf
-
-`html_to_pdf(String html, [Table config]={}, [Table position]={}): string|nil`  
-  
-Renders the HTML onto a PDF file.  
-  
-A configuration table can be passed to configure various aspects of PDF generation. For more information see the [MPDF documentation](https://mpdf.github.io/reference/mpdf-variables/overview.html).  
-The position (x, y, w, h) of where to render the HTML onto the page can also be provided. For more information see the [MPDF documentation](https://mpdf.github.io/reference/mpdf-functions/writefixedposhtml.html)  
-  
-Returns the PDF as a string (or `nil` if PDF generation failed).
-## Error
-### abort
-
-`abort(String message): void`  
-  
-Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
-## Pdf
-### pdf_merge
-
-`pdf_merge(Node[] files, Node folder, [String new_file_name]=nil): Node|nil`  
-  
-Merges any PDF documents in the given `files` array. The output file is saved to the specified folder.  
-The output's file name can be specified, if not specified the name `{timestamp}_merged.pdf` is used.  
-  
-The output file's node is returned, or `nil` if operation failed.
-### pdf_pages
-
-`pdf_pages(Node file, String page_range, [String new_file_name]=nil): Node|nil`  
-  
-Creates a new PDF only containing the specified pages. Page range parameter allows multiple formats see [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).  
-  
-Returns the output file's node object, or `nil` if operation failed.
-### pdf_overlay
-
-`pdf_overlay(Node target, Node overlay, [String new_file_name]=null, [Bool repeat]=true): Node`  
-  
-Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially: page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...  
-By default, the overlay repeats (after we run out of overlay pages we start again from page 1), this can be changed by setting the `repeat` parameter to `false`.  
-  
-A new file can be created by specifying the `new_file_name` parameter (the file will be created on the target file's folder). By default, the target file gets overwritten.  
-  
-Returns the node object of the resulting file.
-### pdf_page_count
-
-`pdf_page_count(Node node): Int`  
-  
-Returns the number of pages in the PDF document.  
-If the document is not a valid PDF document, -1 is returned.
-### pdf_decrypt
-
-`pdf_decrypt(Node file, [String password]=nil, [String new_file_name]=nil): Node|nil`  
-  
-Removes protections from the PDF file. If `new_file_name` is specified a new file is created, otherwise the existing file gets overwritten.  
-  
-Returns the node object for the resulting file.
-## Files
-### meta_data
-
-`meta_data(Node node): Node`  
-  
-Returns an inflated Node object with additional meta-data information for the given file or directory. The additional meta-data attributes are:  
- - `size`: the size of the file (in bytes)  
- - `mimetype`: the mime-type of the file,  
- - `etag`: the entity tag of the file.  
- - `utime`: the UNIX-timestamp at which the file was uploaded to the server  
- - `mtime`: the UNIX-timestamp at which the file was last modified  
- - `can_read`: whether the user can read the file or can read files from the directory  
- - `can_delete`: whether the user can delete the file or can delete files from the directory  
- - `can_update`: whether the user can modify the file or can write to the directory
-### node_exists
-
-`node_exists(Node node): Bool`  
-  
-Returns whether a node object represents a real file or folder.
-### new_file
-
-`new_file(Node folder, String name, [String content]=nil): Node|nil`  
-  
-Creates a new file at specified folder.  
-If successful, returns the newly created file node. If file creation fails, returns `nil`.
-### file_content
-
-`file_content(Node node): String|nil`  
-  
-Returns the string content of the file. If the node is a directory or the file does not exist, `nil` is returned.
-### is_file
-
-`is_file(Node node): Bool`  
-  
-Returns whether the given node is a file.
-### copy_file
-
-`copy_file(Node file, String folder_path, [String name]=nil): Bool`  
-  
-Copies the given `file` to the specified `folder_path`.  
-Optionally a new name can be specified for the file, if none is specified the original name is used.  
-  
-If the target file already exists, the operation will not succeed.  
-  
-Returns whether the operation was successful.
-### is_folder
-
-`is_folder(Node node): Bool`  
-  
-Returns whether the given node is a folder.
-### file_delete
-
-`file_delete(Node node, [Bool success_if_not_found]=true): Bool`  
-  
-Deletes the specified file/folder node.  
-Returns whether deletion succeeded.  
-  
-By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
-### full_path
-
-`full_path(Node node): String|nil`  
-  
-Returns the full path of the given file or directory including the node's name.  
-*Example:* for a file `abc.txt` in directory `/path/to/file` the full path is: `/path/to/file/abc.txt`.  
-  
-If the file does not exist `nil` is returned.
-### directory_listing
-
-`directory_listing(Node folder, [String filter_type]='all'): Node[]`  
-  
-Returns a list of the directory contents, if the given node is not a folder, returns an empty list.  
-Optionally a second argument can be provided to filter out files or folders:  
- - If `"file"` is provided: only files are returned  
- - If `"folder"` is provided: only folders are returned  
- - If any other value is provided: both files and folders are returned.
-### root
-
-`root(): Node`  
-  
-Returns the node object for the user's root directory.
-### exists
-
-`exists(Node node, [String file_name]=nil): Bool`  
-  
-Returns whether a file or directory exists.  
-Optionally the name of a file can be specified as a second argument, in which case the first argument will be  
-assumed to be directory. The function will return whether the file exists in the directory.
-### get_parent
-
-`get_parent(Node node): Node`  
-  
-Returns the parent folder for the given file or directory.  
-The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.  
-  
-If the given file cannot be found, `nil` is returned.
+Halts the execution for the specified amount of time (in seconds), rounded to the closest second.

@@ -1,11 +1,20 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+## 1.1.0
+
+### Added
+
+- Flow support
+- Added function `pdf_linearize`
+- Added function `file_move`
+- Added function `file_unlock`
+- Added function `log`
+
+### Fixed
+- Updated PDF dependency to fix merge issue with faulty PDF files
 
 
-## [1.0.0] - 2022-07-21
+## 1.0.0
 
 ### Added
 

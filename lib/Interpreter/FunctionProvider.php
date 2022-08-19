@@ -29,6 +29,7 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
+use OCA\FilesScripts\Interpreter\Functions\Util\For_Each;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
@@ -75,7 +76,8 @@ class FunctionProvider implements IFunctionProvider {
 		File_Unlock $f31,
 		File_Move $f32,
 		Wait $f33,
-		Log $f34
+		Log $f34,
+		For_Each $f35
 	) {
 		$this->functions = func_get_args();
 	}

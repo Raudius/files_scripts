@@ -27,10 +27,8 @@ ifeq (, $(composer))
 	curl -sS https://getcomposer.org/installer | php
 	mv composer.phar $(BUILD_TOOLS_DIR)
 	php $(BUILD_TOOLS_DIR)/composer.phar install --prefer-dist --ignore-platform-reqs --no-dev
-	php $(BUILD_TOOLS_DIR)/composer.phar update --prefer-dist --ignore-platform-reqs --no-dev
 else
 	composer install --prefer-dist --ignore-platform-reqs --no-dev
-	composer update --prefer-dist --ignore-platform-reqs --no-dev
 endif
 
 npm-init:
@@ -122,4 +120,4 @@ clean-up-build:
 	rm -rf $(RELEASE_DIR)/$(APP_NAME)
 
 # Build a release package
-build: npm-update build-js-production composer prepare-build sign-build package-build sign-tar clean-up-build
+build: npm-init build-js-production composer prepare-build sign-build package-build sign-tar clean-up-build

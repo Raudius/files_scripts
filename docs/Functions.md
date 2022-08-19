@@ -36,6 +36,7 @@
 
   - **[Util:](#Util)** Utility functions for scripting convenience
     - [create_date_time](#create_date_time)  
+    - [for_each](#for_each)  
     - [format_date_time](#format_date_time)  
     - [format_price](#format_price)  
     - [http_request](#http_request)  
@@ -253,6 +254,24 @@ date = {
   minute= 48,  
   second= 27  
 }  
+```
+### for_each
+
+`for_each(Table items, Function function): Table`  
+  
+Calls the function on each key/item pair.  
+Note that inside the function only global values can be accessed.  
+  
+```lua  
+bits = {"to", "be", "or", "not", "to", "be"}  
+sentence = ""  
+  
+for_each(  
+  bits,  
+  function (key, value)  
+    sentence = sentence .. value .. " "  
+  end  
+)  
 ```
 ### format_date_time
 

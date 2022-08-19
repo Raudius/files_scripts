@@ -2,10 +2,8 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
+use Exception;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
-use OCP\Files\InvalidPathException;
-use OCP\Files\NotFoundException;
-use OCP\Files\NotPermittedException;
 
 /**
  * `file_delete(Node node, [Bool success_if_not_found]=true): Bool`
@@ -29,7 +27,7 @@ class File_Delete extends RegistrableFunction {
 
 		try {
 			$file->delete();
-		} catch (InvalidPathException|NotFoundException|NotPermittedException $e) {
+		} catch (Exception $e) {
 			return false;
 		}
 		return true;

@@ -26,11 +26,9 @@ ifeq (, $(composer))
 	mkdir -p $(BUILD_TOOLS_DIR)
 	curl -sS https://getcomposer.org/installer | php
 	mv composer.phar $(BUILD_TOOLS_DIR)
-	php $(BUILD_TOOLS_DIR)/composer.phar install --prefer-dist --ignore-platform-reqs
-	php $(BUILD_TOOLS_DIR)/composer.phar update --prefer-dist --ignore-platform-reqs
+	php $(BUILD_TOOLS_DIR)/composer.phar install --prefer-dist --ignore-platform-reqs --no-dev
 else
-	composer install --prefer-dist --ignore-platform-reqs
-	composer update --prefer-dist --ignore-platform-reqs
+	composer install --prefer-dist --ignore-platform-reqs --no-dev
 endif
 
 npm-init:
@@ -101,6 +99,7 @@ prepare-build:
 
 # Signs the build files
 sign-build:
+	echo "Signing app files…"; \
 	sudo -u \#33 -- $(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
     			--certificate="$(CERT_DIR)/$(APP_NAME).crt" \
     			--path="$(RELEASE_DIR)/$(APP_NAME)";
@@ -109,16 +108,16 @@ sign-build:
 package-build:
 	tar -czf $(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz \
 		-C $(RELEASE_DIR) $(APP_NAME)
-	# Sign the release tarball
-	@if [ -f $(CERT_DIR)/$(APP_NAME).key ]; then \
-		echo "Signing release tarball…"; \
-		openssl dgst -sha512 -sign $(CERT_DIR)/$(APP_NAME).key \
-			$(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz | openssl base64; \
-	fi
+
+# Sign the release tarball
+sign-tar:
+	echo "Signing release tarball…"; \
+	openssl dgst -sha512 -sign $(CERT_DIR)/$(APP_NAME).key \
+		$(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz | openssl base64;
 
 # Deletes any unnecessary files after the build is completed
 clean-up-build:
 	rm -rf $(RELEASE_DIR)/$(APP_NAME)
 
 # Build a release package
-build: npm-update build-js-production composer prepare-build sign-build package-build clean-up-build
+build: npm-init build-js-production composer prepare-build sign-build package-build sign-tar clean-up-build

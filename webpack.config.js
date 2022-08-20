@@ -2,7 +2,10 @@ const webpackConfigOld = require('@nextcloud/webpack-vue-config')
 
 module.exports = {
 	...webpackConfigOld,
-	entry: "./src/main.ts",
+	entry: {
+		main: "./src/main.ts",
+		workflow: "./src/workflow.ts"
+	},
 	devtool: "source-map",
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.

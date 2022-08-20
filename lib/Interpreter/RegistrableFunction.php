@@ -18,14 +18,14 @@ abstract class RegistrableFunction {
 		return strtolower((new ReflectionClass(static::class))->getShortName());
 	}
 
-	final public function register($lua, $context): void {
-		$lua->registerCallback(static::getFunctionName(), [$this, 'run']);
+	final public function register($context): void {
+		$context->getLua()->registerCallback(static::getFunctionName(), [$this, 'run']);
 		$this->context = $context;
 	}
 
 	final protected function getContext(): Context {
 		if (!$this->context) {
-			throw new AbortException('Script setup failed. No context.');
+			throw new AbortException('Function has no context.');
 		}
 
 		return $this->context;

@@ -23,24 +23,20 @@ class Interpreter {
 	 * @throws AbortException - Thrown by registrable functions during $lua->eval()
 	 */
 	public function execute(Script $script, Context $context): void {
-		$lua = $this->createLua($context);
+		$this->registerFunctions($context);
 
 		$oldVal = ignore_user_abort(true);
 
 		Phpdf::setTempDirectory($this->tempManager->getTempBaseDir());
-		$lua->eval($script->getProgram());
+		$context->getLua()->eval($script->getProgram());
 
 		ignore_user_abort($oldVal);
 	}
 
-	private function createLua(Context $context): Lua {
-		$lua = new Lua();
-
+	private function registerFunctions(Context $context) {
 		$functions = $this->functionProvider->getFunctions();
 		foreach ($functions as $function) {
-			$function->register($lua, $context);
+			$function->register($context);
 		}
-
-		return $lua;
 	}
 }

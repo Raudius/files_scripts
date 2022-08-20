@@ -19,6 +19,9 @@ export default {
 	components: {
 		Multiselect,
 	},
+	props: {
+		value: String,
+	},
 	data() {
 		return {
 			scripts: [],
@@ -31,8 +34,13 @@ export default {
 			this.$emit('input', id.toString())
 		},
 	},
+
 	async mounted() {
 		this.scripts = await api.getScripts()
+		const value = parseInt(this.value)
+		this.selectedScript = this.scripts.find(script => {
+			return script.id === value
+		})
 	},
 	methods: {
 		t,

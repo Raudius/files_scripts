@@ -1,6 +1,6 @@
 # Admin documentation
 
-Before users can start using any custom actions, you must add them through the admin menu. These can be found in the `FileActions` section of the administration menu. On a fresh install some ready-made actions should be available there (albeit disabled for the user).
+Before users can start using any custom actions, you must add them through the admin menu. These can be found in the `File actions` section, in the administration settings menu. On a fresh install some ready-made actions should be available there (albeit disabled for the user).
 
 ## User input
 Other than the selected files, you can ask the user to input other data as part of the action. 
@@ -44,4 +44,12 @@ In principle if you know these 3 values you could construct the Table yourself, 
 
 If you are writing a new script and need to test it I would highly advise using a test environment. This will avoid any mishaps from affecting any live data.
 
-If for any reason you must test your scripts on a live environment, and do not want to make the scripts available to users yet, you can limit the app to the "admin" group from the Nextcloud "Apps" page (*your.nextcloud.com/index.php/settings/apps/installed/files_scripts*), by ticking the `Limit to groups` option.
+If for any reason you must test your scripts on a live environment, and do not want to make the scripts available to users yet, you can limit the app to the "admin" group from the Nextcloud "Apps" page (*\<hostname\>/index.php/settings/apps/installed/files_scripts*), by ticking the `Limit to groups` option.
+
+## Flow
+
+Actions can also be configured to work with Nextcloud's automated flows.
+
+When running a script from a flow `get_input_files()` will only contain the file that triggered the flow, and `get_target_folder()` will be the folder containing the file. 
+
+Additionally, for "file rename" and "file copy" events, the previous file node's path can be accessed with: `get_input().old_node_path`

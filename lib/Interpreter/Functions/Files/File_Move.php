@@ -3,7 +3,6 @@
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
 use Exception;
-use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\IRootFolder;
 
 /**
@@ -15,9 +14,9 @@ use OCP\Files\IRootFolder;
  *
  * If the target file already exists, the operation will not succeed.
  *
- * Returns the resulting file, or nil if the operation failed.
+ * Returns the resulting file, or `nil` if the operation failed.
  */
-class File_Move extends RegistrableFunction {
+class File_Move extends File_Move_Unsafe {
 	private IRootFolder $rootFolder;
 
 	public function __construct(IRootFolder $rootFolder) {
@@ -43,9 +42,8 @@ class File_Move extends RegistrableFunction {
 		}
 
 		try {
-			$destination = $this->rootFolder->getRelativePath($folderNode->getPath()) . "/$newName";
-			$newFileNode = $fileNode->move($destination);
-			return $this->getNodeData($newFileNode);
+			$destination = $this->rootFolder->getRelativePath($folderNode->getPath());
+			return parent::run($file, $destination, $newName);
 		} catch (Exception $e) {
 			return null;
 		}

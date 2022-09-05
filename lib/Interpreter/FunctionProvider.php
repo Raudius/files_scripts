@@ -7,6 +7,7 @@ use OCA\FilesScripts\Interpreter\Functions\Error\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
+use OCA\FilesScripts\Interpreter\Functions\Files\Exists_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy_Unsafe;
@@ -85,7 +86,8 @@ class FunctionProvider implements IFunctionProvider {
 		File_Copy $f36,
 		File_Copy_Unsafe $f37,
 		File_Move_Unsafe $f38,
-		Home $f39
+		Home $f39,
+		Exists_Unsafe $f40
 	) {
 		$this->functions = func_get_args();
 	}

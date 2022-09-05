@@ -50,7 +50,6 @@
     - [format_price](#format_price)  
     - [http_request](#http_request)  
     - [json](#json)  
-    - [log](#log)  
     - [sort](#sort)  
     - [wait](#wait)  
 
@@ -255,15 +254,15 @@ local config = {
     video_bitrate= 2500,       # in kilobits  
     initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
     additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
-    ffmpeg.threads= 4  
+    ffmpeg_threads= 4  
   }  
 }  
 ```  
   
-Usage example (converts a file to .wmv format):  
+Usage example (converts a file to MPEG-4 format):  
 ```lua  
-local wmv = ffmpeg(get_input_files()[1], "output.wmv", {  
-  format = { name= "wmv" }  
+local wmv = ffmpeg(get_input_files()[1], "output.mp4", {  
+  format = { name= "x264" }  
 })  
 ```
 ### ffprobe
@@ -398,14 +397,6 @@ Returns the response. If the content could not be fetched, `nil` is returned.
 If the input is a string, returns a Table of the JSON represented in the string.  
 If the input is a table, returns the JSON representation of that object.  
 If encoding/decoding fails, `nil` is returned.
-### log
-
-`log(String message, [Int level=1], [Table context={}]): void`  
-  
-Logs a message to the Nextcloud log.  
-  
-You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
-You may append some context to the log by passing a table containing the relevant data.
 ### sort
 
 `sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  

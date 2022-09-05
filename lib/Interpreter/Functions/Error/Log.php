@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesScripts\Interpreter\Functions\Util;
+namespace OCA\FilesScripts\Interpreter\Functions\Error;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use Psr\Log\LoggerInterface;

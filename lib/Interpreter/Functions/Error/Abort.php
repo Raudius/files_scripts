@@ -12,6 +12,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Abort extends RegistrableFunction {
 	public function run($error = null): array {
-		throw new AbortException($error ?? "");
+		$error = (string) $error;
+		throw new AbortException($error);
 	}
 }

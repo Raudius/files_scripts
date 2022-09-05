@@ -31,7 +31,7 @@ abstract class RegistrableFunction {
 		return $this->context;
 	}
 
-	final protected function getRootFolder(): Folder {
+	final protected function getHomeFolder(): Folder {
 		return $this->getContext()->getRoot();
 	}
 
@@ -45,7 +45,7 @@ abstract class RegistrableFunction {
 		}
 
 		try {
-			return $this->getRootFolder()->get($path);
+			return $this->getHomeFolder()->get($path);
 		} catch (NotFoundException $e) {
 			return null;
 		}
@@ -74,7 +74,7 @@ abstract class RegistrableFunction {
 			$id = null;
 		}
 
-		$root = $this->getRootFolder();
+		$root = $this->getHomeFolder();
 		$path = '';
 		$name = '/';
 		if ($id !== $root->getId()) {

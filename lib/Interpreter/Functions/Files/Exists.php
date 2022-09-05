@@ -19,7 +19,7 @@ class Exists extends RegistrableFunction {
 
 		$path = $this->getPath($node);
 		if ($fileName === null) {
-			return $this->getRootFolder()->nodeExists($path);
+			return $this->getHomeFolder()->nodeExists($path);
 		}
 
 		$folderNode = $this->getFolder($path);

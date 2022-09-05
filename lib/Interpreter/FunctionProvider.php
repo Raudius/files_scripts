@@ -3,15 +3,20 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Error\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Delete;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Move;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Move_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Unlock;
 use OCA\FilesScripts\Interpreter\Functions\Files\Full_Path;
 use OCA\FilesScripts\Interpreter\Functions\Files\Get_Parent;
+use OCA\FilesScripts\Interpreter\Functions\Files\Home;
 use OCA\FilesScripts\Interpreter\Functions\Files\Is_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Is_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
@@ -34,7 +39,6 @@ use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
-use OCA\FilesScripts\Interpreter\Functions\Util\Log;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
 use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
 
@@ -64,20 +68,24 @@ class FunctionProvider implements IFunctionProvider {
 		Html_To_Pdf $f19,
 		Mustache $f20,
 		Sort $f21,
-		Json $f22,
-		Http_Request $f23,
-		Pdf_Pages $f24,
-		File_Delete $f25,
-		Node_Exists $f26,
-		Pdf_Page_Count $f27,
-		Format_Price $f28,
+		Json             $f22,
+		Http_Request     $f23,
+		Pdf_Pages        $f24,
+		File_Delete      $f25,
+		Node_Exists      $f26,
+		Pdf_Page_Count   $f27,
+		Format_Price     $f28,
 		Create_Date_Time $f29,
 		Format_Date_Time $f30,
-		File_Unlock $f31,
-		File_Move $f32,
-		Wait $f33,
-		Log $f34,
-		For_Each $f35
+		File_Unlock      $f31,
+		File_Move        $f32,
+		Wait             $f33,
+		Log              $f34,
+		For_Each         $f35,
+		File_Copy $f36,
+		File_Copy_Unsafe $f37,
+		File_Move_Unsafe $f38,
+		Home $f39
 	) {
 		$this->functions = func_get_args();
 	}

@@ -5,12 +5,17 @@
     - [copy_file](#copy_file)  
     - [directory_listing](#directory_listing)  
     - [exists](#exists)  
+    - [exists_unsafe](#exists_unsafe)  
     - [file_content](#file_content)  
+    - [file_copy](#file_copy)  
+    - [file_copy_unsafe](#file_copy_unsafe)  
     - [file_delete](#file_delete)  
     - [file_move](#file_move)  
+    - [file_move_unsafe](#file_move_unsafe)  
     - [file_unlock](#file_unlock)  
     - [full_path](#full_path)  
     - [get_parent](#get_parent)  
+    - [home](#home)  
     - [is_file](#is_file)  
     - [is_folder](#is_folder)  
     - [meta_data](#meta_data)  
@@ -56,12 +61,7 @@ Aborts execution with an error message. This error message will be shown to the 
 
 `copy_file(Node file, String folder_path, [String name]=nil): Bool`  
   
-Copies the given `file` to the specified `folder_path`.  
-Optionally a new name can be specified for the file, if none is specified the original name is used.  
-  
-If the target file already exists, the operation will not succeed.  
-  
-Returns whether the operation was successful.
+⚠️ DEPRECATED: This function will be removed in v2.0.0. See [file_copy](#file_copy)
 ### directory_listing
 
 `directory_listing(Node folder, [String filter_type]='all'): Node[]`  
@@ -78,11 +78,41 @@ Optionally a second argument can be provided to filter out files or folders:
 Returns whether a file or directory exists.  
 Optionally the name of a file can be specified as a second argument, in which case the first argument will be  
 assumed to be directory. The function will return whether the file exists in the directory.
+### exists_unsafe
+
+`exists_unsafe(String path): Bool`  
+  
+Returns whether a file or directory exists. The expected path must be from the server root directory (e.g. `/alice/files/example.txt`).  
+For most cases it is recommended to use the function [exists()](#exists).
 ### file_content
 
 `file_content(Node node): String|nil`  
   
 Returns the string content of the file. If the node is a directory or the file does not exist, `nil` is returned.
+### file_copy
+
+`file_copy(Node file, String folder_path, [String name]=nil): Node|nil`  
+  
+Copies the given `file` to the specified `folder_path`.  
+Optionally a new name can be specified for the file, if none is specified the original name is used.  
+  
+If the target file already exists, the operation will not succeed.  
+  
+Returns the resulting file node, or `nil` if the operation failed.
+### file_copy_unsafe
+
+`file_copy_unsafe(Node file, String folder_path, [String name]=nil): Bool`  
+  
+Unsafe version of [`file_copy`](#file_copy).  
+This function expects an absolute path from the server root (not from the users home folder). This means that files can be copied to locations which the user running the action does not have access to.  
+This function performs no validation on the given path and does not check for file overwrites (overwrite handling is left up to the Nextcloud server implementation).  
+  
+⚠️ Use of this function is strongly discouraged as it offers no safeguards against data-loss and carries potential security concerns.  
+  
+```lua  
+local file = get_input_files()[1]  
+file_copy_unsafe(file, "alice/files/inbox", "message.txt")  
+```
 ### file_delete
 
 `file_delete(Node node, [Bool success_if_not_found]=true): Bool`  
@@ -101,7 +131,21 @@ If no new_name is given, the old name is used.
   
 If the target file already exists, the operation will not succeed.  
   
-Returns the resulting file, or nil if the operation failed.
+Returns the resulting file, or `nil` if the operation failed.
+### file_move_unsafe
+
+`file_move_unsafe(Node file, [String folder = nil], [String new_name = nil]): Node|null`  
+  
+Unsafe version of [`file_move`](#file_move).  
+This function expects an absolute path from the server root (not from the users home folder). This means that files can be copied to locations which the user running the action does not have access to.  
+This function performs no validation on the given path and does not check for file overwrites (overwrite handling is left up to the Nextcloud server implementation).  
+  
+⚠️ Use of this function is strongly discouraged as it offers no safeguards against data-loss and carries potential security concerns.  
+  
+```lua  
+local file = get_input_files()[1]  
+file_move_unsafe(file, "alice/files/inbox", "message.txt")  
+```
 ### file_unlock
 
 `file_unlock(Node node, [Bool success_if_not_found]=true): Bool`  
@@ -126,6 +170,11 @@ Returns the parent folder for the given file or directory.
 The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.  
   
 If the given file cannot be found, `nil` is returned.
+### home
+
+`home(): Node`  
+  
+Returns the node object for the user's home directory.
 ### is_file
 
 `is_file(Node node): Bool`  
@@ -164,7 +213,7 @@ Returns whether a node object represents a real file or folder.
 
 `root(): Node`  
   
-Returns the node object for the user's root directory.
+⚠️ DEPRECATED: See [home](#home)
 ## Input
 ### get_input
 

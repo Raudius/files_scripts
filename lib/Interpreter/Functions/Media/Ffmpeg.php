@@ -42,15 +42,15 @@ use Throwable;
  *     video_bitrate= 2500,       # in kilobits
  *     initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
  *     additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
- *     ffmpeg.threads= 4
+ *     ffmpeg_threads= 4
  *   }
  * }
  * ```
  *
- * Usage example (converts a file to .wmv format):
+ * Usage example (converts a file to MPEG-4 format):
  * ```lua
- * local wmv = ffmpeg(get_input_files()[1], "output.wmv", {
- *   format = { name= "wmv" }
+ * local wmv = ffmpeg(get_input_files()[1], "output.mp4", {
+ *   format = { name= "x264" }
  * })
  * ```
  */

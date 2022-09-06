@@ -17,7 +17,7 @@ class Full_Path extends RegistrableFunction {
 	public function run($node = null): ?string {
 		$node = $this->getNode($this->getPath($node));
 		try {
-			return $node ? $this->getRootFolder()->getRelativePath($node->getPath()) : null;
+			return $node ? $this->getHomeFolder()->getRelativePath($node->getPath()) : null;
 		} catch (NotFoundException $e) {
 			return null;
 		}

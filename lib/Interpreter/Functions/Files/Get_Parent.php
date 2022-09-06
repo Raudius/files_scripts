@@ -21,8 +21,8 @@ class Get_Parent extends RegistrableFunction {
 			return null;
 		}
 		try {
-			if ($node->getId() === $this->getRootFolder()->getId()) {
-				$node = $this->getRootFolder();
+			if ($node->getId() === $this->getHomeFolder()->getId()) {
+				$node = $this->getHomeFolder();
 			}
 		} catch (InvalidPathException|NotFoundException $e) {
 			return null;

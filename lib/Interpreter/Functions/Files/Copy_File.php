@@ -2,41 +2,36 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
-use OCA\FilesScripts\Interpreter\RegistrableFunction;
+use Psr\Log\LoggerInterface;
 
 /**
  * `copy_file(Node file, String folder_path, [String name]=nil): Bool`
  *
- * Copies the given `file` to the specified `folder_path`.
- * Optionally a new name can be specified for the file, if none is specified the original name is used.
- *
- * If the target file already exists, the operation will not succeed.
- *
- * Returns whether the operation was successful.
+ * ⚠️ DEPRECATED: This function will be removed in v2.0.0. See [file_copy](#file_copy)
  */
-class Copy_File extends RegistrableFunction {
+class Copy_File extends File_Copy {
+
+	private LoggerInterface $logger;
+
+	public function __construct(LoggerInterface $logger) {
+		$this->logger = $logger;
+	}
+
+	/**
+	 * TODO: Remove this function for v2 and add return to File_Copy function signature.
+	 *
+	 * @param $file
+	 * @param $folderPath
+	 * @param $name
+	 * @return bool
+	 * @throws \OCA\FilesScripts\Interpreter\AbortException
+	 */
 	public function run(
 		$file = null,
 		$folderPath = null,
 		$name = null
-	): bool {
-		$fileNode = $this->getFile($this->getPath($file));
-		$folderNode = $this->getFolder($folderPath);
-
-		if (!$fileNode) {
-			return false;
-		}
-		if (!$folderNode || $folderNode->nodeExists($name)) {
-			return false;
-		}
-
-		$name = $name ?: $fileNode->getName();
-		$path = $folderNode->getPath() . '/' . $name;
-		try {
-			$fileNode->copy($path);
-		} catch (\Exception $exception) {
-			return false;
-		}
-		return true;
+	) {
+		$this->logger->warning("[File actions]: Use of deprecated function `copy_file()`, please use `file_copy()` instead.");
+		return (bool) parent::run($file, $folderPath, $name);
 	}
 }

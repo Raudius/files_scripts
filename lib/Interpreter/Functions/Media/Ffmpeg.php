@@ -43,14 +43,22 @@ use Throwable;
  *     initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
  *     additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
  *     ffmpeg_threads= 4
- *   }
+ *   },
+ *   clip= {
+ *     start= 0,      # Start of the clip in seconds (also accepts a string in the format [hh]:[mm]:[ss]:[frames]), defaults to 0
+ *     duration= 2,   # Duration of the clip in seconds (defaults to the end of the stream)
+ *   },
+ *   width= 1920,     # Sets output width in pixels
+ *   height= 1080     # Sets output height in pixels
  * }
  * ```
  *
- * Usage example (converts a file to MPEG-4 format):
+ * **Example1** converts a file to MPEG-4 format, and sets the resolution to 500x400:
  * ```lua
  * local wmv = ffmpeg(get_input_files()[1], "output.mp4", {
- *   format = { name= "x264" }
+ *   format = { name= "x264" },
+ *   width= 500,
+ *   height= 400
  * })
  * ```
  */

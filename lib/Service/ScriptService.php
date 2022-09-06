@@ -40,8 +40,6 @@ class ScriptService {
 	 * @throws AbortException
 	 */
 	public function runScript(Script $script, Context $context): void {
-		$this->logger->error('Running script');
-
 		try {
 			$this->interpreter->execute($script, $context);
 			return;

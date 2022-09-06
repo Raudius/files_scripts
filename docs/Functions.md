@@ -1,5 +1,6 @@
   - **[Error:](#Error)** Reporting and logging
     - [abort](#abort)  
+    - [log](#log)  
 
   - **[Files:](#Files)** File operations within the Nextcloud environment
     - [copy_file](#copy_file)  
@@ -45,6 +46,7 @@
 
   - **[Util:](#Util)** Utility functions for scripting convenience
     - [create_date_time](#create_date_time)  
+    - [csv_to_table](#csv_to_table)  
     - [for_each](#for_each)  
     - [format_date_time](#format_date_time)  
     - [format_price](#format_price)  
@@ -59,6 +61,14 @@
 `abort(String message): void`  
   
 Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
+### log
+
+`log(String message, [Int level=1], [Table context={}]): void`  
+  
+Logs a message to the Nextcloud log.  
+  
+You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
+You may append some context to the log by passing a table containing the relevant data.
 ## Files
 ### copy_file
 
@@ -255,14 +265,22 @@ local config = {
     initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
     additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
     ffmpeg_threads= 4  
-  }  
+  },  
+  clip= {  
+    start= 0,      # Start of the clip in seconds (also accepts a string in the format [hh]:[mm]:[ss]:[frames]), defaults to 0  
+    duration= 2,   # Duration of the clip in seconds (defaults to the end of the stream)  
+  },  
+  width= 1920,     # Sets output width in pixels  
+  height= 1080     # Sets output height in pixels  
 }  
 ```  
   
-Usage example (converts a file to MPEG-4 format):  
+**Example1** converts a file to MPEG-4 format, and sets the resolution to 500x400:  
 ```lua  
 local wmv = ffmpeg(get_input_files()[1], "output.mp4", {  
-  format = { name= "x264" }  
+  format = { name= "x264" },  
+  width= 500,  
+  height= 400  
 })  
 ```
 ### ffprobe
@@ -344,6 +362,12 @@ date = {
   second= 27  
 }  
 ```
+### csv_to_table
+
+`csv_to_table(Node input, String separator=',', String enclosure='"'): Table`  
+  
+Creates a table from a CSV-formatted file.  
+Optionally field separator and enclosure characters may be specified.
 ### for_each
 
 `for_each(Table items, Function function): Table`  

@@ -37,6 +37,7 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
+use OCA\FilesScripts\Interpreter\Functions\Util\Csv_To_Table;
 use OCA\FilesScripts\Interpreter\Functions\Util\For_Each;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
@@ -91,7 +92,8 @@ class FunctionProvider implements IFunctionProvider {
 		Home $f39,
 		Exists_Unsafe $f40,
 		Ffmpeg $f41,
-		Ffprobe $f42
+		Ffprobe $f42,
+		Csv_To_Table $f43
 	) {
 		$this->functions = func_get_args();
 	}

@@ -28,6 +28,10 @@
     - [get_input_files](#get_input_files)  
     - [get_target_folder](#get_target_folder)  
 
+  - **[Media:](#Media)** 
+    - [ffmpeg](#ffmpeg)  
+    - [ffprobe](#ffprobe)  
+
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
     - [pdf_decrypt](#pdf_decrypt)  
     - [pdf_merge](#pdf_merge)  
@@ -101,7 +105,7 @@ If the target file already exists, the operation will not succeed.
 Returns the resulting file node, or `nil` if the operation failed.
 ### file_copy_unsafe
 
-`file_copy_unsafe(Node file, String folder_path, [String name]=nil): Bool`  
+`file_copy_unsafe(Node file, String folder_path, [String name]=nil): Node|nil`  
   
 Unsafe version of [`file_copy`](#file_copy).  
 This function expects an absolute path from the server root (not from the users home folder). This means that files can be copied to locations which the user running the action does not have access to.  
@@ -230,6 +234,43 @@ Returns a list of the selected files: these are the files the user selects befor
 `get_target_folder(): Node|nil`  
   
 Returns the target directory node. If none is provided, returns nil.
+## Media
+### ffmpeg
+
+`ffmpeg(Node input_file, String output_name, Table config): Node|nil`  
+  
+Converts the input file using FFmpeg according to the specified configuration. The output file will be placed in the same directory as the input file.  
+The output file is returned, or `nil` if the operation failed.  
+  
+The `config` parameter expects a table with the following parameters (only the format.name parameter is needed, other config parameters are optional):  
+```lua  
+local config = {  
+  timeout= 3600,  
+  format = {  
+    name= "x264",              # ogg, webm, wmv, wmv3, x264, aac, mp3, vorbis, wav  
+    audio_channels= 2,  
+    audio_codec= "aac",  
+    video_codec= "libx264",  
+    audio_bitrate= 128,        # in kilobits  
+    video_bitrate= 2500,       # in kilobits  
+    initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
+    additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters  
+    ffmpeg.threads= 4  
+  }  
+}  
+```  
+  
+Usage example (converts a file to .wmv format):  
+```lua  
+local wmv = ffmpeg(get_input_files()[1], "output.wmv", {  
+  format = { name= "wmv" }  
+})  
+```
+### ffprobe
+
+`ffprobe(Node input_file): Table`  
+  
+Returns a table detailing the metadata information that could be retrieved from the input file using [ffprobe](https://ffmpeg.org/ffprobe.html).
 ## Pdf
 ### pdf_decrypt
 

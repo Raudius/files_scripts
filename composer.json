@@ -16,7 +16,8 @@
 		"ext-curl": "*",
 		"ext-intl": "*",
 		"mpdf/mpdf": "^8.1",
-		"mustache/mustache": "^2.14"
+		"mustache/mustache": "^2.14",
+		"php-ffmpeg/php-ffmpeg": "0.19.0"
     },
 	"require-dev": {
 		"phpunit/phpunit": "^9.3.11",

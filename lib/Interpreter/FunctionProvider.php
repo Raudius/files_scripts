@@ -3,7 +3,6 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
-use OCA\FilesScripts\Interpreter\Functions\Error\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
@@ -27,6 +26,8 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Root;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
+use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
+use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
@@ -42,6 +43,7 @@ use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
 use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
+use OCA\FilesScripts\Interpreter\Functions\Util\Log;
 
 class FunctionProvider implements IFunctionProvider {
 	/** @var RegistrableFunction[] */
@@ -87,7 +89,9 @@ class FunctionProvider implements IFunctionProvider {
 		File_Copy_Unsafe $f37,
 		File_Move_Unsafe $f38,
 		Home $f39,
-		Exists_Unsafe $f40
+		Exists_Unsafe $f40,
+		Ffmpeg $f41,
+		Ffprobe $f42
 	) {
 		$this->functions = func_get_args();
 	}

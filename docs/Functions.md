@@ -1,5 +1,6 @@
   - **[Error:](#Error)** Reporting and logging
     - [abort](#abort)  
+    - [log](#log)  
 
   - **[Files:](#Files)** File operations within the Nextcloud environment
     - [copy_file](#copy_file)  
@@ -45,6 +46,7 @@
 
   - **[Util:](#Util)** Utility functions for scripting convenience
     - [create_date_time](#create_date_time)  
+    - [csv_to_table](#csv_to_table)  
     - [for_each](#for_each)  
     - [format_date_time](#format_date_time)  
     - [format_price](#format_price)  
@@ -59,6 +61,14 @@
 `abort(String message): void`  
   
 Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
+### log
+
+`log(String message, [Int level=1], [Table context={}]): void`  
+  
+Logs a message to the Nextcloud log.  
+  
+You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
+You may append some context to the log by passing a table containing the relevant data.
 ## Files
 ### copy_file
 
@@ -352,6 +362,12 @@ date = {
   second= 27  
 }  
 ```
+### csv_to_table
+
+`csv_to_table(Node input, String separator=',', String enclosure='"'): Table`  
+  
+Creates a table from a CSV-formatted file.  
+Optionally field separator and enclosure characters may be specified.
 ### for_each
 
 `for_each(Table items, Function function): Table`  

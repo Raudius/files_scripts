@@ -60,6 +60,7 @@
     - [format_price](#format_price)  
     - [http_request](#http_request)  
     - [json](#json)  
+    - [shell_command](#shell_command)  
     - [sort](#sort)  
     - [wait](#wait)  
 
@@ -492,6 +493,14 @@ Returns the response. If the content could not be fetched, `nil` is returned.
 If the input is a string, returns a Table of the JSON represented in the string.  
 If the input is a table, returns the JSON representation of that object.  
 If encoding/decoding fails, `nil` is returned.
+### shell_command
+
+`shell_command(String command): void`  
+  
+Issues the given command to the linux shell. Returns a table with the result, the table contains the following indices:  
+  - `exit_code`  
+  - `output`  
+  - `errors`
 ### sort
 
 `sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  

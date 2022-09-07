@@ -1,8 +1,8 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Delete" : "O'chir",
-    "Saved" : "Saqlangan",
-    "Unknown error" : "Noma'lum xatolik"
+    "Delete" : "Delete",
+    "Saved" : "Saved",
+    "Unknown error" : "Unknown error"
 },
 "nplurals=1; plural=0;");

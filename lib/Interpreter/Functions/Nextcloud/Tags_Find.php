@@ -14,16 +14,16 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *   id= 42,
  *   name= "teamA",
  *   user_visible= true,
- *   name_exact= false      # defaults to false
+ *   name_exact= false      -- defaults to false
  * }
  * ```
  *
  * Examples:
  * ```lua
- * tags_find()                  # Finds all tags
- * tags({user_visible= true})   # Finds all user-visible tags
- * tags_find({name= "2021"})    # Finds all tags that contain the substring "2021".
- * tags_find({name= "2021", name_exact= true})   # Finds an array containing a tag with the name "2021", or returns an empty array
+ * tags_find()                  -- Finds all tags
+ * tags({user_visible= true})   -- Finds all user-visible tags
+ * tags_find({name= "2021"})    -- Finds all tags that contain the substring "2021".
+ * tags_find({name= "2021", name_exact= true})   -- Finds an array containing a tag with the name "2021", or returns an empty array
  * ```
  */
 class Tags_Find extends RegistrableFunction {

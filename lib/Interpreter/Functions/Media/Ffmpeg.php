@@ -34,22 +34,22 @@ use Throwable;
  * local config = {
  *   timeout= 3600,
  *   format = {
- *     name= "x264",              # ogg, webm, wmv, wmv3, x264, aac, mp3, vorbis, wav
+ *     name= "x264",              -- ogg, webm, wmv, wmv3, x264, aac, mp3, vorbis, wav
  *     audio_channels= 2,
  *     audio_codec= "aac",
  *     video_codec= "libx264",
- *     audio_bitrate= 128,        # in kilobits
- *     video_bitrate= 2500,       # in kilobits
- *     initial_parameters= {},    # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
- *     additional_parameters= {}, # https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
+ *     audio_bitrate= 128,        -- in kilobits
+ *     video_bitrate= 2500,       -- in kilobits
+ *     initial_parameters= {},    -- https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
+ *     additional_parameters= {}, -- https://github.com/PHP-FFMpeg/PHP-FFMpeg/tree/0.x#add-additional-parameters
  *     ffmpeg_threads= 4
  *   },
  *   clip= {
- *     start= 0,      # Start of the clip in seconds (also accepts a string in the format [hh]:[mm]:[ss]:[frames]), defaults to 0
- *     duration= 2,   # Duration of the clip in seconds (defaults to the end of the stream)
+ *     start= 0,      -- Start of the clip in seconds (also accepts a string in the format [hh]:[mm]:[ss]:[frames]), defaults to 0
+ *     duration= 2,   -- Duration of the clip in seconds (defaults to the end of the stream)
  *   },
- *   width= 1920,     # Sets output width in pixels
- *   height= 1080     # Sets output height in pixels
+ *   width= 1920,     -- Sets output width in pixels
+ *   height= 1080     -- Sets output height in pixels
  * }
  * ```
  *

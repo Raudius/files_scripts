@@ -34,10 +34,12 @@
     - [ffprobe](#ffprobe)  
 
   - **[Nextcloud:](#Nextcloud)** Nextcloud specific functionality
+    - [notify](#notify)  
     - [tag_create](#tag_create)  
     - [tag_file](#tag_file)  
     - [tag_file_unassign](#tag_file_unassign)  
     - [tags_find](#tags_find)  
+    - [users_find](#users_find)  
 
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
     - [pdf_decrypt](#pdf_decrypt)  
@@ -295,6 +297,16 @@ local wmv = ffmpeg(get_input_files()[1], "output.mp4", {
   
 Returns a table detailing the metadata information that could be retrieved from the input file using [ffprobe](https://ffmpeg.org/ffprobe.html).
 ## Nextcloud
+### notify
+
+`notify(User user, String subject, String message): Bool`  
+  
+Sends a simple notification to a user.  
+  
+```lua  
+local user = users_find()[1]  
+notify(user, "Hello!", "Message goes here :)")  
+```
 ### tag_create
 
 `tag_create(String name, [Bool user_visible= true], [Bool user_assignable= true]): ?Tag`  
@@ -327,7 +339,7 @@ local parameters = {
   id= 42,  
   name= "teamA",  
   user_visible= true,  
-  name_exact= false      # defaults to false  
+  name_exact= false      -- defaults to false  
 }  
 ```  
   
@@ -338,6 +350,15 @@ tags({user_visible= true})   -- Finds all user-visible tags
 tags_find({name= "2021"})    -- Finds all tags that contain the substring "2021".  
 tags_find({name= "2021", name_exact= true})   -- Finds an array containing a tag with the name "2021", or returns an empty array  
 ```
+### users_find
+
+`users_find([String name = nil], [String uuid = nil]): User[]`  
+  
+Finds a Nextcloud user from the given parameters.  
+  
+If the name is specified, the function will return all users who have a matching name. If the UUID is given the name is ignored and a user is returned with the given UUID.  
+If both parameters are left empty (`nil`), the current user is returned.  
+If a user that meets the parameters can't be found an empty array is returned.
 ## Pdf
 ### pdf_decrypt
 

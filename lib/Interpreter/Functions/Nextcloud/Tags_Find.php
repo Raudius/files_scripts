@@ -27,7 +27,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * ```
  */
 class Tags_Find extends RegistrableFunction {
-	use TagsCommand;
+	use TagsSerializerTrait;
 
 	public function run($params = []): array {
 		$id = $params['id'] ?? null;
@@ -41,7 +41,7 @@ class Tags_Find extends RegistrableFunction {
 			$tags = $this->findByName($params);
 		}
 
-		return array_map([$this, 'serializeTag'], $tags);
+		return $this->reindex(array_map([$this, 'serializeTag'], $tags));
 	}
 
 	/**

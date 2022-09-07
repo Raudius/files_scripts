@@ -9,17 +9,10 @@ use OC\SystemTag\SystemTagManager;
 /**
  * Trait which manages Tag (de)serialization..
  */
-trait TagsCommand {
-	private SystemTagManager $tagManager;
-	private SystemTagObjectMapper $tagMapper;
-
-	public function __construct(SystemTagManager $tagManager, SystemTagObjectMapper $tagMapper) {
-		$this->tagManager = $tagManager;
-		$this->tagMapper = $tagMapper;
-	}
-
+trait TagsSerializerTrait {
 	private function serializeTag(Tag $tag): array {
 		return [
+			'_type' => 'tag',
 			'id' => $tag->getId(),
 			'name' => $tag->getName(),
 			'user_assignable' => $tag->isUserAssignable(),
@@ -28,9 +21,9 @@ trait TagsCommand {
 		];
 	}
 
-	private function deserializeTag(array $tagData): ?Tag {
+	private function deserializeTag(array $tagData, SystemTagManager $tagManager): ?Tag {
 		try {
-			$tags = $this->tagManager->getTagsByIds([$tagData['id'] ?? -1]);
+			$tags = $tagManager->getTagsByIds([$tagData['id'] ?? -1]);
 		} catch (\Throwable $e) {
 			return null;
 		}

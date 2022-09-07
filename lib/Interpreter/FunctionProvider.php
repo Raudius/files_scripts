@@ -29,10 +29,12 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Notify;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_Create;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File_Unassign;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tags_Find;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Users_Find;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
@@ -101,7 +103,9 @@ class FunctionProvider implements IFunctionProvider {
 		Tag_File $f44,
 		Tag_File_Unassign $f45,
 		Tags_Find $f46,
-		Tag_Create $f47
+		Tag_Create $f47,
+		Notify $f48,
+		Users_Find $f49
 	) {
 		$this->functions = func_get_args();
 	}

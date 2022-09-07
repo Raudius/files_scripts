@@ -9,7 +9,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * Creates a collaborative tag. Returns the created tag, or `nil` if the tag could not be created (i.e. a tag with the same name already exists).
  */
 class Tag_Create extends RegistrableFunction {
-	use TagsCommand;
+	use TagsSerializerTrait;
 
 	public function run($name = null, $user_visible = true, $user_assignable = true): ?array {
 		if (!$name) {

@@ -83,6 +83,7 @@ abstract class RegistrableFunction {
 		}
 
 		return [
+			'_type' => 'file',
 			'id' => $id,
 			'path' => $path,
 			'name' => $name,

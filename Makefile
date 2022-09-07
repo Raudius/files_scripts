@@ -6,6 +6,7 @@ composer=$(shell which composer 2> /dev/null)
 # Internal variables
 APP_NAME:=$(notdir $(CURDIR))
 PROJECT_DIR:=$(CURDIR)/../$(APP_NAME)
+BIN_DIR:=$(CURDIR)/bin
 BUILD_DIR:=$(CURDIR)/build
 BUILD_TOOLS_DIR:=$(BUILD_DIR)/tools
 RELEASE_DIR:=$(BUILD_DIR)/release
@@ -17,6 +18,10 @@ all: dev-setup lint build-js-production test
 # Dev env management
 dev-setup: clean clean-dev composer npm-init
 
+build-docs:
+	composer install \
+	&& php "$(BIN_DIR)/generate_docs.php" \
+	&& composer install --no-dev
 
 # Installs and updates the composer dependencies. If composer is not installed
 # a copy is fetched from the web

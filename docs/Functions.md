@@ -2,7 +2,7 @@
     - [abort](#abort)  
     - [log](#log)  
 
-  - **[Files:](#Files)** File operations within the Nextcloud environment
+  - **[Files:](#Files)** Filesystem operations within the Nextcloud environment
     - [copy_file](#copy_file)  
     - [directory_listing](#directory_listing)  
     - [exists](#exists)  
@@ -24,14 +24,20 @@
     - [node_exists](#node_exists)  
     - [root](#root)  
 
-  - **[Input:](#Input)** Retreiving user inputs
+  - **[Input:](#Input)** Retrieving user inputs
     - [get_input](#get_input)  
     - [get_input_files](#get_input_files)  
     - [get_target_folder](#get_target_folder)  
 
-  - **[Media:](#Media)** 
+  - **[Media:](#Media)** Functions for modifying images, video, audio...
     - [ffmpeg](#ffmpeg)  
     - [ffprobe](#ffprobe)  
+
+  - **[Nextcloud:](#Nextcloud)** Nextcloud specific functionality
+    - [tag_create](#tag_create)  
+    - [tag_file](#tag_file)  
+    - [tag_file_unassign](#tag_file_unassign)  
+    - [tags_find](#tags_find)  
 
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
     - [pdf_decrypt](#pdf_decrypt)  
@@ -288,6 +294,50 @@ local wmv = ffmpeg(get_input_files()[1], "output.mp4", {
 `ffprobe(Node input_file): Table`  
   
 Returns a table detailing the metadata information that could be retrieved from the input file using [ffprobe](https://ffmpeg.org/ffprobe.html).
+## Nextcloud
+### tag_create
+
+`tag_create(String name, [Bool user_visible= true], [Bool user_assignable= true]): ?Tag`  
+  
+Creates a collaborative tag. Returns the created tag, or `nil` if the tag could not be created (i.e. a tag with the same name already exists).
+### tag_file
+
+`tag_file(Node file, Tag tag): Bool`  
+  
+Adds a tag to a file. Returns whether the tag was added successfully.  
+  
+```lua  
+local tags = tags_find({id= 42})  
+if (#tags == 1) then  
+  tag_file(get_input_files()[1], tags[1])  
+end  
+```
+### tag_file_unassign
+
+`tag_file_unassign(Node file, Tag tag): Bool`  
+  
+Removes a tag from a file. Returns whether the tag was successfully removed.
+### tags_find
+
+`tag_find(Table parameters): Tag[]`  
+  
+Finds existing collaborative tags. The parameters table can contain the following properties:  
+```lua  
+local parameters = {  
+  id= 42,  
+  name= "teamA",  
+  user_visible= true,  
+  name_exact= false      # defaults to false  
+}  
+```  
+  
+Examples:  
+```lua  
+tags_find()                  # Finds all tags  
+tags({user_visible= true})   # Finds all user-visible tags  
+tags_find({name= "2021"})    # Finds all tags that contain the substring "2021".  
+tags_find({name= "2021", name_exact= true})   # Finds an array containing a tag with the name "2021", or returns an empty array  
+```
 ## Pdf
 ### pdf_decrypt
 

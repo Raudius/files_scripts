@@ -29,6 +29,10 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_Create;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File_Unassign;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tags_Find;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
@@ -93,7 +97,11 @@ class FunctionProvider implements IFunctionProvider {
 		Exists_Unsafe $f40,
 		Ffmpeg $f41,
 		Ffprobe $f42,
-		Csv_To_Table $f43
+		Csv_To_Table $f43,
+		Tag_File $f44,
+		Tag_File_Unassign $f45,
+		Tags_Find $f46,
+		Tag_Create $f47
 	) {
 		$this->functions = func_get_args();
 	}

@@ -49,6 +49,7 @@ use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Price;
 use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
+use OCA\FilesScripts\Interpreter\Functions\Util\Shell_Command;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
 use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
 
@@ -105,7 +106,8 @@ class FunctionProvider implements IFunctionProvider {
 		Tags_Find $f46,
 		Tag_Create $f47,
 		Notify $f48,
-		Users_Find $f49
+		Users_Find $f49,
+		Shell_Command $f50
 	) {
 		$this->functions = func_get_args();
 	}

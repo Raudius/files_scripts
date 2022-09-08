@@ -2,7 +2,6 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
-use OC\SystemTag\SystemTagObjectMapper;
 use OCP\SystemTag\ISystemTag as Tag;
 use OC\SystemTag\SystemTagManager;
 

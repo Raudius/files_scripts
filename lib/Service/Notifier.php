@@ -9,7 +9,6 @@ use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
 
 class Notifier implements INotifier {
-
 	private IFactory $l10nFactory;
 	private IURLGenerator $url;
 

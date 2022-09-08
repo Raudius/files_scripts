@@ -2,7 +2,6 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
-use OCA\FilesScripts\Interpreter\AbortException;
 use OCP\IUser;
 use OCP\IUserManager;
 
@@ -23,10 +22,8 @@ trait UserSerializerTrait {
 		try {
 			$user = $userManager->get($userData['uuid'] ?? '');
 		} catch (\Throwable $e) {
-			throw new AbortException($e->getMessage());
 			return null;
 		}
 		return $user;
 	}
-
 }

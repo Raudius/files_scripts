@@ -15,7 +15,6 @@ use OCP\Lock\ILockingProvider;
  * By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
  */
 class File_Unlock extends RegistrableFunction {
-
 	public function run($node = [], $successIfNotFound = true): bool {
 		$file = null;
 		try {

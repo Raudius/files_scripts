@@ -11,7 +11,6 @@ use Throwable;
  * Returns a table detailing the metadata information that could be retrieved from the input file using [ffprobe](https://ffmpeg.org/ffprobe.html).
  */
 class Ffprobe extends RegistrableFunction {
-
 	public function run($file = [], $saveName = null, $config = []): ?array {
 		try {
 			$fileNode = $this->getFile($this->getPath($file));

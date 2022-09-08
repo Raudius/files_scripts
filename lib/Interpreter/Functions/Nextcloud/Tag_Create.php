@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
 use OCA\FilesScripts\Interpreter\RegistrableFunction;

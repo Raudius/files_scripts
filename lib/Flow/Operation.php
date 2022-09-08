@@ -156,7 +156,7 @@ class Operation implements ISpecificOperation {
 			$inputs = ['old_node_path' => $oldNode ? $oldNode->getPath() : null];
 			return new Context($rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
 		} catch (NotPermittedException|NoUserException|NotFoundException $e) {
-			$this->logger->info('Could not create context due to unexpected exception.', ['error'=>$e->getMessage()]);
+			$this->logger->info('Could not create context due to unexpected exception.', ['error' => $e->getMessage()]);
 		}
 		return null;
 	}

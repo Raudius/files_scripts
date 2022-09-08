@@ -32,7 +32,7 @@ $functionDocs = [];
 foreach ($functionClasses as $functionClass) {
 	$type = getFunctionType($functionClass);
 	$doc = getClassDoc($functionClass);
-	if (!is_a($functionClass,RegistrableFunction::class, true)) {
+	if (!is_a($functionClass, RegistrableFunction::class, true)) {
 		echo "Skipped: " . $functionClass . PHP_EOL;
 		continue;
 	}
@@ -67,17 +67,16 @@ fclose($stream);
  * Script helper functions
  */
 function generateToC(array $groupedFunctions): string {
-
 	$toc = '';
 	foreach_alphabetically($groupedFunctions, function ($type, $functions) use (&$toc) {
-			$toc .= "  - **[$type:](#$type)** " . (TYPE_DESCRIPTIONS[$type] ?? '') . "\n";
+		$toc .= "  - **[$type:](#$type)** " . (TYPE_DESCRIPTIONS[$type] ?? '') . "\n";
 
-			foreach_alphabetically($functions, function ($name, $_) use (&$toc) {
-				$toc .= "    - [$name](#$name)  \n";
-			});
+		foreach_alphabetically($functions, function ($name, $_) use (&$toc) {
+			$toc .= "    - [$name](#$name)  \n";
+		});
 
-			$toc .= "\n";
-		}
+		$toc .= "\n";
+	}
 	);
 
 	return $toc;

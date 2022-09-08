@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts;
 
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
@@ -27,7 +28,7 @@ class UtilTest extends TestCase {
 		$arrayIn = [ 'foo' => 'bar', 'numbers' => [1,2,3,4,5] ];
 		$stringIn = json_encode($arrayIn);
 
-		$arrayLuaIndex = [ 'foo' => 'bar', 'numbers' => [1=>1,2=>2,3=>3,4=>4,5=>5] ];
+		$arrayLuaIndex = [ 'foo' => 'bar', 'numbers' => [1 => 1,2 => 2,3 => 3,4 => 4,5 => 5] ];
 
 		$arrayOut = (new Json())->run($stringIn);
 		$this->assertNotEquals($arrayIn, $arrayOut);
@@ -38,9 +39,9 @@ class UtilTest extends TestCase {
 		$fruits = ['orange', 'apple', 'banana', 'grapes', 'mango'];
 		$fruitsAssoc = [ ['name' => 'orange'], ['name' => 'apple'], ['name' => 'banana'], ['name' => 'grapes'], ['name' => 'mango'] ];
 
-		$fruitsSorted = [1=>'apple', 2=>'banana', 3=>'grapes', 4=>'mango', 5=>'orange' ];
-		$fruitsAssocSorted = [ 1=>['name' => 'apple'], 2=>['name' => 'banana'], 3=>['name' => 'grapes'],  4=>['name' => 'mango'], 5=>['name' => 'orange'] ];
-		$fruitsSortedDesc = [ 1=>'orange', 2=>'mango', 3=>'grapes', 4=>'banana', 5=>'apple' ];
+		$fruitsSorted = [1 => 'apple', 2 => 'banana', 3 => 'grapes', 4 => 'mango', 5 => 'orange' ];
+		$fruitsAssocSorted = [ 1 => ['name' => 'apple'], 2 => ['name' => 'banana'], 3 => ['name' => 'grapes'],  4 => ['name' => 'mango'], 5 => ['name' => 'orange'] ];
+		$fruitsSortedDesc = [ 1 => 'orange', 2 => 'mango', 3 => 'grapes', 4 => 'banana', 5 => 'apple' ];
 
 		$this->assertEquals(
 			$fruitsSorted,

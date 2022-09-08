@@ -12,7 +12,6 @@ use OCP\Migration\IOutput;
  * Creates the scripts table.
  */
 class Version0100Date20220613 extends SimpleMigrationStep {
-
 	/**
 	 * @param IOutput $output
 	 * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`

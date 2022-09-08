@@ -2,7 +2,6 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
-
 /**
  * `file_copy(Node file, String folder_path, [String name]=nil): Node|nil`
  *

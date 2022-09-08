@@ -2,7 +2,6 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
-use Lua;
 use OCA\FilesScripts\Db\Script;
 use OCP\ITempManager;
 use raudius\phpdf\Phpdf;

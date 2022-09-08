@@ -11,7 +11,6 @@ use Psr\Log\LoggerInterface;
  * ⚠️ DEPRECATED: See [home](#home)
  */
 class Root extends RegistrableFunction {
-
 	private LoggerInterface $logger;
 
 	public function __construct(LoggerInterface $logger) {

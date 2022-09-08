@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
 use OC\SystemTag\SystemTagManager;

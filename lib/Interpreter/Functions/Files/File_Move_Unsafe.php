@@ -20,7 +20,6 @@ use Throwable;
  * ```
  */
 class File_Move_Unsafe extends RegistrableFunction {
-
 	public function run(
 		$file = null,
 		$folderPath = null,

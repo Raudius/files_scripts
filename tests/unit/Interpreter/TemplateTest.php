@@ -1,4 +1,5 @@
 <?php
+
 namespace OCA\FilesScripts;
 
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
@@ -8,7 +9,7 @@ class TemplateTest extends TestCase {
 	public function testMustache(): void {
 		$data = [
 			'foo' => 'bar',
-			'arr' => [ 1=>['id'=>'a'], 2=>['id'=>'b'], 3=>['id'=>'c'] ]
+			'arr' => [ 1 => ['id' => 'a'], 2 => ['id' => 'b'], 3 => ['id' => 'c'] ]
 		];
 		$template = "{{ foo }}
 {{# arr}}

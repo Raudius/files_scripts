@@ -10,7 +10,6 @@ use Psr\Log\LoggerInterface;
  * ⚠️ DEPRECATED: This function will be removed in v2.0.0. See [file_copy](#file_copy)
  */
 class Copy_File extends File_Copy {
-
 	private LoggerInterface $logger;
 
 	public function __construct(LoggerInterface $logger) {

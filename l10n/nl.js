@@ -2,8 +2,8 @@ OC.L10N.register(
     "files_scripts",
     {
     "Action does not exist or is disabled." : "Actie bestaat niet of is uitgeschakeld.",
-    "Title is empty." : "Titel is leeg.",
     "File actions" : "Bestandsacties",
+    "Title is empty." : "Titel is leeg.",
     "Edit" : "Bewerk",
     "Delete" : "Verwijder",
     "Enabled" : "Ingeschakeld",

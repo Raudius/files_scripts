@@ -30,15 +30,28 @@ Since the app is still new, the scripting API is prone to changing, so I am hesi
 
 You can also find example scripts in the [`examples/`](/examples)  folder, these will be also included when you first install the app.
 
-### Dealing with files / folders
+### Nextcloud objects
 The scripting API has been extended with Nextcloud-specific functions. These functions may require a "Folder" or a "File" as an input. Lua of course does not know what a file or a folder are, so instead we rely on Lua tables to carry the information required to represent these objects.
 
-The `Node` type which may be referenced in the [functions documentation](Functions.md), is nothing more than a table containing 3 values:
+These tables may be manually created, but it is preferable to use function that return these objects.
+
+#### Node (File / Folder)
+The `Node` type is used to represent a file or folder (see: [is_file](Functions.md) and [is_folder](Functions.md)):
  * `id`: the internal ID of the file or folder
  * `name`: the name of the file or folder
  * `path`: the path (not including the name) to the file or folder from the user's home folder 
 
-In principle if you know these 3 values you could construct the Table yourself, but convenient [functions](Functions.md#Files) are available to traverse and operate on Nextcloud files.
+#### User
+ * `uuid`
+ * `display_name`
+ * `email_address`
+
+#### Tag
+ * `id`
+ * `name`
+ * `user_assignable`
+ * `user_visible`
+ * `access_level`
 
 ### Testing scripts
 

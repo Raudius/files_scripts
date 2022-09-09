@@ -14,9 +14,16 @@ The File actions app is a scripting tool, which administrators can employ to giv
   * PHP >=7.4
 
 ### Optional:
-  * QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
+Some functions require additional packages to be installed on the server
+
+* QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
 ```shell
 sudo apt-get install qpdf
+```
+
+* FFmpeg (needed for [FFmpeg](docs/Functions.md#ffmpeg) and [FFprobe](docs/Functions.md#ffprobe))
+```shell
+sudo apt install ffmpeg
 ```
 
 ### The big one:

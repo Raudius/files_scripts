@@ -4,12 +4,20 @@
     "Action does not exist or is disabled." : "Action non existante ou désactivée.",
     "Failed to create the action variables." : "Échec de création des variables d’action.",
     "No script was chosen." : "Aucun script n’a été choisi.",
+    "Title is empty." : "Le titre est vide.",
     "Edit" : "Modifier",
     "Delete" : "Supprimer",
     "Enabled" : "Activé",
     "Disabled" : "Désactivé",
+    "Script name" : "Nom du script",
+    "A short description of what this action will do …" : "Une courte description de l'action ...",
+    "Enable script" : "Activer le script",
     "Saved" : "Enregistré",
+    "Choose a folder …" : "Sélectionner un dossier …",
+    "Execute" : "Exécuter",
+    "Action completed!" : "Action terminée",
     "Unknown error" : "Erreur inconnue",
+    "New action" : "Nouvelle action",
     "More actions" : "Autres actions"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

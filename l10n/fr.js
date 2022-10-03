@@ -7,6 +7,7 @@ OC.L10N.register(
     "Failed to create the action variables." : "Échec de création des variables d’action.",
     "No script was chosen." : "Aucun script n’a été choisi.",
     "Title is empty." : "Le titre est vide.",
+    "A script already exists with this title." : "Un script existe déjà avec le même titre.",
     "Edit" : "Modifier",
     "Delete" : "Supprimer",
     "Enabled" : "Activé",

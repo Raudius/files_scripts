@@ -16,6 +16,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Une courte description de l'action ...",
     "Enable script" : "Activer le script",
     "Saved" : "Enregistré",
+    "An error occurred during saving" : "Une erreur est survenue pendant l'enregistrement",
     "Choose a folder …" : "Sélectionner un dossier …",
     "Execute" : "Exécuter",
     "Action completed!" : "Action terminée",

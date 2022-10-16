@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0
+
+### Added
+- Added support for Nextcloud 25
+- Added function `comment_create`
+- Added function `comment_delete`
+- Added function `comments_find`
+
+### Fixed
+- Fixed tag functions
+
+
 ## 1.2.0
 
 ### Added

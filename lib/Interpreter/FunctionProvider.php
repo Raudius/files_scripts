@@ -29,6 +29,9 @@ use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Create;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Delete;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comments_Find;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Notify;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_Create;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File;
@@ -107,7 +110,10 @@ class FunctionProvider implements IFunctionProvider {
 		Tag_Create $f47,
 		Notify $f48,
 		Users_Find $f49,
-		Shell_Command $f50
+		Shell_Command $f50,
+		Comments_Find $f51,
+		Comment_Delete $f52,
+		Comment_Create $f53
 	) {
 		$this->functions = func_get_args();
 	}

@@ -1,5 +1,6 @@
 .icon-files_scripts {
 	background-image: url(../img/files_scripts-dark.svg);
+	filter: var(--background-invert-if-dark);
 }
 
 body.dark .icon-files_scripts {

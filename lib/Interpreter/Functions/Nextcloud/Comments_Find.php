@@ -14,10 +14,11 @@ use OCP\Files\Node;
  * Finds comment objects. The parameters table can contain the following properties:
  * ```lua
  * local parameters = {
- *   id= 481,			# Returns the comment with ID 481
- *   parent_id= 612,	# Returns the children of comment 612
- *   node= get_input_files()[1],	# Returns the comments for the file
+ *   id= 481,                     -- Returns the comment with ID 481
+ *   parent_id= 612,              -- Returns the children of comment 612
+ *   node= get_input_files()[1],  -- Returns the comments for the file
  * }
+ * ```
  *
  * It searches for each of the provided parameters in order: `id`, `parent_id`, `file`. Returns as the first set of results possible.
  * So if it finds a file by `id` it won't continue searching by `parent_id` or `file`.
@@ -25,9 +26,9 @@ use OCP\Files\Node;
  * Examples:
  * ```lua
  * tags({file= get_input_files()[1]}) -- Finds comments for a file
- * tags({id= 21})   				  -- Finds comment with ID 21
- * tags({parent_id= 13})   			  -- Finds comments tree of comment 13
- * tags({id= 21, parent_id= 13})	  -- Finds comment with ID 21 or (if comment 21 does not exist) the comment tree of comment 13
+ * tags({id= 21})                     -- Finds comment with ID 21
+ * tags({parent_id= 13})              -- Finds comments tree of comment 13
+ * tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21 does not exist) the comment tree of comment 13
  * ```
  */
 class Comments_Find extends RegistrableFunction {

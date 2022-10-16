@@ -15,7 +15,7 @@ use OCP\IUserSession;
  * The extra parameters table accepts:
  * ```lua
  * paramters = {
- *   unsafe_impersonate_user= users_find({ ... })[1]	# Warning: This parameter breaks intended comment behaviour
+ *   unsafe_impersonate_user= users_find({ ... })[1]   -- Warning: This parameter breaks intended comment behaviour
  * }
  * ```
  *

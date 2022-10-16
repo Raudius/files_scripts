@@ -2,6 +2,8 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
+use OC\SystemTag\SystemTagManager;
+use OC\SystemTag\SystemTagObjectMapper;
 use OCP\SystemTag\ISystemTag as Tag;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
@@ -28,6 +30,12 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Tags_Find extends RegistrableFunction {
 	use TagsSerializerTrait;
+
+	private SystemTagManager $tagManager;
+
+	public function __construct(SystemTagManager $tagManager) {
+		$this->tagManager = $tagManager;
+	}
 
 	public function run($params = []): array {
 		$id = $params['id'] ?? null;

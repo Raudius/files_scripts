@@ -2,6 +2,7 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
+use OC\SystemTag\SystemTagManager;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 /**
@@ -11,6 +12,12 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  */
 class Tag_Create extends RegistrableFunction {
 	use TagsSerializerTrait;
+
+	private SystemTagManager $tagManager;
+
+	public function __construct(SystemTagManager $tagManager) {
+		$this->tagManager = $tagManager;
+	}
 
 	public function run($name = null, $user_visible = true, $user_assignable = true): ?array {
 		if (!$name) {

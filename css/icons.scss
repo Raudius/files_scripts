@@ -1,5 +1,0 @@
-@include icon-black-white('files_scripts', 'files_scripts', 1);
-
-body.theme--dark .icon-files_scripts {
-	@include icon-color('files_scripts', 'files_scripts', $color-white, 1);
-}

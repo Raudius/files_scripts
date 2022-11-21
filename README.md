@@ -14,7 +14,7 @@ The File actions app is a scripting tool, which administrators can employ to giv
   * PHP >=7.4
 
 ### Recommended:
-The app includes a Lua interpreter which runs on PHP, this interpreter is still [under devleopment](https://github.com/Raudius/Luar) and its use is **not** recommended. For a faster and more reliable solution install the Lua PHP extension.
+The app includes a Lua interpreter which runs on PHP, this interpreter is still [under development](https://github.com/Raudius/Luar) and its use is **not** recommended. For a faster and more reliable solution install the Lua PHP extension.
 
 * Lua + PHP Lua plugin
 ```shell

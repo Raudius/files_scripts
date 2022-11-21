@@ -12,7 +12,8 @@ class LuaProvider {
 	}
 
 	public function createLua(): LuaWrapper {
-		$usePhpLua = (bool) $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, false);
+		$usePhpLua = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, 'false') === 'true';
+
 		if ($usePhpLua) {
 			return new LuarInterpreter();
 		}

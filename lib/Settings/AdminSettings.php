@@ -3,12 +3,33 @@
 namespace OCA\FilesScripts\Settings;
 
 use OCA\FilesScripts\AppInfo\Application;
+use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IInitialState;
+use OCP\IConfig;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
 class AdminSettings implements ISettings {
+	private IConfig $config;
+	private IInitialState $initialStateService;
+	private LuaProvider $luaProvider;
+
+	public function __construct(
+		IConfig $config,
+		IInitialState $initialStateService,
+		LuaProvider $luaProvider
+	) {
+		$this->config = $config;
+		$this->initialStateService = $initialStateService;
+		$this->luaProvider = $luaProvider;
+	}
+
 	public function getForm(): TemplateResponse {
+		$usePhpInterpreter = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, 'false') === 'true';
+		$this->initialStateService->provideInitialState('use_php_interpreter', $usePhpInterpreter);
+		$this->initialStateService->provideInitialState('lua_interpreter_available', $this->luaProvider->isAvailable());
+
 		Util::addScript(Application::APP_ID, 'files_scripts-main');
 		return new TemplateResponse(Application::APP_ID, 'settings-admin');
 	}

@@ -86,10 +86,6 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
-		if (!$this->luaProvider->isAvailable()) {
-			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
-		}
-
 		$script = new Script();
 		$script->setTitle($title);
 		$script->setDescription($description);
@@ -126,10 +122,6 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
-		if (!$this->luaProvider->isAvailable()) {
-			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
-		}
-
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
 			return new JSONResponse([], Http::STATUS_NOT_FOUND);

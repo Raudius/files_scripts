@@ -3,6 +3,8 @@
 namespace OCA\FilesScripts\AppInfo;
 
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
+use OCA\FilesScripts\Interpreter\FunctionProvider;
+use OCA\FilesScripts\Interpreter\IFunctionProvider;
 use OCA\FilesScripts\Listener\LoadAdditionalListener;
 use OCA\FilesScripts\Listener\RegisterFlowOperationsListener;
 use OCA\FilesScripts\Middleware\DefaultScriptsMiddleware;
@@ -29,6 +31,10 @@ class Application extends App implements IBootstrap {
 		$context->registerEventListener(RegisterOperationsEvent::class, RegisterFlowOperationsListener::class);
 		$context->registerMiddleware(DefaultScriptsMiddleware::class);
 		$context->registerNotifierService(Notifier::class);
+
+		$context->registerService(IFunctionProvider::class, function () {
+			return \OC::$server->get(FunctionProvider::class);
+		});
 	}
 
 	public function boot(IBootContext $context): void {

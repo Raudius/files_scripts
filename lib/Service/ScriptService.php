@@ -1,5 +1,4 @@
 <?php
-
 namespace OCA\FilesScripts\Service;
 
 use OCA\FilesScripts\Db\Script;

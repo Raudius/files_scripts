@@ -25,4 +25,8 @@ class LuaInterpreter implements LuaWrapper {
 	public function registerCallback(string $name, callable $callback): void {
 		$this->interpreter->registerCallback($name, $callback);
 	}
+
+	public function getGlobalVariable(string $name) {
+		return $this->interpreter->eval("return $name") ?: null;
+	}
 }

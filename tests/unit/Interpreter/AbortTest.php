@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesScripts;
+namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;

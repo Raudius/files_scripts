@@ -9,4 +9,6 @@ interface LuaWrapper {
 	function call(callable $closure, array $args=[]);
 
 	public function registerCallback(string $name, callable $callback): void;
+
+	public function getGlobalVariable(string $name);
 }

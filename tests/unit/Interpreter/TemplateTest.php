@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesScripts;
+namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use PHPUnit\Framework\TestCase;

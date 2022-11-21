@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\FilesScripts;
+namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Format_Date_Time;

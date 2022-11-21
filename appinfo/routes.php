@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Files_Scripts\AppInfo;
+namespace OCA\FilesScripts\AppInfo;
 
 return [
 	'resources' => [

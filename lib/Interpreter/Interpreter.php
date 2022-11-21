@@ -7,11 +7,11 @@ use OCP\ITempManager;
 use raudius\phpdf\Phpdf;
 
 class Interpreter {
-	private FunctionProvider $functionProvider;
+	private IFunctionProvider $functionProvider;
 	private ITempManager $tempManager;
 
 	public function __construct(
-		FunctionProvider $functionProvider,
+		IFunctionProvider $functionProvider,
 		ITempManager $tempManager
 	) {
 		$this->functionProvider = $functionProvider;

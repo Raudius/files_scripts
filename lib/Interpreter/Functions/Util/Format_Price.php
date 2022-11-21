@@ -16,12 +16,14 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * **Locale:** a string containing a valid CLDR locale. It is used for formatting in a locale specific way (e.g. symbol before or after value)
  */
 class Format_Price extends RegistrableFunction {
-	public function run($value = 0.0, $symbol = '', $currency = '', $locale = 'en_US') {
+	public function run($value = 0.0, $symbol = '', $currency = 'EUR', $locale = 'en_US') {
 		$symbol = $symbol ?: '';
 
-		$fmt = numfmt_create($locale, NumberFormatter::CURRENCY);
-		$fmt->setSymbol(NumberFormatter::CURRENCY_SYMBOL, $symbol);
+		$fmt = is_string($symbol) && !empty($symbol)
+			? numfmt_create($locale, NumberFormatter::CURRENCY)
+			: numfmt_create($locale, NumberFormatter::DECIMAL);
 
+		$fmt->setSymbol(NumberFormatter::CURRENCY_SYMBOL, $symbol);
 		return $fmt->formatCurrency($value, $currency);
 	}
 }

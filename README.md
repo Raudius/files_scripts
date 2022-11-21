@@ -9,25 +9,14 @@ The File actions app is a scripting tool, which administrators can employ to giv
 
 ## Installation & Configuration
 
-### The usual suspects:
+### Required:
   * Nextcloud >=23
   * PHP >=7.4
 
-### Optional:
-Some functions require additional packages to be installed on the server
+### Recommended:
+The app includes a Lua interpreter which runs on PHP, this interpreter is still [under devleopment](https://github.com/Raudius/Luar) and its use is **not** recommended. For a faster and more reliable solution install the Lua PHP extension.
 
-* QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
-```shell
-sudo apt-get install qpdf
-```
-
-* FFmpeg (needed for [FFmpeg](docs/Functions.md#ffmpeg) and [FFprobe](docs/Functions.md#ffprobe))
-```shell
-sudo apt install ffmpeg
-```
-
-### The big one:
- * Lua + PHP Lua plugin
+* Lua + PHP Lua plugin
 ```shell
 sudo apt-get install lua5.3
 sudo apt-get install liblua5.3-0
@@ -35,7 +24,7 @@ sudo apt-get install liblua5.3-dev
 ```
 
 <details>
-<summary>Lua plugin for PHP7</summary>
+<summary>Lua plugin for PHP 7</summary>
 
 ```shell
 sudo apt-get install php-pear
@@ -52,7 +41,7 @@ sudo pecl install lua-2.0.7
 </details>
 
 <details>
-<summary>Lua plugin for PHP8</summary>
+<summary>Lua plugin for PHP 8</summary>
 Since the Lua plugin is not yet officially supported for PHP8, we need to build it.
 
 ```shell
@@ -76,6 +65,20 @@ sudo cp ./.libs/lua.so /usr/lib/php/20200930/
 
 
 Don't forget to append `extension=lua.so` to your php.ini!
+
+### Optional:
+Some functions require additional packages to be installed on the server
+
+* QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
+```shell
+sudo apt-get install qpdf
+```
+
+* FFmpeg (needed for [FFmpeg](docs/Functions.md#ffmpeg) and [FFprobe](docs/Functions.md#ffprobe))
+```shell
+sudo apt install ffmpeg
+```
+
 
 ## Documentation
 

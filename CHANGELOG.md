@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0
+
+### Added
+- PHP-based Lua interpreter
+
+### Fixed
+- `tags_find` no longer returns an non-sequential table
+
 ## 1.3.0
 
 ### Added

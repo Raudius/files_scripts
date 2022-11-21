@@ -2,7 +2,7 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
-use Lua;
+use OCA\FilesScripts\Interpreter\Lua\LuaWrapper;
 use OCP\Files\Folder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
@@ -13,15 +13,16 @@ class Context {
 	private array $input;
 	private Folder $root;
 	private ?string $targetDirectory;
-	private Lua $lua;
+	private LuaWrapper $lua;
 
 	public function __construct(
+		LuaWrapper $lua,
 		Folder $root,
 		array $input,
 		array $files,
 		?string $targetDirectory = null
 	) {
-		$this->lua = new Lua();
+		$this->lua = $lua;
 		$this->root = $root;
 		$this->input = $input;
 		$this->files = $files;
@@ -43,10 +44,8 @@ class Context {
 		return null;
 	}
 
-	/**
-	 * @return Lua
-	 */
-	public function getLua(): Lua {
+
+	public function getLua(): LuaWrapper {
 		return $this->lua;
 	}
 

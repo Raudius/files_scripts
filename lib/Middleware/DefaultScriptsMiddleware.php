@@ -71,7 +71,7 @@ class DefaultScriptsMiddleware extends Middleware {
 	}
 
 	private function isFirstRun(): bool {
-		return $this->config->getAppValue(Application::APP_ID, 'first_run', 'true') === 'true'
+		return $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_FIRST_RUN, 'true') === 'true'
 			&& empty($this->scriptMapper->findAll());
 	}
 
@@ -80,7 +80,7 @@ class DefaultScriptsMiddleware extends Middleware {
 			return;
 		}
 
-		$this->config->setAppValue(Application::APP_ID, 'first_run', 'false');
+		$this->config->setAppValue(Application::APP_ID, Application::APP_CONFIG_FIRST_RUN, 'false');
 
 		foreach (self::DEFAULT_SCRIPTS as $scriptData) {
 			try {

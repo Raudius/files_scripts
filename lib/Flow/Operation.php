@@ -7,6 +7,7 @@ use OC\User\NoUserException;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Context;
+use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\WorkflowEngine\Entity\File;
 use OCP\EventDispatcher\GenericEvent;
@@ -34,6 +35,7 @@ class Operation implements ISpecificOperation {
 	private ScriptService $scriptService;
 	private IUserSession $session;
 	private IRootFolder $rootFolder;
+	private LuaProvider $luaProvider;
 
 	public function __construct(
 		IURLGenerator $urlGenerator,
@@ -42,6 +44,7 @@ class Operation implements ISpecificOperation {
 		ScriptService $scriptService,
 		IRootFolder $rootFolder,
 		IUserSession $session,
+		LuaProvider $luaProvider,
 		LoggerInterface $logger
 	) {
 		$this->urlGenerator = $urlGenerator;
@@ -50,6 +53,7 @@ class Operation implements ISpecificOperation {
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
 		$this->session = $session;
+		$this->luaProvider = $luaProvider;
 		$this->logger = $logger;
 	}
 
@@ -154,7 +158,7 @@ class Operation implements ISpecificOperation {
 			$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
 
 			$inputs = ['old_node_path' => $oldNode ? $oldNode->getPath() : null];
-			return new Context($rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
+			return new Context($this->luaProvider->createLua(), $rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
 		} catch (NotPermittedException|NoUserException|NotFoundException $e) {
 			$this->logger->info('Could not create context due to unexpected exception.', ['error' => $e->getMessage()]);
 		}

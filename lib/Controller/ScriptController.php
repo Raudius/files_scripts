@@ -2,11 +2,11 @@
 
 namespace OCA\FilesScripts\Controller;
 
-use Lua;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\Context;
+use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCP\AppFramework\Controller;
@@ -28,6 +28,7 @@ class ScriptController extends Controller {
 	private ScriptService $scriptService;
 	private IL10N $l;
 	private LoggerInterface $logger;
+	private LuaProvider $luaProvider;
 
 	public function __construct(
 		$appName,
@@ -38,6 +39,7 @@ class ScriptController extends Controller {
 		ScriptService $scriptService,
 		IRootFolder $rootFolder,
 		IL10N $l,
+		LuaProvider $luaProvider,
 		LoggerInterface $logger
 	) {
 		parent::__construct($appName, $request);
@@ -47,6 +49,7 @@ class ScriptController extends Controller {
 		$this->scriptService = $scriptService;
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
+		$this->luaProvider = $luaProvider;
 		$this->logger = $logger;
 	}
 
@@ -55,7 +58,7 @@ class ScriptController extends Controller {
 	 */
 	public function index(): Response {
 		$scripts = $this->scriptMapper->findAll();
-		if (!$this->isLuaInstalled()) {
+		if (!$this->luaProvider->isAvailable()) {
 			$scripts = array_map(
 				static function (Script $script): Script {
 					$script->setEnabled(false);
@@ -83,7 +86,7 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
-		if (!$this->isLuaInstalled()) {
+		if (!$this->luaProvider->isAvailable()) {
 			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
 		}
 
@@ -123,7 +126,7 @@ class ScriptController extends Controller {
 		bool $background,
 		bool $requestDirectory
 	): Response {
-		if (!$this->isLuaInstalled()) {
+		if (!$this->luaProvider->isAvailable()) {
 			return new JSONResponse(['error' => $this->l->t('Lua extension not installed on the server.')], Http::STATUS_BAD_REQUEST);
 		}
 
@@ -178,7 +181,7 @@ class ScriptController extends Controller {
 			$scriptInputs[$input['name']] = $input['value'] ?? null;
 		}
 
-		$context = new Context($userFolder, $scriptInputs, $fileNodes, $outputDirectory);
+		$context = new Context($this->luaProvider->createLua(), $userFolder, $scriptInputs, $fileNodes, $outputDirectory);
 		try {
 			$this->scriptService->runScript($script, $context);
 		} catch (AbortException $e) {
@@ -199,12 +202,5 @@ class ScriptController extends Controller {
 
 		$this->scriptMapper->delete($script);
 		return new JSONResponse();
-	}
-
-	/**
-	 * @return bool
-	 */
-	private function isLuaInstalled(): bool {
-		return class_exists(Lua::class);
 	}
 }

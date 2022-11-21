@@ -16,6 +16,9 @@ use OCP\WorkflowEngine\Events\RegisterOperationsEvent;
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'files_scripts';
 
+	public const APP_CONFIG_FIRST_RUN = 'first_run';
+	public const APP_CONFIG_USE_PHP_INTERPRETER = 'php_interpreter';
+
 	public function __construct() {
 		parent::__construct(self::APP_ID);
 		require_once(__DIR__  . '/../../vendor/autoload.php');

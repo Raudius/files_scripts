@@ -18,8 +18,10 @@ abstract class RegistrableFunction {
 		return strtolower((new ReflectionClass(static::class))->getShortName());
 	}
 
-	final public function register($context): void {
-		$context->getLua()->registerCallback(static::getFunctionName(), [$this, 'run']);
+	final public function register(Context $context): void {
+		$context->getLua()->registerCallback(static::getFunctionName(), function (...$args) {
+			return $this->run(...$args);
+		});
 		$this->context = $context;
 	}
 

@@ -4,14 +4,14 @@
     <name>File actions</name>
     <summary>Scripting tool which allows administrators to expand the file options menu.</summary>
     <description><![CDATA[
-Allows administrators to write small scripts which users can run through file actions menu in the Files app!
+Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!
 
 - **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.
 - **⚡️Empower users:** Make hard tasks easy, straight from the Files app.
 - **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!
 
 
-⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.
+⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.
 
 ⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.
 	]]></description>

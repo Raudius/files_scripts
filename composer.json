@@ -42,7 +42,7 @@
 	},
 	"autoload-dev": {
 		"classmap": [
-			"lib/"
+			"lib/", "tests/unit"
 		]
 	}
 }

@@ -49,6 +49,7 @@ class Tags_Find extends RegistrableFunction {
 			$tags = $this->findByName($params);
 		}
 
+		$tags = array_values($tags);
 		return $this->reindex(array_map([$this, 'serializeTag'], $tags));
 	}
 

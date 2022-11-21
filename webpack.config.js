@@ -24,15 +24,7 @@ module.exports = {
 			{ test: /\.js$/, loader: "source-map-loader" },
 			{ test: /\.vue$/, loader: 'vue-loader' },
 			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					{ loader: 'css-loader', options: { importLoaders: 1 } },
-					'postcss-loader'
-				]
-			},
-			{
-				test: /\.s[ac]ss$/i,
+				test: /\.s?[ac]ss$/i,
 				use: [
 					// Creates `style` nodes from JS strings
 					'style-loader',

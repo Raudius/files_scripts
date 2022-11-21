@@ -193,7 +193,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import 'codemirror/theme/material-darker.css';
 @import 'codemirror/theme/idea.css';
 

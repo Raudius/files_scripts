@@ -234,7 +234,7 @@ export default {
 }
 </style>
 
-<style>
+<style scoped lang="scss">
 /* Hack to get multiselect to show correctly (over the modal mask) */
 .file-scripts-modal .multiselect__content-wrapper {
 	position:fixed !important;

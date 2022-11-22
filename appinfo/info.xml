@@ -13,7 +13,7 @@ Allows administrators to write small scripts which users can run through via the
 
 ⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.
 
-⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.
+⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
     <version>2.0.0</version>

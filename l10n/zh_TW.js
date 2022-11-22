@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "伺服器上未安裝 Lua 擴充套件。",
     "An error occurred when saving the action." : "儲存動作時發生錯誤。",
     "Action does not exist or is disabled." : "動作不存在或已停用。",
     "Failed to create the action variables." : "建立動作變數失敗。",
+    "Lua extension not installed on the server." : "伺服器上未安裝 Lua 擴充套件。",
     "No script was chosen." : "未選擇指令稿。",
     "Run file action" : "執行檔案動作",
     "Pass files to a file action script and run it." : "將檔案傳遞給檔案動作指令稿並執行它。",
@@ -13,7 +13,6 @@ OC.L10N.register(
     "Title is empty." : "標題為空。",
     "A script already exists with this title." : "已有此標題的指令稿。",
     "Scripting tool which allows administrators to expand the file options menu." : "允許管理員擴展檔案選單的指令稿工具。",
-    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "允許管理員編寫讓使用者可以透過 Files 應用程式中的檔案動作選單執行的小指令稿！\n\n- **🌕 Lua：** 使用 Lua 編寫指令稿，其簡單且有許多線上資源。\n- **⚡️授權使用者：** 直接透過 Files 應用程式輕鬆完成困難的工作。\n- **🙋 接受建議：** 少了一些指令稿 API 功能嗎？請在 GitHub 上開啟議題！\n\n\n⚠️**注意** 此應用程式需要額外設定，可能不適合所有使用者。安裝前請務必仔細閱讀文件。\n\n⚠️**注意** 權利愈大，責任愈大：指令稿可能永久修改與刪除檔案。編寫指令稿前請務必仔細閱讀文件。",
     "Edit" : "編輯",
     "Delete" : "刪除",
     "Enabled" : "已啟用",
@@ -37,6 +36,7 @@ OC.L10N.register(
     "Unknown error" : "未知的錯誤",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "檔案動作是可以程式方式建立、修改及／或刪除檔案。使用者可能會觸發這些動作以在其檔案上執行。請閱讀文件以取得更多資訊。",
     "New action" : "新動作",
-    "More actions" : "更多動作"
+    "More actions" : "更多動作",
+    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "允許管理員編寫讓使用者可以透過 Files 應用程式中的檔案動作選單執行的小指令稿！\n\n- **🌕 Lua：** 使用 Lua 編寫指令稿，其簡單且有許多線上資源。\n- **⚡️授權使用者：** 直接透過 Files 應用程式輕鬆完成困難的工作。\n- **🙋 接受建議：** 少了一些指令稿 API 功能嗎？請在 GitHub 上開啟議題！\n\n\n⚠️**注意** 此應用程式需要額外設定，可能不適合所有使用者。安裝前請務必仔細閱讀文件。\n\n⚠️**注意** 權利愈大，責任愈大：指令稿可能永久修改與刪除檔案。編寫指令稿前請務必仔細閱讀文件。"
 },
 "nplurals=1; plural=0;");

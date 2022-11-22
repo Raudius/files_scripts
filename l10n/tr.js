@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "Sunucu üzerinde Lua eklentisi kurulu değil.",
     "An error occurred when saving the action." : "İşlem kaydedilirken bir sorun çıktı.",
     "Action does not exist or is disabled." : "İşlem bulunamadı ya da devre dışı bırakılmış.",
     "Failed to create the action variables." : "İşlem değişkenleri oluşturulamadı.",
+    "Lua extension not installed on the server." : "Sunucu üzerinde Lua eklentisi kurulu değil.",
     "No script was chosen." : "Herhangi bir betik seçilmemiş.",
     "Run file action" : "Dosya işlemini yap",
     "Pass files to a file action script and run it." : "Dosyaları bir dosya işlemi betiğine gönderir ve işlemi yapar.",
@@ -13,7 +13,6 @@ OC.L10N.register(
     "Title is empty." : "Başlık boş.",
     "A script already exists with this title." : "Aynı adlı bir betik zaten var.",
     "Scripting tool which allows administrators to expand the file options menu." : "Yöneticilerin dosya seçenekleri menüsünü genişletmesini sağlayan betik oluşturma aracı.",
-    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Yöneticilerin, Dosyalar uygulamasındaki dosya işlemleri menüsüne kullanıcıların çalıştırabileceği küçük betikler eklemesini sağlar!\n\n- **🌕 Lua:** Lua dilindeki betikler. Basittir ve çok sayıda çevrimiçi kaynak bulunabilir.\n- **⚡️Kullanıcıları destekler:** Zor işlerin Dosyalar uygulamasından kolayca yapılmasını sağlar.\n- **🙋 Önerilere açık:** Betik API yazılımda eksik bir işlev mi gerekiyor? Github üzerinden bildirin!\n\n\n⚠️**Dikkat** Bu uygulama için ek yapılandırma gerekir ve her kullanıcı için uygun olmayabilir. Kurmadan önce belgeleri tümüyle okuduğunuzda emin olun.\n\n⚠️**Dikkat** Büyük gücün sorumluluğu da büyük olur: Betikler dosyaları kalıcı olarak değiştirebilir ya da silebilir. Betikleri oluşturmadan önce belgeleri tümüyle okuduğunuzdan emin olun.",
     "Edit" : "Düzenle",
     "Delete" : "Sil",
     "Enabled" : "Etkin",
@@ -37,6 +36,7 @@ OC.L10N.register(
     "Unknown error" : "Bilinmeyen sorun",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Dosya işlemleri, program ile dosyaları oluşturabilen, değiştirebilen ve/veya silebilen küçük Lua betikleridir. Kullanıcılar bu işlemleri dosyaları üzerinde yapabilir. Ayrıntılı bilgi almak için lütfen belgeleri okuyun.",
     "New action" : "Yeni işlem",
-    "More actions" : "Diğer işlemler"
+    "More actions" : "Diğer işlemler",
+    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Yöneticilerin, Dosyalar uygulamasındaki dosya işlemleri menüsüne kullanıcıların çalıştırabileceği küçük betikler eklemesini sağlar!\n\n- **🌕 Lua:** Lua dilindeki betikler. Basittir ve çok sayıda çevrimiçi kaynak bulunabilir.\n- **⚡️Kullanıcıları destekler:** Zor işlerin Dosyalar uygulamasından kolayca yapılmasını sağlar.\n- **🙋 Önerilere açık:** Betik API yazılımda eksik bir işlev mi gerekiyor? Github üzerinden bildirin!\n\n\n⚠️**Dikkat** Bu uygulama için ek yapılandırma gerekir ve her kullanıcı için uygun olmayabilir. Kurmadan önce belgeleri tümüyle okuduğunuzda emin olun.\n\n⚠️**Dikkat** Büyük gücün sorumluluğu da büyük olur: Betikler dosyaları kalıcı olarak değiştirebilir ya da silebilir. Betikleri oluşturmadan önce belgeleri tümüyle okuduğunuzdan emin olun."
 },
 "nplurals=2; plural=(n > 1);");

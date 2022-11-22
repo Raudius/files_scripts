@@ -1,8 +1,8 @@
 { "translations": {
-    "Lua extension not installed on the server." : "Lua hedapena ez dago zerbitzari honetan instalatuta.",
     "An error occurred when saving the action." : "Errore bat gertatu da ekintza gordetzean.",
     "Action does not exist or is disabled." : "Ekintza ez da existitzen edo desgaituta dago.",
     "Failed to create the action variables." : "Ekintza aldagaiak sortzeak huts egin du.",
+    "Lua extension not installed on the server." : "Lua hedapena ez dago zerbitzari honetan instalatuta.",
     "No script was chosen." : "Ez da script-ik aukeratu",
     "Run file action" : "Exekutatu fitxategiaren ekintza",
     "Pass files to a file action script and run it." : "Pasatu fitxategiak fitxategien ekintza script batera eta exekutatu.",
@@ -11,7 +11,6 @@
     "Title is empty." : "Izenburua hutsik dago.",
     "A script already exists with this title." : "Script bat existitzen da izenburu honekin.",
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tresna, administratzaileei fitxategien aukera menua zabaltzeko aukera ematen diena.",
-    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Administratzaileei Files aplikazioan ekintza menuaren bidez erabiltzaileek exekutatu ditzaketen script txikiak idaztea ahalbidetzen die!\n\n- **🌕 Lua:** Idatzi scriptak Lua-n, sinplea da eta baliabide mordo ditu sarean.\n- **⚡️Ahaldundu erabiltzaileak:** Egin jarduera zailak errazago, dena Files aplikaziotik\n- **🙋 Iradokizunetara irekia:** Scripting APIan funtzio bat faltan botatzen duzu? Ireki issue bat Github-en!\n\n\n⚠️**Oharra** Aplikazio honek konfigurazio gehigarria behar du, eta ez da erabiltzaile guztientzat egokia. Ziurtatu dokumentazioa ondo irakurtzen duzula instalatu baino lehen.\n\n⚠️**Attention** Botere handiak erantzukizun handia dakar: scriptak fitxategiak aldatu edo betirako ezabatu ditzake. Ziurtatu dokumentazioa ondo irakurtzen duzula scriptak idatzi baino lehen.",
     "Edit" : "Aldatu",
     "Delete" : "Ezabatu",
     "Enabled" : "Gaituta",
@@ -35,6 +34,7 @@
     "Unknown error" : "Errore ezezaguna",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Fitxategi ekintzak automatikoki fitxategiak sortu, aldatu edota ezabatu ditzakeen Lua script txikiak dira. Ekintza hauek erabiltzaileek abiarazi ditzake haien fitxategietan. Irakurri dokumentazioa informazio gehiagorako mesedez.",
     "New action" : "Ekintza berria",
-    "More actions" : "Ekintza gehiago"
+    "More actions" : "Ekintza gehiago",
+    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Administratzaileei Files aplikazioan ekintza menuaren bidez erabiltzaileek exekutatu ditzaketen script txikiak idaztea ahalbidetzen die!\n\n- **🌕 Lua:** Idatzi scriptak Lua-n, sinplea da eta baliabide mordo ditu sarean.\n- **⚡️Ahaldundu erabiltzaileak:** Egin jarduera zailak errazago, dena Files aplikaziotik\n- **🙋 Iradokizunetara irekia:** Scripting APIan funtzio bat faltan botatzen duzu? Ireki issue bat Github-en!\n\n\n⚠️**Oharra** Aplikazio honek konfigurazio gehigarria behar du, eta ez da erabiltzaile guztientzat egokia. Ziurtatu dokumentazioa ondo irakurtzen duzula instalatu baino lehen.\n\n⚠️**Attention** Botere handiak erantzukizun handia dakar: scriptak fitxategiak aldatu edo betirako ezabatu ditzake. Ziurtatu dokumentazioa ondo irakurtzen duzula scriptak idatzi baino lehen."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

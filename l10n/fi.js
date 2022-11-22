@@ -1,9 +1,9 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "Lua-laajennusta ei ole asennettu palvelimelle.",
     "An error occurred when saving the action." : "Toimintoa tallentaessa tapahtui virhe.",
     "Action does not exist or is disabled." : "Toimintoa ei ole olemassa tai se on pois käytöstä.",
+    "Lua extension not installed on the server." : "Lua-laajennusta ei ole asennettu palvelimelle.",
     "File actions" : "Tiedostotoiminnot",
     "Edit" : "Muokkaa",
     "Delete" : "Poista",

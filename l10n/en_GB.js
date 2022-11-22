@@ -1,16 +1,15 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "Lua extension not installed on the server.",
     "An error occurred when saving the action." : "An error occurred when saving the action.",
     "Action does not exist or is disabled." : "Action does not exist or is disabled.",
     "Failed to create the action variables." : "Failed to create the action variables.",
+    "Lua extension not installed on the server." : "Lua extension not installed on the server.",
     "File actions" : "File actions",
     "An unexpected error occurred when running the action." : "An unexpected error occurred when running the action.",
     "Title is empty." : "Title is empty.",
     "A script already exists with this title." : "A script already exists with this title.",
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tool which allows administrators to expand the file options menu.",
-    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.",
     "Edit" : "Edit",
     "Delete" : "Delete",
     "Enabled" : "Enabled",
@@ -31,6 +30,7 @@ OC.L10N.register(
     "Unknown error" : "Unknown error",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.",
     "New action" : "New action",
-    "More actions" : "More actions"
+    "More actions" : "More actions",
+    "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly before installing.\n\n⚠️**Attention** With great power comes great responsibility: scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting."
 },
 "nplurals=2; plural=(n != 1);");

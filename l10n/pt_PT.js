@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "A extensão \"Lua\" não está instalada no servidor.",
     "An error occurred when saving the action." : "Ocorreu um erro na gravação da ação.",
     "Action does not exist or is disabled." : "Ação não existe ou está desabilitada.",
     "Failed to create the action variables." : "Erro na criação das variáveis da ação.",
+    "Lua extension not installed on the server." : "A extensão \"Lua\" não está instalada no servidor.",
     "File actions" : "Ações sobre ficheiros",
     "An unexpected error occurred when running the action." : "Um erro não esperado ocorreu aquando da execução da ação.",
     "Title is empty." : "O assunto não está preenchido.",

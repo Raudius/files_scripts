@@ -1,9 +1,9 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Lua extension not installed on the server." : "Расширение Lua не установлено на сервере",
     "An error occurred when saving the action." : "Не удалось сохранить действие.",
     "Action does not exist or is disabled." : "Действие не существует или отключено.",
+    "Lua extension not installed on the server." : "Расширение Lua не установлено на сервере",
     "Edit" : "Редактировать",
     "Delete" : "Удалить",
     "Enabled" : "Включено",

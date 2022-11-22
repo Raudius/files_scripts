@@ -3,7 +3,7 @@
 		<ScriptEdit />
 
 		<!-- File actions section -->
-		<SettingsSection :title="t('files_scripts', 'File actions')"
+		<NcSettingsSection :title="t('files_scripts', 'File actions')"
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 
@@ -15,12 +15,12 @@
 				</span>
 			</div>
 
-			<Button type="primary" @click="newScript">
+			<NcButton type="primary" @click="newScript">
 				<template #icon>
 					<Plus :size="20" />
 				</template>
 				{{ t('files_scripts', 'New action') }}
-			</Button>
+			</NcButton>
 
 			<ul class="script-cards">
 				<ScriptCard v-for="script in scripts"
@@ -33,7 +33,7 @@
 			</ul>
 
 			<div v-if="isLoading" class="icon-loading" />
-			<EmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
+			<NcEmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
 				{{ t('No actions') }}
 				<template #icon>
 					<FileCog />
@@ -41,18 +41,18 @@
 				<template #desc>
 					{{ t('No file actions exist.') }}
 				</template>
-			</EmptyContent>
-		</SettingsSection>
+			</NcEmptyContent>
+		</NcSettingsSection>
 
 		<!-- PHP interpreter section -->
-		<SettingsSection
+		<NcSettingsSection
 			:title="t('files_scripts', 'Experimental interpreter')"
 			:description="t('files_scripts', 'It is highly recommended to run the PHP Lua extension on your server, if this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.')"
 		>
-			<CheckboxRadioSwitch type="switch" :checked="this.usePhpInterpreter" @update:checked="toggleExperimentalInterpreter">
+			<NcCheckboxRadioSwitch type="switch" :checked="this.usePhpInterpreter" @update:checked="toggleExperimentalInterpreter">
 				{{ t('files_scripts', 'Use experimental interpreter') }}
-			</CheckboxRadioSwitch>
-		</SettingsSection>
+			</NcCheckboxRadioSwitch>
+		</NcSettingsSection>
 	</div>
 </template>
 
@@ -61,10 +61,7 @@ import { loadState } from '@nextcloud/initial-state'
 import { showError } from '@nextcloud/dialogs'
 import Plus from 'vue-material-design-icons/Plus.vue'
 import FileCog from 'vue-material-design-icons/FileCog.vue'
-import Button from '@nextcloud/vue/dist/Components/Button'
-import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
-import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
-import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
+import { NcButton, NcEmptyContent, NcSettingsSection, NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import ScriptEdit from '../components/ScriptEdit.vue'
 import ScriptCard from '../components/ScriptCard.vue'
 import { mapState } from 'vuex'
@@ -76,10 +73,10 @@ import {generateUrl} from "@nextcloud/router";
 export default {
 	name: 'Settings',
 	components: {
-		Button,
-		SettingsSection,
-		CheckboxRadioSwitch,
-		EmptyContent,
+		NcButton,
+		NcEmptyContent,
+		NcSettingsSection,
+		NcCheckboxRadioSwitch,
 		ScriptEdit,
 		ScriptCard,
 		Plus,

@@ -1,15 +1,15 @@
 <template>
-	<Modal v-if="showModal"
+	<NcModal v-if="showModal"
 		size="full"
 		:spread-navigation="true"
 		@close="closeModal">
-		<Actions>
-			<ActionButton @click="saveScript">
+		<NcActions>
+			<NcActionButtons @click="saveScript">
 				<template #icon>
 					<Save :size="20" />
 				</template>
-			</ActionButton>
-		</Actions>
+			</NcActionButtons>
+		</NcActions>
 		<div v-if="saving" style="display: inline-block;" class="icon-loading" />
 
 		<div class="container-script-edit">
@@ -23,13 +23,13 @@
 					:placeholder="t('files_scripts', 'A short description of what this action will do …')"
 					rows="6" />
 
-				<CheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
+				<NcCheckboxRadioSwitch type="switch" :checked="!!script.enabled" @update:checked="toggleEnabled">
 					{{ t('files_scripts', 'Enable script') }}
-				</CheckboxRadioSwitch>
+				</NcCheckboxRadioSwitch>
 
-				<CheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
+				<NcCheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
 					{{ t('files_scripts', 'Request target folder') }}
-				</CheckboxRadioSwitch>
+				</NcCheckboxRadioSwitch>
 				<!-- TODO: Uncomment when background jobs gets implemented
 				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
 					Run in background
@@ -42,15 +42,12 @@
 				<CodeMirror v-model="scriptProgram" style="height: 100%" :options="cmOption" />
 			</div>
 		</div>
-	</Modal>
+	</NcModal>
 </template>
 
 <script lang="ts">
-import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import Modal from '@nextcloud/vue/dist/Components/Modal'
-import Actions from '@nextcloud/vue/dist/Components/Actions'
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import { NcModal, NcActions, NcActionButtons, NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -66,12 +63,12 @@ const CodeMirror = require('vue-codemirror').codemirror
 export default {
 	name: 'ScriptEdit',
 	components: {
-		Save,
-		Modal,
-		Actions,
-		ActionButton,
+		NcModal,
+		NcActions,
+		NcActionButtons,
 		CodeMirror,
-		CheckboxRadioSwitch,
+		NcCheckboxRadioSwitch,
+		Save,
 		EditInputs,
 	},
 	data() {

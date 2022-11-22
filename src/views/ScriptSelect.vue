@@ -1,12 +1,12 @@
 <template>
-	<Modal v-if="showModal" @close="closeModal">
+	<NcModal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
 			<h2>{{ t('files_scripts', 'Select action to perform') }}</h2>
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
 				<div class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
-					<Multiselect v-model="selectedScript"
+					<NcMultiselect v-model="selectedScript"
 						class="section-details"
 						:options="scripts"
 						:placeholder="t('files_scripts', 'Select an action to perform')"
@@ -39,7 +39,7 @@
 
 				<div style="text-align: right;">
 					<div v-if="loadingScriptInputs || isRunning" class="input-loader icon-loading display-inline" />
-					<Button class="display-inline"
+					<NcButton class="display-inline"
 						type="primary"
 						:disabled="!readyToRun"
 						@click="run">
@@ -47,18 +47,16 @@
 							<Play :size="20" />
 						</template>
 						{{ t('files_scripts', 'Execute') }}
-					</Button>
+					</NcButton>
 				</div>
 			</div>
 		</div>
-	</Modal>
+	</NcModal>
 </template>
 
 <script lang="ts">
 import '@nextcloud/dialogs/styles/toast.scss'
-import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
-import Modal from '@nextcloud/vue/dist/Components/Modal'
-import Button from '@nextcloud/vue/dist/Components/Button'
+import { NcMultiselect, NcModal, NcButton } from "@nextcloud/vue";
 import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
@@ -73,9 +71,9 @@ import { ScriptInput } from '../types/script'
 export default {
 	name: 'ScriptSelect',
 	components: {
-		Modal,
-		Button,
-		Multiselect,
+		NcModal,
+		NcButton,
+		NcMultiselect,
 		FileCog,
 		ConsoleLine,
 		Folder,

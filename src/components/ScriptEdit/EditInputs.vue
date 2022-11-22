@@ -16,13 +16,13 @@
 				class="input-description"
 				:placeholder="t('files_scripts', 'User prompt …')">
 			<div class="input-action">
-				<Actions>
-					<ActionButton @click="addInput()">
+				<NcActions>
+					<NcActionButton @click="addInput()">
 						<template #icon>
 							<Plus :size="20" />
 						</template>
-					</ActionButton>
-				</Actions>
+					</NcActionButton>
+				</NcActions>
 			</div>
 		</div>
 		<div v-for="(scriptInput, idx) in scriptInputs"
@@ -35,21 +35,20 @@
 				{{ scriptInput.description }}
 			</div>
 			<div class="input-action">
-				<Actions>
-					<ActionButton @click="remove(scriptInput.name)">
+				<NcActions>
+					<NcActionButton @click="remove(scriptInput.name)">
 						<template #icon>
 							<Delete :size="20" @click="remove(scriptInput)" />
 						</template>
-					</ActionButton>
-				</Actions>
+					</NcActionButton>
+				</NcActions>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import Actions from '@nextcloud/vue/dist/Components/Actions'
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import { NcActions, NcActionButton } from '@nextcloud/vue'
 import Plus from 'vue-material-design-icons/Plus.vue'
 import Delete from 'vue-material-design-icons/Delete.vue'
 import { ScriptInput } from '../../types/script'
@@ -60,8 +59,8 @@ import { translate as t } from '../../l10n'
 export default {
 	name: 'EditInputs',
 	components: {
-		Actions,
-		ActionButton,
+		NcActions,
+		NcActionButton,
 		Plus,
 		Delete,
 	},

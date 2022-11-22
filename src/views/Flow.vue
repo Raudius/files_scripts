@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Multiselect v-model="selectedScript"
+		<NcMultiselect v-model="selectedScript"
 			class="section-details"
 			:options="scripts"
 			:placeholder="t('files_scripts', 'Select an action to perform')"
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import { translate as t } from '../l10n'
 import { api } from '../api/script'
+import { NcMultiselect } from '@nextcloud/vue'
 
 export default {
 	name: 'Flow',
 	components: {
-		Multiselect,
+		NcMultiselect,
 	},
 	props: {
 		value: String,

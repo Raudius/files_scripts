@@ -1,5 +1,5 @@
 <template>
-	<ListItem v-if="script"
+	<NcListItem v-if="script"
 		:title="script.title"
 		:details="enabledText()"
 		:force-display-actions="true"
@@ -8,26 +8,26 @@
 			{{ script.description }}
 		</template>
 		<template #actions>
-			<ActionButton icon="icon-rename" :close-after-click="true" @click="editScript">
+			<NcActionButton icon="icon-rename" :close-after-click="true" @click="editScript">
 				{{ t('files_scripts', 'Edit') }}
-			</ActionButton>
-			<ActionButton icon="icon-delete" :close-after-click="true" @click="deleteScript">
+			</NcActionButton>
+			<NcActionButton icon="icon-delete" :close-after-click="true" @click="deleteScript">
 				{{ t('files_scripts', 'Delete') }}
-			</ActionButton>
+			</NcActionButton>
 		</template>
-	</ListItem>
+	</NcListItem>
 </template>
 
 <script lang="ts">
-import ListItem from '@nextcloud/vue/dist/Components/ListItem'
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import { NcListItem, NcActionButton } from '@nextcloud/vue'
 import { Script } from '../types/script'
 import { translate as t } from '../l10n'
 
 export default {
 	name: 'ScriptCard',
 	components: {
-		ListItem, ActionButton,
+		NcListItem,
+		NcActionButton,
 	},
 
 	props: {

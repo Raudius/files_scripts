@@ -43,7 +43,7 @@
 		<!-- PHP interpreter section -->
 		<NcSettingsSection
 			:title="t('files_scripts', 'Experimental interpreter')"
-			:description="t('files_scripts', 'It is highly recommended to run the PHP Lua extension on your server, if this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.')"
+			:description="t('files_scripts', 'It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.')"
 		>
 			<NcCheckboxRadioSwitch type="switch" :checked="this.usePhpInterpreter" @update:checked="toggleExperimentalInterpreter">
 				{{ t('files_scripts', 'Use experimental interpreter') }}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6c7f66fc78e785a3a571df8869565a3",
+    "content-hash": "3859ed6eaf30a5799e474508d27f3925",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -844,16 +844,16 @@
         },
         {
             "name": "raudius/luar",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Raudius/Luar.git",
-                "reference": "2c7e1e4094333810f7f8b7ace6c7903e22023548"
+                "reference": "09fa86d50ffec37b0ad17f21b925932fab2ca466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Raudius/Luar/zipball/2c7e1e4094333810f7f8b7ace6c7903e22023548",
-                "reference": "2c7e1e4094333810f7f8b7ace6c7903e22023548",
+                "url": "https://api.github.com/repos/Raudius/Luar/zipball/09fa86d50ffec37b0ad17f21b925932fab2ca466",
+                "reference": "09fa86d50ffec37b0ad17f21b925932fab2ca466",
                 "shasum": ""
             },
             "require": {
@@ -880,12 +880,12 @@
                     "email": "r.ferreira.fuentes@gmail.com"
                 }
             ],
-            "description": "Lua parser written in PHP",
+            "description": "Lua interpreter written entirely in PHP",
             "support": {
                 "issues": "https://github.com/Raudius/Luar/issues",
-                "source": "https://github.com/Raudius/Luar/tree/v0.1.0"
+                "source": "https://github.com/Raudius/Luar/tree/v0.1.1"
             },
-            "time": "2022-11-21T19:44:19+00:00"
+            "time": "2022-11-22T20:34:10+00:00"
         },
         {
             "name": "raudius/phpdf",

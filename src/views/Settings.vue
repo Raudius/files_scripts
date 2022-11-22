@@ -7,13 +7,9 @@
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 
-			<!-- FIXME: Change to NcNoteCard once the Nextcloud Vue-component library is updated -->
-			<div v-if="!this.interpreterAvailable && !this.usePhpInterpreter" id="security-warning-state-failure" style="margin-bottom: 24px;">
-				<span class="icon icon-error-white" />
-				<span class="message">
-					{{ t('files_scripts', 'File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.') }}
-				</span>
-			</div>
+			<NcNoteCard type="warning" v-if="!this.pluginAvailable && !this.usePhpInterpreter">
+				<p>{{ t('files_scripts', 'File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.') }}</p>
+			</NcNoteCard>
 
 			<NcButton type="primary" @click="newScript">
 				<template #icon>
@@ -96,7 +92,7 @@ export default {
 	data() {
 		return {
 			usePhpInterpreter: loadState('files_scripts', 'use_php_interpreter', false),
-			interpreterAvailable: loadState('files_scripts', 'lua_interpreter_available', false)
+			pluginAvailable: loadState('files_scripts', 'lua_plugin_available', false)
 		}
 	},
 

@@ -13,22 +13,19 @@ use OCP\Util;
 class AdminSettings implements ISettings {
 	private IConfig $config;
 	private IInitialState $initialStateService;
-	private LuaProvider $luaProvider;
 
 	public function __construct(
 		IConfig $config,
-		IInitialState $initialStateService,
-		LuaProvider $luaProvider
+		IInitialState $initialStateService
 	) {
 		$this->config = $config;
 		$this->initialStateService = $initialStateService;
-		$this->luaProvider = $luaProvider;
 	}
 
 	public function getForm(): TemplateResponse {
 		$usePhpInterpreter = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, 'false') === 'true';
 		$this->initialStateService->provideInitialState('use_php_interpreter', $usePhpInterpreter);
-		$this->initialStateService->provideInitialState('lua_interpreter_available', $this->luaProvider->isAvailable());
+		$this->initialStateService->provideInitialState('lua_plugin_available', LuaProvider::isLuaPluginAvailable());
 
 		Util::addScript(Application::APP_ID, 'files_scripts-main');
 		return new TemplateResponse(Application::APP_ID, 'settings-admin');

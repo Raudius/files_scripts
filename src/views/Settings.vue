@@ -8,7 +8,7 @@
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 
 			<!-- FIXME: Change to NcNoteCard once the Nextcloud Vue-component library is updated -->
-			<div v-if="!this.interpreterAvailable" id="security-warning-state-failure" style="margin-bottom: 24px;">
+			<div v-if="!this.interpreterAvailable && !this.usePhpInterpreter" id="security-warning-state-failure" style="margin-bottom: 24px;">
 				<span class="icon icon-error-white" />
 				<span class="message">
 					{{ t('files_scripts', 'File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.') }}

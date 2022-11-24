@@ -13,6 +13,7 @@ OC.L10N.register(
     "Title is empty." : "Tytuł jest pusty.",
     "A script already exists with this title." : "Skrypt o tym tytule już istnieje.",
     "Scripting tool which allows administrators to expand the file options menu." : "Narzędzie do tworzenia skryptów, które umożliwia administratorom rozbudowanie menu w opcje dla plików.",
+    "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Umożliwia administratorom pisanie małych skryptów, które użytkownicy mogą uruchamiać za pomocą menu działań na plikach w aplikacji Pliki!\n\n- **🌕 Lua:** Skrypt w Lua, jest prosty i ma mnóstwo zasobów online.\n- **⚡️Ulepsz użytkowników:** Ułatw trudne zadania bezpośrednio z aplikacji Pliki.\n- **🙋 Otwarty na sugestie:** Brakuje Tobie jakiejś funkcji w interfejsie API skryptów? Otwórz problem na Github!\n\n\n⚠️**Uwaga** Aplikacja ta wymaga dodatkowej konfiguracji i może nie być odpowiednia dla wszystkich użytkowników. Pamiętaj, aby dokładnie zapoznać się z dokumentacją.\n\n⚠️**Uwaga** Z wielką mocą wiąże się wielka odpowiedzialność: Skrypty mogą trwale modyfikować i usuwać pliki. Przed przystąpieniem do pisania skryptów należy dokładnie przeczytać dokumentację.",
     "Edit" : "Edytuj",
     "Delete" : "Usuń",
     "Enabled" : "Włączone",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Działania na plikach nie są dostępne, ponieważ nie ma dostępnego interpretera. Zainstaluj wtyczkę Lua na serwerze lub włącz interpreter eksperymentalny.",
     "New action" : "Nowa akcja",
     "Experimental interpreter" : "Tłumacz eksperymentalny",
+    "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Zdecydowanie zaleca się uruchomienie rozszerzenia PHP Lua na swoim serwerze. Jeśli nie jest to możliwe, można użyć eksperymentalnego interpretera Lua. Ten interpreter jest wciąż w fazie rozwoju i nie zawsze może dawać oczekiwane wyniki.",
     "Use experimental interpreter" : "Użyj interpretera eksperymentalnego",
     "More actions" : "Więcej akcji"
 },

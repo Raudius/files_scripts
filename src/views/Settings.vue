@@ -4,6 +4,7 @@
 
 		<!-- File actions section -->
 		<NcSettingsSection :title="t('files_scripts', 'File actions')"
+		 	:limitWidth="false"
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 
@@ -42,6 +43,7 @@
 
 		<!-- PHP interpreter section -->
 		<NcSettingsSection
+			:limitWidth="false"
 			:title="t('files_scripts', 'Experimental interpreter')"
 			:description="t('files_scripts', 'It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.')"
 		>
@@ -57,7 +59,7 @@ import { loadState } from '@nextcloud/initial-state'
 import { showError } from '@nextcloud/dialogs'
 import Plus from 'vue-material-design-icons/Plus.vue'
 import FileCog from 'vue-material-design-icons/FileCog.vue'
-import { NcButton, NcEmptyContent, NcSettingsSection, NcCheckboxRadioSwitch } from '@nextcloud/vue'
+import { NcNoteCard, NcButton, NcEmptyContent, NcSettingsSection, NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import ScriptEdit from '../components/ScriptEdit.vue'
 import ScriptCard from '../components/ScriptCard.vue'
 import { mapState } from 'vuex'
@@ -69,6 +71,7 @@ import {generateUrl} from "@nextcloud/router";
 export default {
 	name: 'Settings',
 	components: {
+		NcNoteCard,
 		NcButton,
 		NcEmptyContent,
 		NcSettingsSection,

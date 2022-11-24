@@ -4,11 +4,11 @@
 		:spread-navigation="true"
 		@close="closeModal">
 		<NcActions>
-			<NcActionButtons @click="saveScript">
+			<NcActionButton @click="saveScript">
 				<template #icon>
 					<Save :size="20" />
 				</template>
-			</NcActionButtons>
+			</NcActionButton>
 		</NcActions>
 		<div v-if="saving" style="display: inline-block;" class="icon-loading" />
 
@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButtons, NcCheckboxRadioSwitch } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -65,14 +65,20 @@ export default {
 	components: {
 		NcModal,
 		NcActions,
-		NcActionButtons,
+		NcActionButton,
 		CodeMirror,
 		NcCheckboxRadioSwitch,
 		Save,
 		EditInputs,
 	},
 	data() {
-		const darkMode = document.body.classList.contains('theme--dark')
+		const mainBackgroundColor = getComputedStyle(document.querySelector('body'))
+				.getPropertyValue('--color-main-background-rgb')
+				.split(',');
+		console.log(mainBackgroundColor)
+		const darkMode = Number(mainBackgroundColor[0]) < 128
+			&& Number(mainBackgroundColor[1]) < 128
+			&& Number(mainBackgroundColor[2]) < 128
 
 		return {
 			scriptInputs: [],

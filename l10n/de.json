@@ -34,6 +34,7 @@
     "Unknown error" : "Unbekannter Fehler",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Datei-Aktionen sind kleine Lua-Skripte, die programmgesteuert Dateien erstellen, ändern und/oder löschen können. Diese Aktionen können von Benutzern ausgelöst werden, um auf ihren Dateien ausgeführt zu werden. Bitte lese die Dokumentation für weitere Informationen.",
     "New action" : "Neue Aktion",
+    "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Es wird dringend empfohlen, die PHP-Lua-Erweiterung auf deinem Server auszuführen. Falls dies nicht möglich ist, kann der experimentelle Lua-Interpreter verwendet werden. Dieser Interpreter befindet sich noch in der Entwicklung und liefert möglicherweise nicht immer die erwarteten Ergebnisse.",
     "More actions" : "Weitere Aktionen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

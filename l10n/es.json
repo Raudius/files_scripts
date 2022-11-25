@@ -11,6 +11,7 @@
     "Title is empty." : "El título está vacío.",
     "A script already exists with this title." : "Un script ya existe con este título.",
     "Scripting tool which allows administrators to expand the file options menu." : "Una programación que permite a los administradores ampliar el menú de opciones de archivo.",
+    "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "¡Permite a los administradores escribir pequeños scripts que los usuarios pueden ejecutar a través del menú de acciones de archivo en la aplicación Archivos!\n\n- **🌕 Lua:** Script en Lua, es simple y tiene un montón de recursos en línea.\n- **⚡️Empoderar a los usuarios:** Hacer tareas difíciles fácil, directamente desde la aplicación Archivos.\n- **🙋 Abierto a sugerencias:** ¿Te falta una función en la API de scripting? ¡Abre una incidencia en Github!\n\n\n⚠️**Atención** Esta aplicación requiere una configuración adicional, y puede no ser adecuada para todos los usuarios. Asegúrese de leer la documentación exhaustivamente.\n\n⚠️**Atención** Un gran poder conlleva una gran responsabilidad: esta app puede modificar y eliminar archivos de forma permanente. Asegúrese de leer la documentación exhaustivamente antes de crear scripts.",
     "Edit" : "Editar",
     "Delete" : "Eliminar",
     "Enabled" : "Activado",
@@ -33,7 +34,11 @@
     "Action failed unexpectedly." : "La acción falló inesperadamente.",
     "Unknown error" : "Error desconocido",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Las acciones de archivo son pequeños scripts de Lua que pueden crear, modificar y/o eliminar archivos de forma programada. Estas acciones pueden ser activadas por los usuarios para ser ejecutadas en sus archivos. Por favor, lea la documentación para más información.",
+    "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Las acciones de archivo no están disponibles ya que no hay ningún intérprete disponible. Instale el plugin de Lua en el servidor o bien habilite el intérprete experimental.",
     "New action" : "Nueva acción",
+    "Experimental interpreter" : "Intérprete experimental",
+    "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Es altamente recomendado que utilice la extensión PHP Lua en su servidor. De no ser posible, puede usar el intérprete Lua experimental. Este intérprete se encuentra todavía en desarrollo y de vez en cuando podría no producir los resultados esperados.",
+    "Use experimental interpreter" : "Usar intérprete experimental",
     "More actions" : "Más acciones"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

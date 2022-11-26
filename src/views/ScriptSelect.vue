@@ -25,13 +25,7 @@
 						@click="pickOutputDirectory">
 				</div>
 
-				<div v-for="scriptInput in scriptInputs" :key="scriptInput.id" class="section-wrapper">
-					<ConsoleLine class="section-label" :size="20" />
-					<input v-model="scriptInput.value"
-						type="text"
-						class="section-details"
-						:placeholder="scriptInput.description">
-				</div>
+				<ScriptInputComponent v-for="scriptInput in scriptInputs" :key="scriptInput.id" :scriptInput="scriptInput" />
 
 				<div class="script-info">
 					{{ selectedDescription }}
@@ -67,6 +61,7 @@ import * as path from 'path'
 import { translate as t } from '../l10n'
 import { registerFileSelect, registerMultiSelect } from '../files'
 import { ScriptInput } from '../types/script'
+import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 
 export default {
 	name: 'ScriptSelect',
@@ -78,6 +73,7 @@ export default {
 		ConsoleLine,
 		Folder,
 		Play,
+		ScriptInputComponent
 	},
 	data() {
 		return {

@@ -7,6 +7,7 @@ use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
@@ -38,6 +39,13 @@ class ScriptInputController extends Controller {
 		return new JSONResponse([], Http::STATUS_NOT_IMPLEMENTED);
 	}
 
+	/**
+	 * @NoAdminRequired
+	 */
+	public function getByScriptId($scriptId): Response {
+		return new DataResponse($this->scriptInputMapper->findAllByScriptId($scriptId));
+	}
+
 	public function createAll(int $scriptId, $scriptInputs): Response {
 		$script = $this->scriptMapper->find($scriptId);
 		if (!$script) {
@@ -49,6 +57,7 @@ class ScriptInputController extends Controller {
 			$scriptInput = new ScriptInput();
 			$scriptInput->setName($scriptInputArr['name']);
 			$scriptInput->setDescription($scriptInputArr['description']);
+			$scriptInput->setScriptOptions($scriptInputArr['options']);
 			$scriptInput->setScriptId($scriptId);
 
 			try {
@@ -59,25 +68,6 @@ class ScriptInputController extends Controller {
 		}
 
 		return new JSONResponse();
-	}
-
-	public function create(string $name, string $description, int $scriptId): Response {
-		$script = $this->scriptMapper->find($scriptId);
-		if (!$script) {
-			return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_NOT_FOUND);
-		}
-		$scriptInput = new ScriptInput();
-		$scriptInput->setName($name);
-		$scriptInput->setDescription($description);
-		$scriptInput->setScriptId($scriptId);
-
-		try {
-			$this->scriptInputMapper->insert($scriptInput);
-		} catch (Exception $e) {
-			return new JSONResponse(['error' => $this->l->t('Failed to create the action variables.')], Http::STATUS_BAD_REQUEST);
-		}
-
-		return new JSONResponse($script);
 	}
 
 	/**

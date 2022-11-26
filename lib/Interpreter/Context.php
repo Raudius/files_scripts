@@ -2,6 +2,7 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
+use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Interpreter\Lua\LuaWrapper;
 use OCP\Files\Folder;
 use OCP\Files\Node;
@@ -10,6 +11,7 @@ use OCP\Files\NotFoundException;
 class Context {
 	/** @var Node[] */
 	private array $files;
+	/** @var ScriptInput[] */
 	private array $input;
 	private Folder $root;
 	private ?string $targetDirectory;

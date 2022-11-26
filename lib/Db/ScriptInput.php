@@ -22,6 +22,8 @@ class ScriptInput extends Entity implements JsonSerializable {
 	protected ?int $scriptId = null;
 	protected ?string $options = null;
 
+	protected ?string $value = null;
+
 	public function jsonSerialize(): array {
 		return [
 			'id' => $this->id,
@@ -53,5 +55,13 @@ class ScriptInput extends Entity implements JsonSerializable {
 		} catch (Throwable $e) {
 			return [];
 		}
+	}
+
+	public function getValue(): ?string {
+		return $this->value;
+	}
+
+	public function setValue(?string $value): void {
+		$this->value = $value;
 	}
 }

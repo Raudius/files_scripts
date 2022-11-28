@@ -12,11 +12,19 @@ A common use for this input option is to select a location where to save the fil
 ### Input values
 Any number of additional input values can be added in the script-creation view. These are made available to the scripting API via the [`get_input()`](Functions.md#get_input) function. 
 
+By default, input types are text-fields where the user may type in the value. However other, more restrictive input types may be used:
+
+- **Checkbox** allows for a boolean (`true`/`false`)  input from the user
+- **Multiselect** allows the user to select from a set of pre-determined inputs.
+- **File-picker** allows the user to choose a document from their Nextcloud files. 
+
+Note: to allow a user to pick a folder the `httpd/unix-directory` mimetype must be added to the filepick options.
+
 ### Required fields
 User input fields will always be optional: the action may still be triggered even if the user did not input anything. However, additional checks can be performed on the script itself, and an [error](Functions.md#abort) may be returned to the user if any required fields were not (correctly) filled.
 
 ```lua
-local file_name = get_input().name
+local file_name = get_input('file_name')
 if (not file_name or string.len(file_name) == 0) then
   abort('File name was not filled in.')
 end 
@@ -65,4 +73,4 @@ Actions can also be configured to work with Nextcloud's automated flows.
 
 When running a script from a flow `get_input_files()` will only contain the file that triggered the flow, and `get_target_folder()` will be the folder containing the file. 
 
-Additionally, for "file rename" and "file copy" events, the previous file node's path can be accessed with: `get_input().old_node_path`
+Additionally, for "file rename" and "file copy" events, the previous file's path can be accessed with: `get_input('old_node_path')`

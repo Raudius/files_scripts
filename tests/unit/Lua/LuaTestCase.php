@@ -8,26 +8,26 @@ use OCA\FilesScripts\Interpreter\Interpreter;
 use OCA\FilesScripts\Interpreter\Lua\LuarInterpreter;
 use OCA\FilesScripts\TestFunctionProvider;
 use OCA\FilesScripts\TestTempManager;
-use OCP\Files\SimpleFS\ISimpleFolder;
 use PHPUnit\Framework\TestCase;
 
 abstract class LuaTestCase extends TestCase {
-	protected function runLua(string $program) {
-		$folder = $this->collectiveFolder = $this->getMockBuilder(Folder::class)
-			->disableOriginalConstructor()
-			->getMock();
+	protected function runLua(string $program, array $inputs = []) {
+		$mockFolder = $this->getMockBuilder(Folder::class)
+			->disableOriginalConstructor()->getMock();
+		$mockFolder->method('get')->willReturn($mockFolder);
+		$mockFolder->method('getId')->willReturn('rootFolder');
 
 		$lua = new LuarInterpreter();
 		$context = new Context(
 			$lua,
-			$folder,
-			[],
+			$mockFolder,
+			$inputs,
 			[],
 			null
 		);
 
 		$interpreter = new Interpreter(
-			new TestFunctionProvider(),
+			new TestFunctionProvider($this),
 			new TestTempManager()
 		);
 

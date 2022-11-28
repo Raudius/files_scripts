@@ -211,7 +211,7 @@ export default {
 .script-details {
 	flex: 0 0 25%;
 	height: 90vh;
-	margin-right: 12px;
+	padding-right: 12px;
 	overflow-y: auto;
 	overflow-x: clip;
 }

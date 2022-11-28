@@ -1,6 +1,6 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
-import { Script, ScriptInput } from '../types/script'
+import { inflateScriptInputOptions, Script, ScriptInput } from '../types/script'
 
 export const api = {
 	async getScripts(): Promise<Script[]> {
@@ -24,10 +24,13 @@ export const api = {
 	},
 
 	async getScriptInputs(scriptId: Number): Promise<ScriptInput[]> {
-		return (await axios.get(generateUrl('/apps/files_scripts/scripts/' + scriptId + '/inputs'))).data
+		return (await axios.get(generateUrl('/apps/files_scripts/script_inputs/' + scriptId))).data
+			.map((scriptInput: ScriptInput) => {
+				return inflateScriptInputOptions(scriptInput)
+			})
 	},
 
-	async updateScriptInputs(script, scriptInputs) {
+	async updateScriptInputs(script: Script, scriptInputs: ScriptInput[]) {
 		return (await axios.post(generateUrl('/apps/files_scripts/script_inputs/' + script.id), { scriptInputs })).data
 	},
 }

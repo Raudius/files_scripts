@@ -168,9 +168,15 @@ class ScriptController extends Controller {
 			$fileNodes[$n++] = $userFolder->get($path);
 		}
 
-		$scriptInputs = [];
+		$groupedInputs = [];
 		foreach ($inputs as $input) {
-			$scriptInputs[$input['name']] = $input['value'] ?? null;
+			$groupedInputs[$input['name']] = $input;
+		}
+
+		$scriptInputs = $this->scriptInputMapper->findAllByScriptId($id);
+		foreach ($scriptInputs as $scriptInput) {
+			$value = $groupedInputs[$scriptInput->getName()]['value'] ?? '';
+			$scriptInput->setValue($value);
 		}
 
 		$context = new Context($this->luaProvider->createLua(), $userFolder, $scriptInputs, $fileNodes, $outputDirectory);

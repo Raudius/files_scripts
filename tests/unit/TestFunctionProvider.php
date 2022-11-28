@@ -118,8 +118,7 @@ class TestFunctionProvider implements IFunctionProvider {
 		];
 	}
 
-	public function isRegistrable(): bool
-	{
-		// TODO: Implement isRegistrable() method.
+	public function isRegistrable(): bool {
+		return true;
 	}
 }

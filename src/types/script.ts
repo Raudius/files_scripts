@@ -13,7 +13,14 @@ export interface ScriptInput {
 	scriptId: number
 	name: string
 	description: string
+	options: ScriptInputOptions
 	value: string
+}
+
+export interface ScriptInputOptions {
+	type: string,
+	multiselectOptions: string[]
+	filepickMimes: string[]
 }
 
 /**
@@ -28,5 +35,28 @@ export function defaultScript(): Script {
 		program: '',
 		background: false,
 		requestDirectory: false,
+	}
+}
+
+export function createScriptInput(name: string, description: string): ScriptInput {
+	return {
+		name,
+		description,
+		options: {
+			type: 'text',
+			multiselectOptions: [],
+			filepickMimes: [],
+		} as ScriptInputOptions
+	} as ScriptInput
+}
+
+export function inflateScriptInputOptions(scriptInput: ScriptInput): ScriptInput {
+	return {
+		...scriptInput,
+		options: {
+			type: scriptInput.options.type ?? 'text',
+			multiselectOptions: scriptInput.options.multiselectOptions ?? [],
+			filepickMimes: scriptInput.options.filepickMimes ?? []
+		}
 	}
 }

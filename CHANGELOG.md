@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.2
+-Updated PHP interpreter dependency
+
+### Fixes
+
 ## 2.0.1
 
 ### Changed

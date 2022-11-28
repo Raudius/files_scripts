@@ -73,11 +73,6 @@ export default {
 			editingInput: null
 		}
 	},
-	watch: {
-		scriptId(newVal) {
-			(newVal !== null) && this.fetchInputs()
-		},
-	},
 	mounted() {
 		this.fetchInputs()
 	},
@@ -117,7 +112,7 @@ export default {
 			this.updated()
 		},
 		updated() {
-			this.$emit('changed', Object.values(this.scriptInputs))
+			this.$emit('changed', this.scriptInputs)
 		},
 		async fetchInputs() {
 			if (this.scriptId === null) {
@@ -132,6 +127,7 @@ export default {
 			})
 			this.scriptInputs = scriptInputs
 			this.loading = false
+			this.updated()
 		},
 	},
 }

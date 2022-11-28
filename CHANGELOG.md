@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+### Changed
+- Separated stable24 branch which bring maintenance fixes (`file_scripts 2.0.x`) for Nextcloud 23, 24
+- Updated PHP interpreter dependency
+
 ## 2.0.0
 
 ### Added

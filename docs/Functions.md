@@ -242,9 +242,15 @@ Returns whether a node object represents a real file or folder.
 ## Input
 ### get_input
 
-`get_input(): Table`  
+`get_input([String input_name=nil]): Table`  
   
-Returns a Lua table containing the user inputs.
+Returns a Lua table containing the user inputs. If the optional `input_name` parameter is returned the value of the  
+specified input is returned.  
+  
+```lua  
+get_input() 			-- { testVar= 'input' }  
+get_input('testVar') -- 'input'  
+```
 ### get_input_files
 
 `get_input_files(): Node[]`  
@@ -254,7 +260,10 @@ Returns a list of the selected files: these are the files the user selects befor
 
 `get_target_folder(): Node|nil`  
   
-Returns the target directory node. If none is provided, returns nil.
+Returns the target directory node. If none is provided, returns nil.  
+  
+⚠️ DEPRECATED: Replace usage with user input of type "file-picker".  
+Hint: set the accepted mimetypes to just `httpd/unix-directory` to limit file picker to directories.
 ## Media
 ### ffmpeg
 

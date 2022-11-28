@@ -13,6 +13,7 @@ OC.L10N.register(
     "Title is empty." : "Title is empty.",
     "A script already exists with this title." : "A script already exists with this title.",
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tool which allows administrators to expand the file options menu.",
+    "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.",
     "Edit" : "Edit",
     "Delete" : "Delete",
     "Enabled" : "Enabled",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.",
     "New action" : "New action",
     "Experimental interpreter" : "Experimental interpreter",
+    "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.",
     "Use experimental interpreter" : "Use experimental interpreter",
     "More actions" : "More actions"
 },

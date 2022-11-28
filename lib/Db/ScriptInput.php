@@ -22,7 +22,7 @@ class ScriptInput extends Entity implements JsonSerializable {
 	protected ?int $scriptId = null;
 	protected ?string $options = null;
 
-	protected ?string $value = null;
+	protected $value = null;
 
 	public function jsonSerialize(): array {
 		return [
@@ -57,11 +57,11 @@ class ScriptInput extends Entity implements JsonSerializable {
 		}
 	}
 
-	public function getValue(): ?string {
+	public function getValue() {
 		return $this->value;
 	}
 
-	public function setValue(?string $value): void {
+	public function setValue($value): void {
 		$this->value = $value;
 	}
 }

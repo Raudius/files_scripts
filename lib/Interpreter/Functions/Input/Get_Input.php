@@ -25,11 +25,11 @@ class Get_Input extends RegistrableFunction {
 
 		return $inputName === null
 			? $inputs
-			: $inputs[$inputName] ?? $inputName;
+			: $inputs[$inputName] ?? null;
 	}
 
 	private function getRuntimeValue(ScriptInput $scriptInput) {
-		$scriptType = $scriptInput->getScriptOptions()['type'];
+		$scriptType = $scriptInput->getScriptOptions()['type'] ?? null;
 		$value = $scriptInput->getValue();
 
 		switch ($scriptType) {
@@ -39,7 +39,7 @@ class Get_Input extends RegistrableFunction {
 			case 'checkbox':
 				return (bool) $value;
 			default:
-				return $value;
+				return (string) $value;
 		}
 	}
 }

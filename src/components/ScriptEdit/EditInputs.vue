@@ -17,14 +17,16 @@
 				<div class="input-description">{{ scriptInput.description }}</div>
 				<div class="input-action">
 					<NcActions>
-						<NcActionButton icon="icon-rename" :close-after-click="true" @click="edit(scriptInput)">
+						<NcActionButton icon="icon-rename" @click="edit(scriptInput)">
 							{{ t('files_scripts', 'Edit') }}
+						</NcActionButton>
+						<NcActionButton @click="moveToLast(scriptInput)" :close-after-click="true">
+							{{ t('files_scripts', 'Move to bottom') }}
+							<template #icon> <TransferDown :size="20" /> </template>
 						</NcActionButton>
 						<NcActionButton @click="remove(scriptInput)">
 							{{ t('files_scripts', 'Delete') }}
-							<template #icon>
-								<Delete :size="20" @click="remove(scriptInput)" />
-							</template>
+							<template #icon> <Delete :size="20" /> </template>
 						</NcActionButton>
 					</NcActions>
 				</div>
@@ -42,6 +44,7 @@
 <script lang="ts">
 import { NcActions, NcActionButton, NcButton } from '@nextcloud/vue'
 import Plus from 'vue-material-design-icons/Plus.vue'
+import TransferDown from 'vue-material-design-icons/TransferDown.vue'
 import Delete from 'vue-material-design-icons/Delete.vue'
 import {createScriptInput, ScriptInput} from '../../types/script'
 import Vue from 'vue'
@@ -59,6 +62,7 @@ export default {
 		NcButton,
 		Plus,
 		Delete,
+		TransferDown,
 	},
 	props: {
 		scriptId: Number,
@@ -110,6 +114,10 @@ export default {
 		remove(scriptInput: ScriptInput) {
 			Vue.delete(this.scriptInputs, scriptInput.name)
 			this.updated()
+		},
+		moveToLast(scriptInput: ScriptInput) {
+			this.remove(scriptInput)
+			this.saveInput(scriptInput)
 		},
 		updated() {
 			this.$emit('changed', this.scriptInputs)

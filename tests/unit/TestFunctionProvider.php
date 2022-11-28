@@ -79,7 +79,6 @@ class TestFunctionProvider implements IFunctionProvider {
 			new Abort(),
 			new Get_Input(),
 			new Get_Input_Files(),
-			new Get_Target_Folder(),
 			new Html_To_Pdf($tempManager),
 			new Mustache(),
 			new Sort(),

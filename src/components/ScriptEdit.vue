@@ -27,14 +27,16 @@
 					{{ t('files_scripts', 'Enable script') }}
 				</NcCheckboxRadioSwitch>
 
+				<!-- TODO: deprecated, remove in next major version -->
 				<NcCheckboxRadioSwitch type="switch" :checked="!!script.requestDirectory" @update:checked="toggleRequestDirectory">
 					{{ t('files_scripts', 'Request target folder') }}
 				</NcCheckboxRadioSwitch>
-				<!-- TODO: Uncomment when background jobs gets implemented
-				<CheckboxRadioSwitch type="switch" :checked="!!script.background" @update:checked="toggleBackground">
-					Run in background
-				</CheckboxRadioSwitch>
--->
+				<template v-if="script.requestDirectory">
+					<NcNoteCard type="warning">
+						<b>Important notice:</b> target folder is deprecated and will be removed in a future version. Replace uses of `get_target_folder()` with a file-picker user input (see the user input section below).
+					</NcNoteCard>
+				</template>
+
 				<EditInputs :script-id="script.id" @changed="updateInputs" />
 			</div>
 
@@ -47,7 +49,7 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -68,6 +70,7 @@ export default {
 		NcActionButton,
 		CodeMirror,
 		NcCheckboxRadioSwitch,
+		NcNoteCard,
 		Save,
 		EditInputs,
 	},

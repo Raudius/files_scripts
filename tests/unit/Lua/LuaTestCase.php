@@ -27,7 +27,7 @@ abstract class LuaTestCase extends TestCase {
 		);
 
 		$interpreter = new Interpreter(
-			new TestFunctionProvider($this),
+			new TestFunctionProvider(),
 			new TestTempManager()
 		);
 

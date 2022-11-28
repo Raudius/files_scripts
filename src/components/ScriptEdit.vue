@@ -74,8 +74,7 @@ export default {
 	data() {
 		const mainBackgroundColor = getComputedStyle(document.querySelector('body'))
 				.getPropertyValue('--color-main-background-rgb')
-				.split(',');
-		console.log(mainBackgroundColor)
+				.split(',')
 		const darkMode = Number(mainBackgroundColor[0]) < 128
 			&& Number(mainBackgroundColor[1]) < 128
 			&& Number(mainBackgroundColor[2]) < 128

@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Radera",
     "Enabled" : "Aktiverad",
     "Disabled" : "Inaktiverad",
+    "Back" : "Tillbaka",
+    "Save" : "Spara",
+    "Text" : "Text",
+    "Checkbox" : "Kryssruta",
     "Saved" : "Sparat",
     "Unknown error" : "Okänt fel",
     "More actions" : "Fler händelser"

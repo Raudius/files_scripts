@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "Forigi",
     "Enabled" : "Ŝaltita",
     "Disabled" : "Malŝaltita",
+    "Checkbox" : "Markobutono",
     "Saved" : "Konservita",
     "Unknown error" : "Nekonata eraro",
     "More actions" : "Pliaj agoj"

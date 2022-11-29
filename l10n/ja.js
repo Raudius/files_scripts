@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "削除",
     "Enabled" : "有効",
     "Disabled" : "無効",
+    "Back" : "戻る",
+    "Save" : "保存",
+    "Text" : "テキスト",
+    "Checkbox" : "チェックボックス",
     "Saved" : "保存しました",
     "Unknown error" : "不明なエラー",
     "More actions" : "その他のアクション"

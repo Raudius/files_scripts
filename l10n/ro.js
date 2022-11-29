@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Șterge",
     "Enabled" : "Activat",
     "Disabled" : "Dezactivați",
+    "Back" : "Înapoi",
+    "Save" : "Salvează",
+    "Text" : "Text",
+    "Checkbox" : "Căsuța de bifat",
     "Saved" : "Salvat",
     "Unknown error" : "Eroare necunoscută",
     "More actions" : "Mai multe acțiuni"

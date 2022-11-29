@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Fshi",
     "Enabled" : "I aktivizuar",
     "Disabled" : "I çaktivizuar",
+    "Back" : "Prapa",
+    "Save" : "Ruaj",
+    "Text" : "Tekst",
+    "Checkbox" : "Checkbox",
     "Saved" : "Ruajtur",
     "Unknown error" : "Gabim i panjohur",
     "More actions" : "Më tepër veprime "

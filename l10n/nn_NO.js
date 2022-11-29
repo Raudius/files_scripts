@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Slett",
     "Enabled" : "Aktivert",
     "Disabled" : "Deaktivert",
+    "Back" : "Tilbake",
+    "Save" : "Lagre",
+    "Checkbox" : "Avkryssingsfelt",
     "Saved" : "Lagra",
     "Unknown error" : "Ukjend feil"
 },

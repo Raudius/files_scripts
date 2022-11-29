@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "წაშლა",
     "Enabled" : "მოქმედია",
     "Disabled" : "არაა მოქმედი",
+    "Back" : "უკან",
+    "Save" : "შენახვა",
+    "Text" : "ტექსტი",
+    "Checkbox" : "ჩექბოქსი",
     "Saved" : "შენახულია",
     "Unknown error" : "უცნობი შეცდომა",
     "More actions" : "მეტი ქმედება"

@@ -5,6 +5,8 @@ OC.L10N.register(
     "Delete" : "Borrar",
     "Enabled" : "Habilitado",
     "Disabled" : "Deshabilitado",
+    "Save" : "Guardar",
+    "Checkbox" : "Casilla de verificación",
     "Saved" : "Guardado",
     "Unknown error" : "Error desconocido",
     "More actions" : "Más acciones"

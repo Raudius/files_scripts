@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "Διαγραφή",
     "Enabled" : "Ενεργοποιημένο",
     "Disabled" : "Απενεργοποιημένο",
+    "Checkbox" : "Πλαίσιο ελέγχου",
     "Saved" : "Αποθηκεύτηκε",
     "Unknown error" : "Άγνωστο σφάλμα",
     "More actions" : "Περισσότερες ενέργειες"

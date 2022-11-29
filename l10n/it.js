@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Elimina",
     "Enabled" : "Abilitata",
     "Disabled" : "Disabilitata",
+    "Back" : "Indietro",
+    "Save" : "Salva",
+    "Text" : "Testo",
+    "Checkbox" : "Casella di selezione",
     "Saved" : "Salvato",
     "Unknown error" : "Errore sconosciuto",
     "More actions" : "Altre azioni"

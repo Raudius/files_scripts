@@ -3,6 +3,8 @@
     "Delete" : "Kustuta",
     "Enabled" : "Lubatud",
     "Disabled" : "Keelatud",
+    "Back" : "Tagasi",
+    "Save" : "Salvesta",
     "Saved" : "Salvestatud",
     "Unknown error" : "Tundmatu viga"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

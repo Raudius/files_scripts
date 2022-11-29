@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Вилучити",
     "Enabled" : "Увімкнено",
     "Disabled" : "Вимкнено",
+    "Back" : "Назад",
+    "Save" : "Зберегти",
+    "Text" : "Текст",
+    "Checkbox" : "Прапорець",
     "Saved" : "Збережено",
     "Unknown error" : "Невідома помилка",
     "More actions" : "Більше дій"

@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "מחיקה",
     "Enabled" : "מופעל",
     "Disabled" : "מושבת",
+    "Back" : "חזרה",
+    "Save" : "שמירה",
+    "Text" : "טקסט",
+    "Checkbox" : "תיבת סימון",
     "Saved" : "נשמרה",
     "Unknown error" : "שגיאה בלתי ידועה",
     "More actions" : "פעולות נוספות"

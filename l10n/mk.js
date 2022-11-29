@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Избриши",
     "Enabled" : "Овозможено",
     "Disabled" : "Оневозможено",
+    "Back" : "Назад",
+    "Save" : "Зачувај",
+    "Text" : "Текст",
+    "Checkbox" : "Поле за избирање",
     "Saved" : "Зачувано",
     "Unknown error" : "Непозната грешка",
     "More actions" : "Повеќе акции"

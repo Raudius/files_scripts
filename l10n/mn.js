@@ -5,6 +5,8 @@ OC.L10N.register(
     "Delete" : "Устгах",
     "Enabled" : "Идэвхижүүлэх",
     "Disabled" : "идэвхигүй",
+    "Back" : "буцах",
+    "Save" : "Хадгалах",
     "Saved" : "Хадгалах",
     "Unknown error" : "үл мэдэгдэх алдаа"
 },

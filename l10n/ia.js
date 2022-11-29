@@ -4,6 +4,8 @@ OC.L10N.register(
     "Edit" : "Modificar",
     "Delete" : "Deler",
     "Enabled" : "Activate",
+    "Back" : "Retro",
+    "Save" : "Salveguardar",
     "Saved" : "Salveguardate",
     "Unknown error" : "Error incognite"
 },

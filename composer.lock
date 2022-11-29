@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6c7f66fc78e785a3a571df8869565a3",
+    "content-hash": "3859ed6eaf30a5799e474508d27f3925",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -844,16 +844,16 @@
         },
         {
             "name": "raudius/luar",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Raudius/Luar.git",
-                "reference": "2c7e1e4094333810f7f8b7ace6c7903e22023548"
+                "reference": "09fa86d50ffec37b0ad17f21b925932fab2ca466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Raudius/Luar/zipball/2c7e1e4094333810f7f8b7ace6c7903e22023548",
-                "reference": "2c7e1e4094333810f7f8b7ace6c7903e22023548",
+                "url": "https://api.github.com/repos/Raudius/Luar/zipball/09fa86d50ffec37b0ad17f21b925932fab2ca466",
+                "reference": "09fa86d50ffec37b0ad17f21b925932fab2ca466",
                 "shasum": ""
             },
             "require": {
@@ -880,12 +880,12 @@
                     "email": "r.ferreira.fuentes@gmail.com"
                 }
             ],
-            "description": "Lua parser written in PHP",
+            "description": "Lua interpreter written entirely in PHP",
             "support": {
                 "issues": "https://github.com/Raudius/Luar/issues",
-                "source": "https://github.com/Raudius/Luar/tree/v0.1.0"
+                "source": "https://github.com/Raudius/Luar/tree/v0.1.1"
             },
-            "time": "2022-11-21T19:44:19+00:00"
+            "time": "2022-11-22T20:34:10+00:00"
         },
         {
             "name": "raudius/phpdf",
@@ -1011,16 +1011,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v6.1.7",
+            "version": "v6.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "ee5d5b88162684a1377706f9c25125e97685ee61"
+                "reference": "ffa53c4e0f18828751a57a3f6bc32f7147c03867"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/ee5d5b88162684a1377706f9c25125e97685ee61",
-                "reference": "ee5d5b88162684a1377706f9c25125e97685ee61",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/ffa53c4e0f18828751a57a3f6bc32f7147c03867",
+                "reference": "ffa53c4e0f18828751a57a3f6bc32f7147c03867",
                 "shasum": ""
             },
             "require": {
@@ -1087,7 +1087,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v6.1.7"
+                "source": "https://github.com/symfony/cache/tree/v6.1.8"
             },
             "funding": [
                 {
@@ -1103,7 +1103,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-28T16:23:08+00:00"
+            "time": "2022-11-14T10:13:26+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -3959,16 +3959,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.1.7",
+            "version": "v6.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a1282bd0c096e0bdb8800b104177e2ce404d8815"
+                "reference": "a71863ea74f444d93c768deb3e314e1f750cf20d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a1282bd0c096e0bdb8800b104177e2ce404d8815",
-                "reference": "a1282bd0c096e0bdb8800b104177e2ce404d8815",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a71863ea74f444d93c768deb3e314e1f750cf20d",
+                "reference": "a71863ea74f444d93c768deb3e314e1f750cf20d",
                 "shasum": ""
             },
             "require": {
@@ -4035,7 +4035,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.1.7"
+                "source": "https://github.com/symfony/console/tree/v6.1.8"
             },
             "funding": [
                 {
@@ -4051,7 +4051,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-26T21:42:49+00:00"
+            "time": "2022-11-25T18:59:16+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",

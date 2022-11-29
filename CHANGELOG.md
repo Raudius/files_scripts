@@ -1,9 +1,14 @@
 # Changelog
 
-## 2.0.2
--Updated PHP interpreter dependency
+## 2.0.3
 
 ### Fixes
+- Fixed composer issue
+
+## 2.0.2
+
+### Fixes
+-Updated PHP interpreter dependency
 
 ## 2.0.1
 

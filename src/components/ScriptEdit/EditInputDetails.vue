@@ -35,7 +35,7 @@
 			/>
 			<MultiInput
 				v-if="isInputFilepick"
-				:label="t('files_scripts', 'Allowed mime-types (defaults to all)')"
+				:label="t('files_scripts', 'Allowed MIME types (defaults to all)')"
 				v-model="this.scriptInput.options.filepickMimes"
 			/>
 		</div>

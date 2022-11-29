@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "﻿ಅಳಿಸಿ",
     "Enabled" : "ಸಕ್ರಿಯಗೊಳಿಸಿದೆ",
     "Disabled" : "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+    "Save" : "﻿ಉಳಿಸಿ",
     "Saved" : "﻿ಉಳಿಸಿದ",
     "Unknown error" : "ಗೊತ್ತಿಲ್ಲದ ದೋಷ"
 },

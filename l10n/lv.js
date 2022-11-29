@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Dzēst",
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",
+    "Back" : "Atpakaļ",
+    "Save" : "Saglabāt",
+    "Text" : "Teksts",
     "Saved" : "Saglabāts",
     "Unknown error" : "Nezināma kļūda"
 },

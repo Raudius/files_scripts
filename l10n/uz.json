@@ -1,5 +1,6 @@
 { "translations": {
     "Delete" : "Delete",
+    "Save" : "Save",
     "Saved" : "Saved",
     "Unknown error" : "Unknown error"
 },"pluralForm" :"nplurals=1; plural=0;"

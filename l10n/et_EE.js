@@ -5,6 +5,8 @@ OC.L10N.register(
     "Delete" : "Kustuta",
     "Enabled" : "Lubatud",
     "Disabled" : "Keelatud",
+    "Back" : "Tagasi",
+    "Save" : "Salvesta",
     "Saved" : "Salvestatud",
     "Unknown error" : "Tundmatu viga"
 },

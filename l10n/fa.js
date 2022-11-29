@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "حذف",
     "Enabled" : "فعال شده",
     "Disabled" : "غیرفعال شده",
+    "Back" : "بازگشت",
+    "Save" : "ذخیره",
+    "Text" : "متن",
+    "Checkbox" : "جعبه علامت",
     "Saved" : "دخیره شد",
     "Unknown error" : "خطای ناشناخته",
     "More actions" : "اقدامات بیشتر"

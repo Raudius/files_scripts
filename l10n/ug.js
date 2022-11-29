@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Edit" : "تەھرىر",
     "Delete" : "ئۆچۈر",
+    "Save" : "ساقلا",
     "Unknown error" : "يوچۇن خاتالىق"
 },
 "nplurals=2; plural=(n != 1);");

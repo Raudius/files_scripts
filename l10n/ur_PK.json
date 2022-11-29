@@ -1,6 +1,7 @@
 { "translations": {
     "Edit" : "تدوین کریں",
     "Delete" : "حذف کریں",
+    "Save" : "حفظ",
     "Unknown error" : "غیر معروف خرابی"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

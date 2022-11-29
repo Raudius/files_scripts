@@ -5,6 +5,8 @@ OC.L10N.register(
     "Delete" : "Läschen",
     "Enabled" : "Aktivéiert",
     "Disabled" : "Deaktivéiert",
+    "Back" : "Zeréck",
+    "Save" : "Späicheren",
     "Saved" : "Gespäichert",
     "Unknown error" : "Et ass en onbekannte Fehler opgetrueden"
 },

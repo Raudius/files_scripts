@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "Eyða",
     "Enabled" : "Virkt",
     "Disabled" : "Óvirkt",
+    "Back" : "Til baka",
+    "Save" : "Vista",
+    "Text" : "Texti",
+    "Checkbox" : "Gátreitur",
     "Saved" : "Vistað",
     "Unknown error" : "Óþekkt villa",
     "More actions" : "Fleiri aðgerðir"

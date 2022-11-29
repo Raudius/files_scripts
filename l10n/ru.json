@@ -6,13 +6,17 @@
     "Delete" : "Удалить",
     "Enabled" : "Включено",
     "Disabled" : "Отключено",
+    "Back" : "Назад",
     "Variable name" : "Имя переменной",
+    "Save" : "Сохранить",
+    "Text" : "Текст",
+    "Checkbox" : "Флажок",
     "Script name" : "Название сценария",
     "A short description of what this action will do …" : "Короткое описание функционала…",
     "Enable script" : "Включить сценарий",
     "Saved" : "Сохранённые",
-    "Action completed!" : "Действие выполнено",
     "Unknown error" : "Неизвестная ошибка",
+    "Action completed!" : "Действие выполнено",
     "New action" : "Создать действие",
     "More actions" : "Больше действий"
 },"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"

@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Suprimir",
     "Enabled" : "Activada",
     "Disabled" : "Desactivat",
+    "Back" : "Retorn",
+    "Save" : "Enregistrar",
+    "Text" : "Tèxt",
     "Saved" : "Enregistrat",
     "Unknown error" : "Error desconeguda",
     "More actions" : "Mai d’accions"

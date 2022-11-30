@@ -1,6 +1,7 @@
 { "translations": {
     "Delete" : "Borrar",
     "Enabled" : "Activau",
-    "Disabled" : "Desactivau"
+    "Disabled" : "Desactivau",
+    "Back" : "Ta zaga"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

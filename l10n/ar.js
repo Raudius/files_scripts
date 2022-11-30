@@ -5,6 +5,10 @@ OC.L10N.register(
     "Delete" : "إزالة",
     "Enabled" : "مفعلة",
     "Disabled" : "معطّل",
+    "Back" : "العودة",
+    "Save" : "Save",
+    "Text" : "نص",
+    "Checkbox" : "مربع تحقق",
     "Saved" : "تم الحفظ",
     "Unknown error" : "خطأ غير معروف",
     "More actions" : "إجراءات أخرى"

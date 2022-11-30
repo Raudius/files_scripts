@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Lemel",
     "Enabled" : "Aotreet",
     "Disabled" : "Disaotreañ",
+    "Back" : "Distro",
+    "Save" : "Enrollañ",
+    "Checkbox" : "Checkbox",
     "Saved" : "Enrollet",
     "Unknown error" : "Fazi dizanv"
 },

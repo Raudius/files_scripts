@@ -1,6 +1,9 @@
 { "translations": {
     "Edit" : "Wysig",
     "Delete" : "Skrap",
+    "Back" : "Terug",
+    "Save" : "Bewaar",
+    "Text" : "Teks",
     "Saved" : "Bewaar",
     "Unknown error" : "Onbekende fout"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

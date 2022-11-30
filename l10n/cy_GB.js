@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Dileu",
     "Enabled" : "Galluogwyd",
     "Disabled" : "Analluogwyd",
+    "Back" : "Nôl",
+    "Save" : "Cadw",
+    "Checkbox" : "Blwch ticio",
     "Saved" : "Wedi'u cadw",
     "Unknown error" : "Gwall anhysbys"
 },

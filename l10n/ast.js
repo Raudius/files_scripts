@@ -5,6 +5,9 @@ OC.L10N.register(
     "Delete" : "Desaniciar",
     "Enabled" : "Habilitar",
     "Disabled" : "Deshabilitáu",
+    "Back" : "Atrás",
+    "Save" : "Guardar",
+    "Text" : "Testu",
     "Saved" : "Guardáu",
     "Unknown error" : "Fallu desconocíu",
     "More actions" : "Más aiciones"

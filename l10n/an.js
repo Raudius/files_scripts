@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Delete" : "Borrar",
     "Enabled" : "Activau",
-    "Disabled" : "Desactivau"
+    "Disabled" : "Desactivau",
+    "Back" : "Ta zaga"
 },
 "nplurals=2; plural=(n != 1);");

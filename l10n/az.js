@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "Sil",
     "Enabled" : "İşə salınıb",
     "Disabled" : "Dayandırılıb",
+    "Save" : "Saxla",
     "Saved" : "Saxlanıldı",
     "Unknown error" : "Bəlli olmayan səhv baş verdi"
 },

@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "Obriši",
     "Enabled" : "Aktivirano",
     "Disabled" : "Onemogućeno",
+    "Save" : "Spremi",
     "Saved" : "Spremljeno",
     "Unknown error" : "Nepoznata greška"
 },

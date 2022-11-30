@@ -7,6 +7,7 @@ OC.L10N.register(
     "Disabled" : "Deshabilitado",
     "Back" : "Atrás",
     "Save" : "Guardar",
+    "Text" : "Texto",
     "Checkbox" : "Casilla de verificación",
     "Saved" : "Guardado",
     "Unknown error" : "Error desconocido",

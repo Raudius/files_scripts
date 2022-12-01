@@ -23,6 +23,7 @@ OC.L10N.register(
     "User prompt" : "Felhasználói kérdés",
     "Input type" : "Bevitel típusa",
     "Multi-select options" : "Többszörös kiválasztás lehetőségei",
+    "Allowed MIME types (defaults to all)" : "Engedélyezett MIME-típusok (alapértelmezés: összes)",
     "Save" : "Mentés",
     "Text" : "Szöveg",
     "Checkbox" : "Jelölőmező",

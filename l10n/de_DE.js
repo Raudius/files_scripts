@@ -23,6 +23,7 @@ OC.L10N.register(
     "User prompt" : "Eingabeaufforderung",
     "Input type" : "Eingabetyp",
     "Multi-select options" : "Mehrfachauswahloptionen",
+    "Allowed MIME types (defaults to all)" : "Erlaubte MIME-Typen (standardmäßig alle)",
     "Save" : "Speichern",
     "Text" : "Text",
     "Checkbox" : "Kontrollkästchen",

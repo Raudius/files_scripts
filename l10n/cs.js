@@ -23,6 +23,7 @@ OC.L10N.register(
     "User prompt" : "Výzva uživateli",
     "Input type" : "Typ vstupu",
     "Multi-select options" : "Vícenásobná volba",
+    "Allowed MIME types (defaults to all)" : "Povolené MIME typy (výchozí je všechny)",
     "Save" : "Uložit",
     "Text" : "Text",
     "Checkbox" : "Zatržítko",

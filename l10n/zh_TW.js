@@ -23,6 +23,7 @@ OC.L10N.register(
     "User prompt" : "使用者提示……",
     "Input type" : "輸入類型",
     "Multi-select options" : "多重選擇選項",
+    "Allowed MIME types (defaults to all)" : "允許的 MIME 類型（預設為全部）",
     "Save" : "儲存",
     "Text" : "文字",
     "Checkbox" : "核取方塊",

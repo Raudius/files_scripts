@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.0
+### Added
+- Different user-input types
+- occ commands `files_scripts:list`, `files_scripts:run`
+
+### Changed
+- Updated to new nextcloud Vue components
+- Fixed theming and visual bugs
+- Updated interpreter dependency
+
+### Deprecated
+- Target folder (file-picker input should be used instead)
+
 ## 2.0.0
 
 ### Added

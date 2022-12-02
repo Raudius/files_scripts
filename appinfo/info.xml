@@ -38,6 +38,10 @@ Allows administrators to write small scripts which users can run through via the
         <nextcloud min-version="25" max-version="25"/>
 		<php min-version="7.4" />
     </dependencies>
+	<commands>
+		<command>OCA\FilesScripts\Command\RunScript</command>
+		<command>OCA\FilesScripts\Command\ListScripts</command>
+	</commands>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>
 		<admin-section>OCA\FilesScripts\Settings\AdminSection</admin-section>

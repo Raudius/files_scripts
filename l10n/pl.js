@@ -23,6 +23,7 @@ OC.L10N.register(
     "User prompt" : "Monit użytkownika",
     "Input type" : "Typ wejścia",
     "Multi-select options" : "Opcje wielokrotnego wyboru",
+    "Allowed MIME types (defaults to all)" : "Dozwolone typy MIME (domyślnie wszystkie)",
     "Save" : "Zapisz",
     "Text" : "Tekst",
     "Checkbox" : "Pole checkbox",

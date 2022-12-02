@@ -3,7 +3,7 @@
 namespace OCA\FilesScripts\Flow;
 
 use Lua;
-use OC\User\NoUserException;
+use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Context;
@@ -13,8 +13,6 @@ use OCA\WorkflowEngine\Entity\File;
 use OCP\EventDispatcher\GenericEvent;
 use OCP\Files\IRootFolder;
 use OCP\Files\Node;
-use OCP\Files\NotFoundException;
-use OCP\Files\NotPermittedException;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUserSession;
@@ -25,6 +23,7 @@ use Psr\Log\LoggerInterface;
 use OCP\WorkflowEngine\IRuleMatcher;
 use OCP\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\GenericEvent as LegacyGenericEvent;
+use Throwable;
 use UnexpectedValueException;
 
 class Operation implements ISpecificOperation {
@@ -62,7 +61,7 @@ class Operation implements ISpecificOperation {
 	 * @since 9.1
 	 */
 	public function validateOperation(string $name, array $checks, string $scriptId): void {
-		if (!class_exists(Lua::class)) {
+		if (!$this->luaProvider->isAvailable()) {
 			throw new UnexpectedValueException($this->l->t('Lua extension not installed on the server.'));
 		}
 
@@ -153,13 +152,19 @@ class Operation implements ISpecificOperation {
 			$node = $event->getSubject();
 		}
 
+		$oldNodeInput = ScriptInput::fromParams([
+			'name' => 'old_node_path',
+			'options' => json_encode(['type'=> 'text']),
+			'value' => $oldNode ? $oldNode->getPath() : null
+		]);
+
 		try {
 			$user = $this->session->getUser();
 			$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
 
-			$inputs = ['old_node_path' => $oldNode ? $oldNode->getPath() : null];
+			$inputs = [$oldNodeInput];
 			return new Context($this->luaProvider->createLua(), $rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
-		} catch (NotPermittedException|NoUserException|NotFoundException $e) {
+		} catch (Throwable $e) {
 			$this->logger->info('Could not create context due to unexpected exception.', ['error' => $e->getMessage()]);
 		}
 		return null;

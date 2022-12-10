@@ -21,6 +21,7 @@
     "User prompt" : "Indicación para el usuario",
     "Input type" : "Tipo de entrada",
     "Multi-select options" : "Opciones para menu desplegable",
+    "Allowed MIME types (defaults to all)" : "Tipos MIME permitidos (todos por defecto)",
     "Save" : "Guardar",
     "Text" : "Texto",
     "Checkbox" : "Casilla de verificación",

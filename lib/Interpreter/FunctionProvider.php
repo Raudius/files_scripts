@@ -32,6 +32,7 @@ use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Create;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Delete;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comments_Find;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Get_Tags;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Notify;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_Create;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File;
@@ -113,7 +114,8 @@ class FunctionProvider implements IFunctionProvider {
 		Shell_Command $f50,
 		Comments_Find $f51,
 		Comment_Delete $f52,
-		Comment_Create $f53
+		Comment_Create $f53,
+		Get_Tags $f54
 	) {
 		$this->functions = func_get_args();
 	}

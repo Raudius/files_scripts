@@ -37,6 +37,7 @@
     - [comment_create](#comment_create)  
     - [comment_delete](#comment_delete)  
     - [comments_find](#comments_find)  
+    - [get_tags](#get_tags)
     - [notify](#notify)  
     - [tag_create](#tag_create)  
     - [tag_file](#tag_file)  
@@ -355,6 +356,13 @@ tags({id= 21})                     -- Finds comment with ID 21
 tags({parent_id= 13})              -- Finds comments tree of comment 13  
 tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21 does not exist) the comment tree of comment 13  
 ```
+### get_tags
+
+`get_tags(Node file): Tag[]`
+
+Gets tags assigned to node.
+
+Returns a list of tags
 ### notify
 
 `notify(User user, String subject, String message): Bool`  

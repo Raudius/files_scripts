@@ -21,6 +21,7 @@ OC.L10N.register(
     "Back" : "Zurück",
     "Variable name" : "Variablenname",
     "User prompt" : "Eingabeaufforderung",
+    "Input type" : "Eingabetyp",
     "Multi-select options" : "Mehrfachauswahl-Optionen",
     "Allowed MIME types (defaults to all)" : "Erlaubte MIME-Typen (standardmäßig alle)",
     "Save" : "Speichern",

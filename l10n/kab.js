@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Edit" : "Ẓreg",
     "Delete" : "Kkes",
+    "Enabled" : "Yermed",
+    "Disabled" : "Ittwarermed",
     "Back" : "Retour",
     "Save" : "Sekles",
     "Unknown error" : "Erreur inconnue"

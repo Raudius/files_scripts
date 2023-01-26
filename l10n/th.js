@@ -3,8 +3,8 @@ OC.L10N.register(
     {
     "Edit" : "แก้ไข",
     "Delete" : "ลบ",
-    "Enabled" : "เปิดการใช้งาน",
-    "Disabled" : "ปิดการใช้งาน",
+    "Enabled" : "เปิดใช้งาน",
+    "Disabled" : "ปิดใช้งาน",
     "Back" : "ย้อนกลับ",
     "Save" : "บันทึก",
     "Text" : "ข้อความ",

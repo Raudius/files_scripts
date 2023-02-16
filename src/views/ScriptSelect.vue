@@ -1,16 +1,19 @@
 <template>
 	<NcModal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
-			<h2>{{ t('files_scripts', 'Select action to perform') }}</h2>
+			<h2 v-if=showScriptSelector>{{ t('files_scripts', 'Select action to perform') }}</h2>
+			<h2 v-else>{{ selectedScript.title }}</h2>
+
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
-				<div class="section-wrapper">
+				<div v-if="showScriptSelector" class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
 					<NcMultiselect v-model="selectedScript"
 						class="section-details"
 						:options="scripts"
 						:placeholder="t('files_scripts', 'Select an action to perform')"
 						track-by="id"
+						:prevent-autofocus="true"
 						label="title"
 						@change="selectScript" />
 				</div>
@@ -49,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { loadState } from '@nextcloud/initial-state'
 import '@nextcloud/dialogs/styles/toast.scss'
 import { NcMultiselect, NcModal, NcButton } from "@nextcloud/vue";
 import FileCog from 'vue-material-design-icons/FileCog.vue'
@@ -59,7 +63,7 @@ import { showError, FilePickerBuilder, showSuccess } from '@nextcloud/dialogs'
 import { api } from '../api/script'
 import * as path from 'path'
 import { translate as t } from '../l10n'
-import { registerFileSelect, registerMultiSelect } from '../files'
+import { registerFileSelect, registerMultiSelect, registerFileSelectDirect } from '../files'
 import { ScriptInput } from '../types/script'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 
@@ -76,6 +80,8 @@ export default {
 		ScriptInputComponent
 	},
 	data() {
+		const actions_in_menu =  loadState('files_scripts', 'actions_in_menu', false)
+		console.log("actions_in_menu", actions_in_menu)
 		return {
 			showModal: false,
 			isRunning: false,
@@ -84,6 +90,8 @@ export default {
 			outputDirectory: null,
 			scriptInputs: [],
 			loadingScriptInputs: false,
+			showScriptSelector: true,
+			actionsInMenu: actions_in_menu,
 		}
 	},
 
@@ -117,6 +125,7 @@ export default {
 		closeModal() {
 			this.showModal = false
 			this.isRunning = false
+			this.showScriptSelector = true
 			this.selectedScript = null
 			this.selectedFiles = null
 			this.scriptInputs = []
@@ -127,7 +136,9 @@ export default {
 			this.loadingScriptInputs = true
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
 			this.scriptInputs = this.scriptInputs.map((scriptInput: ScriptInput) => {
-				return { ...scriptInput, value: '' }
+				const value = scriptInput.options.type === 'multiselect' ? scriptInput.options.multiselectOptions[0] : ''
+				scriptInput.value = value
+				return scriptInput
 			})
 			this.loadingScriptInputs = false
 		},
@@ -175,10 +186,27 @@ export default {
 				self.showModal = true
 				self.selectedFiles = files
 			})
-			registerFileSelect(function(file, context) {
-				self.showModal = true
-				self.selectedFiles = [context.fileInfoModel.attributes]
-			})
+			if( self.actionsInMenu ) {
+				this.scripts.forEach( function( script ) {
+					registerFileSelectDirect(script.id, script.title, script.icon, function(file, context) {
+						self.selectedScript = script
+						self.showScriptSelector = false
+						self.selectedFiles = [context.fileInfoModel.attributes]
+
+						self.selectScript(script).then( function () {
+							console.log('menu af select script')
+						})
+						self.showModal = true
+
+					})
+				});
+			}
+			else {
+				registerFileSelect(function(file, context) {
+					self.showModal = true
+					self.selectedFiles = [context.fileInfoModel.attributes]
+				})
+			}
 		},
 	},
 }

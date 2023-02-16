@@ -40,6 +40,15 @@
 				</template>
 			</NcEmptyContent>
 		</NcSettingsSection>
+		<!-- Direct menu items -->
+		<NcSettingsSection
+			:limitWidth="false"
+			:title="t('files_scripts', 'Actions in menu')"
+			:description="t('files_scripts', 'Show file actions directly in menu instead via one menu item &amp;More actions&amp;.')" >
+			<NcCheckboxRadioSwitch type="switch" :checked="this.actionsInMenu" @update:checked="toggleActionsInMenu">
+				{{ t('files_scripts', 'Actions in menu') }}
+			</NcCheckboxRadioSwitch>
+		</NcSettingsSection>
 
 		<!-- PHP interpreter section -->
 		<NcSettingsSection
@@ -95,6 +104,7 @@ export default {
 	data() {
 		return {
 			usePhpInterpreter: loadState('files_scripts', 'use_php_interpreter', false),
+			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
 			pluginAvailable: loadState('files_scripts', 'lua_plugin_available', false)
 		}
 	},
@@ -124,6 +134,18 @@ export default {
 			} catch (error) {
 				showError(error.response.data.error)
 				this.usePhpInterpreter = !value
+			}
+		},
+		async toggleActionsInMenu(value) {
+			this.actionsInMenu = value
+			try {
+				await axios.post(generateUrl('/apps/files_scripts/settings'), {
+					name: 'actions_in_menu',
+					value: value ? 'true' : 'false'
+				})
+			} catch (error) {
+				showError(error.response.data.error)
+				this.actionsInMenu = !value
 			}
 		}
 	},

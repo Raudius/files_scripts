@@ -24,7 +24,9 @@ class AdminSettings implements ISettings {
 
 	public function getForm(): TemplateResponse {
 		$usePhpInterpreter = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, 'false') === 'true';
+		$actionsInMenu = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_ACTIONS_IN_MENU, 'false') === 'true';
 		$this->initialStateService->provideInitialState('use_php_interpreter', $usePhpInterpreter);
+		$this->initialStateService->provideInitialState('actions_in_menu', $actionsInMenu);
 		$this->initialStateService->provideInitialState('lua_plugin_available', LuaProvider::isLuaPluginAvailable());
 
 		Util::addScript(Application::APP_ID, 'files_scripts-main');

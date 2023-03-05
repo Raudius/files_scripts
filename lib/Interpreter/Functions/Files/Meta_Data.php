@@ -5,6 +5,7 @@ namespace OCA\FilesScripts\Interpreter\Functions\Files;
 use OC\Log\File;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\Folder;
+use OCP\Files\NotFoundException;
 
 /**
  * `meta_data(Node node): Node`
@@ -18,6 +19,9 @@ use OCP\Files\Folder;
  *  - `can_read`: whether the user can read the file or can read files from the directory
  *  - `can_delete`: whether the user can delete the file or can delete files from the directory
  *  - `can_update`: whether the user can modify the file or can write to the directory
+ *  - `storage_path`: the path of the file relative to its storage root
+ *  - `local_path`: a path to a version of the file in the server's filesystem. This location might be temporary (local cache), if the file is stored in an external storage
+ *  - `owner_id`: the user ID from the owner of the file
  */
 class Meta_Data extends RegistrableFunction {
 	public function run($node = null): array {
@@ -33,6 +37,12 @@ class Meta_Data extends RegistrableFunction {
 			$type = 'dir';
 		}
 
+		try {
+			$sys_path = $node->getStorage()->getLocalFile($node->getInternalPath());
+		} catch (NotFoundException $e) {
+			$sys_path = null;
+		}
+
 		return array_merge(
 			$this->getNodeData($node),
 			[
@@ -44,7 +54,10 @@ class Meta_Data extends RegistrableFunction {
 				'can_read' => $node->isReadable(),
 				'can_delete' => $node->isDeletable(),
 				'can_update' => $node->isUpdateable(),
-				'type' => $type
+				'type' => $type,
+				'storage_path' => $node->getPath(),
+				'local_path' => $sys_path,
+				'owner_id' => $node->getOwner()->getUID(),
 			],
 		);
 	}

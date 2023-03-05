@@ -27,6 +27,10 @@ class LuaProvider {
 
 	public function isAvailable(): bool {
 		$usePhpLua = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, 'false') === 'true';
-		return $usePhpLua || class_exists(\Lua::class);
+		return $usePhpLua || self::isLuaPluginAvailable();
+	}
+
+	public static function isLuaPluginAvailable(): bool {
+		return class_exists(\Lua::class);
 	}
 }

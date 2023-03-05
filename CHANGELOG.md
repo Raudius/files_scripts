@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.1
+### Added
+- Added function `get_file_tags` @0xFaul
+- Setting option to register file actions directly to the menu @vitstradal
+- Added filepath and owner info to `meta_data` function
+- Added `new_folder` function
+
 ## 2.1.0
 ### Added
 - Different user-input types

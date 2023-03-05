@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.4
+
+### Changed
+- Added `new_folder` and `get_file_tags`
+- Updated `meta_data` function with filepath and owner info
+
+
 ## 2.0.3
 
 ### Fixes

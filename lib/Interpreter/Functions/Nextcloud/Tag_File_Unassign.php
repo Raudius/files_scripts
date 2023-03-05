@@ -2,8 +2,8 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
-use OC\SystemTag\SystemTagManager;
-use OC\SystemTag\SystemTagObjectMapper;
+use OCP\SystemTag\ISystemTagManager;
+use OCP\SystemTag\ISystemTagObjectMapper;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\InvalidPathException;
 use OCP\Files\NotFoundException;
@@ -16,10 +16,10 @@ use OCP\Files\NotFoundException;
 class Tag_File_Unassign extends RegistrableFunction {
 	use TagsSerializerTrait;
 
-	private SystemTagManager $tagManager;
-	private SystemTagObjectMapper $tagMapper;
+	private ISystemTagManager $tagManager;
+	private ISystemTagObjectMapper $tagMapper;
 
-	public function __construct(SystemTagManager $tagManager, SystemTagObjectMapper $tagMapper) {
+	public function __construct(ISystemTagManager $tagManager, ISystemTagObjectMapper $tagMapper) {
 		$this->tagManager = $tagManager;
 		$this->tagMapper = $tagMapper;
 	}

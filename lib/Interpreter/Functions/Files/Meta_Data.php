@@ -21,6 +21,7 @@ use OCP\Files\NotFoundException;
  *  - `can_update`: whether the user can modify the file or can write to the directory
  *  - `storage_path`: the path of the file relative to its storage root
  *  - `local_path`: a path to a version of the file in the server's filesystem. This location might be temporary (local cache), if the file is stored in an external storage
+ *  - `owner_id`: the user ID from the owner of the file
  */
 class Meta_Data extends RegistrableFunction {
 	public function run($node = null): array {
@@ -56,6 +57,7 @@ class Meta_Data extends RegistrableFunction {
 				'type' => $type,
 				'storage_path' => $node->getPath(),
 				'local_path' => $sys_path,
+				'owner_id' => $node->getOwner()->getUID(),
 			],
 		);
 	}

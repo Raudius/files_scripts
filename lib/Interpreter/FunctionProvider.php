@@ -22,6 +22,7 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Is_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Is_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
 use OCA\FilesScripts\Interpreter\Functions\Files\New_File;
+use OCA\FilesScripts\Interpreter\Functions\Files\New_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Files\Node_Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Root;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input;
@@ -115,7 +116,8 @@ class FunctionProvider implements IFunctionProvider {
 		Comments_Find $f51,
 		Comment_Delete $f52,
 		Comment_Create $f53,
-		Get_File_Tags $f54
+		Get_File_Tags $f54,
+		New_Folder $f55
 	) {
 		$this->functions = func_get_args();
 	}

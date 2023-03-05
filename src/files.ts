@@ -40,3 +40,22 @@ export function registerFileSelect(actionHandler) {
 		actionHandler,
 	})
 }
+
+/**
+ * Registers the action handler on the file context menu.
+ *
+ * @param {Int} menuId unique id to identify menu item
+ * @param {String} menuTitle Text of menu item
+ * @param {String} menuIcon  icon class (default 'icon-files_scripts')
+ * @param {Function} actionHandler Callback to the handler
+ */
+export function registerFileSelectDirect(menuId, menuTitle, menuIcon, actionHandler ) {
+	OCA.Files.fileActions.registerAction({
+		name: 'files_scripts_action' + menuId,
+		displayName: menuTitle,
+		mime: 'all',
+		permissions: OC.PERMISSION_READ,
+		iconClass: menuIcon || 'icon-files_scripts',
+		actionHandler,
+	})
+}

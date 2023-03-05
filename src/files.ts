@@ -44,18 +44,41 @@ export function registerFileSelect(actionHandler) {
 /**
  * Registers the action handler on the file context menu.
  *
- * @param {Int} menuId unique id to identify menu item
- * @param {String} menuTitle Text of menu item
- * @param {String} menuIcon  icon class (default 'icon-files_scripts')
+ * @param {Script} script unique id to identify menu item
  * @param {Function} actionHandler Callback to the handler
  */
-export function registerFileSelectDirect(menuId, menuTitle, menuIcon, actionHandler ) {
+export function registerFileSelectDirect(script, actionHandler) {
 	OCA.Files.fileActions.registerAction({
-		name: 'files_scripts_action' + menuId,
-		displayName: menuTitle,
+		name: 'files_scripts_action' + script.id,
+		displayName: script.title,
 		mime: 'all',
 		permissions: OC.PERMISSION_READ,
-		iconClass: menuIcon || 'icon-files_scripts',
+		iconClass: 'icon-files_scripts',
 		actionHandler,
 	})
+}
+/**
+ * Registers the multi-select action handler directly on the file context menu.
+ *
+ * @param {Script} script unique id to identify menu item
+ * @param {Function} action Callback to the handler
+ */
+export function registerMultiSelectDirect(script, action) {
+	const actionObj = {
+		name: 'files_scripts_multi_action' + script.id,
+		displayName: script.title,
+		iconClass: 'icon-files_scripts',
+		order: 1000,
+		action,
+	}
+
+	if (OCA.Files.App.fileList) {
+		OCA.Files.App.fileList.registerMultiSelectFileAction(actionObj)
+	} else {
+		OC.Plugins.register('OCA.Files.FileList', {
+			attach(fileList) {
+				fileList.registerMultiSelectFileAction(actionObj)
+			},
+		})
+	}
 }

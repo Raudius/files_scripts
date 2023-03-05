@@ -44,7 +44,7 @@
 		<NcSettingsSection
 			:limitWidth="false"
 			:title="t('files_scripts', 'Actions in menu')"
-			:description="t('files_scripts', 'Show file actions directly in menu instead via one menu item &amp;More actions&amp;.')" >
+			:description="t('files_scripts', 'Shows file actions directly in the file menu, instead of needing to select it through the \'More actions\' modal.')" >
 			<NcCheckboxRadioSwitch type="switch" :checked="this.actionsInMenu" @update:checked="toggleActionsInMenu">
 				{{ t('files_scripts', 'Actions in menu') }}
 			</NcCheckboxRadioSwitch>

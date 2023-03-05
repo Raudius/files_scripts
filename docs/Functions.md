@@ -21,6 +21,7 @@
     - [is_folder](#is_folder)  
     - [meta_data](#meta_data)  
     - [new_file](#new_file)  
+    - [new_folder](#new_folder)  
     - [node_exists](#node_exists)  
     - [root](#root)  
 
@@ -37,7 +38,7 @@
     - [comment_create](#comment_create)  
     - [comment_delete](#comment_delete)  
     - [comments_find](#comments_find)  
-    - [get_tags](#get_tags)
+    - [get_file_tags](#get_file_tags)  
     - [notify](#notify)  
     - [tag_create](#tag_create)  
     - [tag_file](#tag_file)  
@@ -223,13 +224,22 @@ Returns an inflated Node object with additional meta-data information for the gi
  - `mtime`: the UNIX-timestamp at which the file was last modified  
  - `can_read`: whether the user can read the file or can read files from the directory  
  - `can_delete`: whether the user can delete the file or can delete files from the directory  
- - `can_update`: whether the user can modify the file or can write to the directory
+ - `can_update`: whether the user can modify the file or can write to the directory  
+ - `storage_path`: the path of the file relative to its storage root  
+ - `local_path`: a path to a version of the file in the server's filesystem. This location might be temporary (local cache), if the file is stored in an external storage  
+ - `owner_id`: the user ID from the owner of the file
 ### new_file
 
 `new_file(Node folder, String name, [String content]=nil): Node|nil`  
   
 Creates a new file at specified folder.  
 If successful, returns the newly created file node. If file creation fails, returns `nil`.
+### new_folder
+
+`new_folder(Node parent, String name): Node|nil`  
+  
+Creates a new folder at the specified parent folder.  
+If successful, returns the newly created folder node. If creation fails, returns `nil`.
 ### node_exists
 
 `node_exists(Node node): Bool`  
@@ -356,13 +366,15 @@ tags({id= 21})                     -- Finds comment with ID 21
 tags({parent_id= 13})              -- Finds comments tree of comment 13  
 tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21 does not exist) the comment tree of comment 13  
 ```
-### get_tags
+### get_file_tags
 
-`get_tags(Node file): Tag[]`
-
-Gets tags assigned to node.
-
-Returns a list of tags
+`get_file_tags(Node file): Table`  
+  
+Returns the tags that have been assigned to a file.  
+  
+```lua  
+local tags = get_tags(get_input_files()[1])  
+```
 ### notify
 
 `notify(User user, String subject, String message): Bool`  

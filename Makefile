@@ -19,9 +19,9 @@ all: dev-setup lint build-js-production test
 dev-setup: clean clean-dev composer npm-init
 
 build-docs:
-	composer install \
+	composer install --ignore-platform-reqs \
 	&& php "$(BIN_DIR)/generate_docs.php" \
-	&& composer install --no-dev
+	&& composer install --ignore-platform-reqs --no-dev
 
 # Installs and updates the composer dependencies. If composer is not installed
 # a copy is fetched from the web

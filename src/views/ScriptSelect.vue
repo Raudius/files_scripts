@@ -63,7 +63,7 @@ import { showError, FilePickerBuilder, showSuccess } from '@nextcloud/dialogs'
 import { api } from '../api/script'
 import * as path from 'path'
 import { translate as t } from '../l10n'
-import { registerFileSelect, registerMultiSelect, registerFileSelectDirect } from '../files'
+import {registerFileSelect, registerMultiSelect, registerFileSelectDirect, registerMultiSelectDirect} from '../files'
 import { ScriptInput } from '../types/script'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 
@@ -80,8 +80,6 @@ export default {
 		ScriptInputComponent
 	},
 	data() {
-		const actions_in_menu =  loadState('files_scripts', 'actions_in_menu', false)
-		console.log("actions_in_menu", actions_in_menu)
 		return {
 			showModal: false,
 			isRunning: false,
@@ -91,7 +89,7 @@ export default {
 			scriptInputs: [],
 			loadingScriptInputs: false,
 			showScriptSelector: true,
-			actionsInMenu: actions_in_menu,
+			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
 		}
 	},
 
@@ -182,26 +180,26 @@ export default {
 				return // No enabled scripts: no need to attach the options
 			}
 			const self = this
-			registerMultiSelect(function(files) {
-				self.showModal = true
-				self.selectedFiles = files
-			})
 			if( self.actionsInMenu ) {
 				this.scripts.forEach( function( script ) {
-					registerFileSelectDirect(script.id, script.title, script.icon, function(file, context) {
+					const handler = function(files, context) {
 						self.selectedScript = script
 						self.showScriptSelector = false
-						self.selectedFiles = [context.fileInfoModel.attributes]
+						self.selectedFiles = (context && context.fileInfoModel) ? [context.fileInfoModel.attributes] : files
 
-						self.selectScript(script).then( function () {
-							console.log('menu af select script')
-						})
+						self.selectScript(script)
 						self.showModal = true
+					}
 
-					})
+					registerFileSelectDirect(script, handler)
+					registerMultiSelectDirect(script, handler)
 				});
 			}
 			else {
+				registerMultiSelect(function(files) {
+					self.showModal = true
+					self.selectedFiles = files
+				})
 				registerFileSelect(function(file, context) {
 					self.showModal = true
 					self.selectedFiles = [context.fileInfoModel.attributes]

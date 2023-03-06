@@ -121,6 +121,7 @@ class DefaultScriptsMiddleware extends Middleware {
 			$scriptInput->setScriptId($script->getId());
 			$scriptInput->setName($name);
 			$scriptInput->setDescription($description);
+			$scriptInput->setOptions('');
 
 			$this->scriptInputMapper->insert($scriptInput);
 		}

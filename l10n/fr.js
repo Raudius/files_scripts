@@ -51,10 +51,12 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Les actions de fichiers sont de petits scripts Lua qui peuvent créer, modifier et/ou supprimer des fichiers de façon programmée. Ces actions peuvent être déclenchées par les utilisateurs pour être exécutées sur leurs fichiers. Veuillez lire la documentation pour plus d’informations.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Les actions de fichier ne sont pas disponibles car il n’y a pas d’interpréteur disponible. Installez le plugin Lua sur le serveur ou activez l’interpréteur expérimental.",
     "New action" : "Nouvelle action",
+    "Actions in menu" : "Actions du menu",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Affiche les actions de fichier directement dans le menu fichier, au lieu de devoir les sélectionner au moyen du dialogue modal « Plus d'actions... ».",
     "Experimental interpreter" : "Interpréteur expérimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Il est vivement recommandé de faire tourner l'extension PHP Lua sur votre serveur. Si cela n'est pas possible, l'interpréteur expérimental Lua peut être utilisé. Cet interpréteur est toujours en développement et peut ne pas toujours produire les résultats attendus.",
     "Use experimental interpreter" : "Utiliser l'interpréteur expérimental",
-    "More actions" : "Autres actions",
+    "More actions" : "Plus d'actions…",
     "User prompt …" : "Invite utilisateur…"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

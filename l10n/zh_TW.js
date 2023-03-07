@@ -51,6 +51,8 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "檔案動作是可以程式方式建立、修改及／或刪除檔案。使用者可能會觸發這些動作以在其檔案上執行。請閱讀文件以取得更多資訊。",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "檔案動作無法使用，因為沒有可用的直譯器。在伺服器上安裝 Lua 外掛程式或啟用實驗性的直譯器。",
     "New action" : "新動作",
+    "Actions in menu" : "選單中的動作",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "直接在檔案選單中顯示檔案動作，而非透過「更多動作」模式選擇它。",
     "Experimental interpreter" : "實驗性的直譯器",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "強烈建議在您的伺服器上執行 PHP Lua 擴充套件。若沒辦法這麼做，也可以使用實驗性的 Lua 直譯器。此直譯器仍在開發中，可能無法產生預期的結果。",
     "Use experimental interpreter" : "使用實驗性的直譯器",

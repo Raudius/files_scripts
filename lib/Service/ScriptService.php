@@ -46,7 +46,7 @@ class ScriptService {
 			throw $e;
 		} catch (\Exception $e) {
 			$this->logger->error('File scripts runtime error', [
-				'error' => $e->getMessage(),
+				'error_message' => $e->getMessage(),
 				'trace' => $e->getTraceAsString(),
 				'script_id' => $script->getId(),
 				'inputs' => $context->getInput(),

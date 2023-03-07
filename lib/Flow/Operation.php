@@ -96,7 +96,6 @@ class Operation implements ISpecificOperation {
 
 		$matches = $ruleMatcher->getFlows(false);
 
-		$this->logger->error('onEvent rule matcher matches: ' . count($matches));
 		foreach ($matches as $match) {
 			$scriptId = $match['operation'] ?? -1;
 			$script = $this->scriptMapper->find((int) $scriptId);
@@ -165,7 +164,7 @@ class Operation implements ISpecificOperation {
 			$inputs = [$oldNodeInput];
 			return new Context($this->luaProvider->createLua(), $rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
 		} catch (Throwable $e) {
-			$this->logger->info('Could not create context due to unexpected exception.', ['error' => $e->getMessage()]);
+			$this->logger->info('Could not create context due to unexpected exception.', ['error_message' => $e->getMessage()]);
 		}
 		return null;
 	}

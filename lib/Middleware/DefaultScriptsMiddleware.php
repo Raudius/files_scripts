@@ -87,7 +87,7 @@ class DefaultScriptsMiddleware extends Middleware {
 				$this->createDefaultScript($scriptData);
 			} catch (Exception $e) {
 				$this->logger->error('Files scripts could not create default script', [
-					'error' => $e->getMessage(),
+					'error_message' => $e->getMessage(),
 					'trace' => $e->getTraceAsString(),
 					'script' => $scriptData['name']
 				]);

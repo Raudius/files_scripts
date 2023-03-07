@@ -104,7 +104,7 @@ class ScriptController extends Controller {
 			$this->scriptMapper->insert($script);
 		} catch (Exception $e) {
 			$this->logger->error('File scripts insert error', [
-				'message' => $e->getMessage(),
+				'error_message' => $e->getMessage(),
 				'trace' => $e->getTraceAsString()
 			]);
 			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);
@@ -143,7 +143,7 @@ class ScriptController extends Controller {
 			$this->scriptMapper->update($script);
 		} catch (Exception $e) {
 			$this->logger->error('File scripts save error', [
-				'message' => $e->getMessage(),
+				'error_message' => $e->getMessage(),
 				'trace' => $e->getTraceAsString()
 			]);
 			return new JSONResponse(['error' => $this->l->t('An error occurred when saving the action.')], Http::STATUS_BAD_REQUEST);

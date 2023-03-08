@@ -368,7 +368,7 @@ tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21
 
 `get_file_tags(Node file): Tag[]`  
   
-Returns a table of tag "objects" that have been assigned to a file.  
+Returns a table of tags that have been assigned to a file.  
   
 ```lua  
 -- Get tags for a file  

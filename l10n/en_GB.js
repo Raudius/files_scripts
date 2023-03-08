@@ -51,6 +51,8 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.",
     "New action" : "New action",
+    "Actions in menu" : "Actions in menu",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal.",
     "Experimental interpreter" : "Experimental interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.",
     "Use experimental interpreter" : "Use experimental interpreter",

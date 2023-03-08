@@ -49,6 +49,8 @@
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "檔案操作是可以以編程方式創建、修改和/或刪除文件的小型 Lua 腳本。用戶可能會觸發這些操作以在其檔案上運行。請閱讀說明書以獲取更多信息。",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "檔案操作不可用，因為沒有可用的解釋器。在伺服器上安裝 Lua 插件或啟用實驗解釋器。",
     "New action" : "新操作",
+    "Actions in menu" : "選項單操作",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "直接在檔案選項單中顯示檔案操作，而非透過「更多操作」模式選擇它。",
     "Experimental interpreter" : "實驗解釋器",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "強烈建議在您的伺服器上運行 PHP Lua 擴展。如果無法做到這一點，可以使用實驗性 Lua 解釋器。此解釋器仍在開發中，可能無法產生預期的結果。",
     "Use experimental interpreter" : "使用實驗解釋器",

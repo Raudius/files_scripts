@@ -51,6 +51,8 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Dosya işlemleri, program ile dosyaları oluşturabilen, değiştirebilen ve/veya silebilen küçük Lua betikleridir. Kullanıcılar bu işlemleri dosyaları üzerinde yapabilir. Ayrıntılı bilgi almak için lütfen belgeleri okuyun.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Kullanılabilecek bir yorumlayıcı olmadığından dosya işlemleri kullanılamaz. Sunucuya Lua eklentisini kurun ya da deneysel yorumlayıcıyı etkinleştirin.",
     "New action" : "Yeni işlem",
+    "Actions in menu" : "İşlemler menüde görüntülensin",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Bu seçenek etkinleştirildiğinde, dosya işlemleri üste açılan 'Diğer işlemler' penceresi yerine doğrudan dosya menüsünde görüntülenir.",
     "Experimental interpreter" : "Deneysel yorumlayıcı",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Sunucunuzda PHP Lua uzantısını çalıştırmanız önemle önerilir. Bu yapılamıyorsa deneysel Lua yorumlayıcısı kullanılabilir. Bu yorumlayıcı hala geliştirme aşamasındadır ve her zaman beklenen sonuçları vermeyebilir.",
     "Use experimental interpreter" : "Deneysel yorumlayıcı kullanılsın",

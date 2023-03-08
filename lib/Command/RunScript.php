@@ -67,8 +67,8 @@ class RunScript extends Base {
 		$context = new Context(
 			$this->luaProvider->createLua(),
 			$rootFolder,
-			[],
-			$scriptInputs
+			$scriptInputs,
+			[]
 		);
 
 		$this->scriptService->runScript($script, $context);

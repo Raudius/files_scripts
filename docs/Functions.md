@@ -103,8 +103,7 @@ Optionally a second argument can be provided to filter out files or folders:
 `exists(Node node, [String file_name]=nil): Bool`  
   
 Returns whether a file or directory exists.  
-Optionally the name of a file can be specified as a second argument, in which case the first argument will be  
-assumed to be directory. The function will return whether the file exists in the directory.
+Optionally the name of a file can be specified as a second argument, in which case the first argument will be assumed to be directory. The function will return whether the file exists in the directory.
 ### exists_unsafe
 
 `exists_unsafe(String path): Bool`  
@@ -244,7 +243,7 @@ If successful, returns the newly created folder node. If creation fails, returns
 
 `node_exists(Node node): Bool`  
   
-Returns whether a node object represents a real file or folder.
+⚠️ DEPRECATED: See [exists](#exists)
 ### root
 
 `root(): Node`  
@@ -253,10 +252,9 @@ Returns whether a node object represents a real file or folder.
 ## Input
 ### get_input
 
-`get_input([String input_name=nil]): Table`  
+`get_input([String input_name=nil]): Table|any`  
   
-Returns a Lua table containing the user inputs. If the optional `input_name` parameter is returned the value of the  
-specified input is returned.  
+Returns a Lua table containing the user inputs. If the optional `input_name` parameter is specified the value of the matching input is returned.  
   
 ```lua  
 get_input() 			-- { testVar= 'input' }  
@@ -340,7 +338,7 @@ comment_create("Hello world!", get_input_files()[1])
 ```
 ### comment_delete
 
-`comment_delete(Comment comment): Boolean`  
+`comment_delete(Comment comment): Bool`  
   
 Deletes a comment, returns whether the operation was successful.
 ### comments_find
@@ -368,12 +366,20 @@ tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21
 ```
 ### get_file_tags
 
-`get_file_tags(Node file): Table`  
+`get_file_tags(Node file): Tag[]`  
   
-Returns the tags that have been assigned to a file.  
+Returns a table of tag "objects" that have been assigned to a file.  
   
 ```lua  
-local tags = get_tags(get_input_files()[1])  
+-- Get tags for a file  
+local file = get_input_files()[1]  
+local tags = get_file_tags(file)  
+  
+-- Put the names of the tags into a table  
+local tag_names = {}  
+for _, tag in ipairs(tags) do  
+	tag_names[tag.id] = tag.name  
+end  
 ```
 ### notify
 

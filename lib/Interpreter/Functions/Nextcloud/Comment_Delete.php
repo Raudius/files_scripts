@@ -6,7 +6,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Comments\ICommentsManager;
 
 /**
- * `comment_delete(Comment comment): Boolean`
+ * `comment_delete(Comment comment): Bool`
  *
  * Deletes a comment, returns whether the operation was successful.
  */

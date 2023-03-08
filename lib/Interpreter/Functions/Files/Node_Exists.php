@@ -7,7 +7,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `node_exists(Node node): Bool`
  *
- * Returns whether a node object represents a real file or folder.
+ * ⚠️ DEPRECATED: See [exists](#exists)
  */
 class Node_Exists extends RegistrableFunction {
 	public function run($node = []): bool {

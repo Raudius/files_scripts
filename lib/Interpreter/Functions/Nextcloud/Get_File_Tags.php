@@ -7,12 +7,20 @@ use OCP\SystemTag\ISystemTagObjectMapper;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 /**
- * `get_file_tags(Node file): Table`
+ * `get_file_tags(Node file): Tag[]`
  *
- * Returns the tags that have been assigned to a file.
+ * Returns a table of tags that have been assigned to a file.
  *
  * ```lua
- * local tags = get_tags(get_input_files()[1])
+ * -- Get tags for a file
+ * local file = get_input_files()[1]
+ * local tags = get_file_tags(file)
+ *
+ * -- Put the names of the tags into a table
+ * local tag_names = {}
+ * for _, tag in ipairs(tags) do
+ * 	tag_names[tag.id] = tag.name
+ * end
  * ```
  */
 class Get_File_Tags extends RegistrableFunction {

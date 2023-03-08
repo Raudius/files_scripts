@@ -3,14 +3,7 @@
 Before users can start using any custom actions, you must add them through the admin menu. These can be found in the `File actions` section, in the administration settings menu. On a fresh install some ready-made actions should be available there (albeit disabled for the user).
 
 ## User input
-Other than the selected files, you can ask the user to input other data as part of the action. 
-
-### Target folder
-By selecting the `Request target folder` option, the user will be given the option to select a folder. This folder will be accessible to the scripting API via the [`get_target_folder()`](Functions.md#get_target_folder) function.
-A common use for this input option is to select a location where to save the file.
-
-### Input values
-Any number of additional input values can be added in the script-creation view. These are made available to the scripting API via the [`get_input()`](Functions.md#get_input) function. 
+Other than the selected files, you can ask the user to input other details as part of the action.  Any number of additional input values can be added in the script-creation view, the values can be accessed in your script via the [`get_input()`](Functions.md#get_input) function. 
 
 By default, input types are text-fields where the user may type in the value. However other, more restrictive input types may be used:
 
@@ -34,9 +27,9 @@ end
 ## Scripting
 
 ### [Scripting API](Functions.md)
-Since the app is still new, the scripting API is prone to changing, so I am hesitant to write extensive documentation/tutorials on how to use it. If you have any questions feel free to open a GitHub ticket.
+Reading through the function descriptions and snippets you can get an idea of what is possible to do with file actions.
 
-You can also find example scripts in the [`examples/`](/examples)  folder, these will be also included when you first install the app.
+You can also find example scripts in the [`examples/`](/examples) folder of the repository, these examples will be also included when you first install the app on your server.
 
 ### Nextcloud objects
 The scripting API has been extended with Nextcloud-specific functions. These functions may require a "Folder" or a "File" as an input. Lua of course does not know what a file or a folder are, so instead we rely on Lua tables to carry the information required to represent these objects.
@@ -50,16 +43,16 @@ The `Node` type is used to represent a file or folder (see: [is_file](Functions.
  * `path`: the path (not including the name) to the file or folder from the user's home folder 
 
 #### User
- * `uuid`
- * `display_name`
- * `email_address`
+ * `uuid`: the unique identifier for the user
+ * `display_name`: the chosen display name by the user
+ * `email_address`: the user's email address
 
 #### Tag
- * `id`
- * `name`
- * `user_assignable`
- * `user_visible`
- * `access_level`
+ * `id`: the unique (numeric) ID of the tag
+ * `name`: the tag's name (as shown to in the Nextcloud interface)
+ * `user_assignable`: whether the tag can be assigned by users
+ * `user_visible` whether the tag is made visible to the users
+ * `access_level`: internal access level code for the tag (`0: public`, `1: restricted`, `2: invisible`)
 
 ### Testing scripts
 
@@ -69,8 +62,26 @@ If for any reason you must test your scripts on a live environment, and do not w
 
 ## Flow
 
-Actions can also be configured to work with Nextcloud's automated flows.
+Actions can also be configured to work with Nextcloud's automated flows. Note that disabled actions are available to be configured with Flow, so you can hide these from users.
 
 When running a script from a flow `get_input_files()` will only contain the file that triggered the flow, and `get_target_folder()` will be the folder containing the file. 
 
 Additionally, for "file rename" and "file copy" events, the previous file's path can be accessed with: `get_input('old_node_path')`
+
+
+## OCC commands
+
+In some cases it might be desirable to run scripts via occ (e.g. running scripts on cron-jobs), to do this you can use the command:
+```sh
+occ files_scripts:run <id> --user <userid> --inputs "{ \"input_var\"=\"hello world\" }"
+```
+
+To get the `<id>` value, you can use the scripts-list command:
+```sh
+occ files_scripts:list
+```
+
+To get the `<userid>` value, you can use the user-list command:
+```sh
+occ user:list
+```

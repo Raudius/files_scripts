@@ -2,7 +2,8 @@ The File actions app is a scripting tool, which administrators can employ to giv
 
 **🌕** Scripting in Lua, its simple and has plenty of online resources.  
 **⚡** Make hard tasks easy, straight from the Files app.   
-**🙋** Are you missing a function in the scripting API? Open an issue on Github!
+**🙋** Are you missing a function in the scripting API? Open an issue on Github!  
+**🤖** Integration with Nextcloud Flow allows you to fully automate workflows
 
 ![Screenshot of Files Scripts Version 1.0.0](https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/1.png)
 
@@ -67,7 +68,9 @@ sudo cp ./.libs/lua.so /usr/lib/php/20200930/
 Don't forget to append `extension=lua.so` to your php.ini!
 
 ### Optional:
-Some functions require additional packages to be installed on the server
+
+<details>
+<summary>Some functions require additional packages to be installed on the server</summary>
 
 * QPDF >=9.1.1 (needed for [PDF functions](docs/Functions.md#Pdf))
 ```shell
@@ -79,18 +82,22 @@ sudo apt-get install qpdf
 sudo apt install ffmpeg
 ```
 
+</details>
 
 ## Documentation
 
 The [Admin documentation](docs/Admin.md) contains information about how to create new actions and some precautions that should be taken when writing one.
 
+The [Scripting API documentation](https://github.com/Raudius/files_scripts/blob/master/docs/Functions.md) contains descriptions for all the API functions as well as some snippets of how they can be used.
 
 ## Contributing
 
-Contributions to the app are most welcome, the main areas where help is needed are:
+Contributions to the app are most welcome!
   * 🌍 **Translations**  
 The app can be translated through the [Nextcloud community](https://www.transifex.com/nextcloud/nextcloud/content/) in Transifex
   * 🛠 **Scripting API**  
-If there is something you need that is currently not possible (or complex) to do with scripting API, please open a GitHub ticket, or even better, a pull request! 
+If there is something you need that is currently not possible (or complex) to do with scripting API, please open a GitHub issue, or even better, a pull request! 
   * 📃 **Documentation**  
 The documentation of this project is still quite lacking. If you have any suggestions or improvements please do help out!
+  * 💸 **Donations**  
+Last and least, you can donate your hard-earned cash with [Liberapay](https://liberapay.com/Raudius/donate)

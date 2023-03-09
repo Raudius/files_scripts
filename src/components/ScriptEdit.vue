@@ -37,6 +37,17 @@
 					</NcNoteCard>
 				</template>
 
+				<h3>{{ t('files_scripts', 'Limit groups') }}</h3>
+				<div class="section-description">
+					{{ t('files_scripts', 'Specify which groups are allowed to run this file action. Leave empty to allow it for all users.') }}
+				</div>
+				<NcMultiselect v-model="limitGroups"
+							   :options="groups"
+							   :multiple="true"
+							   :tag-width="80"
+				/>
+
+
 				<EditInputs :script-id="script.id" @changed="updateInputs" />
 			</div>
 
@@ -49,7 +60,7 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcMultiselect } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -60,17 +71,21 @@ import { showError, showSuccess } from '@nextcloud/dialogs'
 import { ScriptInput } from '../types/script'
 import { api } from '../api/script'
 import { translate as t } from '../l10n'
+import axios from '@nextcloud/axios'
+import { generateOcsUrl } from '@nextcloud/router'
 const CodeMirror = require('vue-codemirror').codemirror
 
 export default {
 	name: 'ScriptEdit',
 	components: {
+		axios,
 		NcModal,
 		NcActions,
 		NcActionButton,
 		CodeMirror,
 		NcCheckboxRadioSwitch,
 		NcNoteCard,
+		NcMultiselect,
 		Save,
 		EditInputs,
 	},
@@ -84,6 +99,7 @@ export default {
 
 		return {
 			scriptInputs: [],
+			groups: [],
 			dirtyInputs: false,
 			saving: false,
 			cmOption: {
@@ -134,6 +150,18 @@ export default {
 				this.$store.commit('updateCurrentScript', { description: value })
 			},
 		},
+		limitGroups: {
+			get() {
+				return this.script.limitGroups
+			},
+			set(value) {
+				this.$store.commit('updateCurrentScript', { limitGroups: value })
+			},
+		},
+	},
+
+	mounted() {
+		this.loadGroups()
 	},
 
 	watch: {
@@ -194,6 +222,12 @@ export default {
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
 		},
+		async loadGroups() {
+			const response = await axios.get(generateOcsUrl('cloud/groups'))
+			if (response && response.data && response.data.ocs) {
+				this.groups = response.data.ocs.data.groups
+			}
+		}
 	},
 }
 </script>
@@ -216,6 +250,11 @@ export default {
 	padding-right: 12px;
 	overflow-y: auto;
 	overflow-x: clip;
+}
+
+.section-description {
+	opacity: .7;
+	margin-bottom: 16px;
 }
 
 .script-editor {

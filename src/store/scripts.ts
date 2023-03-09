@@ -51,6 +51,7 @@ const mutations = {
 			program: newValues.program ?? state.selectedScript.program,
 			description: newValues.description ?? state.selectedScript.description,
 			enabled: newValues.enabled ?? state.selectedScript.enabled,
+			limitGroups: newValues.limitGroups ?? state.selectedScript.limitGroups
 		}
 	},
 }

@@ -50,6 +50,8 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Akce ohledně souborů jsou krátké Lua skripty, které programaticky mohou vytvářet, měnit a/nebo mazat soubory. Tyto akce mohou být spouštěny uživateli na jejich soubory. Podrobnosti naleznete v dokumentaci.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Akce ohledně souborů nejsou k dispozici, protože není k dispozici interpreter. Buď na server nainstalujte Lua zásuvný modul nebo zapněte experimentální interpreter.",
     "New action" : "Nová akce",
+    "Actions in menu" : "Akce v nabídce",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zobrazuje akce ohledně souboru přímo v nabídce k danému souboru, čímž odpadá potřeba vybírat je zdlouhavěji z hloubi dialogu „Další akce“.",
     "Experimental interpreter" : "Experimentální interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Je silně doporučováno provozovat Lua jako PHP rozšíření na serveru. Pokud to není možné, je možné použít experimentální Lua interpreter. Ten je zatím ve vývoji a nemusí vždy poskytovat očekávané výsledky.",
     "Use experimental interpreter" : "Použít experimentální interpreter",

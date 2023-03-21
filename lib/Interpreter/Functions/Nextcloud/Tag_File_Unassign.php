@@ -11,7 +11,7 @@ use OCP\Files\NotFoundException;
 /**
  * `tag_file_unassign(Node file, Tag tag): Bool`
  *
- * Removes a tag from a file. Returns whether the tag was successfully removed.
+ * Removes a tag from a file or folder. Returns whether the tag was successfully removed.
  */
 class Tag_File_Unassign extends RegistrableFunction {
 	use TagsSerializerTrait;
@@ -25,7 +25,7 @@ class Tag_File_Unassign extends RegistrableFunction {
 	}
 
 	public function run($file = [], $tagData = []): bool {
-		$fileNode = $this->getFile($this->getPath($file));
+		$fileNode = $this->getNode($this->getPath($file));
 		$tag = $this->deserializeTag($tagData, $this->tagManager);
 		if (!$fileNode || !$tag) {
 			return false;

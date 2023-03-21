@@ -16,17 +16,18 @@
 		<!-- Multiselect -->
 		<template v-else-if="isInputMultiselect">
 			<FormSelect class="section-label" :size="20" />
-			<NcMultiselect v-model="scriptInput.value"
+			<NcMultiselect v-model="localValue"
 				class="section-details"
-				:options="scriptInput.options.multiselectOptions"
+				:options="this.scriptInput.options.multiselectOptions"
 				:placeholder="this.scriptInput.description"
+				@change
 			/>
 		</template>
 
 		<!-- Filepick -->
 		<template v-else-if="isInputFilepick">
 			<Folder class="section-label" :size="20" />
-			<input v-model="scriptInput.value"
+			<input v-model="localValue"
 			 class="section-details"
 			 type="text"
 			 style="cursor: pointer;"
@@ -40,7 +41,7 @@
 		<template v-else>
 			<FormTextbox class="section-label" :size="20" />
 			<input
-				v-model="scriptInput.value"
+				v-model="localValue"
 				type="text"
 				class="section-details"
 				:placeholder="scriptInput.description"
@@ -72,6 +73,11 @@ export default {
 		Folder,
 		NcCheckboxRadioSwitch,
 		NcMultiselect,
+	},
+	data() {
+		return {
+			localValue: this.scriptInput.value
+		}
 	},
 	mounted() {
 		this.resetValue()
@@ -120,6 +126,11 @@ export default {
 				showError(error.message || t('files_scripts', 'Unknown error'))
 			}
 		},
+	},
+	watch: {
+		localValue(newValue) {
+			this.scriptInput.value = newValue
+		}
 	}
 }
 </script>

@@ -28,7 +28,7 @@
 						@click="pickOutputDirectory">
 				</div>
 
-				<ScriptInputComponent v-for="scriptInput in scriptInputs" :key="scriptInput.id" :scriptInput="scriptInput" />
+				<ScriptInputComponent v-for="scriptInput in scriptInputs" :key="scriptInput.id" :scriptInput="scriptInput" :outputDirectory="outputDirectory" />
 
 				<div class="script-info">
 					{{ selectedDescription }}
@@ -133,11 +133,6 @@ export default {
 
 			this.loadingScriptInputs = true
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
-			this.scriptInputs = this.scriptInputs.map((scriptInput: ScriptInput) => {
-				const value = scriptInput.options.type === 'multiselect' ? scriptInput.options.multiselectOptions[0] : ''
-				scriptInput.value = value
-				return scriptInput
-			})
 			this.loadingScriptInputs = false
 		},
 		async run() {

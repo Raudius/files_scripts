@@ -16,17 +16,18 @@
 		<!-- Multiselect -->
 		<template v-else-if="isInputMultiselect">
 			<FormSelect class="section-label" :size="20" />
-			<NcMultiselect v-model="scriptInput.value"
+			<NcMultiselect v-model="localValue"
 				class="section-details"
-				:options="scriptInput.options.multiselectOptions"
+				:options="this.scriptInput.options.multiselectOptions"
 				:placeholder="this.scriptInput.description"
+				@change
 			/>
 		</template>
 
 		<!-- Filepick -->
 		<template v-else-if="isInputFilepick">
 			<Folder class="section-label" :size="20" />
-			<input v-model="scriptInput.value"
+			<input v-model="localValue"
 			 class="section-details"
 			 type="text"
 			 style="cursor: pointer;"
@@ -40,7 +41,7 @@
 		<template v-else>
 			<FormTextbox class="section-label" :size="20" />
 			<input
-				v-model="scriptInput.value"
+				v-model="localValue"
 				type="text"
 				class="section-details"
 				:placeholder="scriptInput.description"
@@ -63,7 +64,8 @@ import * as path from 'path';
 export default {
 	name: 'ScriptInputComponent',
 	props: {
-		scriptInput: Object as () => ScriptInput
+		scriptInput: Object as () => ScriptInput,
+		outputDirectory: String
 	},
 	components: {
 		FormTextbox,
@@ -72,6 +74,11 @@ export default {
 		Folder,
 		NcCheckboxRadioSwitch,
 		NcMultiselect,
+	},
+	data() {
+		return {
+			localValue: this.scriptInput.value
+		}
 	},
 	mounted() {
 		this.resetValue()
@@ -93,11 +100,16 @@ export default {
 	methods: {
 		t,
 		resetValue() {
-			this.scriptInput.value = this.getDefaultValue()
+			this.localValue = this.getDefaultValue()
 		},
 		getDefaultValue() {
 			switch (this.type) {
-				case 'checkbox': return false
+				case 'checkbox':
+					return false
+				case 'filepick':
+					if (this.scriptInput.options.filepickMimes.includes('httpd/unix-directory')) {
+						return this.outputDirectory
+					}
 				default: return ''
 			}
 		},
@@ -106,7 +118,7 @@ export default {
 			const allowDirectories = mimetypes.includes('httpd/unix-directory')
 			const pickerBuiler = (new FilePickerBuilder(this.scriptInput.description))
 					.allowDirectories(allowDirectories)
-					.startAt('/')
+					.startAt(this.outputDirectory)
 
 			if (mimetypes.length > 0) {
 				pickerBuiler.setMimeTypeFilter(mimetypes)
@@ -115,11 +127,16 @@ export default {
 			const picker = pickerBuiler.build()
 			try {
 				const dir = await picker.pick() || '/'
-				this.scriptInput.value = path.normalize(dir)
+				this.localValue = path.normalize(dir)
 			} catch (error) {
 				showError(error.message || t('files_scripts', 'Unknown error'))
 			}
 		},
+	},
+	watch: {
+		localValue(newValue) {
+			this.scriptInput.value = newValue
+		}
 	}
 }
 </script>

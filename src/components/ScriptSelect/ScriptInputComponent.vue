@@ -64,7 +64,8 @@ import * as path from 'path';
 export default {
 	name: 'ScriptInputComponent',
 	props: {
-		scriptInput: Object as () => ScriptInput
+		scriptInput: Object as () => ScriptInput,
+		outputDirectory: String
 	},
 	components: {
 		FormTextbox,
@@ -99,11 +100,16 @@ export default {
 	methods: {
 		t,
 		resetValue() {
-			this.scriptInput.value = this.getDefaultValue()
+			this.localValue = this.getDefaultValue()
 		},
 		getDefaultValue() {
 			switch (this.type) {
-				case 'checkbox': return false
+				case 'checkbox':
+					return false
+				case 'filepick':
+					if (this.scriptInput.options.filepickMimes.includes('httpd/unix-directory')) {
+						return this.outputDirectory
+					}
 				default: return ''
 			}
 		},
@@ -121,7 +127,7 @@ export default {
 			const picker = pickerBuiler.build()
 			try {
 				const dir = await picker.pick() || '/'
-				this.scriptInput.value = path.normalize(dir)
+				this.localValue = path.normalize(dir)
 			} catch (error) {
 				showError(error.message || t('files_scripts', 'Unknown error'))
 			}

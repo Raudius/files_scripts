@@ -112,7 +112,7 @@ export default {
 			const allowDirectories = mimetypes.includes('httpd/unix-directory')
 			const pickerBuiler = (new FilePickerBuilder(this.scriptInput.description))
 					.allowDirectories(allowDirectories)
-					.startAt('/')
+					.startAt(this.localValue)
 
 			if (mimetypes.length > 0) {
 				pickerBuiler.setMimeTypeFilter(mimetypes)

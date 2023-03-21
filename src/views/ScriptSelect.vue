@@ -133,8 +133,18 @@ export default {
 
 			this.loadingScriptInputs = true
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
+
+			// Set default values
 			this.scriptInputs = this.scriptInputs.map((scriptInput: ScriptInput) => {
-				const value = scriptInput.options.type === 'multiselect' ? scriptInput.options.multiselectOptions[0] : ''
+				let value = ""
+
+				if (scriptInput.options.type === 'multiselect') {
+					value = scriptInput.options.multiselectOptions[0]
+				}
+				else if(scriptInput.options.type == "filepick") {
+					value = this.outputDirectory
+				}
+
 				scriptInput.value = value
 				return scriptInput
 			})

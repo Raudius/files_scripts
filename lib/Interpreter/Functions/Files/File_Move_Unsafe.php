@@ -25,7 +25,7 @@ class File_Move_Unsafe extends RegistrableFunction {
 		$folderPath = null,
 		$newName = null
 	): ?array {
-		$fileNode = $this->getFile($this->getPath($file));
+		$fileNode = $this->getNode($this->getPath($file));
 		if (!$fileNode) {
 			return null;
 		}

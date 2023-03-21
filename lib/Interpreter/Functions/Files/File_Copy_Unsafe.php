@@ -24,9 +24,9 @@ class File_Copy_Unsafe extends RegistrableFunction {
 		$folderPath = null,
 		$name = null
 	) {
-		$fileNode = $this->getFile($this->getPath($file));
+		$fileNode = $this->getNode($this->getPath($file));
 		if (!$fileNode) {
-			return false;
+			return null;
 		}
 
 		$name = $name ?: $fileNode->getName();

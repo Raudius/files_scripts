@@ -37,12 +37,13 @@
 					</NcNoteCard>
 				</template>
 
-				<h3>{{ t('files_scripts', 'Limit groups') }}</h3>
-				<div class="section-description">
-					{{ t('files_scripts', 'Specify which groups are allowed to run this file action. Leave empty to allow it for all users.') }}
-				</div>
-				<NcMultiselect v-model="limitGroups"
-				 	class="multi-input-groups"
+				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitGroupsEnabled" @update:checked="toggleLimitGroupsEnabled">
+					{{ t('files_scripts', 'Limit to groups') }}
+				</NcCheckboxRadioSwitch>
+				<NcMultiselect v-if="limitGroupsEnabled"
+					v-model="limitGroups"
+					:placeholder="t('files_scripts', 'Select groups allowed to use this action')"
+					class="multi-input-groups"
 					:options="groups"
 					:multiple="true"
 					:tag-width="80"
@@ -103,6 +104,7 @@ export default {
 			groups: [],
 			dirtyInputs: false,
 			saving: false,
+			limitGroupsEnabled: false,
 			cmOption: {
 				tabSize: 4,
 				styleActiveLine: true,
@@ -153,7 +155,7 @@ export default {
 		},
 		limitGroups: {
 			get() {
-				return this.script.limitGroups
+				return this.script ? this.script.limitGroups : []
 			},
 			set(value) {
 				this.$store.commit('updateCurrentScript', { limitGroups: value })
@@ -167,6 +169,8 @@ export default {
 
 	watch: {
 		showModal(newValue) {
+			newValue && this.remounted()
+
 			// Hack to fix codemirror rendering issue
 			if (newValue === true) {
 				setTimeout(() => {
@@ -180,6 +184,9 @@ export default {
 
 	methods: {
 		t,
+		remounted() {
+			this.limitGroupsEnabled = this.limitGroups.length > 0
+		},
 		saveScript() {
 			const self = this
 			this.saving = true
@@ -222,6 +229,11 @@ export default {
 		},
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
+		},
+		toggleLimitGroupsEnabled() {
+			if (!this.limitGroupsEnabled) {
+				this.limitGroups = []
+			}
 		},
 		async loadGroups() {
 			const response = await axios.get(generateOcsUrl('cloud/groups'))

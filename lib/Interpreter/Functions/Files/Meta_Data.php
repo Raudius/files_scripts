@@ -48,7 +48,7 @@ class Meta_Data extends RegistrableFunction {
 		} catch (\Exception|\Throwable $e) {
 			$sys_path = null;
 
-			$this->logger->warning('File action error: meta_data could not be retrive local_path', [
+			$this->logger->warning('File action error: meta_data could not be retrieve local_path', [
 				"exception" => $e->getMessage(),
 				"trace" => $e->getTraceAsString()
 			]);

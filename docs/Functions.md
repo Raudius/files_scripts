@@ -1,5 +1,7 @@
   - **[Error:](#Error)** Reporting and logging
     - [abort](#abort)  
+    - [add_message](#add_message)  
+    - [clear_messages](#clear_messages)  
     - [log](#log)  
 
   - **[Files:](#Files)** Filesystem operations within the Nextcloud environment
@@ -64,6 +66,7 @@
     - [format_date_time](#format_date_time)  
     - [format_price](#format_price)  
     - [http_request](#http_request)  
+    - [include](#include)  
     - [json](#json)  
     - [shell_command](#shell_command)  
     - [sort](#sort)  
@@ -75,6 +78,36 @@
 `abort(String message): void`  
   
 Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
+### add_message
+
+`add_message(String message, [String type="info"]): void`  
+  
+Adds a message to be shown to the user after the action is completed as a toast message. The optional type parameter  
+determines the type of toast shown.  
+  
+Type can be one of: "error", "warning", "success" or "info" (default).  
+  
+```lua  
+add_message("I'm Blue")  
+add_message("I'm Red", "error")  
+add_message("I'm Orange", "warning")  
+add_message("I'm Green", "success")  
+```
+### clear_messages
+
+`clear_messages(String message, [String type="info"]): void`  
+  
+Clears all messages that have been previously added with [`add_message`](#add_message).  
+  
+```lua  
+add_message("Don't show this...")  
+add_message("...or this")  
+  
+clear_messages()  
+  
+add_message("Show this")  
+add_message("...and this")  
+```
 ### log
 
 `log(String message, [Int level=1], [Table context={}]): void`  
@@ -117,9 +150,9 @@ For most cases it is recommended to use the function [exists()](#exists).
 Returns the string content of the file. If the node is a directory or the file does not exist, `nil` is returned.
 ### file_copy
 
-`file_copy(Node file, String folder_path, [String name]=nil): Node|nil`  
+`file_copy(Node node, String folder_path, [String name]=nil): Node|nil`  
   
-Copies the given `file` to the specified `folder_path`.  
+Copies the given node (file or folder) to the specified `folder_path`.  
 Optionally a new name can be specified for the file, if none is specified the original name is used.  
   
 If the target file already exists, the operation will not succeed.  
@@ -412,7 +445,7 @@ end
 
 `tag_file_unassign(Node file, Tag tag): Bool`  
   
-Removes a tag from a file. Returns whether the tag was successfully removed.
+Removes a tag from a file or folder. Returns whether the tag was successfully removed.
 ### tags_find
 
 `tag_find(Table parameters): Tag[]`  
@@ -569,6 +602,24 @@ Performs an HTTP request to the given URL using the given method and data.
 Returns the response. If the content could not be fetched, `nil` is returned.  
   
 **Note:** Be wary of sending any personal information using this function! Only to be used for fetching templates or other static data.
+### include
+
+`include(Node|string lua_file): Bool`  
+  
+Loads the given Lua file into the global environment. Can be used to load common functions and variables, effectively extending the scripting API.  
+Scripting API functions are loaded and available to be used inside the included file.  
+  
+```lua  
+-- Load file from a file on the server OR load from a Node object  
+success = include("/var/www/private/my_api.lua")  
+success = include(get_input_files()[1])  
+if (not success) then  
+  abort("Failed to load required script")  
+end  
+  
+-- Globally defined functions in the included file are now available in this script :)  
+my_api_function()  
+```
 ### json
 
 `json(Table|string input): String|Table|nil`  

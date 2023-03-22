@@ -49,6 +49,7 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Page_Count;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
 use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
+use OCA\FilesScripts\Interpreter\Functions\Util\_Include;
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
 use OCA\FilesScripts\Interpreter\Functions\Util\Csv_To_Table;
 use OCA\FilesScripts\Interpreter\Functions\Util\For_Each;
@@ -121,7 +122,8 @@ class FunctionProvider implements IFunctionProvider {
 		Get_File_Tags $f54,
 		New_Folder $f55,
 		Add_Message $f56,
-		Clear_Messages $f57
+		Clear_Messages $f57,
+		_Include $f58
 	) {
 		$this->functions = func_get_args();
 	}

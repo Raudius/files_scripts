@@ -15,7 +15,8 @@ abstract class RegistrableFunction {
 	private ?Context $context;
 
 	public static function getFunctionName(): string {
-		return strtolower((new ReflectionClass(static::class))->getShortName());
+		$name = strtolower((new ReflectionClass(static::class))->getShortName());
+		return trim($name, "_");
 	}
 
 	final public function register(Context $context): void {

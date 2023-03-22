@@ -1,4 +1,4 @@
-The File actions app is a scripting tool, which administrators can employ to give users of the Nextcloud instance additional, customised file actions.The actions are accessible straight from the Files app!
+The File Actions app is a scripting tool, which administrators can employ to automate workflows, and to give users of the Nextcloud instance additional custom file actions. The actions are accessible straight from the Files app!
 
 **🌕** Scripting in Lua, its simple and has plenty of online resources.  
 **⚡** Make hard tasks easy, straight from the Files app.   
@@ -98,6 +98,6 @@ The app can be translated through the [Nextcloud community](https://www.transife
   * 🛠 **Scripting API**  
 If there is something you need that is currently not possible (or complex) to do with scripting API, please open a GitHub issue, or even better, a pull request! 
   * 📃 **Documentation**  
-The documentation of this project is still quite lacking. If you have any suggestions or improvements please do help out!
+The project is still relatively new, and the documentation can still use some work. If you have any suggestions or improvements please do help out!
   * 💸 **Donations**  
 Last and least, you can donate your hard-earned cash with [Liberapay](https://liberapay.com/Raudius/donate)

@@ -183,10 +183,13 @@ class ScriptController extends Controller {
 		try {
 			$this->scriptService->runScript($script, $context);
 		} catch (AbortException $e) {
-			return new JSONResponse(['error' => $e->getMessage()], HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse([
+				'error' => $e->getMessage(),
+				'messages' => $context->getMessages()
+			], HTTP::STATUS_BAD_REQUEST);
 		}
 
-		return new JSONResponse();
+		return new JSONResponse(['messages' => $context->getMessages()]);
 	}
 
 	/**

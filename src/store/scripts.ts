@@ -73,7 +73,7 @@ const actions = {
 			const newScript = await api.createScript(script)
 			commit('setSelectedScript', newScript)
 		}
-		dispatch('fetchScripts')
+		dispatch('fetchAllScripts')
 	},
 
 	async deleteScript({ dispatch, commit, state }, script) {
@@ -81,7 +81,7 @@ const actions = {
 		if (script.id) {
 			await api.deleteScript(script)
 		}
-		dispatch('fetchScripts')
+		dispatch('fetchAllScripts')
 	},
 }
 

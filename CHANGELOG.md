@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.2.0
+
+### Added
+- Nextcloud 26 support
+- Custom messages with `add_message` and `clear_messages`
+- Limit actions to certain user-groups
+- Added `include` function to Scripting API
+
+### Changed
+- Fix example scripts not getting inputs
+- Fix incomplete log messages
+- Fixed occ commands not correctly parsing input
+- Fixed multi-select input not allowing selection
+- Fixed file-pick input default and start-browse location
+- `tag_file_unassign` now works on folders
+- `file_copy`/`file_move` now work on folders
+- Fixed `meta_data` crashing scripts on externally mounted folders
+- Updated multi-select Vue component
+
 ## 2.1.1
 ### Added
 - Added function `get_file_tags` @0xFaul

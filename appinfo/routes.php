@@ -10,7 +10,7 @@ return [
 	],
 	'routes' => [
 		['name' => 'script#run', 'url' => '/run/{id}', 'verb' => 'POST'],
-		['name' => 'script#getInputs', 'url' => '/scripts/{id}/inputs', 'verb' => 'GET'],
+		['name' => 'script#adminIndex', 'url' => '/scripts/all', 'verb' => 'GET'],
 		['name' => 'script_input#getByScriptId', 'url' => '/script_inputs/{scriptId}', 'verb' => 'GET'],
 		['name' => 'script_input#createAll', 'url' => '/script_inputs/{scriptId}', 'verb' => 'POST'],
 		['name' => 'settings#modify', 'url' => '/settings', 'verb' => 'POST'],

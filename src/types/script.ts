@@ -4,8 +4,8 @@ export interface Script {
 	description: string
 	program: string
 	enabled: boolean
-	background: boolean
-	requestDirectory: boolean,
+	requestDirectory: boolean
+	limitGroups: string[]
 }
 
 export interface ScriptInput {
@@ -33,8 +33,8 @@ export function defaultScript(): Script {
 		description: '',
 		enabled: false,
 		program: '',
-		background: false,
 		requestDirectory: false,
+		limitGroups: []
 	}
 }
 

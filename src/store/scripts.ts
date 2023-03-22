@@ -10,7 +10,7 @@ export interface State {
 
 const getters = {
 	getEnabledScripts(state: State) {
-		return state.scripts
+		return (state.scripts && Array.isArray(state.scripts))
 			? state.scripts.filter(s => s.enabled)
 			: null
 	},
@@ -51,6 +51,7 @@ const mutations = {
 			program: newValues.program ?? state.selectedScript.program,
 			description: newValues.description ?? state.selectedScript.description,
 			enabled: newValues.enabled ?? state.selectedScript.enabled,
+			limitGroups: newValues.limitGroups ?? state.selectedScript.limitGroups
 		}
 	},
 }
@@ -58,6 +59,10 @@ const mutations = {
 const actions = {
 	async fetchScripts({ commit }) {
 		commit('setScripts', await api.getScripts())
+	},
+
+	async fetchAllScripts({ commit }) {
+		commit('setScripts', await api.getAllScripts())
 	},
 
 	async saveScript({ dispatch, commit, state }) {

@@ -37,6 +37,19 @@
 					</NcNoteCard>
 				</template>
 
+				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitGroupsEnabled" @update:checked="toggleLimitGroupsEnabled">
+					{{ t('files_scripts', 'Limit to groups') }}
+				</NcCheckboxRadioSwitch>
+				<NcMultiselect v-if="limitGroupsEnabled"
+					v-model="limitGroups"
+					:placeholder="t('files_scripts', 'Select groups allowed to use this action')"
+					class="multi-input-groups"
+					:options="groups"
+					:multiple="true"
+					:tag-width="80"
+				/>
+
+
 				<EditInputs :script-id="script.id" @changed="updateInputs" />
 			</div>
 
@@ -49,7 +62,7 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcMultiselect } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -60,17 +73,21 @@ import { showError, showSuccess } from '@nextcloud/dialogs'
 import { ScriptInput } from '../types/script'
 import { api } from '../api/script'
 import { translate as t } from '../l10n'
+import axios from '@nextcloud/axios'
+import { generateOcsUrl } from '@nextcloud/router'
 const CodeMirror = require('vue-codemirror').codemirror
 
 export default {
 	name: 'ScriptEdit',
 	components: {
+		axios,
 		NcModal,
 		NcActions,
 		NcActionButton,
 		CodeMirror,
 		NcCheckboxRadioSwitch,
 		NcNoteCard,
+		NcMultiselect,
 		Save,
 		EditInputs,
 	},
@@ -84,8 +101,10 @@ export default {
 
 		return {
 			scriptInputs: [],
+			groups: [],
 			dirtyInputs: false,
 			saving: false,
+			limitGroupsEnabled: false,
 			cmOption: {
 				tabSize: 4,
 				styleActiveLine: true,
@@ -134,10 +153,24 @@ export default {
 				this.$store.commit('updateCurrentScript', { description: value })
 			},
 		},
+		limitGroups: {
+			get() {
+				return this.script ? this.script.limitGroups : []
+			},
+			set(value) {
+				this.$store.commit('updateCurrentScript', { limitGroups: value })
+			},
+		},
+	},
+
+	mounted() {
+		this.loadGroups()
 	},
 
 	watch: {
 		showModal(newValue) {
+			newValue && this.remounted()
+
 			// Hack to fix codemirror rendering issue
 			if (newValue === true) {
 				setTimeout(() => {
@@ -151,6 +184,9 @@ export default {
 
 	methods: {
 		t,
+		remounted() {
+			this.limitGroupsEnabled = this.limitGroups.length > 0
+		},
 		saveScript() {
 			const self = this
 			this.saving = true
@@ -194,6 +230,17 @@ export default {
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
 		},
+		toggleLimitGroupsEnabled() {
+			if (!this.limitGroupsEnabled) {
+				this.limitGroups = []
+			}
+		},
+		async loadGroups() {
+			const response = await axios.get(generateOcsUrl('cloud/groups'))
+			if (response && response.data && response.data.ocs) {
+				this.groups = response.data.ocs.data.groups
+			}
+		}
 	},
 }
 </script>
@@ -218,6 +265,11 @@ export default {
 	overflow-x: clip;
 }
 
+.section-description {
+	opacity: .7;
+	margin-bottom: 16px;
+}
+
 .script-editor {
 	flex: 1 0;
 	border: solid 1px slategray;
@@ -232,5 +284,9 @@ export default {
 .input-script-description {
 	width: 100%;
 	resize: vertical;
+}
+
+.multi-input-groups {
+	width: 100%;
 }
 </style>

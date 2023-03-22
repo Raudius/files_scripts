@@ -14,8 +14,8 @@ use OCP\AppFramework\Db\Entity;
  * @method string getProgram()
  * @method setEnabled(int $enabled)
  * @method int getEnabled()
- * @method setBackground(int $enabled)
- * @method int getBackground()
+ * @method setLimitGroups(string $groups)
+ * @method int getLimitGroups()
  * @method setRequestDirectory(int $enabled)
  * @method int getRequestDirectory()
  */
@@ -24,8 +24,17 @@ class Script extends Entity implements JsonSerializable {
 	protected ?string $description = null;
 	protected ?string $program = null;
 	protected ?int $enabled = null;
-	protected ?int $background = null;
+	protected ?string $limitGroups = null;
 	protected ?int $requestDirectory = null;
+
+	public function setLimitGroupsArray(array $groupsArray): void {
+		$groups = implode(",", $groupsArray) ?: '';
+		$this->setLimitGroups($groups);
+	}
+
+	public function getLimitGroupsArray(): array {
+		return array_filter(explode(",", $this->limitGroups) ?: []);
+	}
 
 	public function jsonSerialize(): array {
 		return [
@@ -34,7 +43,7 @@ class Script extends Entity implements JsonSerializable {
 			'description' => $this->description,
 			'program' => $this->program,
 			'enabled' => $this->enabled,
-			'background' => $this->background,
+			'limitGroups' => $this->getLimitGroupsArray(),
 			'requestDirectory' => $this->requestDirectory,
 		];
 	}

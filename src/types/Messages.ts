@@ -17,20 +17,25 @@ export function getMessageType(type: any): MessageType {
 }
 
 export function showMessage(message: Message) {
+	const options = {
+		timeout: 10000
+	}
+
+
 	switch (message.type) {
 		case MessageType.ERROR:
-			showError(message.message)
+			showError(message.message, options)
 			return
 
 		case MessageType.WARNING:
-			showWarning(message.message)
+			showWarning(message.message, options)
 			return;
 
 		case MessageType.SUCCESS:
-			showSuccess(message.message)
+			showSuccess(message.message, options)
 			return;
 
 		default:
-			showInfo(message.message)
+			showInfo(message.message, options)
 	}
 }

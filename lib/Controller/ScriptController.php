@@ -7,6 +7,7 @@ use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\Context;
 use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
+use OCA\FilesScripts\Service\PermissionService;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCP\AppFramework\Controller;
@@ -18,6 +19,7 @@ use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
 use OCP\IL10N;
 use OCP\IRequest;
+use OCP\IUserSession;
 use Psr\Log\LoggerInterface;
 
 class ScriptController extends Controller {
@@ -29,6 +31,7 @@ class ScriptController extends Controller {
 	private IL10N $l;
 	private LoggerInterface $logger;
 	private LuaProvider $luaProvider;
+	private PermissionService $permissionService;
 
 	public function __construct(
 		$appName,
@@ -40,6 +43,7 @@ class ScriptController extends Controller {
 		IRootFolder $rootFolder,
 		IL10N $l,
 		LuaProvider $luaProvider,
+		PermissionService $permissionService,
 		LoggerInterface $logger
 	) {
 		parent::__construct($appName, $request);
@@ -50,6 +54,7 @@ class ScriptController extends Controller {
 		$this->rootFolder = $rootFolder;
 		$this->l = $l;
 		$this->luaProvider = $luaProvider;
+		$this->permissionService = $permissionService;
 		$this->logger = $logger;
 	}
 
@@ -57,25 +62,21 @@ class ScriptController extends Controller {
 	 * @NoAdminRequired
 	 */
 	public function index(): Response {
-		$scripts = $this->scriptMapper->findAll();
 		if (!$this->luaProvider->isAvailable()) {
-			$scripts = array_map(
-				static function (Script $script): Script {
-					$script->setEnabled(false);
-					return $script;
-				},
-				$scripts
-			);
+			return new DataResponse([]);
 		}
 
-		return new DataResponse($scripts);
+		$scripts = $this->scriptMapper->findAll();
+		$scripts = $this->permissionService->filterAllowedScripts($scripts);
+
+		return new DataResponse(array_values($scripts));
 	}
 
 	/**
-	 * @NoAdminRequired
+	 * Admin only, index all scripts regardless of permissions (e.g. to retrieve in settings page).
 	 */
-	public function getInputs($id): Response {
-		return new DataResponse($this->scriptInputMapper->findAllByScriptId($id));
+	public function adminIndex(): Response {
+		return new DataResponse($this->scriptMapper->findAll());
 	}
 
 	public function create(
@@ -156,7 +157,7 @@ class ScriptController extends Controller {
 	 */
 	public function run(int $id, string $outputDirectory = null, array $inputs = [], array $files = []): Response {
 		$script = $this->scriptMapper->find($id);
-		if (!$script || !$script->getEnabled()) {
+		if (!$script || !$this->permissionService->isEnabledForUser($script)) {
 			return new JSONResponse(['error' => $this->l->t('Action does not exist or is disabled.')], Http::STATUS_NOT_FOUND);
 		}
 

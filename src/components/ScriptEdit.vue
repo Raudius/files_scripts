@@ -40,12 +40,13 @@
 				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitGroupsEnabled" @update:checked="toggleLimitGroupsEnabled">
 					{{ t('files_scripts', 'Limit to groups') }}
 				</NcCheckboxRadioSwitch>
-				<NcMultiselect v-if="limitGroupsEnabled"
+				<NcSelect v-if="limitGroupsEnabled"
 					v-model="limitGroups"
 					:placeholder="t('files_scripts', 'Select groups allowed to use this action')"
 					class="multi-input-groups"
 					:options="groups"
 					:multiple="true"
+					:closeOnSelect="false"
 					:tag-width="80"
 				/>
 
@@ -62,7 +63,7 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcMultiselect } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcSelect } from '@nextcloud/vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -87,7 +88,7 @@ export default {
 		CodeMirror,
 		NcCheckboxRadioSwitch,
 		NcNoteCard,
-		NcMultiselect,
+		NcSelect,
 		Save,
 		EditInputs,
 	},
@@ -223,9 +224,6 @@ export default {
 		},
 		toggleEnabled() {
 			this.$store.commit('selectedToggleValue', 'enabled')
-		},
-		toggleBackground() {
-			this.$store.commit('selectedToggleValue', 'background')
 		},
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')

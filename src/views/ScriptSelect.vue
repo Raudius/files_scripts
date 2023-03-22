@@ -1,15 +1,20 @@
 <template>
 	<NcModal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
-			<h2 v-if=showScriptSelector>{{ t('files_scripts', 'Select action to perform') }}</h2>
-			<h2 v-else>{{ selectedScript.title }}</h2>
+			<h2>
+				<template v-if="showScriptSelector">
+					{{ t('files_scripts', 'Select action to perform') }}
+				</template>
+				<template v-else>{{ selectedScript.title }}</template>
+			</h2>
 
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
 				<div v-if="showScriptSelector" class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
-					<NcMultiselect v-model="selectedScript"
+					<NcSelect v-model="selectedScript"
 						class="section-details"
+						tabindex="-1"
 						:options="scripts"
 						:placeholder="t('files_scripts', 'Select an action to perform')"
 						track-by="id"
@@ -53,7 +58,7 @@
 
 <script lang="ts">
 import {loadState} from '@nextcloud/initial-state'
-import {NcButton, NcModal, NcMultiselect} from "@nextcloud/vue";
+import {NcButton, NcModal, NcSelect} from "@nextcloud/vue";
 import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
@@ -71,7 +76,7 @@ export default {
 	components: {
 		NcModal,
 		NcButton,
-		NcMultiselect,
+		NcSelect,
 		FileCog,
 		ConsoleLine,
 		Folder,

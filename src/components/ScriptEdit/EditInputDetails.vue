@@ -18,13 +18,14 @@
 
 			<div>
 				<div class="input_label">{{ t('files_scripts', 'Input type') }}</div>
-				<NcMultiselect
+				<NcSelect
 					class="full_width"
 					@change="changeInputType"
 					v-model="inputType"
 					:options="Object.values(InputTypes)"
 					trackBy="id"
 					label="label"
+					:clearable="false"
 				/>
 			</div>
 
@@ -48,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { NcTextField, NcButton, NcMultiselect } from '@nextcloud/vue'
+import { NcTextField, NcButton, NcSelect } from '@nextcloud/vue'
 import ContentSave from 'vue-material-design-icons/ContentSave.vue'
 import KeyboardBackspace from 'vue-material-design-icons/KeyboardBackspace.vue'
 import Plus from 'vue-material-design-icons/Plus.vue'
@@ -71,7 +72,7 @@ export default {
 		ContentSave,
 		KeyboardBackspace,
 		Plus,
-		NcMultiselect,
+		NcSelect,
 		MultiInput
 	},
 	props: {

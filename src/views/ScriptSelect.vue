@@ -52,20 +52,19 @@
 </template>
 
 <script lang="ts">
-import { loadState } from '@nextcloud/initial-state'
-import '@nextcloud/dialogs/styles/toast.scss'
-import { NcMultiselect, NcModal, NcButton } from "@nextcloud/vue";
+import {loadState} from '@nextcloud/initial-state'
+import {NcButton, NcModal, NcMultiselect} from "@nextcloud/vue";
 import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
-import { showError, FilePickerBuilder, showSuccess } from '@nextcloud/dialogs'
-import { api } from '../api/script'
+import {api} from '../api/script'
 import * as path from 'path'
-import { translate as t } from '../l10n'
-import {registerFileSelect, registerMultiSelect, registerFileSelectDirect, registerMultiSelectDirect} from '../files'
-import { ScriptInput } from '../types/script'
+import {translate as t} from '../l10n'
+import {registerFileSelect, registerFileSelectDirect, registerMultiSelect, registerMultiSelectDirect} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
+import {MessageType, showMessage} from "../types/Messages";
+import {FilePickerBuilder, showError} from "@nextcloud/dialogs";
 
 export default {
 	name: 'ScriptSelect',
@@ -139,21 +138,31 @@ export default {
 			if (this.isRunning) {
 				return
 			}
+
 			this.isRunning = true
+			let messages = []
+
 			try {
-				await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles)
+				let response = await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles)
 
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
 				OCA.Files.App.fileList.changeDirectory(currentDir, true, true)
 
-				showSuccess(t('files_scripts', 'Action completed!'))
+				messages = response.messages ?? []
+				messages.push({ message: (t('files_scripts', 'Action completed!')), type: MessageType.SUCCESS })
 				this.closeModal()
 			} catch (response) {
 				const errorObj = response?.response?.data
 				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('files_scripts', 'Action failed unexpectedly.')
-				showError(errorMsg)
+
+				messages = errorObj.messages ?? []
+				messages.push({ message: errorMsg, type: MessageType.ERROR })
 			}
 			this.isRunning = false
+
+			for (let message of messages) {
+				showMessage(message);
+			}
 		},
 
 		async pickOutputDirectory() {

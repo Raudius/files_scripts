@@ -17,6 +17,8 @@ class Context {
 	private ?string $targetDirectory;
 	private LuaWrapper $lua;
 
+	private array $messages = [];
+
 	public function __construct(
 		LuaWrapper $lua,
 		Folder $root,
@@ -29,6 +31,19 @@ class Context {
 		$this->input = $input;
 		$this->files = $files;
 		$this->targetDirectory = $targetDirectory;
+
+		$this->messages = [];
+	}
+
+	public function clearMessages(): void {
+		$this->messages = [];
+	}
+
+	public function addMessage($message, $type=null): void {
+		$this->messages[] = [
+			'message' => $message,
+			'type' => $type
+		];
 	}
 
 	public function getTargetDirectory(): ?Folder {
@@ -64,5 +79,9 @@ class Context {
 	 */
 	public function getInputFiles(): array {
 		return $this->files;
+	}
+
+	public function getMessages(): array {
+		return $this->messages;
 	}
 }

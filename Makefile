@@ -98,7 +98,6 @@ prepare-build:
 		--exclude="package*.json" \
 		--exclude="*config.js" \
 		--exclude="*config.json" \
-		--exclude="*.md" \
 	$(PROJECT_DIR) $(RELEASE_DIR)/ \
 	&& chmod -R 777 $(RELEASE_DIR)/
 

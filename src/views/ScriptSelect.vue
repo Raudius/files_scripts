@@ -63,7 +63,7 @@ import * as path from 'path'
 import {translate as t} from '../l10n'
 import {registerFileSelect, registerFileSelectDirect, registerMultiSelect, registerMultiSelectDirect} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
-import {getMessageType, Message, MessageType, showMessage} from "../types/Messages";
+import {MessageType, showMessage} from "../types/Messages";
 import {FilePickerBuilder, showError} from "@nextcloud/dialogs";
 
 export default {
@@ -148,12 +148,6 @@ export default {
 				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
 				OCA.Files.App.fileList.changeDirectory(currentDir, true, true)
 
-				for (let message of response.messages) {
-					messages.push({
-						message: message.text,
-						type: getMessageType(message.type)
-					} as Message)
-				}
 				messages = response.messages ?? []
 				messages.push({ message: (t('files_scripts', 'Action completed!')), type: MessageType.SUCCESS })
 				this.closeModal()

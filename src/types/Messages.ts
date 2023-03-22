@@ -21,7 +21,6 @@ export function showMessage(message: Message) {
 		timeout: 10000
 	}
 
-
 	switch (message.type) {
 		case MessageType.ERROR:
 			showError(message.message, options)

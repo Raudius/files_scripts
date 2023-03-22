@@ -5,7 +5,7 @@ namespace OCA\FilesScripts\Interpreter\Functions\Files;
 use OC\Log\File;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\Folder;
-use OCP\Files\NotFoundException;
+use Psr\Log\LoggerInterface;
 
 /**
  * `meta_data(Node node): Node`
@@ -24,6 +24,12 @@ use OCP\Files\NotFoundException;
  *  - `owner_id`: the user ID from the owner of the file
  */
 class Meta_Data extends RegistrableFunction {
+	private LoggerInterface $logger;
+
+	public function __construct(LoggerInterface $logger) {
+		$this->logger = $logger;
+	}
+
 	public function run($node = null): array {
 		$node = $this->getNode($this->getPath($node));
 		if (!$node) {
@@ -39,26 +45,41 @@ class Meta_Data extends RegistrableFunction {
 
 		try {
 			$sys_path = $node->getStorage()->getLocalFile($node->getInternalPath());
-		} catch (NotFoundException $e) {
+		} catch (\Exception|\Throwable $e) {
 			$sys_path = null;
+
+			$this->logger->warning('File action error: meta_data could not be retrive local_path', [
+				"exception" => $e->getMessage(),
+				"trace" => $e->getTraceAsString()
+			]);
 		}
 
-		return array_merge(
-			$this->getNodeData($node),
-			[
-				'size' => $node->getSize(),
-				'mimetype' => $node->getMimetype(),
-				'etag' => $node->getEtag(),
-				'mtime' => $node->getMTime(),
-				'utime' => $node->getUploadTime(),
-				'can_read' => $node->isReadable(),
-				'can_delete' => $node->isDeletable(),
-				'can_update' => $node->isUpdateable(),
-				'type' => $type,
-				'storage_path' => $node->getPath(),
-				'local_path' => $sys_path,
-				'owner_id' => $node->getOwner()->getUID(),
-			],
-		);
+		$node_data = $this->getNodeData($node);
+		try {
+			$node_data = array_merge(
+				$node_data,
+				[
+					'size' => $node->getSize(),
+					'mimetype' => $node->getMimetype(),
+					'etag' => $node->getEtag(),
+					'mtime' => $node->getMTime(),
+					'utime' => $node->getUploadTime(),
+					'can_read' => $node->isReadable(),
+					'can_delete' => $node->isDeletable(),
+					'can_update' => $node->isUpdateable(),
+					'type' => $type,
+					'storage_path' => $node->getPath(),
+					'local_path' => $sys_path,
+					'owner_id' => $node->getOwner()->getUID(),
+				],
+			);
+		} catch (\Exception|\Throwable $e) {
+			$this->logger->error('File action error: meta_data could not be retrieved due to exception', [
+				"exception" => $e->getMessage(),
+				"trace" => $e->getTraceAsString()
+			]);
+		}
+
+		return $node_data;
 	}
 }

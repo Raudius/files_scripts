@@ -11,7 +11,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
  */
 class Abort extends RegistrableFunction {
-	public function run($error = null): array {
+	public function run($error = null): void {
 		$error = (string) $error;
 		throw new AbortException($error);
 	}

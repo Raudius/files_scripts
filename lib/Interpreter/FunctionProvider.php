@@ -3,6 +3,8 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Error\Add_Message;
+use OCA\FilesScripts\Interpreter\Functions\Error\Clear_Messages;
 use OCA\FilesScripts\Interpreter\Functions\Error\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
@@ -117,7 +119,9 @@ class FunctionProvider implements IFunctionProvider {
 		Comment_Delete $f52,
 		Comment_Create $f53,
 		Get_File_Tags $f54,
-		New_Folder $f55
+		New_Folder $f55,
+		Add_Message $f56,
+		Clear_Messages $f57
 	) {
 		$this->functions = func_get_args();
 	}

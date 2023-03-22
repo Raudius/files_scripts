@@ -16,10 +16,11 @@
 		<!-- Multiselect -->
 		<template v-else-if="isInputMultiselect">
 			<FormSelect class="section-label" :size="20" />
-			<NcMultiselect v-model="localValue"
+			<NcSelect v-model="localValue"
 				class="section-details"
 				:options="this.scriptInput.options.multiselectOptions"
 				:placeholder="this.scriptInput.description"
+				:clearable="false"
 				@change
 			/>
 		</template>
@@ -56,7 +57,7 @@ import FormTextbox from 'vue-material-design-icons/FormTextbox.vue';
 import FormSelect from 'vue-material-design-icons/FormSelect.vue';
 import CheckboxMultipleMarkedCircle from 'vue-material-design-icons/CheckboxMultipleMarkedCircle.vue';
 import Folder from 'vue-material-design-icons/Folder.vue';
-import { NcCheckboxRadioSwitch, NcMultiselect } from '@nextcloud/vue'
+import { NcCheckboxRadioSwitch, NcSelect } from '@nextcloud/vue'
 import { FilePickerBuilder, showError } from "@nextcloud/dialogs";
 import { translate as t } from '../../l10n';
 import * as path from 'path';
@@ -73,7 +74,7 @@ export default {
 		CheckboxMultipleMarkedCircle,
 		Folder,
 		NcCheckboxRadioSwitch,
-		NcMultiselect,
+		NcSelect,
 	},
 	data() {
 		return {

@@ -114,7 +114,7 @@ export default {
 	},
 
 	mounted() {
-		this.$store.dispatch('fetchScripts')
+		this.$store.dispatch('fetchAllScripts')
 	},
 
 	methods: {

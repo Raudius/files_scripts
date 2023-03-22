@@ -42,9 +42,10 @@
 					{{ t('files_scripts', 'Specify which groups are allowed to run this file action. Leave empty to allow it for all users.') }}
 				</div>
 				<NcMultiselect v-model="limitGroups"
-							   :options="groups"
-							   :multiple="true"
-							   :tag-width="80"
+				 	class="multi-input-groups"
+					:options="groups"
+					:multiple="true"
+					:tag-width="80"
 				/>
 
 
@@ -271,5 +272,9 @@ export default {
 .input-script-description {
 	width: 100%;
 	resize: vertical;
+}
+
+.multi-input-groups {
+	width: 100%;
 }
 </style>

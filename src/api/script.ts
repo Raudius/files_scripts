@@ -3,8 +3,18 @@ import { generateUrl } from '@nextcloud/router'
 import { inflateScriptInputOptions, Script, ScriptInput } from '../types/script'
 
 export const api = {
+	/**
+	 * Get the scripts that are enabled for the current user.
+	 */
 	async getScripts(): Promise<Script[]> {
 		return (await axios.get(generateUrl('/apps/files_scripts/scripts'))).data
+	},
+
+	/**
+	 * Get all scripts (admin only).
+	 */
+	async getAllScripts(): Promise<Script[]> {
+		return (await axios.get(generateUrl('/apps/files_scripts/scripts/all'))).data
 	},
 
 	async createScript(script: Script): Promise<any> {

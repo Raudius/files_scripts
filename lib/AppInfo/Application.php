@@ -3,10 +3,12 @@
 namespace OCA\FilesScripts\AppInfo;
 
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
+use OCA\Files_Sharing\Event\ShareLinkAccessedEvent;
 use OCA\FilesScripts\Interpreter\FunctionProvider;
 use OCA\FilesScripts\Interpreter\IFunctionProvider;
 use OCA\FilesScripts\Listener\LoadAdditionalListener;
 use OCA\FilesScripts\Listener\RegisterFlowOperationsListener;
+use OCA\FilesScripts\Listener\ShareLinkAccessedListener;
 use OCA\FilesScripts\Middleware\DefaultScriptsMiddleware;
 use OCA\FilesScripts\Service\Notifier;
 use OCP\AppFramework\App;
@@ -32,6 +34,7 @@ class Application extends App implements IBootstrap {
 		$context->registerEventListener(RegisterOperationsEvent::class, RegisterFlowOperationsListener::class);
 		$context->registerMiddleware(DefaultScriptsMiddleware::class);
 		$context->registerNotifierService(Notifier::class);
+		$context->registerEventListener(ShareLinkAccessedEvent::class, ShareLinkAccessedListener::class);
 
 		$context->registerService(IFunctionProvider::class, function () {
 			return \OC::$server->get(FunctionProvider::class);

@@ -2,15 +2,15 @@
 	<NcModal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
 			<h2>
-				<template v-if="showScriptSelector">
+				<template v-if="actionsInMenu">{{ selectedScript.title }}</template>
+				<template v-else>
 					{{ t('files_scripts', 'Select action to perform') }}
 				</template>
-				<template v-else>{{ selectedScript.title }}</template>
 			</h2>
 
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
-				<div v-if="showScriptSelector" class="section-wrapper">
+				<div v-if="!actionsInMenu" class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
 					<NcSelect v-model="selectedScript"
 						class="section-details"
@@ -66,7 +66,7 @@ import Folder from 'vue-material-design-icons/Folder.vue'
 import {api} from '../api/script'
 import * as path from 'path'
 import {translate as t} from '../l10n'
-import {registerFileSelect, registerFileSelectDirect, registerMultiSelect, registerMultiSelectDirect} from '../files'
+import {registerMenuOptions, reloadCurrentDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
 import {FilePickerBuilder, showError} from "@nextcloud/dialogs";
@@ -92,7 +92,6 @@ export default {
 			outputDirectory: null,
 			scriptInputs: [],
 			loadingScriptInputs: false,
-			showScriptSelector: true,
 			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
 		}
 	},
@@ -127,12 +126,12 @@ export default {
 		closeModal() {
 			this.showModal = false
 			this.isRunning = false
-			this.showScriptSelector = true
 			this.selectedScript = null
 			this.selectedFiles = null
 			this.scriptInputs = []
 		},
 		async selectScript(script) {
+			this.selectedScript = script
 			this.outputDirectory = this.selectedFiles[0].path ?? '/'
 
 			this.loadingScriptInputs = true
@@ -149,9 +148,7 @@ export default {
 
 			try {
 				let response = await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles)
-
-				const currentDir = OCA.Files.App.getCurrentFileList().getCurrentDirectory()
-				OCA.Files.App.fileList.changeDirectory(currentDir, true, true)
+				reloadCurrentDirectory()
 
 				messages = response.messages ?? []
 				messages.push({ message: (t('files_scripts', 'Action completed!')), type: MessageType.SUCCESS })
@@ -160,7 +157,7 @@ export default {
 				const errorObj = response?.response?.data
 				const errorMsg = (errorObj && errorObj.error) ? errorObj.error : t('files_scripts', 'Action failed unexpectedly.')
 
-				messages = errorObj.messages ?? []
+				messages = errorObj?.messages ?? []
 				messages.push({ message: errorMsg, type: MessageType.ERROR })
 			}
 			this.isRunning = false
@@ -188,31 +185,20 @@ export default {
 			if (!this.scripts || this.scripts.length === 0) {
 				return // No enabled scripts: no need to attach the options
 			}
-			const self = this
-			if( self.actionsInMenu ) {
-				this.scripts.forEach( function( script ) {
-					const handler = function(files, context) {
-						self.selectedScript = script
-						self.showScriptSelector = false
-						self.selectedFiles = (context && context.fileInfoModel) ? [context.fileInfoModel.attributes] : files
 
-						self.selectScript(script)
-						self.showModal = true
-					}
+			const handler = (files, script) => {
+				this.selectedFiles = files
+				this.showModal = true
+				script && this.selectScript(script)
+			}
 
-					registerFileSelectDirect(script, handler)
-					registerMultiSelectDirect(script, handler)
+			if (this.actionsInMenu) {
+				this.scripts.forEach(function (script) {
+					registerMenuOptions(handler, script)
 				});
 			}
 			else {
-				registerMultiSelect(function(files) {
-					self.showModal = true
-					self.selectedFiles = files
-				})
-				registerFileSelect(function(file, context) {
-					self.showModal = true
-					self.selectedFiles = [context.fileInfoModel.attributes]
-				})
+				registerMenuOptions(handler)
 			}
 		},
 	},

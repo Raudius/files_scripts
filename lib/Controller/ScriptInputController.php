@@ -5,6 +5,7 @@ namespace OCA\FilesScripts\Controller;
 use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
+use OCA\FilesScripts\Service\PermissionService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
@@ -18,17 +19,20 @@ class ScriptInputController extends Controller {
 	private ScriptMapper $scriptMapper;
 	private ScriptInputMapper $scriptInputMapper;
 	private IL10N $l;
+	private PermissionService $permissionService;
 
 	public function __construct(
 		$appName,
 		IRequest $request,
 		ScriptMapper $scriptMapper,
 		ScriptInputMapper $scriptInputMapper,
+		PermissionService $permissionService,
 		IL10N $l
 	) {
 		parent::__construct($appName, $request);
 		$this->scriptMapper = $scriptMapper;
 		$this->scriptInputMapper = $scriptInputMapper;
+		$this->permissionService = $permissionService;
 		$this->l = $l;
 	}
 
@@ -41,8 +45,14 @@ class ScriptInputController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @PublicPage
 	 */
 	public function getByScriptId($scriptId): Response {
+		$script = $this->scriptMapper->find($scriptId);
+		if (!$this->permissionService->isEnabledForUser($script)) {
+			return new JSONResponse([], Http::STATUS_FORBIDDEN);;
+		}
+
 		return new DataResponse($this->scriptInputMapper->findAllByScriptId($scriptId));
 	}
 

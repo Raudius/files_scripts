@@ -5,7 +5,7 @@ namespace OCA\FilesScripts\Controller;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
-use OCA\FilesScripts\Interpreter\Context;
+use OCA\FilesScripts\Interpreter\ContextFactory;
 use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCA\FilesScripts\Service\PermissionService;
 use OCA\FilesScripts\Service\ScriptService;
@@ -16,22 +16,20 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\Response;
 use OCP\DB\Exception;
-use OCP\Files\IRootFolder;
 use OCP\IL10N;
 use OCP\IRequest;
-use OCP\IUserSession;
 use Psr\Log\LoggerInterface;
 
 class ScriptController extends Controller {
 	private ?string $userId;
 	private ScriptMapper $scriptMapper;
 	private ScriptInputMapper $scriptInputMapper;
-	private IRootFolder $rootFolder;
 	private ScriptService $scriptService;
 	private IL10N $l;
 	private LoggerInterface $logger;
 	private LuaProvider $luaProvider;
 	private PermissionService $permissionService;
+	private ContextFactory $contextFactory;
 
 	public function __construct(
 		$appName,
@@ -40,9 +38,9 @@ class ScriptController extends Controller {
 		ScriptMapper $scriptMapper,
 		ScriptInputMapper $scriptInputMapper,
 		ScriptService $scriptService,
-		IRootFolder $rootFolder,
 		IL10N $l,
 		LuaProvider $luaProvider,
+		ContextFactory $contextFactory,
 		PermissionService $permissionService,
 		LoggerInterface $logger
 	) {
@@ -51,8 +49,8 @@ class ScriptController extends Controller {
 		$this->scriptMapper = $scriptMapper;
 		$this->scriptInputMapper = $scriptInputMapper;
 		$this->scriptService = $scriptService;
-		$this->rootFolder = $rootFolder;
 		$this->l = $l;
+		$this->contextFactory = $contextFactory;
 		$this->luaProvider = $luaProvider;
 		$this->permissionService = $permissionService;
 		$this->logger = $logger;
@@ -60,6 +58,7 @@ class ScriptController extends Controller {
 
 	/**
 	 * @NoAdminRequired
+	 * @PublicPage
 	 */
 	public function index(): Response {
 		if (!$this->luaProvider->isAvailable()) {
@@ -153,20 +152,18 @@ class ScriptController extends Controller {
 	}
 
 	/**
+	 * @PublicPage
 	 * @NoAdminRequired
 	 */
-	public function run(int $id, string $outputDirectory = null, array $inputs = [], array $files = []): Response {
+	public function run(int $id, array $inputs = [], array $files = [], string $shareToken = null): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script || !$this->permissionService->isEnabledForUser($script)) {
 			return new JSONResponse(['error' => $this->l->t('Action does not exist or is disabled.')], Http::STATUS_NOT_FOUND);
 		}
 
-		$userFolder = $this->rootFolder->getUserFolder($this->userId);
-		$fileNodes = [];
-		$n = 1;
+		$filePaths = [];
 		foreach ($files as $file) {
-			$path = $file['path'] . '/' . $file['name'];
-			$fileNodes[$n++] = $userFolder->get($path);
+			$filePaths[] = $file['path'] . '/' . $file['name'];
 		}
 
 		$groupedInputs = [];
@@ -180,7 +177,18 @@ class ScriptController extends Controller {
 			$scriptInput->setValue($value);
 		}
 
-		$context = new Context($this->luaProvider->createLua(), $userFolder, $scriptInputs, $fileNodes, $outputDirectory);
+		$context = null;
+		if ($shareToken) {
+			$context = $this->contextFactory->createContextForShare($shareToken, $scriptInputs, $filePaths);
+		} elseif ($this->userId) {
+			$context = $this->contextFactory->createContextForUser($this->userId, $scriptInputs, $filePaths);
+		}
+
+		if ($context === null) {
+			$this->logger->error('Aborted attempt to run file action without a valid user session or share token.');
+			return new JSONResponse([], Http::STATUS_NOT_FOUND);
+		}
+
 		try {
 			$this->scriptService->runScript($script, $context);
 		} catch (AbortException $e) {

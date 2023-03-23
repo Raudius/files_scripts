@@ -17,13 +17,14 @@ class Context {
 	private ?string $targetDirectory;
 	private LuaWrapper $lua;
 
-	private array $messages = [];
+	private array $messages;
+	private ?int $permissionOverride;
 
 	public function __construct(
 		LuaWrapper $lua,
 		Folder $root,
 		array $input,
-		array $files,
+		array $files = [],
 		?string $targetDirectory = null
 	) {
 		$this->lua = $lua;
@@ -32,6 +33,7 @@ class Context {
 		$this->files = $files;
 		$this->targetDirectory = $targetDirectory;
 
+		$this->permissionOverride = null;
 		$this->messages = [];
 	}
 
@@ -61,7 +63,6 @@ class Context {
 		return null;
 	}
 
-
 	public function getLua(): LuaWrapper {
 		return $this->lua;
 	}
@@ -74,6 +75,10 @@ class Context {
 		return $this->input;
 	}
 
+	public function getPermissionsOverride(): ?int {
+		return $this->permissionOverride;
+	}
+
 	/**
 	 * @return Node[]
 	 */
@@ -83,5 +88,9 @@ class Context {
 
 	public function getMessages(): array {
 		return $this->messages;
+	}
+
+	public function setPermissionsOverride(int $permissions): void {
+		$this->permissionOverride = $permissions;
 	}
 }

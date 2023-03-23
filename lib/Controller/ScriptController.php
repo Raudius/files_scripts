@@ -164,6 +164,10 @@ class ScriptController extends Controller {
 			return new JSONResponse(['error' => $this->l->t('Action does not exist or is disabled.')], Http::STATUS_NOT_FOUND);
 		}
 
+		if ($shareToken !== null && !$script->getPublic()) {
+			return new JSONResponse(['error' => $this->l->t('This action is not enabled on public shares.')], Http::STATUS_FORBIDDEN);
+		}
+
 		$filePaths = [];
 		foreach ($files as $file) {
 			$filePaths[] = $file['path'] . '/' . $file['name'];

@@ -27,9 +27,13 @@ class PermissionService {
 	 * Checks if the given script is allowed to be executed by the current user.
 	 */
 	public function isEnabledForUser(Script $script): bool {
-		$user = $this->userSession->getUser();
 		if (!$script->getEnabled()) {
 			return false;
+		}
+
+		$user = $this->userSession->getUser();
+		if ($user === null) {
+			return $script->getPublic(); // No user => Only public scripts
 		}
 
 		$limitGroups = $script->getLimitGroupsArray();

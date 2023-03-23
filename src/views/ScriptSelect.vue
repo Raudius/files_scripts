@@ -14,13 +14,13 @@
 					<FileCog class="section-label" :size="20" />
 					<NcSelect v-model="selectedScript"
 						class="section-details"
-						tabindex="-1"
+						:tabindex="-1"
 						:options="scripts"
 						:placeholder="t('files_scripts', 'Select an action to perform')"
 						track-by="id"
 						:prevent-autofocus="true"
 						label="title"
-						@change="selectScript" />
+						@input="selectScript" />
 				</div>
 
 				<div v-if="selectedScript && selectedScript.requestDirectory" class="section-wrapper">

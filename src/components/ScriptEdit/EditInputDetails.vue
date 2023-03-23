@@ -20,7 +20,7 @@
 				<div class="input_label">{{ t('files_scripts', 'Input type') }}</div>
 				<NcSelect
 					class="full_width"
-					@change="changeInputType"
+					@input="changeInputType"
 					v-model="inputType"
 					:options="Object.values(InputTypes)"
 					trackBy="id"

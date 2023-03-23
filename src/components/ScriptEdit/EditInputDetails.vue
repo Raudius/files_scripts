@@ -29,16 +29,16 @@
 				/>
 			</div>
 
-			<MultiInput
-				v-if="isInputMultiselect"
-				:label="t('files_scripts', 'Multi-select options')"
-				v-model="this.scriptInput.options.multiselectOptions"
-			/>
-			<MultiInput
-				v-if="isInputFilepick"
-				:label="t('files_scripts', 'Allowed MIME types (defaults to all)')"
-				v-model="this.scriptInput.options.filepickMimes"
-			/>
+			<div v-if="isInputMultiselect">
+				<div class="input_label">{{ t('files_scripts', 'Multi-select options') }}</div>
+				<FreeSelect v-model="options" />
+			</div>
+
+
+			<div v-if="isInputFilepick">
+				<div class="input_label">{{ t('files_scripts', 'Allowed MIME types (defaults to all)') }}</div>
+				<FreeSelect v-model="options" />
+			</div>
 		</div>
 
 		<NcButton type="primary" @click="save">
@@ -55,7 +55,7 @@ import KeyboardBackspace from 'vue-material-design-icons/KeyboardBackspace.vue'
 import Plus from 'vue-material-design-icons/Plus.vue'
 import { ScriptInput } from '../../types/script'
 import { translate as t } from '../../l10n'
-import MultiInput from '../generic/MultiInput.vue'
+import FreeSelect from '../generic/FreeSelect.vue'
 
 const InputTypes = {
 	text: { id: "text", label: t('files_scripts', 'Text')},
@@ -73,7 +73,7 @@ export default {
 		KeyboardBackspace,
 		Plus,
 		NcSelect,
-		MultiInput
+		FreeSelect
 	},
 	props: {
 		scriptInput: Object as () => ScriptInput,
@@ -93,6 +93,26 @@ export default {
 		},
 		isInputFilepick() {
 			return this.inputType?.id === 'filepick'
+		},
+		options: {
+			get() {
+				const options = this.scriptInput.options
+				if (!options) {
+					return []
+				}
+
+				return this.isInputMultiselect
+						? (this.scriptInput.options.multiselectOptions ?? [])
+						: (this.scriptInput.options.filepickMimes ?? [])
+			},
+			set(values) {
+				if (this.isInputMultiselect) {
+					this.scriptInput.options.multiselectOptions = values
+				}
+				if (this.isInputFilepick) {
+					this.scriptInput.options.filepickMimes = values
+				}
+			}
 		}
 	},
 	methods: {

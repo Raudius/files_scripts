@@ -246,13 +246,12 @@ export default {
 
 .container-script-edit {
 	display: flex;
-	margin: 10px;
 }
 
 .script-details {
 	flex: 0 0 25%;
 	height: 90vh;
-	padding-right: 12px;
+	padding: 6px;
 	overflow-y: auto;
 	overflow-x: clip;
 }

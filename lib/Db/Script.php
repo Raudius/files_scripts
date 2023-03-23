@@ -16,6 +16,8 @@ use OCP\AppFramework\Db\Entity;
  * @method int getEnabled()
  * @method setLimitGroups(string $groups)
  * @method int getLimitGroups()
+ * @method setPublic(bool $public)
+ * @method bool getPublic()
  * @method setRequestDirectory(int $enabled)
  * @method int getRequestDirectory()
  */
@@ -26,6 +28,7 @@ class Script extends Entity implements JsonSerializable {
 	protected ?int $enabled = null;
 	protected ?string $limitGroups = null;
 	protected ?int $requestDirectory = null;
+	protected ?bool $public = null;
 
 	public function setLimitGroupsArray(array $groupsArray): void {
 		$groups = implode(",", $groupsArray) ?: '';
@@ -45,6 +48,7 @@ class Script extends Entity implements JsonSerializable {
 			'enabled' => $this->enabled,
 			'limitGroups' => $this->getLimitGroupsArray(),
 			'requestDirectory' => $this->requestDirectory,
+			'public' => $this->public,
 		];
 	}
 }

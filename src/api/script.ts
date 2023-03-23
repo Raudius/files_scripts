@@ -30,7 +30,10 @@ export const api = {
 	},
 
 	async runScript(script: Script, outputDirectory: string, inputs: ScriptInput[], files: any[]): Promise<any> {
-		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), { outputDirectory, inputs, files })).data
+		const shareToken = (<HTMLInputElement>document.getElementById('sharingToken'))?.value ?? null
+		const data = { outputDirectory, inputs, files, shareToken }
+
+		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), data)).data
 	},
 
 	async getScriptInputs(scriptId: Number): Promise<ScriptInput[]> {

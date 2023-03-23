@@ -35,7 +35,9 @@ abstract class RegistrableFunction {
 	}
 
 	final protected function getHomeFolder(): Folder {
-		return $this->getContext()->getRoot();
+		$folder = $this->getContext()->getRoot();
+		$this->overridePermissions($folder);
+		return $folder;
 	}
 
 	final protected function getPath(array $data): string {
@@ -48,7 +50,9 @@ abstract class RegistrableFunction {
 		}
 
 		try {
-			return $this->getHomeFolder()->get($path);
+			$node = $this->getHomeFolder()->get($path);
+			$this->overridePermissions($node);
+			return $node;
 		} catch (NotFoundException $e) {
 			return null;
 		}
@@ -57,6 +61,7 @@ abstract class RegistrableFunction {
 	final protected function getFile(string $path): ?File {
 		$node = $this->getNode($path);
 		if ($node instanceof File) {
+			$this->overridePermissions($node);
 			return $node;
 		}
 		return null;
@@ -65,6 +70,7 @@ abstract class RegistrableFunction {
 	final protected function getFolder(string $path): ?Folder {
 		$node = $this->getNode($path);
 		if ($node instanceof Folder) {
+			$this->overridePermissions($node);
 			return $node;
 		}
 		return null;
@@ -163,6 +169,35 @@ abstract class RegistrableFunction {
 		}
 
 		return $datetime;
+	}
+
+	/**
+	 * Super hack alert!
+	 * We reflect the node object to set the permissions on the fileInfo property. We assign the value from the override.
+	 * This is used so that shared folders use the permissions set by the share and not the ones from the filecache folder.
+	 *
+	 * FIXME: If this ever gets fixed upstream maybe we can remove this.
+	 */
+	private function overridePermissions(Node $node): void {
+		$permissions = $this->context->getPermissionsOverride();
+		if ($permissions === null) {
+			return;
+		}
+
+		if (!method_exists($node, 'getFileInfo')) {
+			return;
+		}
+		$node->getFileInfo(false);
+
+		try {
+			$reflect = new \ReflectionClass($node);
+
+			$fileInfoProp = $reflect->getProperty('fileInfo');
+			$fileInfo = $fileInfoProp->getValue($node);
+			$fileInfo['permissions'] = $permissions;
+			$fileInfoProp->setValue($node, $fileInfo);
+		} catch (\ReflectionException $e) {
+		}
 	}
 
 	/**

@@ -6,6 +6,7 @@ export interface Script {
 	enabled: boolean
 	requestDirectory: boolean
 	limitGroups: string[]
+	public: boolean
 }
 
 export interface ScriptInput {
@@ -34,6 +35,7 @@ export function defaultScript(): Script {
 		enabled: false,
 		program: '',
 		requestDirectory: false,
+		public: false,
 		limitGroups: []
 	}
 }

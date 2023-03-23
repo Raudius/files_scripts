@@ -37,6 +37,10 @@
 					</NcNoteCard>
 				</template>
 
+				<NcCheckboxRadioSwitch type="switch" :checked="!!script.public" @update:checked="togglePublic">
+					{{ t('files_scripts', 'Allow on public shares') }}
+				</NcCheckboxRadioSwitch>
+
 				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitGroupsEnabled" @update:checked="toggleLimitGroupsEnabled">
 					{{ t('files_scripts', 'Limit to groups') }}
 				</NcCheckboxRadioSwitch>
@@ -227,6 +231,9 @@ export default {
 		},
 		toggleRequestDirectory() {
 			this.$store.commit('selectedToggleValue', 'requestDirectory')
+		},
+		togglePublic() {
+			this.$store.commit('selectedToggleValue', 'public')
 		},
 		toggleLimitGroupsEnabled() {
 			if (!this.limitGroupsEnabled) {

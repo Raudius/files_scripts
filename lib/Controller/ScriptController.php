@@ -84,16 +84,17 @@ class ScriptController extends Controller {
 		string $program,
 		bool $enabled,
 		array $limitGroups,
-		bool $requestDirectory
+		bool $requestDirectory,
+		bool $public
 	): Response {
 		$script = new Script();
 		$script->setTitle($title);
 		$script->setDescription($description);
 		$script->setProgram($program);
 		$script->setEnabled($enabled);
-		$script->setEnabled($enabled);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setRequestDirectory($requestDirectory);
+		$script->setPublic($public);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {
@@ -120,7 +121,8 @@ class ScriptController extends Controller {
 		string $program,
 		bool $enabled,
 		array $limitGroups,
-		bool $requestDirectory
+		bool $requestDirectory,
+		bool $public
 	): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
@@ -133,6 +135,7 @@ class ScriptController extends Controller {
 		$script->setEnabled($enabled);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setRequestDirectory($requestDirectory);
+		$script->setPublic($public);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {

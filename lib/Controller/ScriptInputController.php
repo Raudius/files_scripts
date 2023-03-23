@@ -49,7 +49,7 @@ class ScriptInputController extends Controller {
 	 */
 	public function getByScriptId($scriptId): Response {
 		$script = $this->scriptMapper->find($scriptId);
-		if (!$this->permissionService->isEnabledForUser($script)) {
+		if (!$this->permissionService->isEnabledForUser($script) && !$this->permissionService->isUserAdmin()) {
 			return new JSONResponse([], Http::STATUS_FORBIDDEN);;
 		}
 

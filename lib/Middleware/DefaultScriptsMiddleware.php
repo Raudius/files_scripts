@@ -32,7 +32,6 @@ class DefaultScriptsMiddleware extends Middleware {
 			'program' => '../../examples/merge_pdfs.lua',
 			'name' => 'Merge PDFs',
 			'description' => 'Combines all the selected PDFs into a single file.',
-			'request_location' => true,
 			'inputs' => [ 'file_name' => 'Name of the output file' ]
 		],
 		[
@@ -108,7 +107,6 @@ class DefaultScriptsMiddleware extends Middleware {
 
 		$script = new Script();
 		$script->setProgram($program);
-		$script->setRequestDirectory($scriptData['request_location'] ?? false);
 		$script->setEnabled(false);
 		$script->setTitle($scriptData['name']);
 		$script->setDescription($scriptData['description']);

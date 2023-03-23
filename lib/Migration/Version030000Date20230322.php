@@ -9,7 +9,7 @@ use OCP\Migration\SimpleMigrationStep;
 use OCP\Migration\IOutput;
 use Psr\Log\LoggerInterface;
 
-class Version030000Date20230423 extends SimpleMigrationStep {
+class Version030000Date20230322 extends SimpleMigrationStep {
 	private LoggerInterface $logger;
 
 	public function __construct(LoggerInterface $logger) {
@@ -35,7 +35,7 @@ class Version030000Date20230423 extends SimpleMigrationStep {
 				'default' => false
 			]);
 		} else {
-			$this->logger->error('File scripts (Version030000Date20230323) migration failed, because `filescripts` table does not exist.');
+			$this->logger->error('File scripts (Version030000Date20230322) migration failed, because `filescripts` table does not exist.');
 		}
 		return $schema;
 	}

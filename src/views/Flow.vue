@@ -37,7 +37,7 @@ export default {
 	},
 
 	async mounted() {
-		this.scripts = await api.getScripts()
+		this.scripts = await api.getAllScripts()
 		const value = parseInt(this.value)
 		this.selectedScript = this.scripts.find(script => {
 			return script.id === value

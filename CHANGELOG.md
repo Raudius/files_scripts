@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1
+
+## Changed
+- Fixed some issues with new NcSelect component
+
 ## 2.2.0
 
 ### Added

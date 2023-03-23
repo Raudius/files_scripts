@@ -34,6 +34,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Ekintza honek zer egingo duenaren deskribapen laburra …",
     "Enable script" : "Gaitu scripta",
     "Request target folder" : "Eskatu helburu-karpeta",
+    "Limit to groups" : "Mugatu taldeetara",
     "Saved" : "Gordeta",
     "An error occurred during saving" : "Errorea gertatu da gordetzean",
     "Unknown error" : "Errore ezezaguna",

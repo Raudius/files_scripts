@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Lưu",
     "Text" : "Văn bản",
     "Checkbox" : "Hộp chọn",
+    "Limit to groups" : "Giới hạn nhóm",
     "Saved" : "Đã lưu",
     "Unknown error" : "Lỗi không xác định",
     "More actions" : "Nhiều hành động hơn"

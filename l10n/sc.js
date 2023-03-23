@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Sarva",
     "Text" : "Testu",
     "Checkbox" : "Casella de seletzione",
+    "Limit to groups" : "Lìmita a grupos",
     "Saved" : "Sarvadu",
     "Unknown error" : "Errore disconnotu",
     "More actions" : "Àteras atziones"

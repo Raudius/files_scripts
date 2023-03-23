@@ -12,6 +12,7 @@ OC.L10N.register(
     "Save" : "Opslaan",
     "Text" : "Tekst",
     "Checkbox" : "Aanvinkvakje",
+    "Limit to groups" : "Beperk tot groepen",
     "Saved" : "Opgeslagen",
     "An error occurred during saving" : "Er trad een fout op bij het opslaan",
     "Unknown error" : "Onbekende fout",

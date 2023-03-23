@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Spremi",
     "Text" : "Tekst",
     "Checkbox" : "Potvrdni okvir",
+    "Limit to groups" : "Ograniči na grupe",
     "Saved" : "Spremljeno",
     "Unknown error" : "Nepoznata pogreška",
     "More actions" : "Dodatne radnje"

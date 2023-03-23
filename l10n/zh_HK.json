@@ -37,6 +37,7 @@
     "A short description of what this action will do …" : "簡短描述此操作將執行的操作 ...",
     "Enable script" : "啟用腳本語言",
     "Request target folder" : "請求目標資料夾",
+    "Limit to groups" : "限制於群組",
     "Saved" : "已保存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "錯誤不詳",

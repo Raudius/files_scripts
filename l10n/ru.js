@@ -16,6 +16,7 @@ OC.L10N.register(
     "Script name" : "Название сценария",
     "A short description of what this action will do …" : "Короткое описание функционала…",
     "Enable script" : "Включить сценарий",
+    "Limit to groups" : "Разрешить использование только участникам этих групп",
     "Saved" : "Сохранённые",
     "Unknown error" : "Неизвестная ошибка",
     "Action completed!" : "Действие выполнено",

@@ -38,6 +38,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Короткий опис, що ця дія виконуватиме...",
     "Enable script" : "Задіяти сценарій",
     "Request target folder" : "Запит каталогу призначення",
+    "Limit to groups" : "Обмежити групами",
     "Saved" : "Збережено",
     "An error occurred during saving" : "Помилка під час збереження",
     "Unknown error" : "Невідома помилка",

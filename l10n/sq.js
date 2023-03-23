@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Ruaj",
     "Text" : "Tekst",
     "Checkbox" : "Checkbox",
+    "Limit to groups" : "Kufizo grupet",
     "Saved" : "Ruajtur",
     "Unknown error" : "Gabim i panjohur",
     "More actions" : "Më tepër veprime "

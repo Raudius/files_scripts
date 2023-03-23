@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Une courte description de ce que l'action fera ...",
     "Enable script" : "Activer le script",
     "Request target folder" : "Demander le dossier cible",
+    "Limit to groups" : "Limiter aux groupes",
     "Saved" : "Enregistré",
     "An error occurred during saving" : "Une erreur est survenue pendant l'enregistrement",
     "Unknown error" : "Erreur inconnue",

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Distro",
     "Save" : "Enrollañ",
     "Checkbox" : "Checkbox",
+    "Limit to groups" : "Nemet d'ar strolladoù",
     "Saved" : "Enrollet",
     "Unknown error" : "Fazi dizanv"
 },

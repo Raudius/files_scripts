@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "A short description of what this action will do …",
     "Enable script" : "Enable script",
     "Request target folder" : "Request target folder",
+    "Limit to groups" : "Limit to groups",
     "Saved" : "Saved",
     "An error occurred during saving" : "An error occurred during saving",
     "Unknown error" : "Unknown error",

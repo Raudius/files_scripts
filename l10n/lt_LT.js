@@ -15,6 +15,7 @@ OC.L10N.register(
     "Script name" : "Scenarijaus pavadinimas",
     "A short description of what this action will do …" : "Trumpas aprašas to, ką darys šis veiksmas…",
     "Enable script" : "Įjungti scenarijų",
+    "Limit to groups" : "Apriboti iki grupių",
     "Saved" : "Įrašyta",
     "Unknown error" : "Nežinoma klaida",
     "Action completed!" : "Veiksmas įvykdytas!",

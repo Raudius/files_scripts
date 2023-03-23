@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Gem",
     "Text" : "Tekst",
     "Checkbox" : "Afkrydsningsfeldt",
+    "Limit to groups" : "Begræns til grupper",
     "Saved" : "Gemt",
     "Unknown error" : "Ukendt fejl",
     "More actions" : "Flere handlinger"

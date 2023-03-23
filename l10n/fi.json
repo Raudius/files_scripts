@@ -28,6 +28,7 @@
     "Script name" : "Skriptin nimi",
     "A short description of what this action will do …" : "Lyhyt kuvaus siitä, mitä tämä toiminto tekee…",
     "Enable script" : "Ota skripti käyttöön",
+    "Limit to groups" : "Rajoita ryhmiin",
     "Saved" : "Tallennettu",
     "An error occurred during saving" : "Tallentaessa tapahtui virhe",
     "Unknown error" : "Tuntematon virhe",

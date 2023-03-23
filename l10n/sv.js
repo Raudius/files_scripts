@@ -20,6 +20,7 @@ OC.L10N.register(
     "Script name" : "Namn på skript",
     "A short description of what this action will do …" : " En kort beskrivning av vad den här åtgärden kommer att göra …",
     "Enable script" : "Aktivera skript",
+    "Limit to groups" : "Begränsa till grupper",
     "Saved" : "Sparat",
     "Unknown error" : "Okänt fel",
     "Select an action to perform" : "Välj en åtgärd att utföra",

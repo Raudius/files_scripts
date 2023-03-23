@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Gardar",
     "Text" : "Texto",
     "Checkbox" : "Caixa de selección",
+    "Limit to groups" : "Límite para grupos",
     "Saved" : "Gardado",
     "Unknown error" : "Erro descoñecido",
     "More actions" : "Máis accións"

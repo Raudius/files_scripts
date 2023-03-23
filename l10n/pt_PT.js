@@ -23,6 +23,7 @@ OC.L10N.register(
     "Script name" : "Nome da script",
     "Enable script" : "Ativar a script",
     "Request target folder" : "Solicitar o nome da pasta de destino",
+    "Limit to groups" : "Limitado a grupos",
     "Saved" : "Guardado",
     "An error occurred during saving" : "Ocorreu um erro durante a gravação",
     "Unknown error" : "Erro desconhecido",

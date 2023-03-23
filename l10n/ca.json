@@ -26,6 +26,7 @@
     "A short description of what this action will do …" : "Una breu descripció del que farà aquesta acció …",
     "Enable script" : "Activa el fitxer d’ordres",
     "Request target folder" : "Sol·licita la carpeta de destinació",
+    "Limit to groups" : "Limita a grups",
     "Saved" : "Desat",
     "An error occurred during saving" : "S'ha produït un error en desar",
     "Unknown error" : "Error desconegut",

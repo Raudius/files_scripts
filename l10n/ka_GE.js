@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "შენახვა",
     "Text" : "ტექსტი",
     "Checkbox" : "ჩექბოქსი",
+    "Limit to groups" : "ლიმიტი ჯგუფებზე",
     "Saved" : "შენახულია",
     "Unknown error" : "უცნობი შეცდომა",
     "More actions" : "მეტი ქმედება"

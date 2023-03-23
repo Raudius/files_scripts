@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "保存",
     "Text" : "文本 ",
     "Checkbox" : "复选框",
+    "Limit to groups" : "限制于分组",
     "Saved" : "已保存",
     "Unknown error" : "未知错误",
     "More actions" : "更多操作 "

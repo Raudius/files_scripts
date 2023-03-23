@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Bu işlemin ne yaptığının kısa bir açıklaması…",
     "Enable script" : "Betiği etkinleştir",
     "Request target folder" : "Hedef klasör istensin",
+    "Limit to groups" : "Şu gruplarla sınırlansın",
     "Saved" : "Kaydedildi",
     "An error occurred during saving" : "Kaydedilirken bir sorun çıktı",
     "Unknown error" : "Bilinmeyen sorun",

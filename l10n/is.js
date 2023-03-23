@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Vista",
     "Text" : "Texti",
     "Checkbox" : "Gátreitur",
+    "Limit to groups" : "Takmarka við hópa",
     "Saved" : "Vistað",
     "Unknown error" : "Óþekkt villa",
     "More actions" : "Fleiri aðgerðir"

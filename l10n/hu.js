@@ -38,6 +38,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Rövid leírás arról, hogy a művelet mit csinál…",
     "Enable script" : "Parancsfájl engedélyezése",
     "Request target folder" : "Kérés célmappája",
+    "Limit to groups" : "Csoportokra korlátozás",
     "Saved" : "Mentve",
     "An error occurred during saving" : "Hiba történt a mentés során",
     "Unknown error" : "Ismeretlen hiba",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Salvează",
     "Text" : "Text",
     "Checkbox" : "Căsuța de bifat",
+    "Limit to groups" : "Limitează pentru grupuri",
     "Saved" : "Salvat",
     "Unknown error" : "Eroare necunoscută",
     "More actions" : "Mai multe acțiuni"

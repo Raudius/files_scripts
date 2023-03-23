@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Lagre",
     "Text" : "Tekst",
     "Checkbox" : "Avkryssningsboks",
+    "Limit to groups" : "Begrens til grupper",
     "Saved" : "Lagret",
     "Unknown error" : "Ukjent feil",
     "More actions" : "Flere handlinger"

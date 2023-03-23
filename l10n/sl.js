@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Shrani",
     "Text" : "Besedilo",
     "Checkbox" : "Izbirno polje",
+    "Limit to groups" : "Omeji na skupine",
     "Saved" : "Shranjeno",
     "Unknown error" : "Neznana napaka",
     "More actions" : "Več dejanj"

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Atpakaļ",
     "Save" : "Saglabāt",
     "Text" : "Teksts",
+    "Limit to groups" : "Grupu ierobežojums",
     "Saved" : "Saglabāts",
     "Unknown error" : "Nezināma kļūda"
 },

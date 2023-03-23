@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Retorn",
     "Save" : "Enregistrar",
     "Text" : "Tèxt",
+    "Limit to groups" : "Limitar als grops",
     "Saved" : "Enregistrat",
     "Unknown error" : "Error desconeguda",
     "More actions" : "Mai d’accions"

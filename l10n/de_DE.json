@@ -37,6 +37,7 @@
     "A short description of what this action will do …" : "Eine kurze Beschreibung, was diese Aktion bewirken wird …",
     "Enable script" : "Skript aktivieren",
     "Request target folder" : "Zielordner anfragen",
+    "Limit to groups" : "Auf Gruppen beschränken",
     "Saved" : "Gespeichert",
     "An error occurred during saving" : "Es ist ein Fehler beim Speichern aufgetreten",
     "Unknown error" : "Unbekannter Fehler",

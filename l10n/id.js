@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Kembali",
     "Save" : "Simpan",
     "Checkbox" : "Kotak check",
+    "Limit to groups" : "Batasi ke grup",
     "Saved" : "Disimpan",
     "Unknown error" : "Kesalahan tidak diketahui"
 },

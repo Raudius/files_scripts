@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Зачувај",
     "Text" : "Текст",
     "Checkbox" : "Поле за избирање",
+    "Limit to groups" : "Ограничување на групи",
     "Saved" : "Зачувано",
     "Unknown error" : "Непозната грешка",
     "More actions" : "Повеќе акции"

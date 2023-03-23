@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Кратко описание на това какво ще направи това действие ...",
     "Enable script" : "Активиране на скрипта",
     "Request target folder" : "Поискване на целева папка",
+    "Limit to groups" : "Ограничен достъп",
     "Saved" : "Записано",
     "An error occurred during saving" : "Възникна грешка  по време на запазването",
     "Unknown error" : "Неизвестна грешка",

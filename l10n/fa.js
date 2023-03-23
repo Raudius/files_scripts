@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "ذخیره",
     "Text" : "متن",
     "Checkbox" : "جعبه علامت",
+    "Limit to groups" : "محدود کردن به گروه‌ها",
     "Saved" : "دخیره شد",
     "Unknown error" : "خطای ناشناخته",
     "More actions" : "اقدامات بیشتر"

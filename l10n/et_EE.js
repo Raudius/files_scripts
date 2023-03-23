@@ -7,6 +7,7 @@ OC.L10N.register(
     "Disabled" : "Keelatud",
     "Back" : "Tagasi",
     "Save" : "Salvesta",
+    "Limit to groups" : "Luba gruppidele",
     "Saved" : "Salvestatud",
     "Unknown error" : "Tundmatu viga"
 },

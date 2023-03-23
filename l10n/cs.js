@@ -38,6 +38,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Stručný popis toho, co tato akce dělá…",
     "Enable script" : "Zapnout skript",
     "Request target folder" : "Vyžádat si cílovou složku",
+    "Limit to groups" : "Omezit na skupiny",
     "Saved" : "Uloženo",
     "An error occurred during saving" : "Při ukládání došlo k chybě",
     "Unknown error" : "Neznámá chyba",

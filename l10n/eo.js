@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Konservi",
     "Text" : "Teksto",
     "Checkbox" : "Markobutono",
+    "Limit to groups" : "Limigi al grupoj",
     "Saved" : "Konservita",
     "Unknown error" : "Nekonata eraro",
     "More actions" : "Pliaj agoj"

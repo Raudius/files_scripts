@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "簡短描述此動作會做些什麼……",
     "Enable script" : "啟用指令稿",
     "Request target folder" : "請求目標資料夾",
+    "Limit to groups" : "群組限制",
     "Saved" : "已儲存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "未知的錯誤",

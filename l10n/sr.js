@@ -39,6 +39,7 @@ OC.L10N.register(
     "A short description of what this action will do …" : "Кратак опис онога што ће акција да уради ...",
     "Enable script" : "Укључи скрипту",
     "Request target folder" : "Захтевај циљни фолдер",
+    "Limit to groups" : "Ограничи на групе",
     "Saved" : "Сачувано",
     "An error occurred during saving" : "Дошло је до грешке током чувања",
     "Unknown error" : "Непозната грешка",

@@ -7,6 +7,7 @@ use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Context;
+use OCA\FilesScripts\Interpreter\ContextFactory;
 use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCA\FilesScripts\Service\ScriptService;
 use OCA\WorkflowEngine\Entity\File;
@@ -44,6 +45,7 @@ class Operation implements ISpecificOperation {
 		IRootFolder $rootFolder,
 		IUserSession $session,
 		LuaProvider $luaProvider,
+		ContextFactory $contextFactory,
 		LoggerInterface $logger
 	) {
 		$this->urlGenerator = $urlGenerator;
@@ -53,6 +55,7 @@ class Operation implements ISpecificOperation {
 		$this->rootFolder = $rootFolder;
 		$this->session = $session;
 		$this->luaProvider = $luaProvider;
+		$this->contextFactory = $contextFactory;
 		$this->logger = $logger;
 	}
 
@@ -162,7 +165,7 @@ class Operation implements ISpecificOperation {
 			$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
 
 			$inputs = [$oldNodeInput];
-			return new Context($this->luaProvider->createLua(), $rootFolder, $inputs, [1 => $node], $rootFolder->getRelativePath($node->getParent()->getPath()));
+			return $this->contextFactory->createContextForUser($user->getUID(), $inputs, [$rootFolder->getRelativePath($node->getPath())]);
 		} catch (Throwable $e) {
 			$this->logger->info('Could not create context due to unexpected exception.', ['error_message' => $e->getMessage()]);
 		}

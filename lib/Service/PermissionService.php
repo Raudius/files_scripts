@@ -23,6 +23,10 @@ class PermissionService {
 		$this->groupMaps = [];
 	}
 
+	public function isUserAdmin(): bool {
+		return $this->groupManager->isAdmin($this->userSession->getUser()->getUID());
+	}
+
 	/**
 	 * Checks if the given script is allowed to be executed by the current user.
 	 */

@@ -23,16 +23,6 @@
 						@input="selectScript" />
 				</div>
 
-				<div v-if="selectedScript && selectedScript.requestDirectory" class="section-wrapper">
-					<Folder class="section-label" :size="20" />
-					<input v-model="outputDirectory"
-						type="text"
-						style="cursor: pointer;"
-						class="section-details"
-						:placeholder="t('files_scripts', 'Choose a folder …')"
-						@click="pickOutputDirectory">
-				</div>
-
 				<ScriptInputComponent v-for="scriptInput in scriptInputs" :key="scriptInput.id" :scriptInput="scriptInput" :outputDirectory="outputDirectory" />
 
 				<div class="script-info">
@@ -64,12 +54,10 @@ import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
 import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
 import {api} from '../api/script'
-import * as path from 'path'
 import {translate as t} from '../l10n'
 import {registerMenuOptions, reloadCurrentDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
-import {FilePickerBuilder, showError} from "@nextcloud/dialogs";
 
 export default {
 	name: 'ScriptSelect',
@@ -104,10 +92,7 @@ export default {
 			return this.selectedScript ? this.selectedScript.description : ''
 		},
 		readyToRun() {
-			return this.selectedScript
-				&& (!this.selectedScript.requestDirectory || this.outputDirectory)
-				&& !this.loadingScriptInputs
-				&& !this.isRunning
+			return this.selectedScript && !this.loadingScriptInputs && !this.isRunning
 		},
 	},
 	watch: {
@@ -147,7 +132,7 @@ export default {
 			let messages = []
 
 			try {
-				let response = await api.runScript(this.selectedScript, this.outputDirectory, this.scriptInputs, this.selectedFiles)
+				let response = await api.runScript(this.selectedScript, this.scriptInputs, this.selectedFiles)
 				reloadCurrentDirectory()
 
 				messages = response.messages ?? []
@@ -167,20 +152,6 @@ export default {
 			}
 		},
 
-		async pickOutputDirectory() {
-			const picker = (new FilePickerBuilder(t('files_scripts', 'Choose a folder …')))
-				.allowDirectories(true)
-				.setMimeTypeFilter(['httpd/unix-directory'])
-				.startAt(this.outputDirectory)
-				.build()
-
-			try {
-				const dir = await picker.pick() || '/'
-				this.outputDirectory = path.normalize(dir)
-			} catch (error) {
-				showError(error.message || t('files_scripts', 'Unknown error'))
-			}
-		},
 		attachMenuOption() {
 			if (!this.scripts || this.scripts.length === 0) {
 				return // No enabled scripts: no need to attach the options

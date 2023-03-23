@@ -29,7 +29,6 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Node_Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Root;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
-use OCA\FilesScripts\Interpreter\Functions\Input\Get_Target_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffprobe;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Create;
@@ -83,7 +82,6 @@ class FunctionProvider implements IFunctionProvider {
 		Abort $f15,
 		Get_Input $f16,
 		Get_Input_Files $f17,
-		Get_Target_Folder $f18,
 		Html_To_Pdf $f19,
 		Mustache $f20,
 		Sort $f21,

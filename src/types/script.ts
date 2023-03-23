@@ -4,7 +4,6 @@ export interface Script {
 	description: string
 	program: string
 	enabled: boolean
-	requestDirectory: boolean
 	limitGroups: string[]
 	public: boolean
 }
@@ -34,7 +33,6 @@ export function defaultScript(): Script {
 		description: '',
 		enabled: false,
 		program: '',
-		requestDirectory: false,
 		public: false,
 		limitGroups: []
 	}

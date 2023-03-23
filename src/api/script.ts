@@ -29,9 +29,9 @@ export const api = {
 		return (await axios.delete(generateUrl('/apps/files_scripts/scripts/' + script.id))).data
 	},
 
-	async runScript(script: Script, outputDirectory: string, inputs: ScriptInput[], files: any[]): Promise<any> {
+	async runScript(script: Script, inputs: ScriptInput[], files: any[]): Promise<any> {
 		const shareToken = (<HTMLInputElement>document.getElementById('sharingToken'))?.value ?? null
-		const data = { outputDirectory, inputs, files, shareToken }
+		const data = { inputs, files, shareToken }
 
 		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), data)).data
 	},

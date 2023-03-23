@@ -6,7 +6,6 @@ use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Interpreter\Lua\LuaWrapper;
 use OCP\Files\Folder;
 use OCP\Files\Node;
-use OCP\Files\NotFoundException;
 
 class Context {
 	/** @var Node[] */
@@ -14,7 +13,6 @@ class Context {
 	/** @var ScriptInput[] */
 	private array $input;
 	private Folder $root;
-	private ?string $targetDirectory;
 	private LuaWrapper $lua;
 
 	private array $messages;
@@ -24,14 +22,12 @@ class Context {
 		LuaWrapper $lua,
 		Folder $root,
 		array $input,
-		array $files = [],
-		?string $targetDirectory = null
+		array $files = []
 	) {
 		$this->lua = $lua;
 		$this->root = $root;
 		$this->input = $input;
 		$this->files = $files;
-		$this->targetDirectory = $targetDirectory;
 
 		$this->permissionOverride = null;
 		$this->messages = [];
@@ -46,21 +42,6 @@ class Context {
 			'message' => $message,
 			'type' => $type
 		];
-	}
-
-	public function getTargetDirectory(): ?Folder {
-		if (!$this->targetDirectory) {
-			return null;
-		}
-
-		try {
-			$folder = $this->root->get($this->targetDirectory);
-			if ($folder instanceof Folder) {
-				return $folder;
-			}
-		} catch (NotFoundException $e) {
-		}
-		return null;
 	}
 
 	public function getLua(): LuaWrapper {

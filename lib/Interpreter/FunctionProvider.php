@@ -6,7 +6,6 @@ use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
 use OCA\FilesScripts\Interpreter\Functions\Error\Add_Message;
 use OCA\FilesScripts\Interpreter\Functions\Error\Clear_Messages;
 use OCA\FilesScripts\Interpreter\Functions\Error\Log;
-use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists_Unsafe;
@@ -25,8 +24,6 @@ use OCA\FilesScripts\Interpreter\Functions\Files\Is_Folder;
 use OCA\FilesScripts\Interpreter\Functions\Files\Meta_Data;
 use OCA\FilesScripts\Interpreter\Functions\Files\New_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\New_Folder;
-use OCA\FilesScripts\Interpreter\Functions\Files\Node_Exists;
-use OCA\FilesScripts\Interpreter\Functions\Files\Root;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input;
 use OCA\FilesScripts\Interpreter\Functions\Input\Get_Input_Files;
 use OCA\FilesScripts\Interpreter\Functions\Media\Ffmpeg;
@@ -66,11 +63,9 @@ class FunctionProvider implements IFunctionProvider {
 
 	public function __construct(
 		Exists $f1,
-		Copy_File $f2,
 		New_File $f3,
 		Full_Path $f4,
 		Get_Parent $f5,
-		Root $f6,
 		Meta_Data $f7,
 		File_Content $f8,
 		Directory_Listing $f9,
@@ -89,7 +84,6 @@ class FunctionProvider implements IFunctionProvider {
 		Http_Request     $f23,
 		Pdf_Pages        $f24,
 		File_Delete      $f25,
-		Node_Exists      $f26,
 		Pdf_Page_Count   $f27,
 		Format_Price     $f28,
 		Create_Date_Time $f29,

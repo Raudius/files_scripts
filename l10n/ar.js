@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Save",
     "Text" : "نص",
     "Checkbox" : "مربع تحقق",
+    "Limit to groups" : "التقيد إلى مجموعات",
     "Saved" : "تم الحفظ",
     "Unknown error" : "خطأ غير معروف",
     "More actions" : "إجراءات أخرى"

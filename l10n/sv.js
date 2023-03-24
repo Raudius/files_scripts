@@ -25,12 +25,12 @@ OC.L10N.register(
     "Unknown error" : "Okänt fel",
     "Select an action to perform" : "Välj en åtgärd att utföra",
     "Select action to perform" : "Välj åtgärd att utföra",
-    "Choose a folder …" : "Välj en mapp …",
     "Execute" : "Kör",
     "Action completed!" : "Åtgärd slutförd!",
     "Action failed unexpectedly." : "Åtgärden misslyckades oväntat.",
     "New action" : "Ny åtgärd",
     "Actions in menu" : "Åtgärder i meny",
-    "More actions" : "Fler händelser"
+    "More actions" : "Fler händelser",
+    "Choose a folder …" : "Välj en mapp …"
 },
 "nplurals=2; plural=(n != 1);");

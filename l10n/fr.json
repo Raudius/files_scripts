@@ -36,14 +36,13 @@
     "Script name" : "Nom du script",
     "A short description of what this action will do …" : "Une courte description de ce que l'action fera ...",
     "Enable script" : "Activer le script",
-    "Request target folder" : "Demander le dossier cible",
     "Limit to groups" : "Limiter aux groupes",
+    "Select groups allowed to use this action" : "Sélectionner les groupes autorisés à utiliser cette action",
     "Saved" : "Enregistré",
     "An error occurred during saving" : "Une erreur est survenue pendant l'enregistrement",
     "Unknown error" : "Erreur inconnue",
     "Select an action to perform" : "Sélectionner une action à réaliser",
     "Select action to perform" : "Sélectionner une action à réaliser",
-    "Choose a folder …" : "Sélectionner un dossier …",
     "Execute" : "Exécuter",
     "Action completed!" : "Action terminée",
     "Action failed unexpectedly." : "L'action a échoué de façon inattendue.",
@@ -57,6 +56,8 @@
     "Use experimental interpreter" : "Utiliser l'interpréteur expérimental",
     "More actions" : "Plus d'actions…",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Permet aux administrateurs d’écrire de petits scripts que les utilisateurs peuvent exécuter via le menu des actions de fichier dans l'application Fichers !\n\n\n- **🌕 Lua:** Script en langage Lua, simple et offre de nombreuses ressources en ligne.\n- **⚡️ Habiliter les utilisateurs :** Faciliter les tâches difficiles, directement à partir de l’application Fichiers. - **🙋 Ouvert aux suggestions :** Une fonction vous manque dans l’API de script ? Ouvrez un ticket sur Github !\n\n\n⚠️**Attention** Cette application nécessite une configuration supplémentaire et peut ne pas convenir à tous les utilisateurs. Assurez-vous de lire attentivement la documentation.\n\n⚠️**Attention** Avec une grande puissance vient une grande responsabilité : Les scripts peuvent modifier et supprimer des fichiers de façon permanente. Assurez-vous de lire attentivement la documentation avant de rédiger un script.",
-    "User prompt …" : "Invite utilisateur…"
+    "User prompt …" : "Invite utilisateur…",
+    "Request target folder" : "Demander le dossier cible",
+    "Choose a folder …" : "Sélectionner un dossier …"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

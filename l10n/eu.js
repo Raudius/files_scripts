@@ -33,14 +33,12 @@ OC.L10N.register(
     "Script name" : "Scriptaren izena",
     "A short description of what this action will do …" : "Ekintza honek zer egingo duenaren deskribapen laburra …",
     "Enable script" : "Gaitu scripta",
-    "Request target folder" : "Eskatu helburu-karpeta",
     "Limit to groups" : "Mugatu taldeetara",
     "Saved" : "Gordeta",
     "An error occurred during saving" : "Errorea gertatu da gordetzean",
     "Unknown error" : "Errore ezezaguna",
     "Select an action to perform" : "Hautatu egin beharreko ekintza bat",
     "Select action to perform" : "Hautatu egin beharreko ekintza",
-    "Choose a folder …" : "Aukeratu karpeta bat ...",
     "Execute" : "Exekutatu",
     "Action completed!" : "Ekintza burututa",
     "Action failed unexpectedly." : "Ekintzak ustekabean huts egin du.",
@@ -49,6 +47,8 @@ OC.L10N.register(
     "Actions in menu" : "Ekintzak menuan",
     "More actions" : "Ekintza gehiago",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Administratzaileei script txikiak idazteko aukera ematen die, erabiltzaileek Fitxategien aplikazioko fitxategien ekintzen menuaren bidez exekutatu ditzaketenak!\n\n- **🌕 Lua:** Lua-n scripta, erraza da eta sareko baliabide ugari ditu.\n- **️Ahaldundu erabiltzaileei:** Egin zeregin konplexuak erraz, Fitxategiak aplikaziotik zuzenean.\n- **🙋 Iradokizunetara irekita:** Funtzioren bat falta al zaizu scripting APIan? Ireki 'issue' bat Github-en!\n\n\n️**Kontuz** Aplikazio honek konfigurazio gehigarria behar du, eta baliteke erabiltzaile guztientzat egokia ez izatea. Ziurtatu dokumentazioa ondo irakurtzen duzula.\n\n️**Arreta** Potentzia handiarekin erantzukizun handia dakar: Scriptek fitxategiak betiko alda ditzakete eta ezaba ditzakete. Ziurtatu dokumentazioa ondo irakurtzen duzula script-a egin aurretik.",
-    "User prompt …" : "Erabiltzaile-gonbita ..."
+    "User prompt …" : "Erabiltzaile-gonbita ...",
+    "Request target folder" : "Eskatu helburu-karpeta",
+    "Choose a folder …" : "Aukeratu karpeta bat ..."
 },
 "nplurals=2; plural=(n != 1);");

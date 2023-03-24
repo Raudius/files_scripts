@@ -36,14 +36,13 @@
     "Script name" : "指令稿名稱",
     "A short description of what this action will do …" : "簡短描述此動作會做些什麼……",
     "Enable script" : "啟用指令稿",
-    "Request target folder" : "請求目標資料夾",
     "Limit to groups" : "群組限制",
+    "Select groups allowed to use this action" : "選取允許使用此動作的群組",
     "Saved" : "已儲存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "未知的錯誤",
     "Select an action to perform" : "選取要執行的動作",
     "Select action to perform" : "選取要執行的動作",
-    "Choose a folder …" : "選擇資料夾……",
     "Execute" : "執行",
     "Action completed!" : "動作完成！",
     "Action failed unexpectedly." : "動作意外的失敗了。",
@@ -57,6 +56,8 @@
     "Use experimental interpreter" : "使用實驗性的直譯器",
     "More actions" : "更多動作",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "讓管理員可以編寫供使用者透過 Files 應用程式中的檔案動作選單執行的小型指令稿\n\n- **🌕 Lua：** 使用 Lua 編寫指令稿，其簡單且有許多線上資源。\n- **⚡️授權使用者：** 直接透過 Files 應用程式輕鬆完成困難的工作。\n- **🙋 接受建議：** 少了一些指令稿 API 功能嗎？請在 GitHub 上開啟議題！\n\n\n⚠️**注意** 此應用程式需要額外設定，可能不適合所有使用者。請務必仔細閱讀文件。\n\n⚠️**注意** 權力愈大，責任愈大：指令稿可能永久修改與刪除檔案。編寫指令稿前請務必仔細閱讀文件。",
-    "User prompt …" : "使用者提示……"
+    "User prompt …" : "使用者提示……",
+    "Request target folder" : "請求目標資料夾",
+    "Choose a folder …" : "選擇資料夾……"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

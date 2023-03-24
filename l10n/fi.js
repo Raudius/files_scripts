@@ -36,13 +36,13 @@ OC.L10N.register(
     "Unknown error" : "Tuntematon virhe",
     "Select an action to perform" : "Valitse suoritettava toiminto",
     "Select action to perform" : "Valitse suoritettava toiminto",
-    "Choose a folder …" : "Valitse kansio…",
     "Execute" : "Suorita",
     "Action completed!" : "Toiminto suoritettu!",
     "Action failed unexpectedly." : "Toiminto epäonnistui odottamatta.",
     "New action" : "Uusi toiminto",
     "Experimental interpreter" : "Kokeellinen tulkki",
     "Use experimental interpreter" : "Käytä kokeellista tulkkia",
-    "More actions" : "Lisää toimintoja"
+    "More actions" : "Lisää toimintoja",
+    "Choose a folder …" : "Valitse kansio…"
 },
 "nplurals=2; plural=(n != 1);");

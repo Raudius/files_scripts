@@ -37,14 +37,12 @@ OC.L10N.register(
     "Script name" : "Nazwa skryptu",
     "A short description of what this action will do …" : "Krótki opis tego, co zrobi ta akcja…",
     "Enable script" : "Włącz skrypt",
-    "Request target folder" : "Poproś o katalog docelowy",
     "Limit to groups" : "Ogranicz dla grup",
     "Saved" : "Zapisano",
     "An error occurred during saving" : "Podczas zapisywania wystąpił błąd",
     "Unknown error" : "Nieznany błąd",
     "Select an action to perform" : "Wybierz akcję do wykonania",
     "Select action to perform" : "Wybierz akcję do wykonania",
-    "Choose a folder …" : "Wybierz katalog…",
     "Execute" : "Wykonaj",
     "Action completed!" : "Akcja zakończona!",
     "Action failed unexpectedly." : "Akcja nieoczekiwanie nie powiodła się.",
@@ -56,6 +54,8 @@ OC.L10N.register(
     "Use experimental interpreter" : "Użyj interpretera eksperymentalnego",
     "More actions" : "Więcej akcji",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Umożliwia administratorom pisanie małych skryptów, które użytkownicy mogą uruchamiać za pomocą menu działań na plikach w aplikacji Pliki!\n\n- **🌕 Lua:** Skrypt w Lua, jest prosty i ma mnóstwo zasobów online.\n- **⚡️Ulepsz użytkowników:** Ułatw trudne zadania bezpośrednio z aplikacji Pliki.\n- **🙋 Otwarty na sugestie:** Brakuje Tobie jakiejś funkcji w interfejsie API skryptów? Otwórz problem na Github!\n\n\n⚠️**Uwaga** Aplikacja ta wymaga dodatkowej konfiguracji i może nie być odpowiednia dla wszystkich użytkowników. Pamiętaj, aby dokładnie zapoznać się z dokumentacją.\n\n⚠️**Uwaga** Z wielką mocą wiąże się wielka odpowiedzialność: Skrypty mogą trwale modyfikować i usuwać pliki. Przed przystąpieniem do pisania skryptów należy dokładnie przeczytać dokumentację.",
-    "User prompt …" : "Monit użytkownika…"
+    "User prompt …" : "Monit użytkownika…",
+    "Request target folder" : "Poproś o katalog docelowy",
+    "Choose a folder …" : "Wybierz katalog…"
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

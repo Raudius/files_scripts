@@ -22,7 +22,6 @@ OC.L10N.register(
     "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Especifique o nº de opções que o utilizador pode escolher quando executa esta ação. Estas estarão acessíveis dentro da script através da função \"get_input()\".",
     "Script name" : "Nome da script",
     "Enable script" : "Ativar a script",
-    "Request target folder" : "Solicitar o nome da pasta de destino",
     "Limit to groups" : "Limitado a grupos",
     "Saved" : "Guardado",
     "An error occurred during saving" : "Ocorreu um erro durante a gravação",
@@ -33,6 +32,7 @@ OC.L10N.register(
     "Action completed!" : "Execução concluída!",
     "Action failed unexpectedly." : "Execução falhou subitamente.",
     "New action" : "Nova ação",
-    "More actions" : "Mais acções"
+    "More actions" : "Mais acções",
+    "Request target folder" : "Solicitar o nome da pasta de destino"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -16,9 +16,9 @@ OC.L10N.register(
     "Saved" : "Opgeslagen",
     "An error occurred during saving" : "Er trad een fout op bij het opslaan",
     "Unknown error" : "Onbekende fout",
-    "Choose a folder …" : "Kies een map ...",
     "Action completed!" : "Actie gereed!",
     "New action" : "Nieuwe actie",
-    "More actions" : "Meer acties"
+    "More actions" : "Meer acties",
+    "Choose a folder …" : "Kies een map ..."
 },
 "nplurals=2; plural=(n != 1);");

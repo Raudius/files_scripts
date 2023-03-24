@@ -37,14 +37,13 @@ OC.L10N.register(
     "Script name" : "Název skriptu",
     "A short description of what this action will do …" : "Stručný popis toho, co tato akce dělá…",
     "Enable script" : "Zapnout skript",
-    "Request target folder" : "Vyžádat si cílovou složku",
     "Limit to groups" : "Omezit na skupiny",
+    "Select groups allowed to use this action" : "Vyberte skupiny, kterým bude umožněno použít tuto akci",
     "Saved" : "Uloženo",
     "An error occurred during saving" : "Při ukládání došlo k chybě",
     "Unknown error" : "Neznámá chyba",
     "Select an action to perform" : "Vyberte nějakou akci kterou provést",
     "Select action to perform" : "Vyberte akci kterou provést",
-    "Choose a folder …" : "Zvolte složku…",
     "Execute" : "Spustit",
     "Action completed!" : "Akce dokončena!",
     "Action failed unexpectedly." : "Akce se neočekávaně nezdařila.",
@@ -58,6 +57,8 @@ OC.L10N.register(
     "Use experimental interpreter" : "Použít experimentální interpreter",
     "More actions" : "Další akce",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Umožňuje správcům psát krátké skripty, které uživatelé mohou spouštět prostřednictvím nabídky s akcemi ohledně souboru v aplikaci Soubory!\n\n- **🌕 Lua:** Skriptujte v Lua – je to snadné a je k dispozici spousta zdrojů online.\n- **⚡️Mocné nástroje pro uživatele:** Zjednodušte náročné úkoly, přímo z aplikace Soubory.\n- **🙋 Otevřeno návrhům:** Chybí vám ve skriptovacím API nějaká funkce? Vytvořte hlášení na portálu Github!\n\n\n⚠️**Upozornění** Tato aplikace vyžaduje další nastavování a nemusí být použitelná pro všechny uživatele. Důkladně si přečtěte dokumentaci.\n\n⚠️**Upozornění** S velkými možnostmi přichází i velká odpovědnost: skripty mohou nevratně měnit a mazat soubory. Než se pustíte do skriptování, důkladně si přečtěte dokumentaci.",
-    "User prompt …" : "Výzva uživateli…"
+    "User prompt …" : "Výzva uživateli…",
+    "Request target folder" : "Vyžádat si cílovou složku",
+    "Choose a folder …" : "Zvolte složku…"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

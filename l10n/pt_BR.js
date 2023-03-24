@@ -37,14 +37,12 @@ OC.L10N.register(
     "Script name" : "Nome do scrip",
     "A short description of what this action will do …" : "Uma breve descrição do que esta ação fará…",
     "Enable script" : "Habilitar script",
-    "Request target folder" : "Solicitar diretório alvo",
     "Limit to groups" : "Limitar a grupos",
     "Saved" : "Salvo",
     "An error occurred during saving" : "Um erro ocorreu ao salvar",
     "Unknown error" : "Erro desconhecido",
     "Select an action to perform" : "Selecione uma ação para executar",
     "Select action to perform" : "Selecione uma ação para executar",
-    "Choose a folder …" : "Escolha uma pasta…",
     "Execute" : "Executar",
     "Action completed!" : "Ação completada!",
     "Action failed unexpectedly." : "Ação falhou inexperadamente.",
@@ -56,6 +54,8 @@ OC.L10N.register(
     "Use experimental interpreter" : "Usar intérprete experimental",
     "More actions" : "Mais ações",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Permite que os administradores escrevam pequenos scripts que os usuários podem executar por meio do menu de ações de arquivo no aplicativo Arquivos!\n\n- **🌕 Lua:** Script em Lua, é simples e tem muitos recursos online.\n- **⚡️Capacite os usuários:** Facilite as tarefas difíceis, diretamente do aplicativo Arquivos.\n- **🙋 Aberto a sugestões:** Está faltando uma função na API de script? Abra um problema no Github!\n\n\n⚠️**Atenção** Este aplicativo requer configuração adicional e pode não ser adequado para todos os usuários. Certifique-se de ler a documentação completamente.\n\n⚠️**Atenção** Grandes poderes trazem grandes responsabilidades: os scripts podem modificar e excluir arquivos permanentemente. Certifique-se de ler a documentação completamente antes de criar scripts.",
-    "User prompt …" : "Solicitação do usuário…"
+    "User prompt …" : "Solicitação do usuário…",
+    "Request target folder" : "Solicitar diretório alvo",
+    "Choose a folder …" : "Escolha uma pasta…"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

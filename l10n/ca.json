@@ -25,20 +25,20 @@
     "Script name" : "Nom del fitxer d’ordres",
     "A short description of what this action will do …" : "Una breu descripció del que farà aquesta acció …",
     "Enable script" : "Activa el fitxer d’ordres",
-    "Request target folder" : "Sol·licita la carpeta de destinació",
     "Limit to groups" : "Limita a grups",
     "Saved" : "Desat",
     "An error occurred during saving" : "S'ha produït un error en desar",
     "Unknown error" : "Error desconegut",
     "Select an action to perform" : "Seleccioneu una acció per dur a terme",
     "Select action to perform" : "Seleccioneu l'acció a realitzar",
-    "Choose a folder …" : "Trieu una carpeta …",
     "Execute" : "Execució",
     "Action completed!" : "Acció completada!",
     "Action failed unexpectedly." : "L'acció ha fallat de manera inesperada.",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Les accions de fitxers són petits fitxer d’ordres en Lua que poden crear, modificar i/o eliminar fitxers de manera programada. Aquestes accions poden ser activades pels usuaris per executar-les als seus fitxers. Si us plau, llegiu la documentació per obtenir més informació.",
     "New action" : "Nova acció",
     "More actions" : "Més accions",
-    "User prompt …" : "Indicador d'usuari …"
+    "User prompt …" : "Indicador d'usuari …",
+    "Request target folder" : "Sol·licita la carpeta de destinació",
+    "Choose a folder …" : "Trieu una carpeta …"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

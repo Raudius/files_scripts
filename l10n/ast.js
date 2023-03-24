@@ -8,6 +8,7 @@ OC.L10N.register(
     "Back" : "Atrás",
     "Save" : "Guardar",
     "Text" : "Testu",
+    "Limit to groups" : "Llendar a grupos",
     "Saved" : "Guardáu",
     "Unknown error" : "Fallu desconocíu",
     "More actions" : "Más aiciones"

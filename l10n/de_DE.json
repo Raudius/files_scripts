@@ -36,14 +36,13 @@
     "Script name" : "Skriptname",
     "A short description of what this action will do …" : "Eine kurze Beschreibung, was diese Aktion bewirken wird …",
     "Enable script" : "Skript aktivieren",
-    "Request target folder" : "Zielordner anfragen",
     "Limit to groups" : "Auf Gruppen beschränken",
+    "Select groups allowed to use this action" : "Gruppen auswählen, die diese Aktion verwenden dürfen",
     "Saved" : "Gespeichert",
     "An error occurred during saving" : "Es ist ein Fehler beim Speichern aufgetreten",
     "Unknown error" : "Unbekannter Fehler",
     "Select an action to perform" : "Eine auszuführende Aktion auswählen",
     "Select action to perform" : "Auszuführende Aktion auswählen",
-    "Choose a folder …" : "Ordner auswählen",
     "Execute" : "Ausführen",
     "Action completed!" : "Aktion abgeschlossen",
     "Action failed unexpectedly." : "Aktion ist fehlgeschlagen",
@@ -57,6 +56,8 @@
     "Use experimental interpreter" : "Experimentellen Interpreter verwenden",
     "More actions" : "Weitere Aktionen",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Ermöglicht es der Administration, kleine Skripte zu schreiben, die Benutzer über das Menü \"Dateiaktionen\" in der App \"Dateien\" ausführen können!\n\n- **🌕 Lua:** Skript in Lua, ist einfach und hat viele Online-Ressourcen.\n- **⚡Benutzer befähigen:** Machen Sie schwierige Aufgaben einfach, direkt aus der Dateien-App.\n- **🙋 Offen für Vorschläge:** Vermissen Sie eine Funktion in der Scripting API? Eröffnen Sie ein Issue auf Github!\n\n\n⚠️**Achtung** Diese App erfordert zusätzliche Konfiguration und ist möglicherweise nicht für alle Benutzer geeignet. Bitte lesen Sie sich die Dokumentation sorgfältig durch.\n\n⚠️**Achtung** Mit großer Macht kommt große Verantwortung: Skripte können Dateien dauerhaft verändern und löschen. Lesen Sie die Dokumentation sorgfältig durch, bevor Sie ein Skript erstellen.",
-    "User prompt …" : "Eingabeaufforderung …"
+    "User prompt …" : "Eingabeaufforderung …",
+    "Request target folder" : "Zielordner anfragen",
+    "Choose a folder …" : "Ordner auswählen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

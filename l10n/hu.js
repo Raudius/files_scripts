@@ -37,14 +37,12 @@ OC.L10N.register(
     "Script name" : "Parancsfájl neve",
     "A short description of what this action will do …" : "Rövid leírás arról, hogy a művelet mit csinál…",
     "Enable script" : "Parancsfájl engedélyezése",
-    "Request target folder" : "Kérés célmappája",
     "Limit to groups" : "Csoportokra korlátozás",
     "Saved" : "Mentve",
     "An error occurred during saving" : "Hiba történt a mentés során",
     "Unknown error" : "Ismeretlen hiba",
     "Select an action to perform" : "Válasszon egy végrehajtandó műveletet",
     "Select action to perform" : "Válassza ki a végrehajtandó műveletet",
-    "Choose a folder …" : "Válasszon mappát…",
     "Execute" : "Végrehajtás",
     "Action completed!" : "A művelet kész.",
     "Action failed unexpectedly." : "A művelet váratlanul sikertelen lett.",
@@ -56,6 +54,8 @@ OC.L10N.register(
     "Use experimental interpreter" : "Kísérleti parancsértelmező használata",
     "More actions" : "További műveletek",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Lehetővé teszi, hogy a rendszergazdák ki parancsfájlokat írjanak, melyeket a felhaszálok a Fájlok alkalmazásban lévő fájlműveletek menüből futtathatnak.\n\n- **🌕 Lua:** Parancsfájlok Luában, egyszerű és számos online anyag érhető el róla.\n- **⚡️ Hatalom a felhasználók kezében:** Tegye könnyűvé a nehéz feladatokat, egyenesen a Fájlok alkalmazásból.\n- **🙋 Nyitottság a javaslatokra:** Valami hiányzik a parancsfájl API-ból? Nyisson egy jegyet a Githubon!\n\n\n⚠️**Figyelem** Az alkalmazás további konfigurációt igényel, és nem biztos, hogy minden felhasználó számára megfelelő. Alaposan olvassa át a dokumentációt.\n\n⚠️**Figyelem** A nagy hatalom nagy felelősséggel jár: a parancsfájlok módosíthatják vagy véglegesen törölhetik a fájlokat. Parancsfájlok írása előtt alaposan olvassa át a dokumentációt.",
-    "User prompt …" : "Felhasználói kérdés…"
+    "User prompt …" : "Felhasználói kérdés…",
+    "Request target folder" : "Kérés célmappája",
+    "Choose a folder …" : "Válasszon mappát…"
 },
 "nplurals=2; plural=(n != 1);");

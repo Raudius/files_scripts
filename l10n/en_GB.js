@@ -38,14 +38,12 @@ OC.L10N.register(
     "Script name" : "Script name",
     "A short description of what this action will do …" : "A short description of what this action will do …",
     "Enable script" : "Enable script",
-    "Request target folder" : "Request target folder",
     "Limit to groups" : "Limit to groups",
     "Saved" : "Saved",
     "An error occurred during saving" : "An error occurred during saving",
     "Unknown error" : "Unknown error",
     "Select an action to perform" : "Select an action to perform",
     "Select action to perform" : "Select action to perform",
-    "Choose a folder …" : "Choose a folder …",
     "Execute" : "Execute",
     "Action completed!" : "Action completed!",
     "Action failed unexpectedly." : "Action failed unexpectedly.",
@@ -59,6 +57,8 @@ OC.L10N.register(
     "Use experimental interpreter" : "Use experimental interpreter",
     "More actions" : "More actions",
     "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n\n\n⚠️**Attention** This app requires additional configuration, and may not be suitable for all users. Make sure to read the documentation thoroughly.\n\n⚠️**Attention** With great power comes great responsibility: Scripts may modify and delete files permanently. Make sure to read the documentation thoroughly before scripting.",
-    "User prompt …" : "User prompt …"
+    "User prompt …" : "User prompt …",
+    "Request target folder" : "Request target folder",
+    "Choose a folder …" : "Choose a folder …"
 },
 "nplurals=2; plural=(n != 1);");

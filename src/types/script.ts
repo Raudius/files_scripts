@@ -6,6 +6,7 @@ export interface Script {
 	enabled: boolean
 	limitGroups: string[]
 	public: boolean
+	mimetype: string
 }
 
 export interface ScriptInput {
@@ -34,7 +35,8 @@ export function defaultScript(): Script {
 		enabled: false,
 		program: '',
 		public: false,
-		limitGroups: []
+		limitGroups: [],
+		mimetype: ''
 	}
 }
 

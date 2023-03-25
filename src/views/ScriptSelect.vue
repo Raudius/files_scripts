@@ -2,15 +2,15 @@
 	<NcModal v-if="showModal" @close="closeModal">
 		<div class="file-scripts-modal">
 			<h2>
-				<template v-if="actionsInMenu">{{ selectedScript.title }}</template>
-				<template v-else>
+				<template v-if="showScriptSelection">
 					{{ t('files_scripts', 'Select action to perform') }}
 				</template>
+				<template v-else>{{ selectedScript.title }}</template>
 			</h2>
 
 			<div v-if="scripts === null" class="icon-loading" />
 			<div v-else>
-				<div v-if="!actionsInMenu" class="section-wrapper">
+				<div v-if="showScriptSelection" class="section-wrapper">
 					<FileCog class="section-label" :size="20" />
 					<NcSelect v-model="selectedScript"
 						class="section-details"
@@ -55,7 +55,7 @@ import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
 import {api} from '../api/script'
 import {translate as t} from '../l10n'
-import {registerMenuOptions, reloadCurrentDirectory} from '../files'
+import {registerMultiMenuOptions, registerSingleMenuOptions, reloadCurrentDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
 
@@ -80,13 +80,20 @@ export default {
 			outputDirectory: null,
 			scriptInputs: [],
 			loadingScriptInputs: false,
-			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
+			showScriptSelection: true
 		}
 	},
 
 	computed: {
+		filterMimetype() {
+			const mimetypes = [ ...new Set(this.selectedFiles.map(f => f.mimetype)) ]
+			return mimetypes.length === 1 ? mimetypes[0] : null
+		},
 		scripts() {
-			return this.$store.getters.getEnabledScripts
+			const scripts = this.$store.getters.getEnabledScripts
+			return this.filterMimetype
+					? scripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
+					: scripts
 		},
 		selectedDescription() {
 			return this.selectedScript ? this.selectedScript.description : ''
@@ -152,24 +159,36 @@ export default {
 			}
 		},
 
+		/**
+		 * Select the files and optionally the script (if selecting directly from the file menu)
+		 */
+		selectFiles(files, script) {
+			this.selectedFiles = files
+			this.showScriptSelection = true
+
+			if (script) {
+				this.selectedScript = script
+				this.showScriptSelection = false
+			}
+
+			this.showModal = true
+		},
+
 		attachMenuOption() {
 			if (!this.scripts || this.scripts.length === 0) {
 				return // No enabled scripts: no need to attach the options
 			}
 
-			const handler = (files, script) => {
-				this.selectedFiles = files
-				this.showModal = true
-				script && this.selectScript(script)
-			}
+			registerMultiMenuOptions(this.selectFiles);
 
-			if (this.actionsInMenu) {
-				this.scripts.forEach(function (script) {
-					registerMenuOptions(handler, script)
+			const actionsInMenu = loadState('files_scripts', 'actions_in_menu', false);
+			if (actionsInMenu) {
+				this.scripts.forEach((script) => {
+					registerSingleMenuOptions(this.selectFiles, script)
 				});
 			}
 			else {
-				registerMenuOptions(handler)
+				registerSingleMenuOptions(this.selectFiles)
 			}
 		},
 	},

@@ -91,9 +91,7 @@ export default {
 		},
 		scripts() {
 			const scripts = this.$store.getters.getEnabledScripts
-			return this.filterMimetype
-					? scripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
-					: scripts
+			return scripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
 		},
 		selectedDescription() {
 			return this.selectedScript ? this.selectedScript.description : ''
@@ -167,7 +165,7 @@ export default {
 			this.showScriptSelection = true
 
 			if (script) {
-				this.selectedScript = script
+				this.selectScript(script)
 				this.showScriptSelection = false
 			}
 

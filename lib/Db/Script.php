@@ -15,9 +15,11 @@ use OCP\AppFramework\Db\Entity;
  * @method setEnabled(int $enabled)
  * @method int getEnabled()
  * @method setLimitGroups(string $groups)
- * @method int getLimitGroups()
+ * @method string getLimitGroups()
  * @method setPublic(int $public)
  * @method int getPublic()
+ * @method setMimetype(string $mimetypes)
+ * @method string getMimetype()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
@@ -26,6 +28,7 @@ class Script extends Entity implements JsonSerializable {
 	protected ?int $enabled = null;
 	protected ?string $limitGroups = null;
 	protected ?int $public = null;
+	protected ?string $mimetype = null;
 
 	public function setLimitGroupsArray(array $groupsArray): void {
 		$groups = implode(",", $groupsArray) ?: '';
@@ -45,6 +48,7 @@ class Script extends Entity implements JsonSerializable {
 			'enabled' => $this->enabled,
 			'limitGroups' => $this->getLimitGroupsArray(),
 			'public' => $this->public,
+			'mimetype' => $this->mimetype
 		];
 	}
 }

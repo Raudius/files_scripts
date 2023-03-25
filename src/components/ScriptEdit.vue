@@ -44,6 +44,16 @@
 					:tag-width="80"
 				/>
 
+				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitMimesEnabled" @update:checked="toggleLimitMimes">
+					{{ t('files_scripts', 'Limit to specific MIME type') }}
+				</NcCheckboxRadioSwitch>
+				<NcTextField v-if="limitMimesEnabled"
+			 		:value.sync="mimetype"
+				 	:label="t('files_scripts', 'MIME type (e.g. plain/text)')"
+				 	trailing-button-icon="close"
+				 	:show-trailing-button="!!mimetype"
+					@trailing-button-click="mimetype = ''"
+				/>
 
 				<EditInputs :script-id="script.id" @changed="updateInputs" />
 			</div>
@@ -57,7 +67,8 @@
 
 <script lang="ts">
 import Save from 'vue-material-design-icons/ContentSave.vue'
-import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcSelect } from '@nextcloud/vue'
+import { NcModal, NcActions, NcActionButton, NcCheckboxRadioSwitch, NcNoteCard, NcSelect, NcTextField } from '@nextcloud/vue'
+import FreeSelect from './generic/FreeSelect.vue'
 import EditInputs from './ScriptEdit/EditInputs.vue'
 
 import 'codemirror/mode/lua/lua.js'
@@ -85,6 +96,8 @@ export default {
 		NcSelect,
 		Save,
 		EditInputs,
+		FreeSelect,
+		NcTextField,
 	},
 	data() {
 		const mainBackgroundColor = getComputedStyle(document.querySelector('body'))
@@ -100,6 +113,7 @@ export default {
 			dirtyInputs: false,
 			saving: false,
 			limitGroupsEnabled: false,
+			limitMimesEnabled: false,
 			cmOption: {
 				tabSize: 4,
 				styleActiveLine: true,
@@ -156,6 +170,14 @@ export default {
 				this.$store.commit('updateCurrentScript', { limitGroups: value })
 			},
 		},
+		mimetype: {
+			get() {
+				return this.script ? this.script.mimetype : ""
+			},
+			set(value) {
+				this.$store.commit('updateCurrentScript', { mimetype: value })
+			},
+		}
 	},
 
 	mounted() {
@@ -181,6 +203,7 @@ export default {
 		t,
 		remounted() {
 			this.limitGroupsEnabled = this.limitGroups.length > 0
+			this.limitMimesEnabled = !!this.mimetype
 		},
 		saveScript() {
 			const self = this
@@ -225,6 +248,11 @@ export default {
 		toggleLimitGroupsEnabled() {
 			if (!this.limitGroupsEnabled) {
 				this.limitGroups = []
+			}
+		},
+		toggleLimitMimes() {
+			if (!this.limitMimesEnabled) {
+				this.mimetype = ""
 			}
 		},
 		async loadGroups() {

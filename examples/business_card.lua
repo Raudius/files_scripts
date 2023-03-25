@@ -27,8 +27,8 @@ html = [[
 card = mustache(html, vars)
 content = html_to_pdf(card)
 
-if( exists(root(), 'business-card.pdf') )then
-	abort('File "business-card.pdf" already exists in your home folder.')
+if( exists(home(), "business-card.pdf") )then
+	abort("File 'business-card.pdf' already exists in your home folder.")
 end
 
-new_file(root(), 'business-card.pdf', content)
+new_file(home(), "business-card.pdf", content)

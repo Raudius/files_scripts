@@ -20,30 +20,31 @@
 
 -----------------------------
 --- Init global variables ---
+target_folder = get_input("target_folder")
 today = create_date_time()
 
-html = http_request('https://raw.githubusercontent.com/Raudius/files_scripts/master/examples/invoice.mustache')
+html = http_request("https://raw.githubusercontent.com/Raudius/files_scripts/master/examples/invoice.mustache")
 if (not html or string.len(html) < 1) then
-	abort('Could not fetch the invoice template.')
+	abort("Could not fetch the invoice template.")
 end
 
 ----------------------
 --- Formats a date ---
 function fdate(date, fmt)
-	return format_date_time(date, 'en_GB', null, fmt)
+	return format_date_time(date, "en_GB", null, fmt)
 end
 
 --------------------------------------------
 --- Formats a value as a localised price ---
 function fprice(v)
-	return format_price(v, '€', 'EUR', 'en_GB')
+	return format_price(v, "€", "EUR", "en_GB")
 end
 
 ----------------------------------------------------
 --- Generates an invoice using the provided data ---
 function generate_invoice(data)
 	-- Set invoice date
-	data.invoice_date = fdate(today, 'dd MMMM yyyy')
+	data.invoice_date = fdate(today, "dd MMMM yyyy")
 
 	-- Total calculation
 	local rows_formatted = {}
@@ -64,9 +65,9 @@ function generate_invoice(data)
 	data.rows = rows_formatted
 
 	-- Generate and save
-	local name = fdate(today, 'yyyyMM') .. ' Invoice ' .. data.invoice_number .. '.pdf'
+	local name = fdate(today, "yyyyMM") .. " Invoice " .. data.invoice_number .. ".pdf"
 	local invoice_pdf = html_to_pdf(mustache(html, data))
-	new_file(get_target_folder(), name, invoice_pdf)
+	new_file(target_folder, name, invoice_pdf)
 end
 
 -------------------------------------------------
@@ -74,10 +75,10 @@ end
 function generate_invoices()
 	for k,v in pairs(get_input_files()) do
 		local in_data = json(file_content(v))
-		if (in_data and type(in_data) == 'table') then
+		if (in_data and type(in_data) == "table") then
 			generate_invoice(in_data)
 		else
-			abort('Could not read: ' .. v.name)
+			abort("Could not read: " .. v.name)
 		end
 	end
 end

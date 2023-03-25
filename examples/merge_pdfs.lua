@@ -5,22 +5,22 @@
 --- NOTE: This command requires `qpdf` to be installed on the server.
 --- https://github.com/qpdf/qpdf
 
-local dir = get_target_folder()
-local name = get_input().file_name
+local dir = get_input("output_location")
+local name = get_input("file_name")
 local files = get_input_files()
 
-if (name == nil or name == '') then
-	abort('No file name was provided')
+if (name == nil or name == "") then
+	abort("No file name was provided")
 end
 
-if (string.find(name, '.pdf') == nil) then
-	name = name .. '.pdf'
+if (string.find(name, ".pdf") == nil) then
+	name = name .. ".pdf"
 end
 
 if (exists(dir, name)) then
-	abort('A file already exists in the chosen location')
+	abort("A file already exists in the chosen location")
 end
 
-files = sort(files, 'name')
+files = sort(files, "name")
 
 pdf_merge(files, dir, name)

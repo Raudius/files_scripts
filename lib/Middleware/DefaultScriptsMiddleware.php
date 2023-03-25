@@ -24,7 +24,13 @@ class DefaultScriptsMiddleware extends Middleware {
 				'phone' => 'Phone number',
 				'email' => 'Email address',
 				'name' => 'Full name',
-				'title' => 'Occupation',
+				'title' => [
+					'description' => 'Occupation',
+					'options' => [
+						'type' => 'multiselect',
+						'multiselectOptions' => [ 'Sales associate', 'Marketing', 'Software developer']
+					]
+				],
 				'website' => 'Web URL',
 			]
 		],
@@ -32,7 +38,17 @@ class DefaultScriptsMiddleware extends Middleware {
 			'program' => '../../examples/merge_pdfs.lua',
 			'name' => 'Merge PDFs',
 			'description' => 'Combines all the selected PDFs into a single file.',
-			'inputs' => [ 'file_name' => 'Name of the output file' ]
+			'inputs' => [
+				'file_name' => 'Name of the output file',
+				'output_location' => [
+					'description' => 'Save location',
+					'options' => [
+						'type' => 'filepick',
+						'filepickMimes' => ['httpd/unix-directory']
+					]
+				]
+			],
+			'mimetype' => 'application/pdf',
 		],
 		[
 			'program' => '../../examples/directory_tree.lua',
@@ -43,6 +59,15 @@ class DefaultScriptsMiddleware extends Middleware {
 			'program' => '../../examples/generate_invoice.lua',
 			'name' => 'Generate invoice',
 			'description' => 'Creates an invoice from valid JSON files containing order data (see script comments for more details).',
+			'inputs' => [
+				'output_location' => [
+					'description' => 'Save location',
+					'options' => [
+						'type' => 'filepick',
+						'filepickMimes' => ['httpd/unix-directory']
+					]
+				]
+			]
 		],
 	];
 
@@ -110,16 +135,21 @@ class DefaultScriptsMiddleware extends Middleware {
 		$script->setEnabled(false);
 		$script->setTitle($scriptData['name']);
 		$script->setDescription($scriptData['description']);
+		$script->setMimetype($scriptData['mimetype'] ?? '');
 
 		$script = $this->scriptMapper->insert($script);
 
 		$inputData = $scriptData['inputs'] ?? [];
-		foreach ($inputData as $name => $description) {
+		foreach ($inputData as $name => $data) {
+			if (is_string($data)) {
+				$data = [ 'description' => $data ];
+			}
+
 			$scriptInput = new ScriptInput();
 			$scriptInput->setScriptId($script->getId());
 			$scriptInput->setName($name);
-			$scriptInput->setDescription($description);
-			$scriptInput->setOptions('');
+			$scriptInput->setDescription($data['description']);
+			$scriptInput->setScriptOptions($data['options'] ?? []);
 
 			$this->scriptInputMapper->insert($scriptInput);
 		}

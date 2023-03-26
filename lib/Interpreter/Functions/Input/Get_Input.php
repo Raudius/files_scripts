@@ -34,7 +34,7 @@ class Get_Input extends RegistrableFunction {
 		switch ($scriptType) {
 			case 'filepick':
 				$node = $this->getNode($value);
-				return $node ? $this->getNodeData($node) : null;
+				return $value && $node ? $this->getNodeData($node) : null;
 			case 'checkbox':
 				return (bool) $value;
 		}

@@ -90,8 +90,10 @@ export default {
 			return mimetypes.length === 1 ? mimetypes[0] : null
 		},
 		scripts() {
-			const scripts = this.$store.getters.getEnabledScripts
-			return scripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
+			return this.allScripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
+		},
+		allScripts() {
+			return this.$store.getters.getEnabledScripts
 		},
 		selectedDescription() {
 			return this.selectedScript ? this.selectedScript.description : ''
@@ -181,7 +183,7 @@ export default {
 
 			const actionsInMenu = loadState('files_scripts', 'actions_in_menu', false);
 			if (actionsInMenu) {
-				this.scripts.forEach((script) => {
+				this.allScripts.forEach((script) => {
 					registerSingleMenuOptions(this.selectFiles, script)
 				});
 			}

@@ -37,7 +37,7 @@ The scripting API has been extended with Nextcloud-specific functions. These fun
 These tables may be manually created, but it is preferable to use function that return these objects.
 
 #### Node (File / Folder)
-The `Node` type is used to represent a file or folder (see: [is_file](Functions.md) and [is_folder](Functions.md)):
+The `Node` type is used to represent a file or folder (see: [`is_file`](Functions.md#is_file) and [`is_folder`](Functions.md#is_folder)), it can also be expanded with [`meta_data`](Functions.md#meta_data) to include more information:
  * `id`: the internal ID of the file or folder
  * `name`: the name of the file or folder
  * `path`: the path (not including the name) to the file or folder from the user's home folder 
@@ -58,7 +58,7 @@ The `Node` type is used to represent a file or folder (see: [is_file](Functions.
 
 If you are writing a new script and need to test it I would highly advise using a test environment. This will avoid any mishaps from affecting any live data.
 
-If for any reason you must test your scripts on a live environment, and do not want to make the scripts available to users yet, you can limit the app to the "admin" group from the Nextcloud "Apps" page (*\<hostname\>/index.php/settings/apps/installed/files_scripts*), by ticking the `Limit to groups` option.
+If for any reason you must test your scripts on a production server, and do not want to make the scripts available to users yet, you can limit the script to the "admin" group, by ticking the `Limit to groups` option.
 
 ## Flow
 
@@ -73,7 +73,7 @@ Additionally, for "file rename" and "file copy" events, the previous file's path
 
 In some cases it might be desirable to run scripts via occ (e.g. running scripts on cron-jobs), to do this you can use the command:
 ```sh
-occ files_scripts:run <id> --user <userid> --inputs "{ \"input_var\"=\"hello world\" }"
+occ files_scripts:run <id> --user <userid> --inputs "{ \"input_var\": \"hello world\" }"
 ```
 
 To get the `<id>` value, you can use the scripts-list command:

@@ -29,11 +29,20 @@
 				/>
 			</div>
 
+			<div v-if="isInputText">
+				<NcCheckboxRadioSwitch type="switch" :checked.sync="textarea">
+					{{ t('files_scripts', 'Large textarea') }}
+				</NcCheckboxRadioSwitch>
+			</div>
+
 			<div v-if="isInputMultiselect">
+				<NcCheckboxRadioSwitch type="switch" :checked.sync="allowMultiple">
+					{{ t('files_scripts', 'Allow multiple selections') }}
+				</NcCheckboxRadioSwitch>
+
 				<div class="input_label">{{ t('files_scripts', 'Multi-select options') }}</div>
 				<FreeSelect v-model="options" />
 			</div>
-
 
 			<div v-if="isInputFilepick">
 				<div class="input_label">{{ t('files_scripts', 'Allowed MIME types (defaults to all)') }}</div>
@@ -49,11 +58,11 @@
 </template>
 
 <script lang="ts">
-import { NcTextField, NcButton, NcSelect } from '@nextcloud/vue'
+import { NcTextField, NcButton, NcSelect, NcCheckboxRadioSwitch } from '@nextcloud/vue'
 import ContentSave from 'vue-material-design-icons/ContentSave.vue'
 import KeyboardBackspace from 'vue-material-design-icons/KeyboardBackspace.vue'
 import Plus from 'vue-material-design-icons/Plus.vue'
-import { ScriptInput } from '../../types/script'
+import {defaultScriptInputOptions, ScriptInput} from '../../types/script'
 import { translate as t } from '../../l10n'
 import FreeSelect from '../generic/FreeSelect.vue'
 
@@ -73,7 +82,8 @@ export default {
 		KeyboardBackspace,
 		Plus,
 		NcSelect,
-		FreeSelect
+		FreeSelect,
+		NcCheckboxRadioSwitch
 	},
 	props: {
 		scriptInput: Object as () => ScriptInput,
@@ -93,6 +103,27 @@ export default {
 		},
 		isInputFilepick() {
 			return this.inputType?.id === 'filepick'
+		},
+		isInputText() {
+			return this.inputType
+				? this.inputType?.id === 'text'
+				: true
+		},
+		textarea: {
+			get() {
+				return this.scriptInput.options.textarea
+			},
+			set(value) {
+				this.scriptInput.options.textarea = value
+			}
+		},
+		allowMultiple: {
+			get() {
+				return this.scriptInput.options.allowMultiple
+			},
+			set(value) {
+				this.scriptInput.options.allowMultiple = value
+			}
 		},
 		options: {
 			get() {
@@ -125,6 +156,7 @@ export default {
 		},
 		changeInputType(inputType) {
 			this.scriptInput.options = {
+				...defaultScriptInputOptions(),
 				type: inputType.id,
 				filepickMimes: [],
 				multiselectOptions: []

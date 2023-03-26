@@ -21,6 +21,7 @@
 				:options="this.scriptInput.options.multiselectOptions"
 				:placeholder="this.scriptInput.description"
 				:clearable="false"
+				:multiple="this.scriptInput.options.allowMultiple"
 				@change
 			/>
 		</template>
@@ -41,7 +42,9 @@
 		<!-- Default: text -->
 		<template v-else>
 			<FormTextbox class="section-label" :size="20" />
+			<textarea v-if="scriptInput.options.textarea" v-model="localValue" class="section-details input-textarea" />
 			<input
+				v-else
 				v-model="localValue"
 				type="text"
 				class="section-details"
@@ -169,5 +172,8 @@ export default {
 			margin-top: -6px;
 		}
 	}
+}
+.input-textarea {
+	min-height: 12ch;
 }
 </style>

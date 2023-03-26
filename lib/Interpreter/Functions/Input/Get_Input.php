@@ -37,8 +37,12 @@ class Get_Input extends RegistrableFunction {
 				return $node ? $this->getNodeData($node) : null;
 			case 'checkbox':
 				return (bool) $value;
-			default:
-				return (string) $value;
 		}
+
+		if (is_array($value)) {
+			return $this->reindex($value);
+		}
+
+		return (string) $value;
 	}
 }

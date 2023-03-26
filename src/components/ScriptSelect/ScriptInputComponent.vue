@@ -21,6 +21,7 @@
 				:options="this.scriptInput.options.multiselectOptions"
 				:placeholder="this.scriptInput.description"
 				:clearable="false"
+				:closeOnSelect="!this.scriptInput.options.allowMultiple"
 				:multiple="this.scriptInput.options.allowMultiple"
 				@change
 			/>

@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.0.0-rc1
+
+## Added
+- ⚠️ Deprecated functions removed from Scripting API! 
+- Scripts can now optionally be enabled to work on public shares
+- Actions can be limited by mimetype
+- New selection component for setting filepick mimetypes and multiselect options
+- Expanded some script input types with additional options
+
+## Fixed
+- Fixed checkbox input behaviour
+- Removed deprecated function usages from example scripts
+
 ## 2.2.1
 
 ## Changed

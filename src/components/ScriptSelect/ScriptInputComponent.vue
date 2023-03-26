@@ -30,13 +30,15 @@
 		<!-- Filepick -->
 		<template v-else-if="isInputFilepick">
 			<Folder class="section-label" :size="20" />
-			<input v-model="localValue"
-			 class="section-details"
-			 type="text"
-			 style="cursor: pointer;"
-			 :placeholder="scriptInput.description"
-			 @click="filepick"
-			/>
+			<NcTextField class="section-details"
+				trailing-button-icon="close"
+				:value.sync="localValue"
+				:label="scriptInput.description"
+				:show-trailing-button="localValue !== ''"
+				@trailing-button-click="localValue = ''"
+				@click="filepick"
+				style="cursor: pointer;">
+			</NcTextField>
 		</template>
 
 
@@ -44,13 +46,14 @@
 		<template v-else>
 			<FormTextbox class="section-label" :size="20" />
 			<textarea v-if="scriptInput.options.textarea" v-model="localValue" class="section-details input-textarea" />
-			<input
-				v-else
-				v-model="localValue"
-				type="text"
+			<NcTextField v-else
+				trailing-button-icon="close"
+				:value.sync="localValue"
+				:label="scriptInput.description"
 				class="section-details"
-				:placeholder="scriptInput.description"
-			/>
+				:show-trailing-button="localValue !== ''"
+				@trailing-button-click="localValue = ''">
+			</NcTextField>
 		</template>
 	</div>
 </template>
@@ -61,7 +64,7 @@ import FormTextbox from 'vue-material-design-icons/FormTextbox.vue';
 import FormSelect from 'vue-material-design-icons/FormSelect.vue';
 import CheckboxMultipleMarkedCircle from 'vue-material-design-icons/CheckboxMultipleMarkedCircle.vue';
 import Folder from 'vue-material-design-icons/Folder.vue';
-import { NcCheckboxRadioSwitch, NcSelect } from '@nextcloud/vue'
+import { NcCheckboxRadioSwitch, NcSelect, NcTextField } from '@nextcloud/vue'
 import { FilePickerBuilder, showError } from "@nextcloud/dialogs";
 import { translate as t } from '../../l10n';
 import * as path from 'path';
@@ -79,6 +82,7 @@ export default {
 		Folder,
 		NcCheckboxRadioSwitch,
 		NcSelect,
+		NcTextField
 	},
 	data() {
 		return {

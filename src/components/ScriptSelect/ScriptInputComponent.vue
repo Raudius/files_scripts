@@ -7,7 +7,7 @@
 			<NcCheckboxRadioSwitch
 				class="section-details checkbox"
 				type="switch"
-				:checked.sync="scriptInput.value"
+				:checked.sync="localValue"
 			>
 				{{ this.scriptInput.description }}
 			</NcCheckboxRadioSwitch>
@@ -108,9 +108,9 @@ export default {
 				case 'checkbox':
 					return false
 				case 'filepick':
-					if (this.scriptInput.options.filepickMimes.includes('httpd/unix-directory')) {
-						return this.outputDirectory
-					}
+					return this.scriptInput.options.filepickMimes.includes('httpd/unix-directory')
+						? this.outputDirectory
+						: ''
 				default: return ''
 			}
 		},

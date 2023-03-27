@@ -108,14 +108,14 @@ Now you can test your function by using it in a file action!
 
 ```php
 // Import your class
-use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
+use OCA\FilesScripts\Interpreter\Functions\Util\Invert_Content;
 
 class FunctionProvider implements IFunctionProvider {
   public function __construct(
     // ...
     // ...
     // Add your class to the end of the list in the constructor
-    Invert_Content $f100,
+    Invert_Content $f100
   ) {
 ```
 </details>

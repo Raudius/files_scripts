@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "An error occurred when saving the action." : "Възникна грешка при запазване на действието.",
     "Action does not exist or is disabled." : "Действието не съществува или е деактивирано.",
+    "This action is not enabled on public shares." : "Това действие не е активирано за публични споделяния.",
     "Failed to create the action variables." : "Неуспешно създаване на променливите за действие.",
     "Lua extension not installed on the server." : "Разширението Lua не е инсталирано на сървъра.",
     "No script was chosen." : "Не е избран скрипт.",
@@ -38,7 +39,9 @@ OC.L10N.register(
     "Script name" : "Име на скрипта",
     "A short description of what this action will do …" : "Кратко описание на това какво ще направи това действие ...",
     "Enable script" : "Активиране на скрипта",
+    "Allow on public shares" : "Разрешаване на публични споделяния",
     "Limit to groups" : "Ограничен достъп",
+    "Select groups allowed to use this action" : "Избор на групи, на които е разрешено да използват това действие",
     "Saved" : "Записано",
     "An error occurred during saving" : "Възникна грешка  по време на запазването",
     "Unknown error" : "Неизвестна грешка",

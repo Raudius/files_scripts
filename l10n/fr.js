@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "An error occurred when saving the action." : "Une erreur est survenue en voulant enregistrer l’action.",
     "Action does not exist or is disabled." : "Action non existante ou désactivée.",
+    "This action is not enabled on public shares." : "Cette action n'est pas activée sur les partages publics.",
     "Failed to create the action variables." : "Échec de création des variables d’action.",
     "Lua extension not installed on the server." : "Extension Lua non installée sur le serveur.",
     "No script was chosen." : "Aucun script n’a été choisi.",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "Script name" : "Nom du script",
     "A short description of what this action will do …" : "Une courte description de ce que l'action fera ...",
     "Enable script" : "Activer le script",
+    "Allow on public shares" : "Autoriser sur les partages publics",
     "Limit to groups" : "Limiter aux groupes",
     "Select groups allowed to use this action" : "Sélectionner les groupes autorisés à utiliser cette action",
     "Saved" : "Enregistré",

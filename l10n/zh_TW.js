@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "An error occurred when saving the action." : "儲存動作時發生錯誤。",
     "Action does not exist or is disabled." : "動作不存在或已停用。",
+    "This action is not enabled on public shares." : "此動作未在公開分享上啟用。",
     "Failed to create the action variables." : "建立動作變數失敗。",
     "Lua extension not installed on the server." : "伺服器上未安裝 Lua 擴充套件。",
     "No script was chosen." : "未選擇指令稿。",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "Script name" : "指令稿名稱",
     "A short description of what this action will do …" : "簡短描述此動作會做些什麼……",
     "Enable script" : "啟用指令稿",
+    "Allow on public shares" : "在公開分享上允許",
     "Limit to groups" : "群組限制",
     "Select groups allowed to use this action" : "選取允許使用此動作的群組",
     "Saved" : "已儲存",

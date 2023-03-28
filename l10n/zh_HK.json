@@ -1,6 +1,7 @@
 { "translations": {
     "An error occurred when saving the action." : "保存操作時發生錯誤。",
     "Action does not exist or is disabled." : "操作不存在或已停用。",
+    "This action is not enabled on public shares." : "此操作未在公共共享上啟用。",
     "Failed to create the action variables." : "未能創建操作變量。",
     "Lua extension not installed on the server." : "伺服器上未安裝 Lua 擴展。",
     "No script was chosen." : "沒有選擇腳本。",
@@ -36,7 +37,9 @@
     "Script name" : "腳本名稱",
     "A short description of what this action will do …" : "簡短描述此操作將執行的操作 ...",
     "Enable script" : "啟用腳本語言",
+    "Allow on public shares" : "允許在公共共享上使用",
     "Limit to groups" : "限制於群組",
+    "Select groups allowed to use this action" : "選擇允許使用此操作的群組",
     "Saved" : "已保存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "錯誤不詳",

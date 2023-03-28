@@ -1,6 +1,7 @@
 { "translations": {
     "An error occurred when saving the action." : "Es ist ein Fehler beim Speichern der Aktion aufgetreten",
     "Action does not exist or is disabled." : "Die Aktion existiert nicht oder ist deaktiviert.",
+    "This action is not enabled on public shares." : "Diese Aktion ist nicht für öffentliche Freigaben aktiviert.",
     "Failed to create the action variables." : "Die Aktionsvariablen konnten nicht erstellt werden.",
     "Lua extension not installed on the server." : "Lua-Erweiterung auf dem Server nicht installiert.",
     "No script was chosen." : "Es wurde kein Skript ausgewählt.",
@@ -36,7 +37,9 @@
     "Script name" : "Skriptname",
     "A short description of what this action will do …" : "Eine kurze Beschreibung, was diese Aktion bewirken wird …",
     "Enable script" : "Skript aktivieren",
+    "Allow on public shares" : "Für öffentliche Freigaben erlauben",
     "Limit to groups" : "Auf Gruppen beschränken",
+    "Select groups allowed to use this action" : "Gruppen auswählen, die diese Aktion verwenden dürfen",
     "Saved" : "Gespeichert",
     "An error occurred during saving" : "Es ist ein Fehler beim Speichern aufgetreten",
     "Unknown error" : "Unbekannter Fehler",

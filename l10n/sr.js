@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "An error occurred when saving the action." : "Дошло је до грешке током чувања акције.",
     "Action does not exist or is disabled." : "Акција не постоји или је искључена.",
+    "This action is not enabled on public shares." : "Акција није укључена на јавним дељењима.",
     "Failed to create the action variables." : "Није успело креирање проемљнивих акције.",
     "Lua extension not installed on the server." : "На серверу није инсталирано Lua проширење.",
     "No script was chosen." : "Није изабрана ниједна скрипта.",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "Script name" : "Назив скрипте",
     "A short description of what this action will do …" : "Кратак опис онога што ће акција да уради ...",
     "Enable script" : "Укључи скрипту",
+    "Allow on public shares" : "Дозволи на јавним дељењима",
     "Limit to groups" : "Ограничи на групе",
     "Select groups allowed to use this action" : "Изаберите групе којима је дозвољено да изврше ову акцију",
     "Saved" : "Сачувано",

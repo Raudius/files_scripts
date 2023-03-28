@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "An error occurred when saving the action." : "Při ukládání akce došlo k chybě.",
     "Action does not exist or is disabled." : "Akce neexistuje nebo je vypnutá.",
+    "This action is not enabled on public shares." : "Tato akce není pro veřejná sdílení zapnuta.",
     "Failed to create the action variables." : "Nepodařilo se vytvořit proměnné pro akci.",
     "Lua extension not installed on the server." : "Lua rozšíření není na serveru nainstalováno.",
     "No script was chosen." : "Nebyl zvolen žádný skript.",
@@ -37,6 +38,7 @@ OC.L10N.register(
     "Script name" : "Název skriptu",
     "A short description of what this action will do …" : "Stručný popis toho, co tato akce dělá…",
     "Enable script" : "Zapnout skript",
+    "Allow on public shares" : "Umožnit na veřejných sdíleních",
     "Limit to groups" : "Omezit na skupiny",
     "Select groups allowed to use this action" : "Vyberte skupiny, kterým bude umožněno použít tuto akci",
     "Saved" : "Uloženo",

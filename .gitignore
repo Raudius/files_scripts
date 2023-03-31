@@ -9,3 +9,7 @@ node_modules/
 *clover.xml
 tests/.phpunit.result.cache
 /js/
+
+## VSCode
+.vscode
+*.code-workspace

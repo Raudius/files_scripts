@@ -31,7 +31,7 @@
 
 			<div v-if="isInputText">
 				<NcCheckboxRadioSwitch type="switch" :checked.sync="textarea">
-					{{ t('files_scripts', 'Large textarea') }}
+					{{ t('files_scripts', 'Large text area') }}
 				</NcCheckboxRadioSwitch>
 			</div>
 

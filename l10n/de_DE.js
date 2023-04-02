@@ -23,7 +23,6 @@ OC.L10N.register(
     "Variable name" : "Variablenname",
     "User prompt" : "Eingabeaufforderung",
     "Input type" : "Eingabetyp",
-    "Large textarea" : "Großes Textfeld",
     "Allow multiple selections" : "Mehrfachauswahl zulassen",
     "Multi-select options" : "Mehrfachauswahloptionen",
     "Allowed MIME types (defaults to all)" : "Erlaubte MIME-Typen (standardmäßig alle)",

@@ -23,7 +23,6 @@ OC.L10N.register(
     "Variable name" : "Nom variable",
     "User prompt" : "Invite utilisateur",
     "Input type" : "Type d'entrée",
-    "Large textarea" : "Grand champ texte",
     "Allow multiple selections" : "Permettre la sélection multiple",
     "Multi-select options" : "Options de sélection multiple",
     "Allowed MIME types (defaults to all)" : "Types MIME autorisés (tous par défaut)",

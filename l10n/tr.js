@@ -23,7 +23,6 @@ OC.L10N.register(
     "Variable name" : "Değişken adı",
     "User prompt" : "Kullanıcı girişi",
     "Input type" : "Giriş türü",
-    "Large textarea" : "Geniş metin alanı",
     "Allow multiple selections" : "Birkaç seçim yapılabilsin",
     "Multi-select options" : "Çoklu seçim seçenekleri",
     "Allowed MIME types (defaults to all)" : "İzin verilen MIME türleri (varsayılan olarak tümü)",

@@ -23,7 +23,6 @@ OC.L10N.register(
     "Variable name" : "Változónév",
     "User prompt" : "Felhasználói kérdés",
     "Input type" : "Bevitel típusa",
-    "Large textarea" : "Nagy szövegterület",
     "Allow multiple selections" : "Többszörös kiválasztások engedélyezése",
     "Multi-select options" : "Többszörös kiválasztás lehetőségei",
     "Allowed MIME types (defaults to all)" : "Engedélyezett MIME-típusok (alapértelmezés: összes)",

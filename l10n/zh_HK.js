@@ -23,6 +23,7 @@ OC.L10N.register(
     "Variable name" : "變量的名稱",
     "User prompt" : "用戶提示",
     "Input type" : "輸入類型",
+    "Large text area" : "大型文字區域",
     "Allow multiple selections" : "允許多重選取",
     "Multi-select options" : "多重選擇選項",
     "Allowed MIME types (defaults to all)" : "允許的 MIME 類型（預設為全部）",

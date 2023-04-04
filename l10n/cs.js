@@ -22,6 +22,7 @@ OC.L10N.register(
     "Variable name" : "Název proměnné",
     "User prompt" : "Výzva uživateli",
     "Input type" : "Typ vstupu",
+    "Large text area" : "Velké textové pole",
     "Allow multiple selections" : "Umožnit vícenásobný výběr",
     "Multi-select options" : "Vícenásobná volba",
     "Allowed MIME types (defaults to all)" : "Povolené MIME typy (výchozí je všechny)",

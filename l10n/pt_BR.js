@@ -23,6 +23,7 @@ OC.L10N.register(
     "Variable name" : "Nome da variável",
     "User prompt" : "Prompt do usuário",
     "Input type" : "Tipo de entrada",
+    "Large text area" : "Grande área de texto",
     "Allow multiple selections" : "Permitir várias seleções",
     "Multi-select options" : "Opções de seleção múltipla",
     "Allowed MIME types (defaults to all)" : "Tipos MIME permitidos (padrão para todos)",

@@ -150,10 +150,15 @@ class FeatureContext implements Context {
 	 * @throws JsonException
 	 */
 	private function getJson(): array {
-		if (!$this->json) {
-			$this->json = json_decode($this->response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
+		$response = $this->response->getBody()->getContents();
+		try {
+			if (!$this->json) {
+				$this->json = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+			}
+			return $this->json;
+		} catch (\Exception $e) {
+			Assert::fail("Failed to parse JSON response: $response");
 		}
-		return $this->json;
 	}
 
 	/**

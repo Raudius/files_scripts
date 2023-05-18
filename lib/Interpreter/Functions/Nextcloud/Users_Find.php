@@ -35,7 +35,8 @@ class Users_Find extends RegistrableFunction {
 			$users = $this->findUsers($name, $uuid);
 		}
 
-		return $this->reindex(array_map([$this, 'serializeUser'], array_filter($users)));
+		$users = array_filter(array_values($users));
+		return $this->reindex(array_map([$this, 'serializeUser'], $users));
 	}
 
 	/**

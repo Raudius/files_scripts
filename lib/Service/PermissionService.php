@@ -76,7 +76,8 @@ class PermissionService {
 			return [];
 		}
 
-		if (!$this->groupMaps[$user->getUID()]) {
+		$userInMap = isset($this->groupMaps[$user->getUID()]);
+		if (!$userInMap) {
 			$groupIds = $this->groupManager->getUserGroupIds($user);
 			$groupMap = [];
 			foreach ($groupIds as $groupId) {

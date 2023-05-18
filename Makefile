@@ -81,6 +81,9 @@ test:
 	./vendor/phpunit/phpunit/phpunit -c phpunit.xml
 	./vendor/phpunit/phpunit/phpunit -c phpunit.integration.xml
 
+test-php-integration:
+	$(CURDIR)/vendor/bin/behat --config=tests/integration/config/behat.yml
+
 prepare-build:
 	mkdir -p $(RELEASE_DIR)
 	rsync -a --delete --delete-excluded --verbose\

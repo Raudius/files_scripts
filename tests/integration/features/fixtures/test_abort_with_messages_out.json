@@ -1,0 +1,21 @@
+{
+  "messages": [
+    {
+      "message": "message 1",
+      "type": "info"
+    },
+    {
+      "message": "message 2",
+      "type": "error"
+    },
+    {
+      "message": "message 3",
+      "type": "warning"
+    },
+    {
+      "message": "message 4",
+      "type": "success"
+    }
+  ],
+  "error": "Basic arithmetic is not broken yet."
+}

@@ -78,7 +78,7 @@ jobs:
 
       - name: Install composer dependencies
         working-directory: apps/${{ env.APP_NAME }}
-        run: composer i
+        run: composer i --ignore-platform-reqs
 
       - name: Set up Nextcloud
         env:

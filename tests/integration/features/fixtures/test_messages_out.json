@@ -1,0 +1,20 @@
+{
+  "messages": [
+    {
+      "message": "Uh-oh, something is wrong :(",
+      "type": "error"
+    },
+    {
+      "message": "Working on a fix!",
+      "type": "info"
+    },
+    {
+      "message": "This might take a while...",
+      "type": "warning"
+    },
+    {
+      "message": "Fixed :D",
+      "type": "success"
+    }
+  ]
+}

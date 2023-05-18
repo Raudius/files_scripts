@@ -1,0 +1,12 @@
+default:
+  autoload:
+    '': '%paths.base%/../features/bootstrap'
+  suites:
+    default:
+      paths:
+        - '%paths.base%/../features'
+      contexts:
+        - FeatureContext:
+            baseUrl: 'http://nextcloud.local/index.php'
+            remoteUrl: 'http://nextcloud.local/remote.php'
+            ocsUrl: 'http://nextcloud.local/ocs/v2.php'

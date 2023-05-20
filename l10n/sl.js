@@ -9,6 +9,7 @@ OC.L10N.register(
     "Save" : "Shrani",
     "Text" : "Besedilo",
     "Checkbox" : "Izbirno polje",
+    "Allow on public shares" : "Dovoli na javnih mestih souporabe",
     "Limit to groups" : "Omeji na skupine",
     "Saved" : "Shranjeno",
     "Unknown error" : "Neznana napaka",

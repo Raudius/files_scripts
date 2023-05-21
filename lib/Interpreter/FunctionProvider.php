@@ -13,6 +13,7 @@ use OCA\FilesScripts\Interpreter\Functions\Files\File_Content;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Copy_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Delete;
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Lock;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Move;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Move_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Files\File_Unlock;
@@ -115,7 +116,8 @@ class FunctionProvider implements IFunctionProvider {
 		New_Folder $f55,
 		Add_Message $f56,
 		Clear_Messages $f57,
-		_Include $f58
+		_Include $f58,
+		File_Lock $f59
 	) {
 		$this->functions = func_get_args();
 	}

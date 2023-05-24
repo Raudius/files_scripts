@@ -1,2 +1,3 @@
 l10n/* linguist-generated
 docs/* linguist-documentation
+*.js linguist-vendored

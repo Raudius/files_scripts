@@ -38,9 +38,6 @@ OC.L10N.register(
     "Action failed unexpectedly." : "L'acció ha fallat de manera inesperada.",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Les accions de fitxers són petits fitxer d’ordres en Lua que poden crear, modificar i/o eliminar fitxers de manera programada. Aquestes accions poden ser activades pels usuaris per executar-les als seus fitxers. Si us plau, llegiu la documentació per obtenir més informació.",
     "New action" : "Nova acció",
-    "More actions" : "Més accions",
-    "User prompt …" : "Indicador d'usuari …",
-    "Request target folder" : "Sol·licita la carpeta de destinació",
-    "Choose a folder …" : "Trieu una carpeta …"
+    "More actions" : "Més accions"
 },
 "nplurals=2; plural=(n != 1);");

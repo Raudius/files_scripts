@@ -32,7 +32,6 @@ OC.L10N.register(
     "Action completed!" : "Execução concluída!",
     "Action failed unexpectedly." : "Execução falhou subitamente.",
     "New action" : "Nova ação",
-    "More actions" : "Mais acções",
-    "Request target folder" : "Solicitar o nome da pasta de destino"
+    "More actions" : "Mais acções"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

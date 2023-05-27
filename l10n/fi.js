@@ -42,7 +42,6 @@ OC.L10N.register(
     "New action" : "Uusi toiminto",
     "Experimental interpreter" : "Kokeellinen tulkki",
     "Use experimental interpreter" : "Käytä kokeellista tulkkia",
-    "More actions" : "Lisää toimintoja",
-    "Choose a folder …" : "Valitse kansio…"
+    "More actions" : "Lisää toimintoja"
 },
 "nplurals=2; plural=(n != 1);");

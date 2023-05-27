@@ -18,7 +18,6 @@ OC.L10N.register(
     "Unknown error" : "Onbekende fout",
     "Action completed!" : "Actie gereed!",
     "New action" : "Nieuwe actie",
-    "More actions" : "Meer acties",
-    "Choose a folder …" : "Kies een map ..."
+    "More actions" : "Meer acties"
 },
 "nplurals=2; plural=(n != 1);");

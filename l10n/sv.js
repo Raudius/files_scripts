@@ -30,7 +30,6 @@ OC.L10N.register(
     "Action failed unexpectedly." : "Åtgärden misslyckades oväntat.",
     "New action" : "Ny åtgärd",
     "Actions in menu" : "Åtgärder i meny",
-    "More actions" : "Fler händelser",
-    "Choose a folder …" : "Välj en mapp …"
+    "More actions" : "Fler händelser"
 },
 "nplurals=2; plural=(n != 1);");

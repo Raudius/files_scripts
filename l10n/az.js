@@ -6,6 +6,7 @@ OC.L10N.register(
     "Enabled" : "İşə salınıb",
     "Disabled" : "Dayandırılıb",
     "Save" : "Saxla",
+    "Limit to groups" : "Qruplara limitlə",
     "Saved" : "Saxlanıldı",
     "Unknown error" : "Bəlli olmayan səhv baş verdi"
 },

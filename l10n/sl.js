@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Lua extension not installed on the server." : "Razširitev Lua na strežniku ni nameščena.",
     "Edit" : "Uredi",
     "Delete" : "Izbriši",
     "Enabled" : "Omogočeno",

@@ -18,7 +18,11 @@ trait UserSerializerTrait {
 		];
 	}
 
-	private function deserializeUser(array $userData, IUserManager $userManager): ?IUser {
+	private function deserializeUser($userData, IUserManager $userManager): ?IUser {
+		if (!is_array($userData)) {
+			return null;
+		}
+
 		try {
 			$user = $userManager->get($userData['uuid'] ?? '');
 		} catch (\Throwable $e) {

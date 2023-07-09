@@ -49,7 +49,7 @@
 				</NcCheckboxRadioSwitch>
 				<NcTextField v-if="limitMimesEnabled"
 			 		:value.sync="mimetype"
-				 	:label="t('files_scripts', 'MIME type (e.g. plain/text)')"
+				 	:label="t('files_scripts', 'MIME type (e.g. text/plain)')"
 				 	trailing-button-icon="close"
 				 	:show-trailing-button="!!mimetype"
 					@trailing-button-click="mimetype = ''"

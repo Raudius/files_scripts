@@ -175,7 +175,8 @@ export default {
 		},
 
 		attachMenuOption() {
-			if (!this.scripts || this.scripts.length === 0) {
+			if (!this.allScripts || this.allScripts.length === 0) {
+				console.debug("[files_scripts] No enabled scripts for this user, not attaching menu option.")
 				return // No enabled scripts: no need to attach the options
 			}
 

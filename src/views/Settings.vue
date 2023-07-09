@@ -8,10 +8,6 @@
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
 
-			<NcNoteCard type="error">
-				Notice! Deprecated functions will be removed from the API in an upcoming release. Please check the documentation and ensure you have removed usages from your scripts.
-			</NcNoteCard>
-
 			<NcNoteCard type="warning" v-if="!this.pluginAvailable && !this.usePhpInterpreter">
 				<p>{{ t('files_scripts', 'File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.') }}</p>
 			</NcNoteCard>

@@ -73,3 +73,67 @@ assertEquals(user_alice.uuid, "alice")
 
 -- Test user notify (no assertions possible, but can test for no-exceptions)
 notify(user_alice, "Hello, Alice!")
+
+
+
+-- Check permission constants exists
+assertNotNil(PERMISSION_ALL, 'Constant not set: PERMISSION_ALL')
+assertNotNil(PERMISSION_READ, 'Constant not set: PERMISSION_READ')
+assertNotNil(PERMISSION_CREATE, 'Constant not set: PERMISSION_CREATE')
+assertNotNil(PERMISSION_DELETE, 'Constant not set: PERMISSION_DELETE')
+assertNotNil(PERMISSION_UPDATE, 'Constant not set: PERMISSION_UPDATE')
+assertNotNil(PERMISSION_SHARE, 'Constant not set: PERMISSION_SHARE')
+
+-- Check that PERMISSION_ALL is equal to read + create + delete + share + update
+all_permissions = PERMISSION_READ | PERMISSION_CREATE | PERMISSION_DELETE | PERMISSION_SHARE | PERMISSION_UPDATE
+assertEquals(PERMISSION_ALL, all_permissions, "Bitwise add all permissions does not match PERMISSION_ALL " .. tostring(all_permissions) .. " vs " .. tostring(PERMISSION_ALL))
+
+-- Check share type constants exist
+assertNotNil(SHARE_TYPE_USER, "Constant not set: SHARE_TYPE_USER")
+assertNotNil(SHARE_TYPE_GROUP, "Constant not set: SHARE_TYPE_GROUP")
+assertNotNil(SHARE_TYPE_LINK, "Constant not set: SHARE_TYPE_LINK")
+assertNotNil(SHARE_TYPE_REMOTE, "Constant not set: SHARE_TYPE_REMOTE")
+assertNotNil(SHARE_TYPE_EMAIL, "Constant not set: SHARE_TYPE_EMAIL")
+assertNotNil(SHARE_TYPE_ROOM, "Constant not set: SHARE_TYPE_ROOM")
+assertNotNil(SHARE_TYPE_CIRCLE, "Constant not set: SHARE_TYPE_CIRCLE")
+assertNotNil(SHARE_TYPE_DECK, "Constant not set: SHARE_TYPE_DECK")
+
+-- Check share target constants exists
+assertNotNil(SHARE_TARGET_LINK, "Constant not set: SHARE_TARGET_LINK")
+
+-- Test share listing (expect no shares yet)
+found_shares = shares_find(sample_file)
+assertEmpty(found_shares, "sample file has shares before any were created")
+
+-- Create share on sample file
+share = share_file(sample_file, {
+	target= user_alice
+})
+assertEquals(share["_type"], "share")
+
+-- Search for shares again
+found_shares = shares_find(sample_file)
+assertNotEmpty(found_shares, "no shares found after share creation")
+found_share = found_shares[1]
+assertEquals(json(found_share), json(share), "created-share and found-share not equal")
+
+-- Delete share
+success = share_delete(found_share)
+assertTrue(success, "failed to delete the share")
+found_shares = shares_find(sample_file)
+assertEmpty(found_shares, "sample file has shares after share was deleted")
+
+-- Create a public link share
+share = share_file(sample_file, {
+	target= SHARE_TARGET_LINK,
+	expiration= create_date_time(2025, 06, 07), -- 7th June 2025
+	password= "hunter2",
+	token= "makes-url-pretty"
+})
+assertNotNil(share)
+
+-- Check share exists and is correct
+found_shares = shares_find(sample_file)
+assertNotEmpty(found_shares, "no shares found after share creation")
+found_share = found_shares[1]
+assertEquals(json(found_share), json(share), "created-share and found-share not equal (link share)")

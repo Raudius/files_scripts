@@ -5,7 +5,6 @@
     - [log](#log)  
 
   - **[Files:](#Files)** Filesystem operations within the Nextcloud environment
-    - [copy_file](#copy_file)  
     - [directory_listing](#directory_listing)  
     - [exists](#exists)  
     - [exists_unsafe](#exists_unsafe)  
@@ -24,13 +23,10 @@
     - [meta_data](#meta_data)  
     - [new_file](#new_file)  
     - [new_folder](#new_folder)  
-    - [node_exists](#node_exists)  
-    - [root](#root)  
 
   - **[Input:](#Input)** Retrieving user inputs
     - [get_input](#get_input)  
     - [get_input_files](#get_input_files)  
-    - [get_target_folder](#get_target_folder)  
 
   - **[Media:](#Media)** Functions for modifying images, video, audio...
     - [ffmpeg](#ffmpeg)  
@@ -42,6 +38,9 @@
     - [comments_find](#comments_find)  
     - [get_file_tags](#get_file_tags)  
     - [notify](#notify)  
+    - [share_delete](#share_delete)  
+    - [share_file](#share_file)  
+    - [shares_find](#shares_find)  
     - [tag_create](#tag_create)  
     - [tag_file](#tag_file)  
     - [tag_file_unassign](#tag_file_unassign)  
@@ -117,11 +116,6 @@ Logs a message to the Nextcloud log.
 You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
 You may append some context to the log by passing a table containing the relevant data.
 ## Files
-### copy_file
-
-`copy_file(Node file, String folder_path, [String name]=nil): Bool`  
-  
-⚠️ DEPRECATED: This function will be removed in v2.0.0. See [file_copy](#file_copy)
 ### directory_listing
 
 `directory_listing(Node folder, [String filter_type]='all'): Node[]`  
@@ -272,16 +266,6 @@ If successful, returns the newly created file node. If file creation fails, retu
   
 Creates a new folder at the specified parent folder.  
 If successful, returns the newly created folder node. If creation fails, returns `nil`.
-### node_exists
-
-`node_exists(Node node): Bool`  
-  
-⚠️ DEPRECATED: See [exists](#exists)
-### root
-
-`root(): Node`  
-  
-⚠️ DEPRECATED: See [home](#home)
 ## Input
 ### get_input
 
@@ -298,14 +282,6 @@ get_input('testVar') -- 'input'
 `get_input_files(): Node[]`  
   
 Returns a list of the selected files: these are the files the user selects before running the action.
-### get_target_folder
-
-`get_target_folder(): Node|nil`  
-  
-Returns the target directory node. If none is provided, returns nil.  
-  
-⚠️ DEPRECATED: Replace usage with user input of type "file-picker".  
-Hint: set the accepted mimetypes to just `httpd/unix-directory` to limit file picker to directories.
 ## Media
 ### ffmpeg
 
@@ -424,6 +400,87 @@ Sends a simple notification to a user.
 local user = users_find()[1]  
 notify(user, "Hello!", "Message goes here :)")  
 ```
+### share_delete
+
+`share_delete(Share share): Bool  
+  
+Deletes the share, returns whether the deletion succeeded.
+### share_file
+
+`share_file(Node file, Table options): Share|nil`  
+  
+Creates a share for the given file with the configuration options given.  
+  
+The configuration table may contain the following properties:  
+ - `target`: The target of the share, may be a user object (see: [users_find](#users_find)), or the constant `SHARE_TARGET_LINK` may be used to create a link share.  
+ - `expiration`: An expiration date for the share (see: [create_date_time](#create_date_time))  
+ - `hide_download`: Whether the download button should be hidden in public (link) shares  
+ - `permissions`: The [permissions](#Permissions) for the shared file, these can be combined with the bitwise-or operator `|`.  
+ - `label`: A label to attach to the share  
+ - `password`: A password with which to protect the share.  
+ - `note`: A note to attach to the share  
+ - `token`: The share token (used in public share URL: `index.php/s/<share-token>`  
+  
+Examples:  
+```lua  
+file = get_input_files()[1]  
+  
+-- Share the file with user with UID="alice", allow to read and modify only  
+found_users = users_find(nil, "alice")  
+alice = found_users[1]  
+  
+share_file(file, {  
+  target= alice,  
+  permissions= PERMISSION_READ | PERMISSION_UPDATE  
+})  
+  
+  
+-- Share the file via a public link  
+share_file(file, {  
+  target= SHARE_TARGET_LINK,  
+  expiration= create_date_time(2025, 06, 07), -- 7th June 2025  
+  password= "hunter2",  
+  token= "makes-url-pretty"  
+})  
+```
+### shares_find
+
+`shares_find(Node|nil node= nil, Int[] share_types): Share[]`  
+  
+Finds shares created by the current user. If a node is given it finds shares for that Node. It is also possible to specify  
+which [share types](#share-types) to search for. If `share_types` is omitted all types will be searched.  
+  
+A list of share objects are returned, share objects are Lua tables which contain the following keys:  
+ - `_type`: used to identify the type of the object, always equal to `"share"`  
+ - `id`: the uid of the share  
+ - `full_id`: the full identifier reported by Nextcloud  
+ - `node`: the node object of the shared file/folder  
+ - `type`: the [type](#share-types) of share  
+ - `share_owner`: the ID of the user who created the shared file  
+ - `shared_by`:  the ID of the user who created the share  
+ - `shared_with`: the ID of the user who received the share  
+ - `permissions`: the [permissions](#Permissions) of the file  
+ - `token`: the token of the share (used for link shares in the URL `/index.php/s/<share-token>`)  
+  
+#### Share types  
+Nextcloud shares can have different types which offer different functionality, here is a list of constants provided in the API:  
+ - `SHARE_TYPE_USER`: file shared with a Nextcloud user  
+ - `SHARE_TYPE_GROUP`: file shared with a Nextcloud group  
+ - `SHARE_TYPE_LINK`: file shared via a public link  
+ - `SHARE_TYPE_REMOTE`: file shared to a federated Nextcloud instance  
+ - `SHARE_TYPE_EMAIL`: file shared via email  
+ - `SHARE_TYPE_ROOM`: file shared to a Talk room  
+ - `SHARE_TYPE_CIRCLE`: file shared with a Nextcloud circle  
+ - `SHARE_TYPE_DECK`: file attached to a Deck card  
+  
+#### Permissions  
+When sharing a file with a user you may select what the user can do with the file, these constants can be used to check/control these permissions, constants may be checked and combined with bitwise operations:  
+ - `PERMISSION_ALL`: All possible permissions, this option is equal to the bitwise-or of all other permissions  
+ - `PERMISSION_READ`: User is allowed to view the file(s)  
+ - `PERMISSION_CREATE`: User is able to create files within the shared location  
+ - `PERMISSION_DELETE`: User is able to delete the file(s)  
+ - `PERMISSION_UPDATE`: User is allowed to modify the file(s)  
+ - `PERMISSION_SHARE`: User is allowed to further share the file(s)
 ### tag_create
 
 `tag_create(String name, [Bool user_visible= true], [Bool user_assignable= true]): ?Tag`  

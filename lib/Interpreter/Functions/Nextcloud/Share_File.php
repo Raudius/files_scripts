@@ -18,6 +18,7 @@ use OCP\Share\IShare;
  *  - `target`: The target of the share, may be a user object (see: [users_find](#users_find)), or the constant `SHARE_TARGET_LINK` may be used to create a link share.
  *  - `expiration`: An expiration date for the share (see: [create_date_time](#create_date_time))
  *  - `hide_download`: Whether the download button should be hidden in public (link) shares
+ *  - `permissions`: The [permissions](#Permissions) for the shared file, these can be combined with the bitwise-or operator `|`.
  *  - `label`: A label to attach to the share
  *  - `password`: A password with which to protect the share.
  *  - `note`: A note to attach to the share

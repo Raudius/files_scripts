@@ -21,9 +21,9 @@ end
 assertEmpty(directory_listing(home()), "Expected no files in home")
 
 -- Create hello_world file, check it exists
-assertFalse(exists(home(), "hello_world.txt"))
+assertFalse(exists(home(), "hello_world.txt"), "hello_world exists before creation")
 hello_world = new_file(home(), "hello_world.txt", "Hello, World!")
-assertTrue(exists(home(), "hello_world.txt"))
+assertTrue(exists(home(), "hello_world.txt"), "hello_world does not exist after creation")
 
 -- Check hello world contains expected contents
 assertEquals(file_content(hello_world), "Hello, World!")

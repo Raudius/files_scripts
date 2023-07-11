@@ -12,14 +12,14 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * `shares_find(Node|nil node= nil, Int[] share_types): Share[]`
  *
  * Finds shares created by the current user. If a node is given it finds shares for that Node. It is also possible to specify
- * which [share types](#Share types) to search for.
+ * which [share types](#share-types) to search for. If `share_types` is omitted all types will be searched.
  *
  * A list of share objects are returned, share objects are Lua tables which contain the following keys:
  *  - `_type`: used to identify the type of the object, always equal to `"share"`
  *  - `id`: the uid of the share
  *  - `full_id`: the full identifier reported by Nextcloud
  *  - `node`: the node object of the shared file/folder
- *  - `type`: the [type](#Share types) of share
+ *  - `type`: the [type](#share-types) of share
  *  - `share_owner`: the ID of the user who created the shared file
  *  - `shared_by`:  the ID of the user who created the share
  *  - `shared_with`: the ID of the user who received the share

@@ -2,21 +2,20 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
-use OCP\IUserSession;
 use OCP\Share\IManager;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 
 /**
- * `share_find(Table parameters): Share[]`
+ * `share_delete(Share share): Bool
  *
- * TODO FIXME add docs
+ * Deletes the share, returns whether the deletion succeeded.
  */
 class Share_Delete extends RegistrableFunction {
 	use ShareSerializerTrait;
 
 	private IManager $shareManager;
 
-	public function __construct(IUserSession $userSession, IManager $shareManager) {
+	public function __construct(IManager $shareManager) {
 		$this->shareManager = $shareManager;
 	}
 

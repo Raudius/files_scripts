@@ -4,7 +4,7 @@ namespace OCA\FilesScripts\Interpreter\Lua;
 interface LuaWrapper {
 	public function eval(string $program);
 
-	public function assign(string $key, string $value): void;
+	public function assign(string $key, $value): void;
 
 	function call(callable $closure, array $args=[]);
 

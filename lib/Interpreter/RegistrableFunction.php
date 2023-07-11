@@ -3,15 +3,14 @@
 namespace  OCA\FilesScripts\Interpreter;
 
 use DateTime;
-use OC\Files\Filesystem;
+use OCA\FilesScripts\Interpreter\Functions\Files\NodeSerializerTrait;
 use OCP\Files\File;
 use OCP\Files\Folder;
-use OCP\Files\InvalidPathException;
 use OCP\Files\Node;
-use OCP\Files\NotFoundException;
 use ReflectionClass;
 
 abstract class RegistrableFunction {
+	use NodeSerializerTrait;
 	private ?Context $context;
 
 	public static function getFunctionName(): string {
@@ -20,10 +19,23 @@ abstract class RegistrableFunction {
 	}
 
 	final public function register(Context $context): void {
-		$context->getLua()->registerCallback(static::getFunctionName(), function (...$args) {
+		$this->context = $context;
+		$lua = $context->getLua();
+		$lua->registerCallback(static::getFunctionName(), function (...$args) {
 			return $this->run(...$args);
 		});
-		$this->context = $context;
+
+		foreach ($this->getConstants() as $identifier => $value) {
+			// Constant identifier must be string
+			if (!is_string($identifier)) {
+				continue;
+			}
+			// Constants may only be strings, int/float, bool or NULL values.
+			if (!is_string($value) && !is_numeric($value) && !is_null($value) && !is_bool($value)) {
+				continue;
+			}
+			$lua->assign($identifier, $value);
+		}
 	}
 
 	final protected function getContext(): Context {
@@ -45,17 +57,12 @@ abstract class RegistrableFunction {
 	}
 
 	final protected function getNode(string $path): ?Node {
-		if (!Filesystem::isValidPath($path)) {
-			return null;
+		$node = $this->deserializeNodeFromPath($path, $this->getHomeFolder());
+		if ($node) {
+			$this->overridePermissions($node);
 		}
 
-		try {
-			$node = $this->getHomeFolder()->get($path);
-			$this->overridePermissions($node);
-			return $node;
-		} catch (NotFoundException $e) {
-			return null;
-		}
+		return $node;
 	}
 
 	final protected function getFile(string $path): ?File {
@@ -77,26 +84,7 @@ abstract class RegistrableFunction {
 	}
 
 	final protected function getNodeData(Node $node): array {
-		try {
-			$id = $node->getId();
-		} catch (InvalidPathException|NotFoundException $e) {
-			$id = null;
-		}
-
-		$root = $this->getHomeFolder();
-		$path = '';
-		$name = '/';
-		if ($id !== $root->getId()) {
-			$path = $root->getRelativePath($node->getParent()->getPath());
-			$name = $node->getName();
-		}
-
-		return [
-			'_type' => 'file',
-			'id' => $id,
-			'path' => $path,
-			'name' => $name,
-		];
+		return $this->serializeNode($node, $this->getHomeFolder());
 	}
 
 	/**
@@ -174,7 +162,7 @@ abstract class RegistrableFunction {
 	/**
 	 * Super hack alert!
 	 * We reflect the node object to set the permissions on the fileInfo property. We assign the value from the override.
-	 * This is used so that shared folders use the permissions set by the share and not the ones from the filecache folder.
+	 * This is used so that shared folders use the permissions set by the share and not the ones from the filecache table.
 	 *
 	 * FIXME: If this ever gets fixed upstream maybe we can remove this.
 	 */
@@ -198,6 +186,10 @@ abstract class RegistrableFunction {
 			$fileInfoProp->setValue($node, $fileInfo);
 		} catch (\ReflectionException $e) {
 		}
+	}
+
+	protected function getConstants(): array {
+		return [];
 	}
 
 	/**

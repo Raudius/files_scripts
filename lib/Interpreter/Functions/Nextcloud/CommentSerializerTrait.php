@@ -6,7 +6,7 @@ use OCP\Comments\IComment;
 use OCP\Comments\ICommentsManager;
 
 /**
- * Trait which manages Tag (de)serialization..
+ * Trait which manages Comment (de)serialization..
  */
 trait CommentSerializerTrait {
 	private function serializeComment(IComment $comment): array {
@@ -21,9 +21,13 @@ trait CommentSerializerTrait {
 		];
 	}
 
-	private function deserializeComment(array $tagData, ICommentsManager $commentsManager): ?IComment {
+	private function deserializeComment(array $commentData, ICommentsManager $commentsManager): ?IComment {
+		if (!is_array($commentData) || ($commentData["_type"] ?? null) !== "comment") {
+			return null;
+		}
+
 		try {
-			return $commentsManager->get($tagData['id'] ?? -1);
+			return $commentsManager->get($commentData['id'] ?? -1);
 		} catch (\Throwable $e) {
 			return null;
 		}

@@ -14,7 +14,7 @@ class LuaInterpreter implements LuaWrapper {
 		return $this->interpreter->eval($program);
 	}
 
-	public function assign(string $key, string $value): void {
+	public function assign(string $key, $value): void {
 		$this->interpreter->assign($key, $value);
 	}
 

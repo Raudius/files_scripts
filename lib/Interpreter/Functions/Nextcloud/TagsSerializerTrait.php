@@ -21,6 +21,10 @@ trait TagsSerializerTrait {
 	}
 
 	private function deserializeTag(array $tagData, SystemTagManager $tagManager): ?Tag {
+		if (!is_array($tagData) || ($tagData["_type"] ?? null) !== "tag") {
+			return null;
+		}
+
 		try {
 			$tags = $tagManager->getTagsByIds([$tagData['id'] ?? -1]);
 		} catch (\Throwable $e) {

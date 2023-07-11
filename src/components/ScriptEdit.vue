@@ -182,6 +182,11 @@ export default {
 
 	mounted() {
 		this.loadGroups()
+		document.addEventListener("keydown", this.doSaveKeyboardShortcut);
+	},
+
+	beforeDestroy() {
+		document.removeEventListener("keydown", this.doSaveKeyboardShortcut);
 	},
 
 	watch: {
@@ -204,6 +209,13 @@ export default {
 		remounted() {
 			this.limitGroupsEnabled = this.limitGroups.length > 0
 			this.limitMimesEnabled = !!this.mimetype
+		},
+		doSaveKeyboardShortcut(e) {
+			const ctrlS = (e.keyCode === 83 && e.ctrlKey)
+			if (this.showModal && ctrlS) {
+				e.preventDefault()
+				this.saveScript()
+			}
 		},
 		saveScript() {
 			const self = this

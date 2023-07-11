@@ -205,7 +205,7 @@ class ScriptController extends Controller {
 			], HTTP::STATUS_BAD_REQUEST);
 		}
 
-		return new JSONResponse(['messages' => $context->getMessages()]);
+		return new JSONResponse($context);
 	}
 
 	/**

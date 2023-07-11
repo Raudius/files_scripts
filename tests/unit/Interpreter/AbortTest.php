@@ -3,7 +3,7 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Interpreter\AbortException;
-use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Output\Abort;
 use PHPUnit\Framework\TestCase;
 
 class AbortTest extends TestCase {

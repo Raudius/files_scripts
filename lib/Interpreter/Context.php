@@ -2,12 +2,13 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
+use JsonSerializable;
 use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Interpreter\Lua\LuaWrapper;
 use OCP\Files\Folder;
 use OCP\Files\Node;
 
-class Context {
+class Context implements JsonSerializable {
 	/** @var Node[] */
 	private array $files;
 	/** @var ScriptInput[] */
@@ -15,6 +16,9 @@ class Context {
 	private Folder $root;
 	private LuaWrapper $lua;
 
+	/** @var Node[] */
+	private array $viewFiles;
+	/** @var string[] */
 	private array $messages;
 	private ?int $permissionOverride;
 
@@ -31,6 +35,7 @@ class Context {
 
 		$this->permissionOverride = null;
 		$this->messages = [];
+		$this->viewFiles = [];
 	}
 
 	public function clearMessages(): void {
@@ -42,6 +47,13 @@ class Context {
 			'message' => $message,
 			'type' => $type
 		];
+	}
+
+	/**
+	 * @param Node[] $files
+	 */
+	public function setViewFiles(array $files): void {
+		$this->viewFiles = $files;
 	}
 
 	public function getLua(): LuaWrapper {
@@ -71,7 +83,36 @@ class Context {
 		return $this->messages;
 	}
 
+
+	private function getViewFileInfos(): array {
+		$fileInfos = [];
+		foreach ($this->viewFiles as $file) {
+			try {
+				$fileInfos[] = [
+					'basename' => $file->getName(),
+					'etag' => $file->getEtag(),
+					'fileid' => $file->getId(),
+					'filename' => $this->root->getRelativePath($file->getPath()),
+					'mime' => $file->getMimetype(),
+					'size' => $file->getSize(),
+					'type' => $file->getType()
+				];
+			} catch (\Throwable $e) {
+				continue;
+			}
+		}
+
+		return $fileInfos;
+	}
+
 	public function setPermissionsOverride(int $permissions): void {
 		$this->permissionOverride = $permissions;
+	}
+
+	public function jsonSerialize(): array {
+		return [
+			'messages' => $this->getMessages(),
+			'view_files' => $this->getViewFileInfos()
+		];
 	}
 }

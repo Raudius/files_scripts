@@ -2,10 +2,10 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
-use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
-use OCA\FilesScripts\Interpreter\Functions\Error\Add_Message;
-use OCA\FilesScripts\Interpreter\Functions\Error\Clear_Messages;
-use OCA\FilesScripts\Interpreter\Functions\Error\Log;
+use OCA\FilesScripts\Interpreter\Functions\Output\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Output\Add_Message;
+use OCA\FilesScripts\Interpreter\Functions\Output\Clear_Messages;
+use OCA\FilesScripts\Interpreter\Functions\Output\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists_Unsafe;
@@ -41,6 +41,7 @@ use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_File_Unassign;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tags_Find;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Users_Find;
+use OCA\FilesScripts\Interpreter\Functions\Output\View_Files;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Decrypt;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
@@ -121,7 +122,8 @@ class FunctionProvider implements IFunctionProvider {
 		_Include $f58,
 		Shares_Find $f59,
 		Share_File $f60,
-		Share_Delete $f62
+		Share_Delete $f62,
+		View_Files $f63
 	) {
 		$this->functions = func_get_args();
 	}

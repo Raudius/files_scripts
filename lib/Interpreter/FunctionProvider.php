@@ -33,8 +33,7 @@ use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comment_Delete;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Comments_Find;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Get_File_Tags;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Shares_Find;
-use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Share_File_With_User;
-use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Share_File_With_Link;
+use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Share_File;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Share_Delete;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Notify;
 use OCA\FilesScripts\Interpreter\Functions\Nextcloud\Tag_Create;
@@ -121,8 +120,7 @@ class FunctionProvider implements IFunctionProvider {
 		Clear_Messages $f57,
 		_Include $f58,
 		Shares_Find $f59,
-		Share_File_With_User $f60,
-		Share_File_With_Link $f61,
+		Share_File $f60,
 		Share_Delete $f62
 	) {
 		$this->functions = func_get_args();

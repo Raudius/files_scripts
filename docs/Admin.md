@@ -11,7 +11,10 @@ By default, input types are text-fields where the user may type in the value. Ho
 - **Multiselect** allows the user to select from a set of pre-determined inputs.
 - **File-picker** allows the user to choose a document from their Nextcloud files. 
 
-Note: to allow a user to pick a folder the `httpd/unix-directory` mimetype must be added to the filepick options.
+Note: to allow a user to pick a folder the `httpd/unix-directory` mimetype must be added to the filepick options. To properly add a mimetype, be sure to:
+
+1. Press the arrow button and save icon: ![press arrow button and save icon. mimetype is shown below dialog](./img/mime-type.png)
+2. Press the additional save icon in the top left ![save icon below nextcloud logo](./img/save.png)
 
 ### Required fields
 User input fields will always be optional: the action may still be triggered even if the user did not input anything. However, additional checks can be performed on the script itself, and an [error](Functions.md#abort) may be returned to the user if any required fields were not (correctly) filled.

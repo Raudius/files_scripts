@@ -1,9 +1,3 @@
-  - **[Error:](#Error)** Reporting and logging
-    - [abort](#abort)  
-    - [add_message](#add_message)  
-    - [clear_messages](#clear_messages)  
-    - [log](#log)  
-
   - **[Files:](#Files)** Filesystem operations within the Nextcloud environment
     - [directory_listing](#directory_listing)  
     - [exists](#exists)  
@@ -47,6 +41,13 @@
     - [tags_find](#tags_find)  
     - [users_find](#users_find)  
 
+  - **[Output:](#Output)** Reporting. logging and post-execution functions.
+    - [abort](#abort)  
+    - [add_message](#add_message)  
+    - [clear_messages](#clear_messages)  
+    - [log](#log)  
+    - [view_files](#view_files)  
+
   - **[Pdf:](#Pdf)** Modify PDFs (requires qpdf server package)
     - [pdf_decrypt](#pdf_decrypt)  
     - [pdf_merge](#pdf_merge)  
@@ -71,50 +72,6 @@
     - [sort](#sort)  
     - [wait](#wait)  
 
-## Error
-### abort
-
-`abort(String message): void`  
-  
-Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
-### add_message
-
-`add_message(String message, [String type="info"]): void`  
-  
-Adds a message to be shown to the user after the action is completed as a toast message. The optional type parameter  
-determines the type of toast shown.  
-  
-Type can be one of: "error", "warning", "success" or "info" (default).  
-  
-```lua  
-add_message("I'm Blue")  
-add_message("I'm Red", "error")  
-add_message("I'm Orange", "warning")  
-add_message("I'm Green", "success")  
-```
-### clear_messages
-
-`clear_messages(String message, [String type="info"]): void`  
-  
-Clears all messages that have been previously added with [`add_message`](#add_message).  
-  
-```lua  
-add_message("Don't show this...")  
-add_message("...or this")  
-  
-clear_messages()  
-  
-add_message("Show this")  
-add_message("...and this")  
-```
-### log
-
-`log(String message, [Int level=1], [Table context={}]): void`  
-  
-Logs a message to the Nextcloud log.  
-  
-You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
-You may append some context to the log by passing a table containing the relevant data.
 ## Files
 ### directory_listing
 
@@ -533,6 +490,55 @@ Finds a Nextcloud user from the given parameters.
 If the name is specified, the function will return all users who have a matching name. If the UUID is given the name is ignored and a user is returned with the given UUID.  
 If both parameters are left empty (`nil`), the current user is returned.  
 If a user that meets the parameters can't be found an empty array is returned.
+## Output
+### abort
+
+`abort(String message): void`  
+  
+Aborts execution with an error message. This error message will be shown to the user in a toast dialog.
+### add_message
+
+`add_message(String message, [String type="info"]): void`  
+  
+Adds a message to be shown to the user after the action is completed as a toast message. The optional type parameter  
+determines the type of toast shown.  
+  
+Type can be one of: "error", "warning", "success" or "info" (default).  
+  
+```lua  
+add_message("I'm Blue")  
+add_message("I'm Red", "error")  
+add_message("I'm Orange", "warning")  
+add_message("I'm Green", "success")  
+```
+### clear_messages
+
+`clear_messages(String message, [String type="info"]): void`  
+  
+Clears all messages that have been previously added with [`add_message`](#add_message).  
+  
+```lua  
+add_message("Don't show this...")  
+add_message("...or this")  
+  
+clear_messages()  
+  
+add_message("Show this")  
+add_message("...and this")  
+```
+### log
+
+`log(String message, [Int level=1], [Table context={}]): void`  
+  
+Logs a message to the Nextcloud log.  
+  
+You may optionally specify a [log level](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level) (defaults to 1).  
+You may append some context to the log by passing a table containing the relevant data.
+### view_files
+
+`view_files(Node[] nodes): void`  
+  
+Sets a list of files to be viewed after execution.
 ## Pdf
 ### pdf_decrypt
 

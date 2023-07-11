@@ -137,11 +137,13 @@ export default {
 
 			this.isRunning = true
 			let messages = []
+			let view_files = []
 
 			try {
 				let response = await api.runScript(this.selectedScript, this.scriptInputs, this.selectedFiles)
 				reloadCurrentDirectory()
 
+				view_files = response.view_files ?? [];
 				messages = response.messages ?? []
 				messages.push({ message: (t('files_scripts', 'Action completed!')), type: MessageType.SUCCESS })
 				this.closeModal()
@@ -156,6 +158,13 @@ export default {
 
 			for (let message of messages) {
 				showMessage(message);
+			}
+
+			if (view_files.length > 0) {
+				OCA.Viewer.open({
+					fileInfo: view_files[0],
+					list: view_files,
+				})
 			}
 		},
 

@@ -17,7 +17,7 @@ const PATTERN_COMMENT_LINE_DECOR = '/^( \* )|( \*(?=\n))/m';
 const PATTERN_NEW_LINE = '/(\\n\\r)|(\\r\\n)|\n/';
 
 const TYPE_DESCRIPTIONS = [
-	'Error' => 'Reporting and logging',
+	'Output' => 'Reporting. logging and post-execution functions.',
 	'Files' => 'Filesystem operations within the Nextcloud environment',
 	'Input' => 'Retrieving user inputs',
 	'Media' => 'Functions for modifying images, video, audio...',

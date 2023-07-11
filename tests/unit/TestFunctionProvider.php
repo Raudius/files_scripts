@@ -1,8 +1,8 @@
 <?php
 namespace OCA\FilesScripts;
 
-use OCA\FilesScripts\Interpreter\Functions\Error\Abort;
-use OCA\FilesScripts\Interpreter\Functions\Error\Log;
+use OCA\FilesScripts\Interpreter\Functions\Output\Abort;
+use OCA\FilesScripts\Interpreter\Functions\Output\Log;
 use OCA\FilesScripts\Interpreter\Functions\Files\Copy_File;
 use OCA\FilesScripts\Interpreter\Functions\Files\Directory_Listing;
 use OCA\FilesScripts\Interpreter\Functions\Files\Exists;

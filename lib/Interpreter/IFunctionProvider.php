@@ -6,7 +6,7 @@ interface IFunctionProvider {
 	/**
 	 * @return RegistrableFunction[]
 	 */
-	public function getFunctions(): array;
+	public function getFunctions(): iterable;
 
 	/**
 	 * Some functions may rely on server dependencies or PHP extensions.

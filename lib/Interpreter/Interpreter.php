@@ -3,19 +3,21 @@
 namespace OCA\FilesScripts\Interpreter;
 
 use OCA\FilesScripts\Db\Script;
+use OCA\FilesScripts\Event\RegisterScriptFunctionsEvent;
+use OCP\EventDispatcher\IEventDispatcher;
 use OCP\ITempManager;
 use raudius\phpdf\Phpdf;
 
 class Interpreter {
-	private IFunctionProvider $functionProvider;
 	private ITempManager $tempManager;
+	private IEventDispatcher $dispatcher;
 
 	public function __construct(
-		IFunctionProvider $functionProvider,
-		ITempManager $tempManager
+		ITempManager $tempManager,
+		IEventDispatcher $dispatcher
 	) {
-		$this->functionProvider = $functionProvider;
 		$this->tempManager = $tempManager;
+		$this->dispatcher = $dispatcher;
 	}
 
 	/**
@@ -33,7 +35,10 @@ class Interpreter {
 	}
 
 	private function registerFunctions(Context $context) {
-		$functions = $this->functionProvider->getFunctions();
+		$functionsEvent = new RegisterScriptFunctionsEvent();
+		$this->dispatcher->dispatchTyped($functionsEvent);
+
+		$functions = $functionsEvent->getFunctions();
 		foreach ($functions as $function) {
 			$function->register($context);
 		}

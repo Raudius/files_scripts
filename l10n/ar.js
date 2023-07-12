@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "حصراً على مجموعات",
     "Select groups allowed to use this action" : "حدِّد المجموعات التي يحق لها استعمال هذا الإجراء",
     "Limit to specific MIME type" : "حصراً على نوع مُحدّد من MIME",
-    "MIME type (e.g. plain/text)" : "نوع MIME (مثال: نص عادي)",
     "Saved" : "تمّ الحفظ",
     "An error occurred during saving" : "حدث خطأ أثناء الحفظ",
     "Unknown error" : "خطأ غير معروف",

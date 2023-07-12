@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "Limiter aux groupes",
     "Select groups allowed to use this action" : "Sélectionner les groupes autorisés à utiliser cette action",
     "Limit to specific MIME type" : "Limiter à des types MIME spécifiques",
-    "MIME type (e.g. plain/text)" : "Type MIME (ex. plain/text)",
     "Saved" : "Enregistré",
     "An error occurred during saving" : "Une erreur est survenue pendant l'enregistrement",
     "Unknown error" : "Erreur inconnue",

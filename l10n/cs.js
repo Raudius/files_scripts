@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "Omezit na skupiny",
     "Select groups allowed to use this action" : "Vyberte skupiny, kterým bude umožněno použít tuto akci",
     "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
-    "MIME type (e.g. plain/text)" : "MIME typ (např. plain/text)",
     "Saved" : "Uloženo",
     "An error occurred during saving" : "Při ukládání došlo k chybě",
     "Unknown error" : "Neznámá chyba",

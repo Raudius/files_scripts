@@ -43,7 +43,6 @@
     "Limit to groups" : "Şu gruplarla sınırlansın",
     "Select groups allowed to use this action" : "Bu işlemi yapabilecek grupları seçin",
     "Limit to specific MIME type" : "Belirli MIME türleri ile sınırlansın",
-    "MIME type (e.g. plain/text)" : "MIME türü (plain/text gibi)",
     "Saved" : "Kaydedildi",
     "An error occurred during saving" : "Kaydedilirken bir sorun çıktı",
     "Unknown error" : "Bilinmeyen sorun",

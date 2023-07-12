@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "群組限制",
     "Select groups allowed to use this action" : "選取允許使用此動作的群組",
     "Limit to specific MIME type" : "限制為特定的 MIME 類型",
-    "MIME type (e.g. plain/text)" : "MIME 類型（例如 plain/text）",
     "Saved" : "已儲存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "未知的錯誤",

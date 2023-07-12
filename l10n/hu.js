@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "Csoportokra korlátozás",
     "Select groups allowed to use this action" : "Válassza ki a csoportokat, akik használhatják a műveletet",
     "Limit to specific MIME type" : "Adott MIME-típusokra korlátozás",
-    "MIME type (e.g. plain/text)" : "MIME-típus (például plain/text)",
     "Saved" : "Mentve",
     "An error occurred during saving" : "Hiba történt a mentés során",
     "Unknown error" : "Ismeretlen hiba",

@@ -45,7 +45,6 @@ OC.L10N.register(
     "Limit to groups" : "Ограничи на групе",
     "Select groups allowed to use this action" : "Изаберите групе којима је дозвољено да изврше ову акцију",
     "Limit to specific MIME type" : "Ограничи на одређени MIME тип",
-    "MIME type (e.g. plain/text)" : "MIME тип (нпр. plain/text)",
     "Saved" : "Сачувано",
     "An error occurred during saving" : "Дошло је до грешке током чувања",
     "Unknown error" : "Непозната грешка",

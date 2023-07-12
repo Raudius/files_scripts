@@ -43,7 +43,6 @@
     "Limit to groups" : "Mugatu taldeetara",
     "Select groups allowed to use this action" : "Hautatu ekintza hau erabiltzeko baimendutako taldeak",
     "Limit to specific MIME type" : "Mugatu MIME mota zehatzera",
-    "MIME type (e.g. plain/text)" : "MIME mota (adibidez, arrunta/testua)",
     "Saved" : "Gordeta",
     "An error occurred during saving" : "Errorea gertatu da gordetzean",
     "Unknown error" : "Errore ezezaguna",

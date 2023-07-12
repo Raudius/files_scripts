@@ -43,7 +43,6 @@
     "Limit to groups" : "Разрешить использование только участникам этих групп",
     "Select groups allowed to use this action" : "Выберите группы, которым разрешено использовать это действие",
     "Limit to specific MIME type" : "Ограничение по определенным типам MIME",
-    "MIME type (e.g. plain/text)" : "MIME-типы (например, plain/text)",
     "Saved" : "Сохранённые",
     "An error occurred during saving" : "При сохранении произошла ошибка",
     "Unknown error" : "Неизвестная ошибка",

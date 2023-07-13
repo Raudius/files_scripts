@@ -65,7 +65,7 @@ class ScriptController extends Controller {
 			return new DataResponse([]);
 		}
 
-		$scripts = $this->scriptMapper->findAll();
+		$scripts = $this->scriptMapper->findAllStripProgram();
 		$scripts = $this->permissionService->filterAllowedScripts($scripts);
 
 		return new DataResponse(array_values($scripts));

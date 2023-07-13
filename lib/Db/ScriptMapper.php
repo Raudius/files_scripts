@@ -31,6 +31,18 @@ class ScriptMapper extends BaseMapper {
 	}
 
 	/**
+	 * @return Script[]
+	 */
+	public function findAllStripProgram(): array {
+		return array_map(
+			static function (Script $script): Script {
+				$script->setProgram("");
+				return $script;
+			}, $this->findAll()
+		);
+	}
+
+	/**
 	 * @param Script $entity
 	 * @throws Exception
 	 */

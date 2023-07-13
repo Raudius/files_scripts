@@ -6,9 +6,12 @@ use Mpdf\Mpdf;
 use Mpdf\Output\Destination;
 use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\ITempManager;
+use Psr\Log\LoggerInterface;
 
 /**
  * `html_to_pdf(String html, [Table config]={}, [Table position]={}): string|nil`
+ *
+ * ⚠ Deprecated, will be removed with release 4.0.0. Unfortunately the dependency that enables this function is too large to justify. Removing this function will allow us to reduce the app package size by over 90%.
  *
  * Renders the HTML onto a PDF file.
  *
@@ -19,15 +22,19 @@ use OCP\ITempManager;
  */
 class Html_To_Pdf extends RegistrableFunction {
 	private ITempManager $tempManager;
+	private LoggerInterface $logger;
 
-	public function __construct(ITempManager $templateManager) {
+	public function __construct(ITempManager $templateManager, LoggerInterface $logger) {
 		$this->tempManager = $templateManager;
+		$this->logger = $logger;
 	}
 
 	public function run($html = '', $config = [], $pos = []): ?string {
+		$this->logger->warning("[File scripts] Using deprecated function `html_to_pdf`, this function will be removed in a future release.");
+
 		try {
 			// Normalise format array (Lua uses 1-index)
-			if (is_array($config['format']) && !empty($config)) {
+			if (is_array($config['format'] ?? null) && !empty($config['format'])) {
 				$config['format'] = array_values($config['format']);
 			}
 			$config['tempDir'] = $this->tempManager->getTemporaryFolder();

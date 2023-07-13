@@ -6,7 +6,7 @@
 		<NcSettingsSection :title="t('files_scripts', 'File actions')"
 		 	:limitWidth="false"
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
-			doc-url="https://github.com/Raudius/files_scripts/blob/master/docs/Admin.md">
+			:doc-url="docUrl">
 
 			<NcNoteCard type="warning" v-if="!this.pluginAvailable && !this.usePhpInterpreter">
 				<p>{{ t('files_scripts', 'File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter.') }}</p>
@@ -31,12 +31,12 @@
 
 			<div v-if="isLoading" class="icon-loading" />
 			<NcEmptyContent v-if="scripts && scripts.length === 0" class="empty-content">
-				{{ t('No actions') }}
+				{{ t('files_scripts', 'No actions') }}
 				<template #icon>
 					<FileCog />
 				</template>
 				<template #desc>
-					{{ t('No file actions exist.') }}
+					{{ t('files_scripts', 'No file actions exist.') }}
 				</template>
 			</NcEmptyContent>
 		</NcSettingsSection>
@@ -76,6 +76,7 @@ import { Script } from '../types/script'
 import { translate as t } from '../l10n'
 import axios from "@nextcloud/axios";
 import {generateUrl} from "@nextcloud/router";
+import { version as appVersion } from "../../package.json"
 
 export default {
 	name: 'Settings',
@@ -89,6 +90,7 @@ export default {
 		ScriptCard,
 		Plus,
 		FileCog,
+		appVersion,
 	},
 
 	computed: {
@@ -98,14 +100,15 @@ export default {
 		}),
 		isLoading() {
 			return this.scripts === null
-		},
+		}
 	},
 
 	data() {
 		return {
 			usePhpInterpreter: loadState('files_scripts', 'use_php_interpreter', false),
 			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
-			pluginAvailable: loadState('files_scripts', 'lua_plugin_available', false)
+			pluginAvailable: loadState('files_scripts', 'lua_plugin_available', false),
+			docUrl: `https://github.com/Raudius/files_scripts/blob/v${appVersion}/docs/Admin.md`
 		}
 	},
 

@@ -5,6 +5,7 @@
 		"allowJs": true,
 		"target": "es2017",
 		"moduleResolution": "node",
+		"resolveJsonModule": true,
 		"paths": {
 			"@/*": [
 				"./"

@@ -43,6 +43,7 @@
     "Limit to groups" : "Omezit na skupiny",
     "Select groups allowed to use this action" : "Vyberte skupiny, kterým bude umožněno použít tuto akci",
     "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
+    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)",
     "Saved" : "Uloženo",
     "An error occurred during saving" : "Při ukládání došlo k chybě",
     "Unknown error" : "Neznámá chyba",

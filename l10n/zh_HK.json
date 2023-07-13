@@ -43,6 +43,7 @@
     "Limit to groups" : "限制於群組",
     "Select groups allowed to use this action" : "選擇允許使用此操作的群組",
     "Limit to specific MIME type" : "限制為特定的 MIME 類型",
+    "MIME type (e.g. text/plain)" : "MIME 類型（例如 plain/text）",
     "Saved" : "已保存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "錯誤不詳",

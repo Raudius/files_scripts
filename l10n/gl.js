@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "Texto",
     "Checkbox" : "Caixa de selección",
     "Limit to groups" : "Límite para grupos",
+    "MIME type (e.g. text/plain)" : "Tipo MIME (p. ex., text/plain)",
     "Saved" : "Gardado",
     "Unknown error" : "Erro descoñecido",
     "More actions" : "Máis accións"

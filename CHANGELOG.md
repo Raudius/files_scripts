@@ -1,9 +1,14 @@
 # Changelog
 
-## 3.0.0-rc1
+## 3.0.0
 
 ## Added
-- ⚠️ Deprecated functions removed from Scripting API! 
+- ⚠️ Deprecated functions removed from Scripting API!
+- Nextcloud 27 support
+- Added `viww_files` function
+- Added sharing functions to API
+- Added `Ctrl+S` keyboard shortcut to save scripts during editing
+- Added integration event `RegisterScriptFunctionsEvent` to add API functions from other apps
 - Scripts can now optionally be enabled to work on public shares
 - Actions can be limited by mimetype
 - New selection component for setting filepick mimetypes and multiselect options
@@ -12,6 +17,9 @@
 ## Fixed
 - Fixed checkbox input behaviour
 - Removed deprecated function usages from example scripts
+
+## Deprecated
+- Deprecated `html_to_pdf` function
 
 ## 2.2.1
 

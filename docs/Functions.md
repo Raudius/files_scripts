@@ -583,6 +583,8 @@ Returns the output file's node object, or `nil` if operation failed.
 
 `html_to_pdf(String html, [Table config]={}, [Table position]={}): string|nil`  
   
+⚠ Deprecated, will be removed with release 4.0.0. Unfortunately the dependency that enables this function is too large to justify. Removing this function will allow us to reduce the app package size by over 90%.  
+  
 Renders the HTML onto a PDF file.  
   
 A configuration table can be passed to configure various aspects of PDF generation. For more information see the [MPDF documentation](https://mpdf.github.io/reference/mpdf-variables/overview.html).  

@@ -5,16 +5,17 @@
 ## Added
 - ⚠️ Deprecated functions removed from Scripting API!
 - Nextcloud 27 support
-- Added `viww_files` function
+- Added `view_files` function
 - Added sharing functions to API
 - Added `Ctrl+S` keyboard shortcut to save scripts during editing
 - Added integration event `RegisterScriptFunctionsEvent` to add API functions from other apps
 - Scripts can now optionally be enabled to work on public shares
-- Actions can be limited by mimetype
+- Actions can now be limited by mimetype
 - New selection component for setting filepick mimetypes and multiselect options
 - Expanded some script input types with additional options
 
 ## Fixed
+- Documentation link in settings now points to installed version docs (not master docs)
 - Fixed checkbox input behaviour
 - Removed deprecated function usages from example scripts
 

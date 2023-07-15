@@ -80,14 +80,22 @@ class Shares_Find extends RegistrableFunction {
 		$shareObjects = [];
 		$homeFolder = $this->getHomeFolder();
 		foreach ($shareTypes as $shareType) {
-			$shares = $this->shareManager->getSharesBy($user->getUID(), $shareType, $node, false, -1, 0);
-			foreach ($shares as $share) {
-				$shareObjects[] = $this->serializeShare($share, $homeFolder);
+			try {
+				$shares = $this->shareManager->getSharesBy($user->getUID(), $shareType, $node, false, -1, 0);
+				foreach ($shares as $share) {
+					$shareObjects[] = $this->serializeShare($share, $homeFolder);
+				}
+			} catch(\Throwable $e) {
+				continue;
 			}
 
-			$shares = $this->shareManager->getSharedWith($user->getUID(), $shareType, $node, false, -1, 0);
-			foreach ($shares as $share) {
-				$shareObjects[] = $this->serializeShare($share, $homeFolder);
+			try {
+				$shares = $this->shareManager->getSharedWith($user->getUID(), $shareType, $node,  -1, 0);
+				foreach ($shares as $share) {
+					$shareObjects[] = $this->serializeShare($share, $homeFolder);
+				}
+			} catch(\Throwable $e) {
+				continue;
 			}
 		}
 		return $shareObjects;

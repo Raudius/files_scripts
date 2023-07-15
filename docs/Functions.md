@@ -402,9 +402,9 @@ share_file(file, {
 ```
 ### shares_find
 
-`shares_find(Node|nil node= nil, Int[] share_types): Share[]`  
+`shares_find(Node|nil node=nil, Int[] share_types): Share[]`  
   
-Finds shares created by the current user. If a node is given it finds shares for that Node. It is also possible to specify  
+Finds shares created by, or shared with, the current user. If a node is given it finds shares for that Node. It is also possible to specify  
 which [share types](#share-types) to search for. If `share_types` is omitted all types will be searched.  
   
 A list of share objects are returned, share objects are Lua tables which contain the following keys:  

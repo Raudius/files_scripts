@@ -2,6 +2,7 @@
 
 namespace OCA\FilesScripts\Interpreter;
 
+use OCA\FilesScripts\Interpreter\Functions\Files\File_Delete_Unsafe;
 use OCA\FilesScripts\Interpreter\Functions\Output\Abort;
 use OCA\FilesScripts\Interpreter\Functions\Output\Add_Message;
 use OCA\FilesScripts\Interpreter\Functions\Output\Clear_Messages;
@@ -123,7 +124,8 @@ class FunctionProvider implements IFunctionProvider {
 		Shares_Find $f59,
 		Share_File $f60,
 		Share_Delete $f62,
-		View_Files $f63
+		View_Files $f63,
+		File_Delete_Unsafe $f64
 	) {
 		$this->functions = func_get_args();
 	}

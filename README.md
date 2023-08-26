@@ -50,9 +50,8 @@ sudo apt-get install php-pear
 sudo apt-get install php-dev
 
 cd ~
-git clone https://github.com/singlecomm/php-lua.git
+git clone https://github.com/badoo/php-lua.git
 cd php-lua
-git checkout php8
 phpize && ./configure --with-lua-version=5.3
 make
 

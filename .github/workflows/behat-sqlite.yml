@@ -84,11 +84,17 @@ jobs:
           ./occ config:system:set --value="http://localhost:8080" -- overwrite.cli.url
           ./occ app:enable --force ${{ env.APP_NAME }}
           for user in alice bob jane john; do \
-          OC_PASS="$user" ./occ user:add --password-from-env "$user"; \
+            OC_PASS="$user" ./occ user:add --password-from-env "$user"; \
           done
 
       - name: Run Nextcloud
         run: php -S localhost:8080 &
+
+      - name: Initialise users
+        run: |
+          for user in alice bob jane john; do \
+            curl -u $user:$user http://localhost:8080/index.php; \
+          done
 
       - name: Behat integration
         working-directory: apps/${{ env.APP_NAME }}

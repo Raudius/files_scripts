@@ -73,3 +73,44 @@ assertNotNil(meta_hello_world["can_delete"])
 assertNotNil(meta_hello_world["can_update"])
 assertNotNil(meta_hello_world["local_path"])
 assertNotNil(meta_hello_world["owner_id"])
+
+-- Test copy unsafe function
+file_delete_unsafe("/alice/files/foo.txt") -- make sure file doesnt exist
+assertFalse(exists_unsafe('/alice/files/foo.txt'), "unexpected file `foo.txt` in `/alice/files/`")
+file_delete_unsafe("/alice/files/bar.txt") -- make sure file doesnt exist
+assertFalse(exists_unsafe('/alice/files/bar.txt'), "unexpected file `bar.txt` in `/alice/files/`")
+
+file = new_file(home(), "foo.txt")
+
+result = file_copy_unsafe(file, '/alice/files/')
+assertNotNil(result)
+assertTrue(exists_unsafe('/alice/files/foo.txt'), "expected file `foo.txt` in `/alice/files/`")
+
+result = file_copy_unsafe(file, '/alice/files/', 'bar.txt')
+assertNotNil(result)
+assertTrue(exists_unsafe('/alice/files/bar.txt'), "expected file `bar.txt` in `/alice/files/`")
+
+
+-- Test move unsafe function
+file_delete_unsafe("/alice/files/foo.txt") -- make sure file doesnt exist
+assertFalse(exists_unsafe('/alice/files/foo.txt'), "unexpected file `foo.txt` in `/alice/files/`")
+file = new_file(home(), "foo.txt")
+result = file_move_unsafe(file, '/alice/files/')
+assertNotNil(result)
+assertTrue(exists_unsafe('/alice/files/foo.txt'), "expected file `foo.txt` in `/alice/files/`")
+
+
+file_delete_unsafe("/alice/files/bar.txt") -- make sure file doesnt exist
+assertFalse(exists_unsafe('/alice/files/bar.txt'), "unexpected file `bar.txt` in `/alice/files/`")
+file = new_file(home(), "foo.txt")
+result = file_move_unsafe(file, '/alice/files/', 'bar.txt')
+assertNotNil(result)
+assertTrue(exists_unsafe('/alice/files/bar.txt'), "expected file `bar.txt` in `/alice/files/`")
+
+-- Check file_delete_unsafe works
+success = file_delete_unsafe("/alice/files/bar.txt", false)
+assertTrue(success)
+assertFalse(exists_unsafe('/alice/files/bar.txt'), "unexpected file `bar.txt` in `/alice/files/`, after deletion")
+
+success = file_delete_unsafe("/alice/files/bar.txt", false)
+assertFalse(success)

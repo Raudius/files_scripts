@@ -2,8 +2,9 @@
 
 namespace OCA\FilesScripts\Interpreter\Functions\Files;
 
-use Exception;
+use OCA\FilesScripts\Interpreter\RegistrableFunction;
 use OCP\Files\IRootFolder;
+use OCP\Files\Node;
 
 /**
  * `file_move(Node file, [String folder = nil], [String new_name = nil]): Node|null`
@@ -16,7 +17,7 @@ use OCP\Files\IRootFolder;
  *
  * Returns the resulting file, or `nil` if the operation failed.
  */
-class File_Move extends File_Move_Unsafe {
+class File_Move extends RegistrableFunction {
 	private IRootFolder $rootFolder;
 
 	public function __construct(IRootFolder $rootFolder) {
@@ -43,8 +44,21 @@ class File_Move extends File_Move_Unsafe {
 
 		try {
 			$destination = $this->rootFolder->getRelativePath($folderNode->getPath());
-			return parent::run($file, $destination, $newName);
-		} catch (Exception $e) {
+			$newFile = $this->fileMove($fileNode, $destination, $newName);
+
+			return $this->getNodeData($newFile);
+		} catch (\Exception $e) {
+			return null;
+		}
+	}
+
+	protected function fileMove(Node $fileNode, string $destinationFolder, $newName): ?Node {
+		$newName = (is_string($newName) && strlen($newName) > 0) ? $newName : $fileNode->getName();
+		$destinationPath = $destinationFolder . '/' . $newName;
+		try {
+			$newFileNode = $fileNode->move($destinationPath);
+			return ($newFileNode);
+		} catch (\Throwable|\Exception $e) {
 			return null;
 		}
 	}

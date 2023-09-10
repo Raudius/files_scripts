@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ExportScripts extends Base {
 	private ScriptMapper $scriptMapper;
+	private ScriptService $scriptService;
 
 	public function __construct(
 		ScriptMapper $scriptMapper,
@@ -20,7 +21,7 @@ class ExportScripts extends Base {
 	}
 
 	protected function configure(): void {
-		$this->setDescription('Exports file actions');
+		$this->setDescription('Exports file actions as JSON');
 		parent::configure();
 	}
 

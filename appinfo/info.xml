@@ -40,6 +40,7 @@ Allows administrators to write small scripts which users can run through via the
 		<command>OCA\FilesScripts\Command\RunScript</command>
 		<command>OCA\FilesScripts\Command\ListScripts</command>
 		<command>OCA\FilesScripts\Command\ExportScripts</command>
+		<command>OCA\FilesScripts\Command\ImportScripts</command>
 	</commands>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>

@@ -4,23 +4,21 @@ namespace OCA\FilesScripts\Command;
 use OC\Core\Command\Base;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Service\ScriptService;
+use OCA\FilesScripts\Service\ScriptValidationException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportScripts extends Base {
-	private ScriptMapper $scriptMapper;
 	private ScriptService $scriptService;
 
 	private LoggerInterface $logger;
 
 	public function __construct(
-		ScriptMapper $scriptMapper,
 		ScriptService $scriptService,
 		LoggerInterface $logger
 	)  {
 		parent::__construct('files_scripts:import');
-		$this->scriptMapper = $scriptMapper;
 		$this->scriptService = $scriptService;
 		$this->logger = $logger;
 	}
@@ -34,11 +32,16 @@ class ImportScripts extends Base {
 		$json = file_get_contents("php://stdin");
 		if (false === $json) {
 			$output->writeln('<error>You need an interactive terminal to run this command</error>');
-			return false;
+			return -1;
 		}
 
 		$jsonData = json_decode($json, true);
-		$isSingleScript = isset($scriptData[0]);
+		if (!$jsonData) {
+			$output->writeln('<error>Failed to parse JSON</error>');
+			return -1;
+		}
+
+		$isSingleScript = !isset($jsonData[0]);
 		if ($isSingleScript) {
 			$jsonData = [$jsonData];
 		}
@@ -47,6 +50,8 @@ class ImportScripts extends Base {
 			try {
 				$script = $this->scriptService->createScriptFromJson($scriptData);
 				$output->writeln('<info>Imported script: ' . $script->getTitle() . '</info>');
+			} catch (ScriptValidationException $e) {
+				$output->writeln('<error>' . $e->getMessage() . '</error>');
 			} catch (\Exception $e) {
 				$output->writeln('<info>FAILED TO IMPORT SCRIPT: ' . ($scriptData['title'] ?? '<unknown-title>') . '</info>');
 				$this->logger->warning('Failed to import script', [
@@ -57,7 +62,6 @@ class ImportScripts extends Base {
 			}
 		}
 
-		$output->writeln($json);
 		return 0;
 	}
 

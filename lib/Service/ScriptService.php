@@ -52,9 +52,16 @@ class ScriptService {
 
 	/**
 	 * @throws \OCP\DB\Exception
+	 * @throws ScriptValidationException
 	 */
 	public function createScriptFromJson(array $scriptData): Script {
 		$script = Script::newFromJson($scriptData);
+
+		$validationErrors = $this->validate($script);
+		if (count($validationErrors) > 0) {
+			throw new ScriptValidationException($validationErrors);
+		}
+
 		$script = $this->scriptMapper->insert($script);
 
 		$inputData = $scriptData['inputs'] ?? [];

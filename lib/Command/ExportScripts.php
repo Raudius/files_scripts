@@ -5,6 +5,7 @@ use OC\Core\Command\Base;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Service\ScriptService;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ExportScripts extends Base {
@@ -22,15 +23,15 @@ class ExportScripts extends Base {
 
 	protected function configure(): void {
 		$this->setDescription('Exports file actions as JSON');
+		$this->addOption('id', 'i', InputOption::VALUE_OPTIONAL, 'The ID of the script to be exported, if not specified all scripts will be exported.');
 		parent::configure();
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)  {
-		$scriptId = $input->hasArgument("id")
-			? intval($input->getArgument('id'))
-			: null;
+		$scriptId = $input->getOption('id');
+		$scriptId = $scriptId ? intval($scriptId) : null;
 		if ($scriptId !== null) {
-			$json = $this->exportScript($scriptId);
+			$json = $this->exportScript($scriptId, $output);
 		} else {
 			$json = $this->exportAllScripts();
 		}
@@ -39,8 +40,13 @@ class ExportScripts extends Base {
 		return 0;
 	}
 
-	private function exportScript(int $scriptId) {
+	private function exportScript(int $scriptId, OutputInterface $output): string {
 		$script = $this->scriptMapper->find($scriptId);
+		if (null === $script) {
+			$output->writeln('<error>Could not find script.</error>');
+			return '';
+		}
+
 		$scriptJson = $this->scriptService->scriptToJson($script);
 		return json_encode($scriptJson) ?: '';
 	}

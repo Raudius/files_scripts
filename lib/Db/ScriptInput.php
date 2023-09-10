@@ -33,6 +33,8 @@ class ScriptInput extends Entity implements JsonSerializable {
 		$options = $jsonData["options"] ?? [];
 		$options = is_array($options) ? $options : [];
 		$scriptInput->setScriptOptions($options);
+
+		return $scriptInput;
 	}
 
 	public function jsonSerialize(): array {

@@ -1,0 +1,107 @@
+[
+	{
+		"title": "Generate business card",
+		"description": "Generates a business card PDF. This script will create the file \"business-card.pdf\" in your home folder.",
+		"program": "--- Creates a simple business card PDF from a Mustache HTML template.\n--- The PDF is saved to the user's home directory with the name \"business-card.pdf\"\n---\n--- This action does not currently do anything with the selected files, ideally either the\n--- html, or the vars would get loaded from a file:\n---\n--- html = file_content(get_input_files()[1])\n--- vars = json(file_content(get_input_files()[1]))\n\nvars = get_input()\nhtml = [[\n<div style=\"box-shadow: .5mm 1mm 2mm .5mm rgba(0,0,0,0.2); width: 90mm; height: 50mm;\">\n\t<div style=\"height: 16mm; text-align: center; font-size: 8mm; line-height: 15mm;\">\n\t\t<b>{{ company_name }}<b>\n\t</div>\n\t<div style=\"height: 28mm; text-align: center; font-size: 3mm; line-height: 4.5mm;\">\n        <div><b>{{ name }}</b></div>\n        <div><i>{{ title }}</i></div>\n        <div><br/></div>\n        <div>{{ phone }}</div>\n        <div >{{ email }}</div>\n\t</div>\n\t<div style=\"text-align: center; font-size: 3mm;\">{{ website }}</div>\n</div>\n]]\n\ncard = mustache(html, vars)\ncontent = html_to_pdf(card)\n\nif( exists(home(), \"business-card.pdf\") )then\n\tabort(\"File 'business-card.pdf' already exists in your home folder.\")\nend\n\nnew_file(home(), \"business-card.pdf\", content)\n",
+		"enabled": 0,
+		"limitGroups": [],
+		"public": 0,
+		"mimetype": "",
+		"inputs": [
+			{
+				"name": "company_name",
+				"description": "Company name",
+				"options": []
+			},
+			{
+				"name": "phone",
+				"description": "Phone number",
+				"options": []
+			},
+			{
+				"name": "email",
+				"description": "Email address",
+				"options": []
+			},
+			{
+				"name": "name",
+				"description": "Full name",
+				"options": []
+			},
+			{
+				"name": "title",
+				"description": "Occupation",
+				"options": {
+					"type": "multiselect",
+					"multiselectOptions": [
+						"Sales associate",
+						"Marketing",
+						"Software developer"
+					]
+				}
+			},
+			{
+				"name": "website",
+				"description": "Web URL",
+				"options": []
+			}
+		]
+	},
+	{
+		"title": "Merge PDFs",
+		"description": "Combines all the selected PDFs into a single file.",
+		"program": "--- Merges any selected PDF files to a single file in the selected location and with the provided name.\n--- PDFs are sorted by name in ascending order before they are merged.\n--- Non-PDF files will get ignored.\n---\n--- NOTE: This command requires `qpdf` to be installed on the server.\n--- https://github.com/qpdf/qpdf\n\nlocal dir = get_input(\"output_location\")\nlocal name = get_input(\"file_name\")\nlocal files = get_input_files()\n\nif (name == nil or name == \"\") then\n\tabort(\"No file name was provided\")\nend\n\nif (string.find(name, \".pdf\") == nil) then\n\tname = name .. \".pdf\"\nend\n\nif (exists(dir, name)) then\n\tabort(\"A file already exists in the chosen location\")\nend\n\nfiles = sort(files, \"name\")\n\npdf_merge(files, dir, name)\n",
+		"enabled": 0,
+		"limitGroups": [],
+		"public": 0,
+		"mimetype": "application/pdf",
+		"inputs": [
+			{
+				"name": "file_name",
+				"description": "Name of the output file",
+				"options": []
+			},
+			{
+				"name": "output_location",
+				"description": "Save location",
+				"options": {
+					"type": "filepick",
+					"filepickMimes": [
+						"httpd/unix-directory"
+					]
+				}
+			}
+		]
+	},
+	{
+		"title": "Directory tree",
+		"description": "Creates a file \"tree.txt\" containing the recursive directory listing of the selected files and folders.",
+		"program": "--- Crawls through the selected folders/files and crates a directory tree.\n---\n--- The directory tree gets saved to the directory from which the files were\n--- selected, with the name \"tree.txt\".\n\nfunction listing(nodes, separator)\n  separator = separator or \"\"\n  local files = \"\"\n  local folders = \"\"\n\n  for i, node in ipairs(nodes) do\n  \tif( is_file(node) )then\n      files = files .. separator .. \"-\" .. node.name .. \"\\n\"\n    elseif( is_folder(node) )then\n      local list = listing(directory_listing(node), separator .. \"\\t\")\n      folders = folders .. separator .. \"-[\" .. node.name .. \"]\\n\" .. list\n    end\n  end\n\n  return folders .. files\nend\n\nlocal list = listing(get_input_files(), \"\")\nlocal out_folder = get_parent(get_input_files()[1])\n\nif( exists(out_folder, \"tree.txt\") )then\n\tabort(\"The file 'tree.txt' already exists in this folder.\")\nend\n\nnew_file(out_folder, \"tree.txt\", list)\n",
+		"enabled": 0,
+		"limitGroups": [],
+		"public": 0,
+		"mimetype": "",
+		"inputs": []
+	},
+	{
+		"title": "Generate invoice",
+		"description": "Creates an invoice from valid JSON files containing order data (see script comments for more details).",
+		"program": "--- Generates an invoice from a JSON file containing the order data\n--- Sample JSON:\n--[[\n{\n\t\"invoice_number\": \"310887\",\n\t\"vat_percent\": 24,\n\t\"customer_details\": [\n\t\t{ \"key\": \"Name\", \"value\": \"Jane Doe\" },\n\t\t{ \"key\": \"Phone\", \"value\": \"+01 345 678 901\" },\n\t\t{ \"key\": \"Address\", \"value\": \"42 Main road - 95531\" }\n\t],\n\t\"items\": [\n\t\t{ \"item\": \"Item 1\", \"price\": 34.99 },\n\t\t{ \"item\": \"Item 2\", \"price\": 159.99 },\n\t\t{ \"item\": \"Item 3\", \"price\": 0.99 }\n\t]\n}\n--]]\n\n\n-----------------------------\n--- Init global variables ---\ntarget_folder = get_input(\"target_folder\")\ntoday = create_date_time()\n\nhtml = http_request(\"https://raw.githubusercontent.com/Raudius/files_scripts/master/examples/invoice.mustache\")\nif (not html or string.len(html) < 1) then\n\tabort(\"Could not fetch the invoice template.\")\nend\n\n----------------------\n--- Formats a date ---\nfunction fdate(date, fmt)\n\treturn format_date_time(date, \"en_GB\", null, fmt)\nend\n\n--------------------------------------------\n--- Formats a value as a localised price ---\nfunction fprice(v)\n\treturn format_price(v, \"€\", \"EUR\", \"en_GB\")\nend\n\n----------------------------------------------------\n--- Generates an invoice using the provided data ---\nfunction generate_invoice(data)\n\t-- Set invoice date\n\tdata.invoice_date = fdate(today, \"dd MMMM yyyy\")\n\n\t-- Total calculation\n\tlocal rows_formatted = {}\n\tlocal total_rows = 0\n\tfor k,v in pairs(data.items) do\n\t\ttotal_rows = total_rows + v.price\n\t\trows_formatted[k]= { item= v.item, price= fprice(v.price) }\n\tend\n\n\t-- VAT calculation\n\tlocal vat_percent = (data.vat_percent or 0) / 100\n\tlocal vat = total_rows * vat_percent\n\n\t-- Price formatting\n\tdata.total_rows = fprice(total_rows)\n\tdata.vat = fprice(vat)\n\tdata.total = fprice(total_rows + vat)\n\tdata.rows = rows_formatted\n\n\t-- Generate and save\n\tlocal name = fdate(today, \"yyyyMM\") .. \" Invoice \" .. data.invoice_number .. \".pdf\"\n\tlocal invoice_pdf = html_to_pdf(mustache(html, data))\n\tnew_file(target_folder, name, invoice_pdf)\nend\n\n-------------------------------------------------\n--- Generates the invoice for each input file ---\nfunction generate_invoices()\n\tfor k,v in pairs(get_input_files()) do\n\t\tlocal in_data = json(file_content(v))\n\t\tif (in_data and type(in_data) == \"table\") then\n\t\t\tgenerate_invoice(in_data)\n\t\telse\n\t\t\tabort(\"Could not read: \" .. v.name)\n\t\tend\n\tend\nend\n\n-- Run\ngenerate_invoices()\n",
+		"enabled": 0,
+		"limitGroups": [],
+		"public": 0,
+		"mimetype": "",
+		"inputs": [
+			{
+				"name": "output_location",
+				"description": "Save location",
+				"options": {
+					"type": "filepick",
+					"filepickMimes": [
+						"httpd/unix-directory"
+					]
+				}
+			}
+		]
+	}
+]

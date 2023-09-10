@@ -2,6 +2,8 @@
 namespace OCA\FilesScripts\Service;
 
 use OCA\FilesScripts\Db\Script;
+use OCA\FilesScripts\Db\ScriptInput;
+use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;
 use OCA\FilesScripts\Interpreter\Context;
@@ -13,6 +15,7 @@ use Psr\Log\LoggerInterface;
 
 class ScriptService {
 	private ScriptMapper $scriptMapper;
+	private ScriptInputMapper $scriptInputMapper;
 	private IL10N $l;
 	private Interpreter $interpreter;
 	private LoggerInterface $logger;
@@ -20,16 +23,51 @@ class ScriptService {
 
 	public function __construct(
 		ScriptMapper $scriptMapper,
+		ScriptInputMapper $scriptInputMapper,
 		Interpreter $interpreter,
 		LoggerInterface $logger,
 		IConfig $config,
 		IL10N $l
 	) {
 		$this->scriptMapper = $scriptMapper;
+		$this->scriptInputMapper = $scriptInputMapper;
 		$this->interpreter = $interpreter;
 		$this->logger = $logger;
 		$this->config = $config;
 		$this->l = $l;
+	}
+
+	public function scriptToJson(Script $script): array {
+		$scriptJson = $script->jsonSerialize();
+
+		$scriptInputsJson = [];
+		$scriptInputs = $this->scriptInputMapper->findAllByScriptId($script->getId());
+		foreach ($scriptInputs as $scriptInput) {
+			$scriptInputsJson[] = $scriptInput->jsonSerialize();
+		}
+
+		$scriptJson['inputs'] = $scriptInputsJson;
+		return $scriptJson;
+	}
+
+	/**
+	 * @throws \OCP\DB\Exception
+	 */
+	public function createScriptFromJson(array $scriptData): Script {
+		$script = Script::newFromJson($scriptData);
+		$script = $this->scriptMapper->insert($script);
+
+		$inputData = $scriptData['inputs'] ?? [];
+		foreach ($inputData as $name => $data) {
+			if (is_string($data)) {
+				$data = [ 'description' => $data ];
+			}
+			$scriptInput = ScriptInput::newFromJson($data);
+			$scriptInput->setScriptId($script->getId());
+			$this->scriptInputMapper->insert($scriptInput);
+		}
+
+		return $script;
 	}
 
 	/**

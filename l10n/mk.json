@@ -1,4 +1,8 @@
 { "translations": {
+    "Action does not exist or is disabled." : "Акцијата не постои или е оневозможена.",
+    "This action is not enabled on public shares." : "Акцијата не е овозможена за јавни споделувања.",
+    "Lua extension not installed on the server." : "Lua додаток не е инсталиран на серверот.",
+    "No script was chosen." : "Не е избрана сктипта.",
     "Edit" : "Уреди",
     "Delete" : "Избриши",
     "Enabled" : "Овозможено",

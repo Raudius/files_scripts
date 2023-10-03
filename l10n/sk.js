@@ -24,6 +24,7 @@ OC.L10N.register(
     "Checkbox" : "Zaškrtávacie políčko",
     "User inputs" : "Užívateľské vstupy",
     "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Zadajte ľubovoľný počet vstupných hodnôt, ktoré môže používateľ zadať pri spustení tejto akcie. Tie budú skriptu prístupné cez funkciu get_input().",
+    "Add input" : "Pridať vstup",
     "Script name" : "Meno skriptu",
     "A short description of what this action will do …" : "Krátky popis, čo táto akcia umožňuje ...",
     "Enable script" : "Povoliť skript",

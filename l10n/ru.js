@@ -1,7 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "An error occurred when saving the action." : "Не удалось сохранить действие.",
+    "An error occurred when saving the action." : "Произошла ошибка во время сохранения.",
     "Action does not exist or is disabled." : "Действие не существует или отключено.",
     "This action is not enabled on public shares." : "Это действие недоступно для общих ресурсов.",
     "Failed to create the action variables." : "Не удалось создать переменные сценария.",

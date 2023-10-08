@@ -28,7 +28,7 @@ OC.L10N.register(
     "Allowed MIME types (defaults to all)" : "Дозволені типи MIME (типово - всі)",
     "Save" : "Зберегти",
     "Text" : "Текст",
-    "Checkbox" : "Перемикач",
+    "Checkbox" : "Прапорець",
     "File picker" : "Вибір файлів",
     "Multi-select" : "Множинний вибір",
     "User inputs" : "Введення даних користувачем",

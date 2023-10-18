@@ -19,6 +19,7 @@ OC.L10N.register(
     "Disabled" : "Vypnuté",
     "Back" : "Späť",
     "Variable name" : "Meno premmenej",
+    "Multi-select options" : "Viac možností na výber",
     "Save" : "Uložiť",
     "Text" : "Text",
     "Checkbox" : "Zaškrtávacie políčko",

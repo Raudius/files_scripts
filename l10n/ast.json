@@ -1,0 +1,8 @@
+{ "translations": {
+    "Edit" : "Editar",
+    "Delete" : "Desaniciar",
+    "Back" : "Atrás",
+    "Save" : "Guardar",
+    "Unknown error" : "Error desconocíu"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -21,7 +21,7 @@ OC.L10N.register(
     "Disabled" : "Искључено",
     "Back" : "Назад",
     "Variable name" : "Назив променљиве",
-    "User prompt" : "Кориснички одзив",
+    "User prompt" : "Кориснички захтев",
     "Input type" : "Тип уноса",
     "Large text area" : "Велика текст површина",
     "Allow multiple selections" : "Дозволи вишеструке изборе",

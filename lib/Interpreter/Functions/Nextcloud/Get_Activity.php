@@ -91,7 +91,7 @@ class Get_Activity extends RegistrableFunction {
 			0,
 			200,
 			'desc',
-			'all',
+			'filter',
 			$objectType,
 			$objectId,
 			true

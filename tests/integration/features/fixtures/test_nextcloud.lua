@@ -137,3 +137,32 @@ found_shares = shares_find(sample_file)
 assertNotEmpty(found_shares, "no shares found after share creation")
 found_share = found_shares[1]
 assertEquals(json(found_share), json(share), "created-share and found-share not equal (link share)")
+
+
+
+--
+-- Test get_activity
+--
+
+local file = new_file(home(), "activity_foo.txt")
+local activity = get_activity(file)
+
+assertEquals(#activity, 1, "Newly created file should have one activity event (creation)")
+
+created_event = activity[1]
+assertEquals(created_event["_type"], "event", "get_activity() should always return event objects")
+assertEquals(created_event["type"], "file_created", "Newly created file should have the `file_created` event")
+
+
+file = file_move(file, nil, "activity_bar.txt")
+activity = get_activity(file)
+
+assertEquals(#activity, 2, "After moving the file it should have 2 events (creation, modification)")
+assertEquals(activity[1]["_type"], "event")
+assertEquals(activity[2]["_type"], "event")
+
+-- First event should be "latest", file changed
+assertEquals(activity[1]["type"], "file_changed", "After moving a file, its first event should be `file_changed`")
+
+-- Second event should be the same as the previous created event
+assertEqualTable(activity[2], created_event, "Moved file should still have the creation event")

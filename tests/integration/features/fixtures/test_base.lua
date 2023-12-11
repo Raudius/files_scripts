@@ -56,3 +56,25 @@ function assertSameNode(node1, node2, message)
 
   assertTrue(success, message)
 end
+
+function assertEqualTable(o1, o2, message)
+	if o1 == o2 then return end
+	local o1Type = type(o1)
+	local o2Type = type(o2)
+
+	assertEquals(o1Type, o2Type, message)
+	assertEquals(o1Type, "table", message)
+
+	local keySet = {}
+	for key1, value1 in pairs(o1) do
+		local value2 = o2[key1]
+		assertNotNil(value2, message)
+		assertEqualTable(value1, value2, message)
+		keySet[key1] = true
+	end
+
+	for key2, _ in pairs(o2) do
+		assertTrue(keySet[key2], message)
+	end
+	return true
+end

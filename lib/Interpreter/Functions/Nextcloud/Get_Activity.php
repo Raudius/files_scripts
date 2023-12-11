@@ -16,9 +16,18 @@ use OCP\IUserSession;
 
 
 /**
- * `get_activity(Object object, [Table filters]={}): Table`
+ * `get_activity(object): Event[]`
  *
- * Returns a table of activity data.
+ * Returns a table of activity data for the given object. Currently only `File` objects may be used for retrieving activity.
+ *
+ * The function returns a table of `Event` objects.
+ *
+ * Example:
+ * ```lua
+ * file = get_input_files()[1]
+ * activity = get_activity(file)
+ * add_message(json(activity))
+ * ```
  */
 class Get_Activity extends RegistrableFunction {
 	use EventSerializerTrait;
@@ -56,7 +65,7 @@ class Get_Activity extends RegistrableFunction {
 		$this->infoCache = $infoCache;
 	}
 
-	public function run($object=[], $filters=[]): array {
+	public function run($object=[]): array {
 		if (!class_exists(\OCA\Activity\Data::class)) {
 			return [];
 		}
@@ -99,14 +108,14 @@ class Get_Activity extends RegistrableFunction {
 	/**
 	 * Translates the internal object["_type"] into the Nextcloud object type.
 	 */
-	private function getObjectType($object): string {
-		$type = $object['_type'] ?? 'files_scripts-unknown_type';
+	private function getObjectType($object): ?string {
+		$type = $object['_type'] ?? '';
 
 		switch ($type) {
 			case 'file':
 				return 'files'; // TODO: Look for OCA constant of object types
 			default:
-				return $type;
+				return null;
 		}
 	}
 }

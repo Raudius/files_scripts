@@ -10,7 +10,7 @@ use OCP\IDBConnection;
 /**
  * @method Script findBy(string $column, string $value)
  * @method Script[] findAllBy(string $column, string $value)
- * @method Script find(int $id)
+ * @method Script|null find(int $id)
  * @method Script[] findAll()
  */
 class ScriptMapper extends BaseMapper {

@@ -24,6 +24,19 @@ class ScriptInput extends Entity implements JsonSerializable {
 
 	protected $value = null;
 
+	public static function newFromJson($jsonData): ScriptInput {
+		$scriptInput = new ScriptInput();
+
+		$scriptInput->setName($jsonData["name"] ?? "");
+		$scriptInput->setDescription($jsonData["description"] ?? "");
+
+		$options = $jsonData["options"] ?? [];
+		$options = is_array($options) ? $options : [];
+		$scriptInput->setScriptOptions($options);
+
+		return $scriptInput;
+	}
+
 	public function jsonSerialize(): array {
 		return [
 			'id' => $this->id,

@@ -39,6 +39,27 @@ class Script extends Entity implements JsonSerializable {
 		return array_filter(explode(",", $this->limitGroups) ?: []);
 	}
 
+	public static function newFromJson(array $jsonData): Script {
+		$script = new Script();
+		$script->setTitle($jsonData["title"] ?? "");
+		$script->setDescription($jsonData["description"] ?? "");
+		$script->setProgram($jsonData["program"] ?? "");
+		$script->setMimetype($jsonData["mimetype"] ?? "");
+
+		$enabled = $jsonData["enabled"] ?? 0;
+		$enabled = is_integer($enabled) ? $enabled : 0;
+		$script->setEnabled($enabled);
+
+		$public = $jsonData["public"] ?? 0;
+		if (!is_integer($public)) {
+			$public = 0;
+		}
+		$script->setPublic($public);
+
+
+		return $script;
+	}
+
 	public function jsonSerialize(): array {
 		return [
 			'id' => $this->id,

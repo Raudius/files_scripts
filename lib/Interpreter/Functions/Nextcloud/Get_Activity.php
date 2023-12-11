@@ -7,11 +7,12 @@ use OCA\Activity\Data;
 use OCA\Activity\GroupHelper;
 use OCA\Activity\UserSettings;
 use OCA\Activity\ViewInfoCache;
+use OCP\Activity\IEvent;
 use OCP\Files\IMimeTypeDetector;
 use OCP\IPreview;
 use OCP\IURLGenerator;
-use OCP\IUser;
 use OCP\IUserManager;
+use OCP\IUserSession;
 
 
 /**
@@ -20,8 +21,10 @@ use OCP\IUserManager;
  * Returns a table of activity data.
  */
 class Get_Activity extends RegistrableFunction {
-	use UserSerializerTrait;
-	private ?IUser $user;
+	use EventSerializerTrait;
+	private ?IUserSession $userSession;
+
+	// FIXME: If Nextcloud includes a nice interface for fetching IEvents this property should be replaced
 	private ?Data $activityData;
 	private ?GroupHelper $helper;
 	private ?UserSettings $settings;
@@ -32,7 +35,7 @@ class Get_Activity extends RegistrableFunction {
 	private IUserManager $userManager;
 
 	public function __construct(
-		?IUser $user,
+		IUserSession $userSession,
 		IUserManager $userManager,
 		?Data $data,
 		?GroupHelper $helper,
@@ -42,7 +45,7 @@ class Get_Activity extends RegistrableFunction {
 		IPreview $preview,
 		IMimeTypeDetector $mimeTypeDetector
 	) {
-		$this->user = $user;
+		$this->userSession = $userSession;
 		$this->userManager = $userManager;
 		$this->activityData = $data;
 		$this->helper = $helper;
@@ -58,11 +61,6 @@ class Get_Activity extends RegistrableFunction {
 			return [];
 		}
 
-		$user = $this->getUser($filters);
-		if (!$user) {
-			return [];
-		}
-
 		$objectType = $this->getObjectType($object);
 		if (!$objectType) {
 			return [];
@@ -73,42 +71,42 @@ class Get_Activity extends RegistrableFunction {
 			return [];
 		}
 
-		$activities = $this->activityData->get(
+		$user = $this->userSession->getUser();
+		$userId = $user ? $user->getUID() : null;
+
+		/** @var IEvent[] $activityEvents */
+		$activityEvents = $this->activityData->get(
 			$this->helper,
 			$this->settings,
-			$this->user,
+			$userId,
 			0,
-			0,
+			200,
 			'desc',
 			'all',
 			$objectType,
-			$objectId
+			$objectId,
+			true
 		);
-		return $this->reindex($activities);
-	}
 
-	private function getUser($filters): ?IUser {
-		$user = null;
-		$userData = $filters['user'] ?? null;
-		if ($userData) {
-			$user = $this->deserializeUser($userData, $this->userManager);
+		$serializedEvents = [];
+		foreach ($activityEvents as $id => $activityEvent) {
+			$serializedEvents[] = $this->serializeEvent($id, $activityEvent);
 		}
 
-		if (!$user) {
-			$user = $this->user;
-		}
-
-		return $user;
+		return $serializedEvents;
 	}
 
-	private function getObjectType($object) {
-		$type = $object['_type'] ?? '';
+	/**
+	 * Translates the internal object["_type"] into the Nextcloud object type.
+	 */
+	private function getObjectType($object): string {
+		$type = $object['_type'] ?? 'files_scripts-unknown_type';
 
 		switch ($type) {
 			case 'file':
 				return 'files'; // TODO: Look for OCA constant of object types
 			default:
-				return '';
+				return $type;
 		}
 	}
 }

@@ -47,12 +47,9 @@
 				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitMimesEnabled" @update:checked="toggleLimitMimes">
 					{{ t('files_scripts', 'Limit to specific MIME type') }}
 				</NcCheckboxRadioSwitch>
-				<NcTextField v-if="limitMimesEnabled"
-			 		:value.sync="mimetype"
+				<FreeSelect v-if="limitMimesEnabled"
+			 		v-model="mimetypes"
 				 	:label="t('files_scripts', 'MIME type (e.g. text/plain)')"
-				 	trailing-button-icon="close"
-				 	:show-trailing-button="!!mimetype"
-					@trailing-button-click="mimetype = ''"
 				/>
 
 				<EditInputs :script-id="script.id" @changed="updateInputs" />
@@ -170,12 +167,14 @@ export default {
 				this.$store.commit('updateCurrentScript', { limitGroups: value })
 			},
 		},
-		mimetype: {
+		mimetypes: {
 			get() {
-				return this.script ? this.script.mimetype : ""
+				console.log("Get mimetypes")
+				return this.script ? this.script.mimetypes : ""
 			},
 			set(value) {
-				this.$store.commit('updateCurrentScript', { mimetype: value })
+				console.log("Set mimetypes", value)
+				this.$store.commit('updateCurrentScript', { mimetypes: value })
 			},
 		}
 	},
@@ -208,7 +207,7 @@ export default {
 		t,
 		remounted() {
 			this.limitGroupsEnabled = this.limitGroups.length > 0
-			this.limitMimesEnabled = !!this.mimetype
+			this.limitMimesEnabled = this.mimetypes.length > 0
 		},
 		doSaveKeyboardShortcut(e) {
 			const ctrlS = (e.keyCode === 83 && e.ctrlKey)

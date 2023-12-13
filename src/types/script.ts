@@ -6,7 +6,8 @@ export interface Script {
 	enabled: boolean
 	limitGroups: string[]
 	public: boolean
-	mimetype: string
+	mimetype: string // mimetype Deprecated remove in future release
+	mimetypes: string[]
 }
 
 export interface ScriptInput {
@@ -38,7 +39,8 @@ export function defaultScript(): Script {
 		program: '',
 		public: false,
 		limitGroups: [],
-		mimetype: ''
+		mimetype: '',
+		mimetypes: [],
 	}
 }
 

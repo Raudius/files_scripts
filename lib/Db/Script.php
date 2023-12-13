@@ -20,6 +20,8 @@ use OCP\AppFramework\Db\Entity;
  * @method int getPublic()
  * @method setMimetype(string $mimetypes)
  * @method string getMimetype()
+ * @method setMimetypes(?string $mimetypes)
+ * @method string getMimetypes()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
@@ -28,7 +30,8 @@ class Script extends Entity implements JsonSerializable {
 	protected ?int $enabled = null;
 	protected ?string $limitGroups = null;
 	protected ?int $public = null;
-	protected ?string $mimetype = null;
+	protected ?string $mimetypes = null;
+	protected ?string $mimetype = null; // TODO remove mimetype property and drop column from db
 
 	public function setLimitGroupsArray(array $groupsArray): void {
 		$groups = implode(",", $groupsArray) ?: '';
@@ -37,6 +40,17 @@ class Script extends Entity implements JsonSerializable {
 
 	public function getLimitGroupsArray(): array {
 		return array_filter(explode(",", $this->limitGroups) ?: []);
+	}
+	public function setMimetypesArray(array $mimetypesArray): void {
+		$mimetypes = implode(",", $mimetypesArray) ?: '';
+		$this->setMimetypes($mimetypes);
+	}
+
+	public function getMimetypesArray(): array {
+		if (!$this->mimetypes) {
+			return [];
+		}
+		return array_filter(explode(",", $this->mimetypes) ?: []);
 	}
 
 	public static function newFromJson(array $jsonData): Script {
@@ -69,7 +83,7 @@ class Script extends Entity implements JsonSerializable {
 			'enabled' => $this->enabled,
 			'limitGroups' => $this->getLimitGroupsArray(),
 			'public' => $this->public,
-			'mimetype' => $this->mimetype
+			'mimetypes' => $this->getMimetypesArray()
 		];
 	}
 }

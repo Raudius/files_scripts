@@ -1,8 +1,26 @@
 # Changelog
 
+## 3.1.0
+
+### Announcement
+This is the last feature release for Nextcloud 27. Future releases will only support Nextcloud 28+. 
+
+This is due to significant changes to the Files app, which would complicate maintaining backwards-compatible integration.
+
+### Added
+- Adds parameter to `file_delete` which allows bypassing trash-bin.
+- Adds `get_activity` function to get an array of the activity events for a file.
+- Adds `file_delete_unsafe` for deleting files from other users.
+- Adds ability to export script collections via `occ files_scripts:export`.
+- Adds ability to import script collections via `occ files_scripts:import`.
+
+### Fixed
+- Fixed `file_move_unsafe` function on Nextcloud 27.
+- Fixed missing database default value on script input `options` column.
+
 ## 3.0.0
 
-## Added
+### Added
 - ⚠️ Deprecated functions removed from Scripting API!
 - Nextcloud 27 support
 - Added `view_files` function
@@ -14,17 +32,17 @@
 - New selection component for setting filepick mimetypes and multiselect options
 - Expanded some script input types with additional options
 
-## Fixed
+### Fixed
 - Documentation link in settings now points to installed version docs (not master docs)
 - Fixed checkbox input behaviour
 - Removed deprecated function usages from example scripts
 
-## Deprecated
+### Deprecated
 - Deprecated `html_to_pdf` function
 
 ## 2.2.1
 
-## Changed
+### Changed
 - Fixed some issues with new NcSelect component
 
 ## 2.2.0

@@ -63,7 +63,6 @@ function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): 
 			})
 		},
 		execBatch(files, view, dir) {
-			console.log("files", files)
 			return new Promise<boolean[]>((resolve) => {
 				myHandler(files)
 				return resolve([])

@@ -6,6 +6,7 @@
     - [file_copy](#file_copy)  
     - [file_copy_unsafe](#file_copy_unsafe)  
     - [file_delete](#file_delete)  
+    - [file_delete_unsafe](#file_delete_unsafe)  
     - [file_move](#file_move)  
     - [file_move_unsafe](#file_move_unsafe)  
     - [file_unlock](#file_unlock)  
@@ -30,6 +31,7 @@
     - [comment_create](#comment_create)  
     - [comment_delete](#comment_delete)  
     - [comments_find](#comments_find)  
+    - [get_activity](#get_activity)  
     - [get_file_tags](#get_file_tags)  
     - [notify](#notify)  
     - [share_delete](#share_delete)  
@@ -125,12 +127,22 @@ file_copy_unsafe(file, "alice/files/inbox", "message.txt")
 ```
 ### file_delete
 
-`file_delete(Node node, [Bool success_if_not_found]=true): Bool`  
+`file_delete(Node node, [Bool success_if_not_found]=true, [Bool bypass_trahsbin]=true): Bool`  
   
 Deletes the specified file/folder node.  
 Returns whether deletion succeeded.  
   
-By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
+  
+The third argument `bypass_trashbin` may be used to delete the file permanently, if set to true.
+### file_delete_unsafe
+
+`file_delete_unsafe(String path, [Bool success_if_not_found]=true): Bool`  
+  
+Deletes a file/folder node in the given path.  
+By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
+  
+⚠️ Use of this function is strongly discouraged as it may allow users to delete files from other users.
 ### file_move
 
 `file_move(Node file, [String folder = nil], [String new_name = nil]): Node|null`  
@@ -329,6 +341,20 @@ tags({file= get_input_files()[1]}) -- Finds comments for a file
 tags({id= 21})                     -- Finds comment with ID 21  
 tags({parent_id= 13})              -- Finds comments tree of comment 13  
 tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21 does not exist) the comment tree of comment 13  
+```
+### get_activity
+
+`get_activity(object): Event[]`  
+  
+Returns a table of activity data for the given object. Currently only `File` objects may be used for retrieving activity.  
+  
+The function returns a table of `Event` objects.  
+  
+Example:  
+```lua  
+file = get_input_files()[1]  
+activity = get_activity(file)  
+add_message(json(activity))  
 ```
 ### get_file_tags
 

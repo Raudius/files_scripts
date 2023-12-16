@@ -1,6 +1,9 @@
-import Vuex from 'vuex'
 import { Script, defaultScript } from '../types/script'
 import { api } from '../api/script'
+import Vue from "vue"
+import Vuex from "vuex"
+
+Vue.use(Vuex)
 
 export interface State {
 	loadingScriptId: number;

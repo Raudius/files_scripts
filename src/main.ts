@@ -2,9 +2,6 @@ import { generateFilePath } from '@nextcloud/router'
 import ScriptSelect from './views/ScriptSelect.vue'
 import Settings from './views/Settings.vue'
 import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
 
 // Import store after vuex registration.
 const scriptsStore = require('./store/scripts').store

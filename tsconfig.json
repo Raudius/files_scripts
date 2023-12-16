@@ -6,11 +6,12 @@
 		"target": "es2017",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
 		"paths": {
 			"@/*": [
 				"./"
 			]
 		}
 	},
-	"include": ["./src/*"],
+	"include": ["./src/*", "./custom.d.ts"],
 }

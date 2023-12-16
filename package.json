@@ -1,7 +1,7 @@
 {
 	"name": "files_scripts",
 	"description": "Nextcloud app for running custom scripts on files.",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"author": "Raul Ferreira Fuentes <r.ferreira.fuentes@gmail.com>",
 	"homepage": "https://github.com/",
 	"license": "agpl",

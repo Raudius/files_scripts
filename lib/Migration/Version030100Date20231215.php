@@ -10,9 +10,9 @@ use OCP\Migration\IOutput;
 use Psr\Log\LoggerInterface;
 
 /**
- * Extends the script input .
+ * Ensures script input options has default.
  */
-class Version020100Date20221126 extends SimpleMigrationStep {
+class Version030100Date20231215 extends SimpleMigrationStep {
 	private LoggerInterface $logger;
 
 	public function __construct(LoggerInterface $logger) {
@@ -32,12 +32,15 @@ class Version020100Date20221126 extends SimpleMigrationStep {
 
 		if ($schema->hasTable('filescript_inputs')) {
 			$table = $schema->getTable('filescript_inputs');
-			$table->addColumn('options', 'text', [
-				'notnull' => true,
-				'default' => '[]'
-			]);
+			$optionsCol = $table->getColumn('options');
+
+			$optionsDefault = $optionsCol->getDefault();
+			if ($optionsDefault === null) {
+				$this->logger->info("Column `options` in `filescript_inputs` has no default, setting it now.");
+				$optionsCol->setDefault('[]');
+			}
 		} else {
-			$this->logger->error('File scripts (Version020100Date20221126) migration failed, because `filescript_inputs` table does not exist.');
+			$this->logger->error('File scripts (Version030100Date20231215) migration failed, because `filescript_inputs` table does not exist.');
 		}
 		return $schema;
 	}

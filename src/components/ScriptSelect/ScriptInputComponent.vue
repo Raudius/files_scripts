@@ -125,9 +125,15 @@ export default {
 		async filepick() {
 			const mimetypes = this.scriptInput.options.filepickMimes;
 			const allowDirectories = mimetypes.includes('httpd/unix-directory')
-			const pickerBuiler = (new FilePickerBuilder(this.scriptInput.description))
+			const pickerBuiler = (new FilePickerBuilder<false>(this.scriptInput.description))
 					.allowDirectories(allowDirectories)
+					.setMultiSelect(false)
 					.startAt(this.outputDirectory)
+					.setType(1) // TODO replace with "add button" method, see example below
+					/*.addButton({
+						label: 'Pick',
+						callback: (nodes) => console.log('Picked', nodes),
+					})*/
 
 			if (mimetypes.length > 0) {
 				pickerBuiler.setMimeTypeFilter(mimetypes)

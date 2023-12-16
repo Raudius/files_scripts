@@ -31,6 +31,8 @@ Allows administrators to write small scripts which users can run through via the
 	<repository>https://github.com/raudius/files_scripts.git</repository>
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/1.png</screenshot>
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/2.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/3.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/4.png</screenshot>
 
     <dependencies>
         <nextcloud min-version="25" max-version="27"/>

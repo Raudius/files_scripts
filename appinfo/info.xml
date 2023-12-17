@@ -35,12 +35,14 @@ Allows administrators to write small scripts which users can run through via the
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/4.png</screenshot>
 
     <dependencies>
-        <nextcloud min-version="25" max-version="28"/>
-		<php min-version="7.4" />
+        <nextcloud min-version="28" max-version="28"/>
+		<php min-version="8.0" />
     </dependencies>
 	<commands>
 		<command>OCA\FilesScripts\Command\RunScript</command>
 		<command>OCA\FilesScripts\Command\ListScripts</command>
+		<command>OCA\FilesScripts\Command\ImportScripts</command>
+		<command>OCA\FilesScripts\Command\ExportScripts</command>
 	</commands>
 	<settings>
 		<admin>OCA\FilesScripts\Settings\AdminSettings</admin>

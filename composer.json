@@ -14,6 +14,7 @@
 		"ext-lua": "*",
 		"ext-curl": "*",
 		"ext-intl": "*",
+		"mpdf/mpdf": "^8.1",
 		"mustache/mustache": "^2.14",
 		"php-ffmpeg/php-ffmpeg": "0.19.0",
 		"mikehaertl/php-shellcommand": "^1",
@@ -32,7 +33,7 @@
 		"optimize-autoloader": true,
 		"classmap-authoritative": true,
 		"platform": {
-			"php": "8.0"
+			"php": "^8.0"
 		}
 	},
 	"scripts": {

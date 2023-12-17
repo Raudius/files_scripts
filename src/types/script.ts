@@ -7,7 +7,7 @@ export interface Script {
 	limitGroups: string[]
 	public: boolean
 	mimetype: string // mimetype Deprecated remove in future release
-	mimetypes: string[]
+	fileTypes: string[]
 }
 
 export interface ScriptInput {
@@ -40,7 +40,7 @@ export function defaultScript(): Script {
 		public: false,
 		limitGroups: [],
 		mimetype: '',
-		mimetypes: [],
+		fileTypes: [],
 	}
 }
 

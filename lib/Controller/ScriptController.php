@@ -85,7 +85,7 @@ class ScriptController extends Controller {
 		bool $enabled,
 		array $limitGroups,
 		bool $public,
-		array $mimetypes
+		array $fileTypes
 	): Response {
 		$script = new Script();
 		$script->setTitle($title);
@@ -94,7 +94,7 @@ class ScriptController extends Controller {
 		$script->setEnabled($enabled);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setPublic($public);
-		$script->setMimetypesArray($mimetypes);
+		$script->setFileTypesArray($fileTypes);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {
@@ -122,7 +122,7 @@ class ScriptController extends Controller {
 		bool $enabled,
 		array $limitGroups,
 		bool $public,
-		array $mimetypes
+		array $fileTypes
 	): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
@@ -135,7 +135,7 @@ class ScriptController extends Controller {
 		$script->setEnabled($enabled);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setPublic($public);
-		$script->setMimetypesArray($mimetypes);
+		$script->setFileTypesArray($fileTypes);
 
 		$errors = $this->scriptService->validate($script);
 		if ($errors) {

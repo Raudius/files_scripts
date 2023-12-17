@@ -33,7 +33,7 @@ class Version031000Date20231211 extends SimpleMigrationStep {
 		if ($schema->hasTable('filescripts')) {
 			$table = $schema->getTable('filescripts');
 
-			$table->addColumn('mimetypes', 'string', [
+			$table->addColumn('file_types', 'string', [
 				'notnull' => false,
 				'length' => 128 * 30
 			]);
@@ -52,15 +52,15 @@ class Version031000Date20231211 extends SimpleMigrationStep {
 		}
 		/** @var \Doctrine\DBAL\Schema\Table $table */
 		$table = $schema->getTable('filescripts');
-		if (!$table->hasColumn('mimetypes')) {
-			$this->logger->error('File scripts (Version030000Date20230324) migration postschemachange step failed, because `filescripts.mimetypes` column does not exist.');
+		if (!$table->hasColumn('file_types')) {
+			$this->logger->error('File scripts (Version030000Date20230324) migration postschemachange step failed, because `filescripts.file_types` column does not exist.');
 			return null;
 		}
 
 		try {
 			$qb = $this->connection->getQueryBuilder();
 			$qb->update('filescripts')
-				->set('mimetypes', 'mimetype');
+				->set('file_types', 'mimetype');
 			$qb->executeStatement();
 
 
@@ -68,8 +68,8 @@ class Version031000Date20231211 extends SimpleMigrationStep {
 			$eb = $this->connection->getQueryBuilder()->expr();
 
 			$qb->update('filescripts')
-				->where($eb->eq('mimetypes', $eb->literal("")))
-				->set('mimetypes', 'null');
+				->where($eb->eq('file_types', $eb->literal("")))
+				->set('file_types', 'null');
 			$qb->executeStatement();
 		} catch (SchemaException $e) {
 			throw $e;

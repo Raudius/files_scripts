@@ -48,7 +48,7 @@
 					{{ t('files_scripts', 'Limit to specific MIME type') }}
 				</NcCheckboxRadioSwitch>
 				<FreeSelect v-if="limitMimesEnabled"
-			 		v-model="mimetypes"
+			 		v-model="fileTypes"
 				 	:label="t('files_scripts', 'MIME type (e.g. text/plain)')"
 				/>
 
@@ -167,14 +167,12 @@ export default {
 				this.$store.commit('updateCurrentScript', { limitGroups: value })
 			},
 		},
-		mimetypes: {
+		fileTypes: {
 			get() {
-				console.log("Get mimetypes")
-				return this.script ? this.script.mimetypes : ""
+				return this.script ? this.script.fileTypes : ""
 			},
 			set(value) {
-				console.log("Set mimetypes", value)
-				this.$store.commit('updateCurrentScript', { mimetypes: value })
+				this.$store.commit('updateCurrentScript', { fileTypes: value })
 			},
 		}
 	},
@@ -207,7 +205,7 @@ export default {
 		t,
 		remounted() {
 			this.limitGroupsEnabled = this.limitGroups.length > 0
-			this.limitMimesEnabled = this.mimetypes.length > 0
+			this.limitMimesEnabled = this.fileTypes.length > 0
 		},
 		doSaveKeyboardShortcut(e) {
 			const ctrlS = (e.keyCode === 83 && e.ctrlKey)

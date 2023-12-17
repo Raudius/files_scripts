@@ -442,7 +442,7 @@ class FeatureContext implements Context {
 			"enabled" => true,
 			"public" => false,
 			"limitGroups" => [],
-			"mimetype" => "",
+			"fileTypes" => [],
 		];
 	}
 

@@ -20,6 +20,8 @@ use OCP\AppFramework\Db\Entity;
  * @method int getPublic()
  * @method setMimetype(string $mimetypes)
  * @method string getMimetype()
+ * @method setFileTypes(?string $fileTypes)
+ * @method string getFileTypes()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
@@ -28,7 +30,8 @@ class Script extends Entity implements JsonSerializable {
 	protected ?int $enabled = null;
 	protected ?string $limitGroups = null;
 	protected ?int $public = null;
-	protected ?string $mimetype = null;
+	protected ?string $fileTypes = null;
+	protected ?string $mimetype = null; // TODO remove mimetype property and drop column from db
 
 	public function setLimitGroupsArray(array $groupsArray): void {
 		$groups = implode(",", $groupsArray) ?: '';
@@ -38,13 +41,27 @@ class Script extends Entity implements JsonSerializable {
 	public function getLimitGroupsArray(): array {
 		return array_filter(explode(",", $this->limitGroups) ?: []);
 	}
+	public function setFileTypesArray(array $mimetypesArray): void {
+		$mimetypes = implode(",", $mimetypesArray) ?: '';
+		$this->setFileTypes($mimetypes);
+	}
+
+	public function getFileTypesArray(): array {
+		if (!$this->fileTypes) {
+			return [];
+		}
+		return array_filter(explode(",", $this->fileTypes) ?: []);
+	}
 
 	public static function newFromJson(array $jsonData): Script {
 		$script = new Script();
 		$script->setTitle($jsonData["title"] ?? "");
 		$script->setDescription($jsonData["description"] ?? "");
 		$script->setProgram($jsonData["program"] ?? "");
-		$script->setMimetype($jsonData["mimetype"] ?? "");
+
+		// For backwards compatibility we allow the old `mimetype` type
+		$fileTypes = $jsonData["fileTypes"] ?? [$jsonData["mimetype"]] ?: [];
+		$script->setFileTypesArray($fileTypes);
 
 		$enabled = $jsonData["enabled"] ?? 0;
 		$enabled = is_integer($enabled) ? $enabled : 0;
@@ -69,7 +86,7 @@ class Script extends Entity implements JsonSerializable {
 			'enabled' => $this->enabled,
 			'limitGroups' => $this->getLimitGroupsArray(),
 			'public' => $this->public,
-			'mimetype' => $this->mimetype
+			'fileTypes' => $this->getFileTypesArray()
 		];
 	}
 }

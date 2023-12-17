@@ -1,3 +1,5 @@
+import { Node } from "@nextcloud/files"
+
 export interface Script {
 	id: number
 	title: string
@@ -6,7 +8,8 @@ export interface Script {
 	enabled: boolean
 	limitGroups: string[]
 	public: boolean
-	mimetype: string
+	mimetype: string // mimetype Deprecated remove in future release
+	fileTypes: string[]
 }
 
 export interface ScriptInput {
@@ -38,7 +41,8 @@ export function defaultScript(): Script {
 		program: '',
 		public: false,
 		limitGroups: [],
-		mimetype: ''
+		mimetype: '',
+		fileTypes: [],
 	}
 }
 
@@ -72,4 +76,20 @@ export function defaultScriptInputOptions(): ScriptInputOptions {
 		allowMultiple: false,
 		textarea: false,
 	}
+}
+
+export function scriptAllowedForNodes(script: Script, nodes: Node[]): boolean {
+	if (script.fileTypes.length === 0) {
+		return true
+	}
+
+	const scriptMimes = new Set(script.fileTypes)
+	return nodes.every((node) => {
+		if (scriptMimes.has(node.mime)) {
+			return true;
+		}
+
+		const extension = node.basename.split(".").pop()
+		return scriptMimes.has(extension) || scriptMimes.has("." + extension)
+	})
 }

@@ -59,6 +59,7 @@ import {registerMenuOption, reloadCurrentDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
 import {Node} from "@nextcloud/files";
+import {scriptAllowedForNodes} from "../types/script";
 
 export default {
 	name: 'ScriptSelect',
@@ -91,7 +92,7 @@ export default {
 			return mimetypes.length === 1 ? mimetypes[0] : null
 		},
 		scripts() {
-			return this.allScripts.filter(s => !s.mimetype || s.mimetype === this.filterMimetype)
+			return this.allScripts.filter(s => scriptAllowedForNodes(s, this.selectedFiles))
 		},
 		allScripts() {
 			return this.$store.getters.getEnabledScripts
@@ -193,6 +194,7 @@ export default {
 				return // No enabled scripts: no need to attach the options
 			}
 
+			// Attach context menu options if enabled
 			const actionsInMenu = loadState('files_scripts', 'actions_in_menu', false);
 			if (actionsInMenu) {
 				this.allScripts.forEach((script) => {
@@ -200,9 +202,9 @@ export default {
 					registerMenuOption(selectFileFunc, script)
 				});
 			}
-			else {
-				registerMenuOption(this.selectFiles)
-			}
+
+			// Attach "More actions..." menu options
+			registerMenuOption(this.selectFiles)
 		},
 	},
 }

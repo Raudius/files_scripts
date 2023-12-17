@@ -6,7 +6,7 @@
 		"enabled": 0,
 		"limitGroups": [],
 		"public": 0,
-		"mimetype": "",
+		"fileTypes": [],
 		"inputs": [
 			{
 				"name": "company_name",
@@ -54,7 +54,7 @@
 		"enabled": 0,
 		"limitGroups": [],
 		"public": 0,
-		"mimetype": "application/pdf",
+		"fileTypes": ["application/pdf"],
 		"inputs": [
 			{
 				"name": "file_name",
@@ -80,7 +80,7 @@
 		"enabled": 0,
 		"limitGroups": [],
 		"public": 0,
-		"mimetype": "",
+		"fileTypes": [],
 		"inputs": []
 	},
 	{
@@ -90,7 +90,7 @@
 		"enabled": 0,
 		"limitGroups": [],
 		"public": 0,
-		"mimetype": "",
+		"fileTypes": [],
 		"inputs": [
 			{
 				"name": "output_location",

@@ -1,6 +1,6 @@
 import { translate as t } from './l10n'
 import {FileAction, Node, FileType, DefaultType, registerFileAction} from '@nextcloud/files'
-import {Script} from "./types/script";
+import {Script, scriptAllowedForNodes} from "./types/script";
 import FileCog from '@mdi/svg/svg/file-cog.svg';
 
 
@@ -34,28 +34,18 @@ export type HandlerFunc = (files: Node[]) => void;
 
 function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): FileAction {
 	const displayName = script ? script.title : t('files_scripts', 'More actions')
-	let name = 'files_scripts_action'
-	let mime = 'all'
-	if (script) {
-		name += script.id
-		mime = script.mimetype ? script.mimetype : 'all'
-	}
+	const id = 'files_scripts_action' + (script ? script.id : "")
+	const order = 1000 + (script ? 0 : 1)
 
 	return {
-		id: name,
+		id: id,
 		displayName: (files, view): string => displayName,
 		title: (files, view): string => displayName,
 		iconSvgInline: (files, view): string => FileCog,
 		enabled: (files, view) => {
-			if (mime === "all") {
-				return true
-			}
-
-			return files.some(f => {
-				return f.mime === mime
-			})
+			return script === null || scriptAllowedForNodes(script, files)
 		},
-		order: 1001,
+		order: order,
 		exec(file, view, dir) {
 			return new Promise<null>((resolve) => {
 				myHandler([file])

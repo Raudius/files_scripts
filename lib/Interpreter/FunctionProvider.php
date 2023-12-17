@@ -49,7 +49,6 @@ use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Merge;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Overlay;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Page_Count;
 use OCA\FilesScripts\Interpreter\Functions\Pdf\Pdf_Pages;
-use OCA\FilesScripts\Interpreter\Functions\Template\Html_To_Pdf;
 use OCA\FilesScripts\Interpreter\Functions\Template\Mustache;
 use OCA\FilesScripts\Interpreter\Functions\Util\_Include;
 use OCA\FilesScripts\Interpreter\Functions\Util\Create_Date_Time;
@@ -83,7 +82,7 @@ class FunctionProvider implements IFunctionProvider {
 		Abort $f15,
 		Get_Input $f16,
 		Get_Input_Files $f17,
-		Html_To_Pdf $f19,
+		//Html_To_Pdf $f19,
 		Mustache $f20,
 		Sort $f21,
 		Json             $f22,

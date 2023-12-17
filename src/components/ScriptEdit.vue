@@ -45,11 +45,11 @@
 				/>
 
 				<NcCheckboxRadioSwitch type="switch" :checked.sync="limitMimesEnabled" @update:checked="toggleLimitMimes">
-					{{ t('files_scripts', 'Limit to specific MIME type') }}
+					{{ t('files_scripts', 'Limit by file types') }}
 				</NcCheckboxRadioSwitch>
 				<FreeSelect v-if="limitMimesEnabled"
 			 		v-model="fileTypes"
-				 	:label="t('files_scripts', 'MIME type (e.g. text/plain)')"
+				 	:label="t('files_scripts', 'Media type or file extension  (e.g. text/plain, doc)')"
 				/>
 
 				<EditInputs :script-id="script.id" @changed="updateInputs" />

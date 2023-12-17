@@ -89,7 +89,7 @@ export function scriptAllowedForNodes(script: Script, nodes: Node[]): boolean {
 			return true;
 		}
 
-		const extension = "." + node.basename.split(".").pop()
-		return scriptMimes.has(extension)
+		const extension = node.basename.split(".").pop()
+		return scriptMimes.has(extension) || scriptMimes.has("." + extension)
 	})
 }

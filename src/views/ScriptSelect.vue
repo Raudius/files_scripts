@@ -55,9 +55,10 @@ import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
 import {api} from '../api/script'
 import {translate as t} from '../l10n'
-import {registerMultiMenuOptions, registerSingleMenuOptions, reloadCurrentDirectory} from '../files'
+import {registerMenuOption, reloadCurrentDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
+import {Node} from "@nextcloud/files";
 
 export default {
 	name: 'ScriptSelect',
@@ -76,7 +77,7 @@ export default {
 			showModal: false,
 			isRunning: false,
 			selectedScript: null,
-			selectedFiles: [],
+			selectedFiles: [] as Node[],
 			outputDirectory: null,
 			scriptInputs: [],
 			loadingScriptInputs: false,
@@ -86,7 +87,7 @@ export default {
 
 	computed: {
 		filterMimetype() {
-			const mimetypes = [ ...new Set(this.selectedFiles.map(f => f.mimetype)) ]
+			const mimetypes = [ ...new Set(this.selectedFiles.map(f => f.mime)) ]
 			return mimetypes.length === 1 ? mimetypes[0] : null
 		},
 		scripts() {
@@ -124,7 +125,7 @@ export default {
 		},
 		async selectScript(script) {
 			this.selectedScript = script
-			this.outputDirectory = this.selectedFiles[0].path ?? '/'
+			this.outputDirectory = this.selectedFiles[0].dirname
 
 			this.loadingScriptInputs = true
 			this.scriptInputs = script ? await api.getScriptInputs(script.id) : []
@@ -141,7 +142,7 @@ export default {
 
 			try {
 				let response = await api.runScript(this.selectedScript, this.scriptInputs, this.selectedFiles)
-				reloadCurrentDirectory()
+				reloadCurrentDirectory(null)
 
 				view_files = response.view_files ?? [];
 				messages = response.messages ?? []
@@ -171,16 +172,19 @@ export default {
 		/**
 		 * Select the files and optionally the script (if selecting directly from the file menu)
 		 */
-		selectFiles(files, script) {
+		selectFiles(files) {
 			this.selectedFiles = files
 			this.showScriptSelection = true
 
-			if (script) {
+			this.showModal = true
+		},
+
+		selectFilesWithScript(script) {
+			return (files: Node[]) => {
+				this.selectFiles(files)
 				this.selectScript(script)
 				this.showScriptSelection = false
 			}
-
-			this.showModal = true
 		},
 
 		attachMenuOption() {
@@ -189,16 +193,15 @@ export default {
 				return // No enabled scripts: no need to attach the options
 			}
 
-			registerMultiMenuOptions(this.selectFiles);
-
 			const actionsInMenu = loadState('files_scripts', 'actions_in_menu', false);
 			if (actionsInMenu) {
 				this.allScripts.forEach((script) => {
-					registerSingleMenuOptions(this.selectFiles, script)
+					const selectFileFunc = this.selectFilesWithScript(script)
+					registerMenuOption(selectFileFunc, script)
 				});
 			}
 			else {
-				registerSingleMenuOptions(this.selectFiles)
+				registerMenuOption(this.selectFiles)
 			}
 		},
 	},

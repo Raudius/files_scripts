@@ -3,7 +3,8 @@
 		<ScriptEdit />
 
 		<!-- File actions section -->
-		<NcSettingsSection :title="t('files_scripts', 'File actions')"
+		<NcSettingsSection
+			:name="t('files_scripts', 'File actions')"
 		 	:limitWidth="false"
 			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
 			:doc-url="docUrl">
@@ -43,7 +44,7 @@
 		<!-- Direct menu items -->
 		<NcSettingsSection
 			:limitWidth="false"
-			:title="t('files_scripts', 'Actions in menu')"
+			:name="t('files_scripts', 'Actions in menu')"
 			:description="t('files_scripts', 'Shows file actions directly in the file menu, instead of needing to select it through the \'More actions\' modal.')" >
 			<NcCheckboxRadioSwitch type="switch" :checked="this.actionsInMenu" @update:checked="toggleActionsInMenu">
 				{{ t('files_scripts', 'Actions in menu') }}
@@ -53,7 +54,7 @@
 		<!-- PHP interpreter section -->
 		<NcSettingsSection
 			:limitWidth="false"
-			:title="t('files_scripts', 'Experimental interpreter')"
+			:name="t('files_scripts', 'Experimental interpreter')"
 			:description="t('files_scripts', 'It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.')"
 		>
 			<NcCheckboxRadioSwitch type="switch" :checked="this.usePhpInterpreter" @update:checked="toggleExperimentalInterpreter">
@@ -76,7 +77,7 @@ import { Script } from '../types/script'
 import { translate as t } from '../l10n'
 import axios from "@nextcloud/axios";
 import {generateUrl} from "@nextcloud/router";
-import { version as appVersion } from "../../package.json"
+import packageInfo from "../../package.json"
 
 export default {
 	name: 'Settings',
@@ -90,7 +91,7 @@ export default {
 		ScriptCard,
 		Plus,
 		FileCog,
-		appVersion,
+		packageInfo,
 	},
 
 	computed: {
@@ -108,7 +109,7 @@ export default {
 			usePhpInterpreter: loadState('files_scripts', 'use_php_interpreter', false),
 			actionsInMenu: loadState('files_scripts', 'actions_in_menu', false),
 			pluginAvailable: loadState('files_scripts', 'lua_plugin_available', false),
-			docUrl: `https://github.com/Raudius/files_scripts/blob/v${appVersion}/docs/Admin.md`
+			docUrl: `https://github.com/Raudius/files_scripts/blob/v${packageInfo.version}/docs/Admin.md`
 		}
 	},
 

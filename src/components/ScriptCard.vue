@@ -1,6 +1,6 @@
 <template>
 	<NcListItem v-if="script"
-		:title="script.title"
+		:name="script.title"
 		:details="enabledText()"
 		:force-display-actions="true"
 		@click="editScript">

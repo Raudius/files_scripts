@@ -1,14 +1,38 @@
 import { translate as t } from './l10n'
+import {FileAction, Node, FileType, DefaultType, registerFileAction} from '@nextcloud/files'
+import {Script} from "./types/script";
+import FileCog from '@mdi/svg/svg/file-cog.svg';
 
-export function reloadCurrentDirectory() {
-	const fileList = OCA.Files?.App?.fileList ?? OCA?.Sharing?.PublicApp?.fileList
-	if (!fileList) {
-		return
-	}
-	fileList.changeDirectory(fileList.getCurrentDirectory(), true, true)
+
+export const OpenFileAction = new FileAction({
+	id: 'open-in-files-recent',
+	displayName: () => t('files', 'Open in Files'),
+	iconSvgInline: () => '',
+
+	enabled: (nodes, view) => view.id === 'recent',
+
+	async exec(node: Node) {
+		let dir = node.dirname
+		if (node.type === FileType.Folder) {
+			dir = dir + '/' + node.basename
+		}
+
+		return null
+	},
+
+	// Before openFolderAction
+	order: -1000,
+	default: DefaultType.HIDDEN,
+})
+
+
+export function reloadCurrentDirectory(node: Node) {
+	OpenFileAction.exec(node, null, null)
 }
 
-function buildActionObject(myHandler, script=null) {
+export type HandlerFunc = (files: Node[]) => void;
+
+function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): FileAction {
 	const displayName = script ? script.title : t('files_scripts', 'More actions')
 	let name = 'files_scripts_action'
 	let mime = 'all'
@@ -18,44 +42,37 @@ function buildActionObject(myHandler, script=null) {
 	}
 
 	return {
-		name,
-		displayName,
-		mime,
-		mimetype: mime,
-		permissions: OC.PERMISSION_READ,
+		id: name,
+		displayName: (files, view): string => displayName,
+		title: (files, view): string => displayName,
+		iconSvgInline: (files, view): string => FileCog,
+		enabled: (files, view) => {
+			if (mime === "all") {
+				return true
+			}
+
+			return files.some(f => {
+				return f.mime === mime
+			})
+		},
 		order: 1001,
-		iconClass: 'icon-files_scripts',
-
-		// For multi-file picker
-		action: (files) => {
-			myHandler(files, script)
+		exec(file, view, dir) {
+			return new Promise<null>((resolve) => {
+				myHandler([file])
+				resolve(null)
+			})
 		},
-		// For single-file picker
-		actionHandler: (filePath, context) => {
-			const file = context?.fileInfoModel?.attributes
-			file && myHandler([file], script)
+		execBatch(files, view, dir) {
+			return new Promise<boolean[]>((resolve) => {
+				myHandler(files)
+				return resolve([])
+			})
 		},
-	}
+	} as FileAction
 }
 
-export function registerSingleMenuOptions(handler, script=null) {
+export function registerMenuOption(handler: HandlerFunc, script=null) {
 	const actionObject = buildActionObject(handler, script)
-	if (OCA.Files && OCA.Files.fileActions) {
-		OCA.Files.fileActions.registerAction(actionObject)
-	}
+	registerFileAction(actionObject)
 }
 
-export function registerMultiMenuOptions(handler) {
-	const actionObject = buildActionObject(handler)
-
-	// Public share multiselect, wait two seconds to make sure the fileList is initialized
-	setTimeout(() => {
-		if (OCA.Files && OCA.Files.App && OCA.Files.App.fileList) {
-			OCA.Files.App.fileList.registerMultiSelectFileAction(actionObject)
-		}
-
-		if (OCA.Sharing && OCA.Sharing.PublicApp && OCA.Sharing.PublicApp.fileList) {
-			OCA.Sharing.PublicApp.fileList.registerMultiSelectFileAction(actionObject)
-		}
-	}, 2000)
-}

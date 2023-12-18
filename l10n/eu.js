@@ -44,8 +44,6 @@ OC.L10N.register(
     "Allow on public shares" : "Onartu partekatze publikoetan",
     "Limit to groups" : "Mugatu taldeetara",
     "Select groups allowed to use this action" : "Hautatu ekintza hau erabiltzeko baimendutako taldeak",
-    "Limit to specific MIME type" : "Mugatu MIME mota zehatzera",
-    "MIME type (e.g. text/plain)" : "MIME mota (adibidez, testua/laua)",
     "Saved" : "Gordeta",
     "An error occurred during saving" : "Errorea gertatu da gordetzean",
     "Unknown error" : "Errore ezezaguna",
@@ -64,6 +62,9 @@ OC.L10N.register(
     "Experimental interpreter" : "Interprete esperimentala",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Oso gomendagarria da PHP Lua luzapena zure zerbitzarian exekutatzea. Hori posible ez bada, Lua interprete esperimentala erabil daiteke. Interprete hau garatzen ari da oraindik eta baliteke beti espero diren emaitzak ez ematea.",
     "Use experimental interpreter" : "Erabili interprete esperimentala",
-    "More actions" : "Ekintza gehiago"
+    "Open in Files" : "Ireki Fitxategiak aplikazioan",
+    "More actions" : "Ekintza gehiago",
+    "Limit to specific MIME type" : "Mugatu MIME mota zehatzera",
+    "MIME type (e.g. text/plain)" : "MIME mota (adibidez, testua/laua)"
 },
 "nplurals=2; plural=(n != 1);");

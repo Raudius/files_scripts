@@ -12,6 +12,7 @@ OC.L10N.register(
     "Limit to groups" : "Limitează pentru grupuri",
     "Saved" : "Salvat",
     "Unknown error" : "Eroare necunoscută",
+    "Open in Files" : "Deschide în Fișiere",
     "More actions" : "Mai multe acțiuni"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

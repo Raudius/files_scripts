@@ -41,8 +41,6 @@
     "Allow on public shares" : "Umožnit na veřejných sdíleních",
     "Limit to groups" : "Omezit na skupiny",
     "Select groups allowed to use this action" : "Vyberte skupiny, kterým bude umožněno použít tuto akci",
-    "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
-    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)",
     "Saved" : "Uloženo",
     "An error occurred during saving" : "Při ukládání došlo k chybě",
     "Unknown error" : "Neznámá chyba",
@@ -61,6 +59,9 @@
     "Experimental interpreter" : "Experimentální interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Je silně doporučováno provozovat Lua jako PHP rozšíření na serveru. Pokud to není možné, je možné použít experimentální Lua interpreter. Ten je zatím ve vývoji a nemusí vždy poskytovat očekávané výsledky.",
     "Use experimental interpreter" : "Použít experimentální interpreter",
-    "More actions" : "Další akce"
+    "Open in Files" : "Otevřít v Souborech",
+    "More actions" : "Další akce",
+    "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
+    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

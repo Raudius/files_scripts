@@ -42,6 +42,7 @@ OC.L10N.register(
     "New action" : "Uusi toiminto",
     "Experimental interpreter" : "Kokeellinen tulkki",
     "Use experimental interpreter" : "Käytä kokeellista tulkkia",
+    "Open in Files" : "Avaa tiedostosovelluksessa",
     "More actions" : "Lisää toimintoja"
 },
 "nplurals=2; plural=(n != 1);");

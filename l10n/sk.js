@@ -40,6 +40,7 @@ OC.L10N.register(
     "Action failed unexpectedly." : "Akcia neočakávane zlyhala.",
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Akcie so súbormi sú malé skripty v jazyku Lua, ktoré môžu vytvárať, upravovať a/alebo odstraňovať súbory programovo. Tieto akcie môžu byť spustené užívateľmi na ich súboroch. Ďalšie informácie nájdete v dokumentácii.",
     "New action" : "Nová akcia",
+    "Open in Files" : "Otvoriť v súboroch",
     "More actions" : "Viac akcií"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

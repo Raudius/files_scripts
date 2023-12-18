@@ -44,8 +44,6 @@ OC.L10N.register(
     "Allow on public shares" : "السماح في حالة المُشارَكات العامة",
     "Limit to groups" : "حصراً على مجموعات",
     "Select groups allowed to use this action" : "حدِّد المجموعات التي يحق لها استعمال هذا الإجراء",
-    "Limit to specific MIME type" : "حصراً على نوع مُحدّد من MIME",
-    "MIME type (e.g. text/plain)" : "نوع MIME (مثال: نص عادي)",
     "Saved" : "تمّ الحفظ",
     "An error occurred during saving" : "حدث خطأ أثناء الحفظ",
     "Unknown error" : "خطأ غير معروف",
@@ -64,6 +62,8 @@ OC.L10N.register(
     "Experimental interpreter" : "مُترجِم فوري interpreter تجريبي للنصوص البرمجية",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "يوصى بشدة بتشغيل امتداد PHP Lua على خادمك. إذا لم يكن ذلك ممكنًا، فيمكن استخدام مُترجِم Lua التجريبي. لا يزال هذا المترجم الفوري قيد التطوير وقد لا يُنتِج دائمًا النتائج المتوقعة.",
     "Use experimental interpreter" : "إستعمل المُترجِم الفوري interpreter التجريبي للنصوص البرمجية",
-    "More actions" : "إجراءات إضافية"
+    "More actions" : "إجراءات إضافية",
+    "Limit to specific MIME type" : "حصراً على نوع مُحدّد من MIME",
+    "MIME type (e.g. text/plain)" : "نوع MIME (مثال: نص عادي)"
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

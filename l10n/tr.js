@@ -44,8 +44,6 @@ OC.L10N.register(
     "Allow on public shares" : "Herkese açık paylaşımlarda kullanılabilsin",
     "Limit to groups" : "Şu gruplarla sınırlansın",
     "Select groups allowed to use this action" : "Bu işlemi yapabilecek grupları seçin",
-    "Limit to specific MIME type" : "Belirli MIME türleri ile sınırlansın",
-    "MIME type (e.g. text/plain)" : "MIME türü (tex/plain gibi)",
     "Saved" : "Kaydedildi",
     "An error occurred during saving" : "Kaydedilirken bir sorun çıktı",
     "Unknown error" : "Bilinmeyen sorun",
@@ -64,6 +62,9 @@ OC.L10N.register(
     "Experimental interpreter" : "Deneysel yorumlayıcı",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Sunucunuzda PHP Lua uzantısını çalıştırmanız önemle önerilir. Bu yapılamıyorsa deneysel Lua yorumlayıcısı kullanılabilir. Bu yorumlayıcı hala geliştirme aşamasındadır ve her zaman beklenen sonuçları vermeyebilir.",
     "Use experimental interpreter" : "Deneysel yorumlayıcı kullanılsın",
-    "More actions" : "Diğer işlemler"
+    "Open in Files" : "Dosyalar uygulamasında aç",
+    "More actions" : "Diğer işlemler",
+    "Limit to specific MIME type" : "Belirli MIME türleri ile sınırlansın",
+    "MIME type (e.g. text/plain)" : "MIME türü (tex/plain gibi)"
 },
 "nplurals=2; plural=(n > 1);");

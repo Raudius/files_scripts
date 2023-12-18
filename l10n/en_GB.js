@@ -44,8 +44,6 @@ OC.L10N.register(
     "Allow on public shares" : "Allow on public shares",
     "Limit to groups" : "Limit to groups",
     "Select groups allowed to use this action" : "Select groups allowed to use this action",
-    "Limit to specific MIME type" : "Limit to specific MIME type",
-    "MIME type (e.g. text/plain)" : "MIME type (e.g. text/plain)",
     "Saved" : "Saved",
     "An error occurred during saving" : "An error occurred during saving",
     "Unknown error" : "Unknown error",
@@ -64,6 +62,9 @@ OC.L10N.register(
     "Experimental interpreter" : "Experimental interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results.",
     "Use experimental interpreter" : "Use experimental interpreter",
-    "More actions" : "More actions"
+    "Open in Files" : "Open in Files",
+    "More actions" : "More actions",
+    "Limit to specific MIME type" : "Limit to specific MIME type",
+    "MIME type (e.g. text/plain)" : "MIME type (e.g. text/plain)"
 },
 "nplurals=2; plural=(n != 1);");

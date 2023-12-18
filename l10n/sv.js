@@ -41,8 +41,6 @@ OC.L10N.register(
     "Allow on public shares" : "Tillåt på offentliga delningar",
     "Limit to groups" : "Begränsa till grupper",
     "Select groups allowed to use this action" : "Välj grupper som får använda den här åtgärden",
-    "Limit to specific MIME type" : "Begränsa till specifik MIME-typ",
-    "MIME type (e.g. text/plain)" : "MIME-typ (t.ex. text/vanlig)",
     "Saved" : "Sparat",
     "An error occurred during saving" : "Ett fel uppstod under sparandet",
     "Unknown error" : "Okänt fel",
@@ -53,6 +51,9 @@ OC.L10N.register(
     "Action failed unexpectedly." : "Åtgärden misslyckades oväntat.",
     "New action" : "Ny åtgärd",
     "Actions in menu" : "Åtgärder i meny",
-    "More actions" : "Fler händelser"
+    "Open in Files" : "Öppna i Filer",
+    "More actions" : "Fler händelser",
+    "Limit to specific MIME type" : "Begränsa till specifik MIME-typ",
+    "MIME type (e.g. text/plain)" : "MIME-typ (t.ex. text/vanlig)"
 },
 "nplurals=2; plural=(n != 1);");

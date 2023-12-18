@@ -42,8 +42,6 @@
     "Allow on public shares" : "Allow on public shares",
     "Limit to groups" : "Limitar a grupos",
     "Select groups allowed to use this action" : "Select groups allowed to use this action",
-    "Limit to specific MIME type" : "Limite a um tipo de MIME específico",
-    "MIME type (e.g. text/plain)" : "Tipo MIME (por exemplo, texto/sem formatação)",
     "Saved" : "Salvo",
     "An error occurred during saving" : "Um erro ocorreu ao salvar",
     "Unknown error" : "Erro desconhecido",
@@ -62,6 +60,9 @@
     "Experimental interpreter" : "Intérprete experimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "É altamente recomendável executar a extensão PHP Lua em seu servidor. Se isso não for possível, o interpretador Lua experimental pode ser usado. Este interpretador ainda está em desenvolvimento e pode nem sempre produzir os resultados esperados.",
     "Use experimental interpreter" : "Usar intérprete experimental",
-    "More actions" : "Mais ações"
+    "Open in Files" : "Abrir em arquivos",
+    "More actions" : "Mais ações",
+    "Limit to specific MIME type" : "Limite a um tipo de MIME específico",
+    "MIME type (e.g. text/plain)" : "Tipo MIME (por exemplo, texto/sem formatação)"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

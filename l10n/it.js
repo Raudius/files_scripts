@@ -14,6 +14,7 @@ OC.L10N.register(
     "Saved" : "Salvato",
     "Unknown error" : "Errore sconosciuto",
     "Execute" : "Eseguire",
+    "Open in Files" : "Apri in File",
     "More actions" : "Altre azioni"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

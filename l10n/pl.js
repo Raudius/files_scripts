@@ -52,6 +52,7 @@ OC.L10N.register(
     "Experimental interpreter" : "Tłumacz eksperymentalny",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Zdecydowanie zaleca się uruchomienie rozszerzenia PHP Lua na swoim serwerze. Jeśli nie jest to możliwe, można użyć eksperymentalnego interpretera Lua. Ten interpreter jest wciąż w fazie rozwoju i nie zawsze może dawać oczekiwane wyniki.",
     "Use experimental interpreter" : "Użyj interpretera eksperymentalnego",
+    "Open in Files" : "Otwórz w Plikach",
     "More actions" : "Więcej akcji"
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

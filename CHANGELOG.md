@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.1
+
+### Fixed
+- Fixed incorrect interpreter initialisation when Activity app is not available.
+
 ## 3.1.0
 
 ### Announcement

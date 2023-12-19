@@ -3,7 +3,7 @@
 namespace OCA\FilesScripts\Interpreter\Functions\Nextcloud;
 
 use OCP\SystemTag\ISystemTag as Tag;
-use OC\SystemTag\SystemTagManager;
+use OCP\SystemTag\ISystemTagManager;
 
 /**
  * Trait which manages Tag (de)serialization..
@@ -20,7 +20,7 @@ trait TagsSerializerTrait {
 		];
 	}
 
-	private function deserializeTag(array $tagData, SystemTagManager $tagManager): ?Tag {
+	private function deserializeTag(array $tagData, ISystemTagManager $tagManager): ?Tag {
 		if (!is_array($tagData) || ($tagData["_type"] ?? null) !== "tag") {
 			return null;
 		}

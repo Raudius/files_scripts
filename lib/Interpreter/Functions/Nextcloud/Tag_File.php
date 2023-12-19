@@ -32,7 +32,7 @@ class Tag_File extends RegistrableFunction {
 	}
 
 	public function run($file = [], $tagData = []): bool {
-		$fileNode = $this->getFile($this->getPath($file));
+		$fileNode = $this->getNode($this->getPath($file));
 		$tag = $this->deserializeTag($tagData, $this->tagManager);
 		if (!$fileNode || !$tag) {
 			return false;

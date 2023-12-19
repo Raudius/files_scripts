@@ -19,6 +19,10 @@ class RegisterScriptFunctionsEvent extends Event implements IFunctionProvider {
 
 	public function getFunctions(): iterable {
 		foreach ($this->functionProviders as $functionProvider) {
+			if (false === $functionProvider->isRegistrable()) {
+				continue;
+			}
+
 			foreach ($functionProvider->getFunctions() as $function) {
 				yield $function;
 			}

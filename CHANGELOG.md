@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.2
+
+### Fixed
+- Fixed bug where `tag_file` would not work on folders.
+- Fixed incomplete function registration behaviour.
+
 ## 3.1.1
 
 ### Fixed

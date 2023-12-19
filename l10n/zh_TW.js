@@ -44,6 +44,8 @@ OC.L10N.register(
     "Allow on public shares" : "在公開分享上允許",
     "Limit to groups" : "群組限制",
     "Select groups allowed to use this action" : "選取允許使用此動作的群組",
+    "Limit by file types" : "按檔案類型限制",
+    "Media type or file extension (e.g. text/plain, doc)" : "媒體類型或檔案副檔名（例如：text/plain、doc）",
     "Saved" : "已儲存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "未知的錯誤",

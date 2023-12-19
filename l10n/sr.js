@@ -44,6 +44,8 @@ OC.L10N.register(
     "Allow on public shares" : "Дозволи на јавним дељењима",
     "Limit to groups" : "Ограничи на групе",
     "Select groups allowed to use this action" : "Изаберите групе којима је дозвољено да изврше ову акцију",
+    "Limit by file types" : "Ограничење по типу фајла",
+    "Media type or file extension (e.g. text/plain, doc)" : "Тип медија или екстензија фајла (нпр. text/plain, doc)",
     "Saved" : "Сачувано",
     "An error occurred during saving" : "Дошло је до грешке током чувања",
     "Unknown error" : "Непозната грешка",

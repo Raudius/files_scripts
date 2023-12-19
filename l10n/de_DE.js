@@ -44,6 +44,8 @@ OC.L10N.register(
     "Allow on public shares" : "Für öffentliche Freigaben erlauben",
     "Limit to groups" : "Auf Gruppen beschränken",
     "Select groups allowed to use this action" : "Gruppen auswählen, die diese Aktion verwenden dürfen",
+    "Limit by file types" : "Nach Dateitypen begrenzen",
+    "Media type or file extension (e.g. text/plain, doc)" : "Medientyp oder Dateierweiterung (z. B. text/plain, doc)",
     "Saved" : "Gespeichert",
     "An error occurred during saving" : "Es ist ein Fehler beim Speichern aufgetreten",
     "Unknown error" : "Unbekannter Fehler",

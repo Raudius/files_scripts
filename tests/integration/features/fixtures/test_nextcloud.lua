@@ -48,6 +48,17 @@ tag_file(sample_file, test_tag)
 file_tags = get_file_tags(sample_file)
 assertNotEmpty(file_tags)
 
+-- Test folder tagging
+folder_to_tag = new_folder(home(), "folder_to_tag")
+
+file_tags = get_file_tags(folder_to_tag)
+assertEmpty(file_tags)
+
+tag_file(folder_to_tag, test_tag)
+
+file_tags = get_file_tags(folder_to_tag)
+assertNotEmpty(file_tags)
+
 
 -- Test file untagging
 unassign_success = tag_file_unassign(sample_file, test_tag)

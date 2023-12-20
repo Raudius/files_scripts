@@ -42,6 +42,8 @@
     "Allow on public shares" : "允許在公共共享上使用",
     "Limit to groups" : "限制於群組",
     "Select groups allowed to use this action" : "選擇允許使用此操作的群組",
+    "Limit by file types" : "按檔案類型限制",
+    "Media type or file extension (e.g. text/plain, doc)" : "媒體類型或檔案副檔名（例如：text/plain、doc）",
     "Saved" : "已保存",
     "An error occurred during saving" : "儲存時發生錯誤",
     "Unknown error" : "錯誤不詳",

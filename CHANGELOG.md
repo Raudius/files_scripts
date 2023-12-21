@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.1.3
+
+### Fixed
+- Fix incomplete previous release
+- Fixed bug where `tag_file` would not work on folders.
+- Fixed incomplete function registration behaviour.
+
+## 3.1.2
+
+### Fixed
+- Fixed bug where `tag_file` would not work on folders.
+- Fixed incomplete function registration behaviour.
+
+## 3.1.1
+
+### Fixed
+- Fixed incorrect interpreter initialisation when Activity app is not available.
+
 ## 3.1.0
 
 ### Announcement

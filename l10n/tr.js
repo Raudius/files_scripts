@@ -44,6 +44,8 @@ OC.L10N.register(
     "Allow on public shares" : "Herkese açık paylaşımlarda kullanılabilsin",
     "Limit to groups" : "Şu gruplarla sınırlansın",
     "Select groups allowed to use this action" : "Bu işlemi yapabilecek grupları seçin",
+    "Limit by file types" : "Dosya türleriyle sınırla",
+    "Media type or file extension (e.g. text/plain, doc)" : "Ortam türü ya da dosya eklentisi (text/plain, doc gibi)",
     "Saved" : "Kaydedildi",
     "An error occurred during saving" : "Kaydedilirken bir sorun çıktı",
     "Unknown error" : "Bilinmeyen sorun",

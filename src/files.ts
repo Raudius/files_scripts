@@ -1,13 +1,10 @@
 import { translate as t } from './l10n'
-import {FileAction, Node, FileType, DefaultType, registerFileAction} from '@nextcloud/files'
+import {FileAction, Node, registerFileAction, View} from '@nextcloud/files'
 import {Script, scriptAllowedForNodes} from "./types/script";
 import FileCog from '@mdi/svg/svg/file-cog.svg';
+import {emit} from "@nextcloud/event-bus"
+import {NodeInfo} from "./types/files";
 
-
-export const OpenFileAction = new FileAction({
-	id: 'open-in-files-recent',
-	displayName: () => t('files', 'Open in Files'),
-	iconSvgInline: () => '',
 
 	enabled: (nodes, view) => view.id === 'recent',
 
@@ -30,12 +27,35 @@ export function reloadCurrentDirectory(node: Node) {
 	OpenFileAction.exec(node, null, null)
 }
 
-export type HandlerFunc = (files: Node[]) => void;
+export type HandlerFunc = (files: NodeInfo[], currentFolder) => void;
+
+function getNodeInfo(node: Node): NodeInfo {
+	return {
+		id: node.fileid,
+		baseName: node.basename,
+		fullPath: node.path
+	} as NodeInfo
+}
 
 function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): FileAction {
 	const displayName = script ? script.title : t('files_scripts', 'More actions')
 	const id = 'files_scripts_action' + (script ? script.id : "")
 	const order = 1000 + (script ? 0 : 1)
+
+	const handleExec = (handler: HandlerFunc, nodes: Node[], view: View, dir: string): Promise<void> => {
+		const nodeInfos = nodes.map(getNodeInfo)
+
+		return new Promise<void>((resolve) => {
+			if (!view) {
+				handler(nodeInfos, null)
+				resolve()
+			} else {
+				view.getContents(dir).then(function (value) {
+					myHandler(nodeInfos, value.folder)
+				}).then(resolve)
+			}
+		})
+	}
 
 	return {
 		id: id,
@@ -47,22 +67,79 @@ function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): 
 		},
 		order: order,
 		exec(file, view, dir) {
-			return new Promise<null>((resolve) => {
-				myHandler([file])
-				resolve(null)
-			})
+			handleExec(myHandler, [file], view, dir)
 		},
 		execBatch(files, view, dir) {
-			return new Promise<boolean[]>((resolve) => {
-				myHandler(files)
-				return resolve([])
-			})
+			handleExec(myHandler, files, view, dir)
 		},
 	} as FileAction
+}
+
+function nodeFromLegacy(file: any): Node {
+	return {
+		get fileid(): number | undefined {
+			return file.id
+		},
+		get basename(): string {
+			return file.name
+		},
+		get path(): string {
+			return file.path
+		}
+	} as Node
+}
+
+function registerPublicSharingFileAction(action: FileAction, script: Script) {
+	if (!OCA.Sharing || !OCA.Sharing.PublicApp || !OCA.Sharing.PublicApp.fileList) {
+		return
+	}
+
+	let mimes = ["all"]
+	if (script) {
+		mimes = script.fileTypes
+	}
+
+	for (const mime of mimes) {
+		const legacyAction = {
+			name: action.id,
+			displayName: action.displayName(null, null),
+			mime: mime,
+			mimetype: mime,
+			permissions: OC.PERMISSION_READ,
+			order: 1001,
+			iconClass: 'icon-files_scripts',
+
+			// For multi-file picker
+			action: (files: any[]) => {
+				const nodes = files.map(nodeFromLegacy)
+				action.execBatch(nodes, null, null)
+			},
+			// For single-file picker
+			actionHandler: (filePath, context) => {
+				const file = context?.fileInfoModel?.attributes
+				if (!file) {
+					console.log("[files_scripts] Failed to find file for action handler.")
+					return
+				}
+
+				const node = nodeFromLegacy(file)
+				action.exec(node, null, null)
+			},
+		}
+
+		OCA.Sharing.PublicApp.fileList.registerMultiSelectFileAction(legacyAction)
+		OCA.Sharing.PublicApp.fileList.fileActions.registerAction(legacyAction)
+	}
 }
 
 export function registerMenuOption(handler: HandlerFunc, script=null) {
 	const actionObject = buildActionObject(handler, script)
 	registerFileAction(actionObject)
+
+	// FIXME: 	Public shares are still using the legacy file viewer, if it ever updates to the Vue version
+	//  		we should update this code.
+	setTimeout(() => {
+		registerPublicSharingFileAction(actionObject, script)
+	}, 2000)
 }
 

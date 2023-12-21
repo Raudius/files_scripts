@@ -55,11 +55,12 @@ import Play from 'vue-material-design-icons/Play.vue'
 import Folder from 'vue-material-design-icons/Folder.vue'
 import {api} from '../api/script'
 import {translate as t} from '../l10n'
-import {registerMenuOption, reloadCurrentDirectory} from '../files'
+import {registerMenuOption, reloadDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
 import {Node} from "@nextcloud/files";
 import {scriptAllowedForNodes} from "../types/script";
+import {NodeInfo} from "../types/files";
 
 export default {
 	name: 'ScriptSelect',
@@ -78,7 +79,8 @@ export default {
 			showModal: false,
 			isRunning: false,
 			selectedScript: null,
-			selectedFiles: [] as Node[],
+			selectedFiles: [] as NodeInfo[],
+			currentFolder: null as Node,
 			outputDirectory: null,
 			scriptInputs: [],
 			loadingScriptInputs: false,
@@ -122,6 +124,7 @@ export default {
 			this.isRunning = false
 			this.selectedScript = null
 			this.selectedFiles = null
+			this.currentFolder = null
 			this.scriptInputs = []
 		},
 		async selectScript(script) {
@@ -143,7 +146,7 @@ export default {
 
 			try {
 				let response = await api.runScript(this.selectedScript, this.scriptInputs, this.selectedFiles)
-				reloadCurrentDirectory(null)
+				reloadDirectory(this.currentFolder)
 
 				view_files = response.view_files ?? [];
 				messages = response.messages ?? []
@@ -173,15 +176,16 @@ export default {
 		/**
 		 * Select the files and optionally the script (if selecting directly from the file menu)
 		 */
-		selectFiles(files) {
+		selectFiles(files: NodeInfo[], currentFolder) {
 			this.selectedFiles = files
 			this.showScriptSelection = true
+			this.currentFolder = currentFolder
 
 			this.showModal = true
 		},
 
 		selectFilesWithScript(script) {
-			return (files: Node[]) => {
+			return (files: NodeInfo[]) => {
 				this.selectFiles(files)
 				this.selectScript(script)
 				this.showScriptSelection = false

@@ -6,25 +6,15 @@ import {emit} from "@nextcloud/event-bus"
 import {NodeInfo} from "./types/files";
 
 
-	enabled: (nodes, view) => view.id === 'recent',
+export function reloadDirectory(node: Node){
+	node && emit("files:node:updated", node)
 
-	async exec(node: Node) {
-		let dir = node.dirname
-		if (node.type === FileType.Folder) {
-			dir = dir + '/' + node.basename
-		}
-
-		return null
-	},
-
-	// Before openFolderAction
-	order: -1000,
-	default: DefaultType.HIDDEN,
-})
-
-
-export function reloadCurrentDirectory(node: Node) {
-	OpenFileAction.exec(node, null, null)
+	// Legacy reload for public shares
+	const fileList = OCA?.Sharing?.PublicApp?.fileList
+	if (!fileList) {
+		return
+	}
+	fileList.changeDirectory(fileList.getCurrentDirectory(), true, true)
 }
 
 export type HandlerFunc = (files: NodeInfo[], currentFolder) => void;

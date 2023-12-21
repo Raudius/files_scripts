@@ -170,7 +170,7 @@ class ScriptController extends Controller {
 
 		$filePaths = [];
 		foreach ($files as $file) {
-			$filePaths[] = $file['_attributes']['filename']; // TODO dont rely on front-end structure? Use standardised Node representation
+			$filePaths[] = $file['baseName'];
 		}
 
 		$groupedInputs = [];

@@ -49,12 +49,15 @@ class ContextFactory {
 			$share = $this->shareManager->getShareByToken($shareToken);
 			$shareFolder = $share->getNode();
 
-			if (!$shareFolder instanceof \OC\Files\Node\Folder) {
+			if (!$shareFolder instanceof \OCP\Files\Folder) {
 				$this->logger->error("Blocked attempt to run file action with share token for a file (folder expected).", [
 					"shareToken" => $shareToken
 				]);
 				return null;
 			}
+
+			$context = $this->createContext($shareFolder, $scriptInputs, $filePaths);
+			$context->setPermissionsOverride($share->getPermissions());
 		} catch (\Exception $e) {
 			$this->logger->error("Failed to initialize share file action context.", [
 				"exception_message" => $e->getMessage(),
@@ -64,8 +67,6 @@ class ContextFactory {
 			return null;
 		}
 
-		$context = $this->createContext($shareFolder, $scriptInputs, $filePaths);
-		$context->setPermissionsOverride($share->getPermissions());
 
 		return $context;
 	}

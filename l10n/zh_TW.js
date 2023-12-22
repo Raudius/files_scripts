@@ -64,7 +64,6 @@ OC.L10N.register(
     "Experimental interpreter" : "實驗性的直譯器",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "強烈建議在您的伺服器上執行 PHP Lua 擴充套件。若沒辦法這麼做，也可以使用實驗性的 Lua 直譯器。此直譯器仍在開發中，可能無法產生預期的結果。",
     "Use experimental interpreter" : "使用實驗性的直譯器",
-    "Open in Files" : "在「檔案」應用程式中開啟",
     "More actions" : "更多動作",
     "Limit to specific MIME type" : "限制為特定的 MIME 類型",
     "MIME type (e.g. text/plain)" : "MIME 類型（例如 text/plain）"

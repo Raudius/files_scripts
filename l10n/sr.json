@@ -62,7 +62,6 @@
     "Experimental interpreter" : "Експериментални интерпретер",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Снажно се препоручује да на свом серверу извршавате PHP Lua проширење. Ако то није могуће, може да се користи експериментални  Lua интерпретер. Овај интерпретер се још увек развија и можда неће увек да произведе очекиване резултате.",
     "Use experimental interpreter" : "Користи експериментални интерпретер",
-    "Open in Files" : "Отвори у Фајловима",
     "More actions" : "Још акција",
     "Limit to specific MIME type" : "Ограничи на одређени MIME тип",
     "MIME type (e.g. text/plain)" : "MIME тип (нпр. text/plain)"

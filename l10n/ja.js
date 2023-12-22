@@ -12,7 +12,6 @@ OC.L10N.register(
     "Limit to groups" : "グループに制限する",
     "Saved" : "保存しました",
     "Unknown error" : "不明なエラー",
-    "Open in Files" : "ファイルアプリで開く",
     "More actions" : "その他のアクション"
 },
 "nplurals=1; plural=0;");

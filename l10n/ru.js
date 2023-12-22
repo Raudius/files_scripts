@@ -59,7 +59,6 @@ OC.L10N.register(
     "Experimental interpreter" : "Экспериментальный интерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Настоятельно рекомендуется запустить расширение PHP Lua на вашем сервере. Если это невозможно, можно использовать экспериментальный интерпретатор Lua. Этот интерпретатор все еще находится в стадии разработки и не всегда может давать ожидаемые результаты.",
     "Use experimental interpreter" : "Использовать экспериментальный интерпретатор",
-    "Open in Files" : "Открыть в Файлах",
     "More actions" : "Больше действий",
     "Limit to specific MIME type" : "Ограничение по определенным типам MIME"
 },

@@ -12,7 +12,6 @@ OC.L10N.register(
     "Limit to groups" : "Takmarka við hópa",
     "Saved" : "Vistað",
     "Unknown error" : "Óþekkt villa",
-    "Open in Files" : "Opna í skráaforritinu",
     "More actions" : "Fleiri aðgerðir"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

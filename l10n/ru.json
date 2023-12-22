@@ -57,7 +57,6 @@
     "Experimental interpreter" : "Экспериментальный интерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Настоятельно рекомендуется запустить расширение PHP Lua на вашем сервере. Если это невозможно, можно использовать экспериментальный интерпретатор Lua. Этот интерпретатор все еще находится в стадии разработки и не всегда может давать ожидаемые результаты.",
     "Use experimental interpreter" : "Использовать экспериментальный интерпретатор",
-    "Open in Files" : "Открыть в Файлах",
     "More actions" : "Больше действий",
     "Limit to specific MIME type" : "Ограничение по определенным типам MIME"
 },"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"

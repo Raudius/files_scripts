@@ -12,7 +12,6 @@ OC.L10N.register(
     "Limit to groups" : "Giới hạn nhóm",
     "Saved" : "Đã lưu",
     "Unknown error" : "Lỗi không xác định",
-    "Open in Files" : "Mở trong Tệp",
     "More actions" : "Nhiều hành động hơn"
 },
 "nplurals=1; plural=0;");

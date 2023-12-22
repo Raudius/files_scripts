@@ -59,7 +59,6 @@
     "Experimental interpreter" : "Kísérleti parancsértelmező",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Ajánlatos, hogy a saját kiszolgálóján lévő PHP lua kiterjesztést futtassa. Ha ez nem lehetséges, akkor használhatja a kísérleti Lua értelmezőt. Ez a parancsértelmező még fejlesztés alatt áll, és nem biztos, hogy mindig a várt eredményt kapja.",
     "Use experimental interpreter" : "Kísérleti parancsértelmező használata",
-    "Open in Files" : "Megnyitás a Fájlokban",
     "More actions" : "További műveletek",
     "Limit to specific MIME type" : "Adott MIME-típusokra korlátozás",
     "MIME type (e.g. text/plain)" : "MIME típus (pl. text/plain)"

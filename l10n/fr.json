@@ -60,7 +60,6 @@
     "Experimental interpreter" : "Interpréteur expérimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Il est vivement recommandé de faire tourner l'extension PHP Lua sur votre serveur. Si cela n'est pas possible, l'interpréteur expérimental Lua peut être utilisé. Cet interpréteur est toujours en développement et peut ne pas toujours produire les résultats attendus.",
     "Use experimental interpreter" : "Utiliser l'interpréteur expérimental",
-    "Open in Files" : "Ouvrir dans Fichiers",
     "More actions" : "Plus d'actions…",
     "Limit to specific MIME type" : "Limiter à des types MIME spécifiques",
     "MIME type (e.g. text/plain)" : "Type MIME (ex. text/plain)"

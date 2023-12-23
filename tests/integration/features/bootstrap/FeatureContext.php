@@ -443,6 +443,7 @@ class FeatureContext implements Context {
 			"public" => false,
 			"limitGroups" => [],
 			"fileTypes" => [],
+			"showInContext" => false,
 		];
 	}
 

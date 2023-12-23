@@ -71,11 +71,12 @@ class Script extends Entity implements JsonSerializable {
 		$script->setEnabled($enabled);
 
 		$public = $jsonData["public"] ?? 0;
-		if (!is_integer($public)) {
-			$public = 0;
-		}
+		$public = is_integer($public) ? $public : 0;
 		$script->setPublic($public);
 
+		$showInContext = $jsonData["showInContext"] ?? 0;
+		$showInContext = is_integer($showInContext) ? $showInContext : 0;
+		$script->setShowInContext($showInContext);
 
 		return $script;
 	}

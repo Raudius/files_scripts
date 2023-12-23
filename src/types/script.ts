@@ -9,6 +9,7 @@ export interface Script {
 	limitGroups: string[]
 	public: boolean
 	mimetype: string // mimetype Deprecated remove in future release
+	showInContext: boolean
 	fileTypes: string[]
 }
 
@@ -43,6 +44,7 @@ export function defaultScript(): Script {
 		limitGroups: [],
 		mimetype: '',
 		fileTypes: [],
+		showInContext: false
 	}
 }
 

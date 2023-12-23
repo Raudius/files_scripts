@@ -47,7 +47,6 @@
 </template>
 
 <script lang="ts">
-import {loadState} from '@nextcloud/initial-state'
 import {NcButton, NcModal, NcSelect} from "@nextcloud/vue";
 import FileCog from 'vue-material-design-icons/FileCog.vue'
 import ConsoleLine from 'vue-material-design-icons/ConsoleLine.vue'
@@ -59,7 +58,7 @@ import {registerMenuOption, reloadDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
 import {Node} from "@nextcloud/files";
-import {scriptAllowedForNodes} from "../types/script";
+import {Script, scriptAllowedForNodes} from "../types/script";
 import {NodeInfo} from "../types/files";
 
 export default {
@@ -89,26 +88,24 @@ export default {
 	},
 
 	computed: {
-		filterMimetype() {
-			const mimetypes = [ ...new Set(this.selectedFiles.map(f => f.mime)) ]
-			return mimetypes.length === 1 ? mimetypes[0] : null
-		},
-		scripts() {
+		scripts(): Script[] {
 			return this.allScripts.filter(s => scriptAllowedForNodes(s, this.selectedFiles))
 		},
-		allScripts() {
+		allScripts(): Script[] {
 			return this.$store.getters.getEnabledScripts
 		},
-		selectedDescription() {
+		selectedDescription(): string {
 			return this.selectedScript ? this.selectedScript.description : ''
 		},
-		readyToRun() {
+		readyToRun(): boolean {
 			return this.selectedScript && !this.loadingScriptInputs && !this.isRunning
 		},
 	},
 	watch: {
 		showModal(newVal) {
-			(newVal === true && !this.scripts) && this.$store.dispatch('fetchScripts')
+			if (newVal === true && !this.scripts) {
+				this.$store.dispatch('fetchScripts')
+			}
 		},
 	},
 
@@ -198,14 +195,12 @@ export default {
 				return // No enabled scripts: no need to attach the options
 			}
 
-			// Attach context menu options if enabled
-			const actionsInMenu = loadState('files_scripts', 'actions_in_menu', false);
-			if (actionsInMenu) {
-				this.allScripts.forEach((script) => {
+			this.allScripts.forEach((script: Script) => {
+				if (script.showInContext) {
 					const selectFileFunc = this.selectFilesWithScript(script)
 					registerMenuOption(selectFileFunc, script)
-				});
-			}
+				}
+			});
 
 			// Attach "More actions..." menu options
 			registerMenuOption(this.selectFiles)

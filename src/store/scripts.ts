@@ -55,6 +55,7 @@ const mutations = {
 			description: newValues.description ?? state.selectedScript.description,
 			enabled: newValues.enabled ?? state.selectedScript.enabled,
 			limitGroups: newValues.limitGroups ?? state.selectedScript.limitGroups,
+			showInContext: newValues.showInContext ?? state.selectedScript.showInContext,
 			fileTypes: newValues.fileTypes ?? state.selectedScript.fileTypes
 		}
 	},

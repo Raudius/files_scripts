@@ -35,9 +35,6 @@ class SettingsController extends Controller {
 			case Application::APP_CONFIG_USE_PHP_INTERPRETER:
 				$this->config->setAppValue(Application::APP_ID, Application::APP_CONFIG_USE_PHP_INTERPRETER, $value);
 				return $success;
-			case Application::APP_CONFIG_ACTIONS_IN_MENU:
-				$this->config->setAppValue(Application::APP_ID, Application::APP_CONFIG_ACTIONS_IN_MENU, $value);
-				return $success;
 			default:
 				return new JSONResponse(['error' => 'Unknown option with name: ' . $name], Http::STATUS_BAD_REQUEST);
 		}

@@ -30,9 +30,6 @@ class LoadAdditionalListener implements IEventListener {
 			return;
 		}
 
-		$actionsInMenu = $this->config->getAppValue(Application::APP_ID, Application::APP_CONFIG_ACTIONS_IN_MENU, 'false') === 'true';
-		$this->initialStateService->provideInitialState('actions_in_menu', $actionsInMenu);
-
 		Util::addStyle(Application::APP_ID, 'global');
 		Util::addScript(Application::APP_ID, 'files_scripts-main');
 	}

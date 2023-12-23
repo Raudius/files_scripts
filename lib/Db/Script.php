@@ -22,6 +22,8 @@ use OCP\AppFramework\Db\Entity;
  * @method string getMimetype()
  * @method setFileTypes(?string $fileTypes)
  * @method string getFileTypes()
+ * @method setShowInContext(int $showInContext)
+ * @method int getShowInContext()
  */
 class Script extends Entity implements JsonSerializable {
 	protected ?string $title = null;
@@ -31,6 +33,7 @@ class Script extends Entity implements JsonSerializable {
 	protected ?string $limitGroups = null;
 	protected ?int $public = null;
 	protected ?string $fileTypes = null;
+	protected ?int $showInContext = null;
 	protected ?string $mimetype = null; // TODO remove mimetype property and drop column from db
 
 	public function setLimitGroupsArray(array $groupsArray): void {
@@ -68,11 +71,12 @@ class Script extends Entity implements JsonSerializable {
 		$script->setEnabled($enabled);
 
 		$public = $jsonData["public"] ?? 0;
-		if (!is_integer($public)) {
-			$public = 0;
-		}
+		$public = is_integer($public) ? $public : 0;
 		$script->setPublic($public);
 
+		$showInContext = $jsonData["showInContext"] ?? 0;
+		$showInContext = is_integer($showInContext) ? $showInContext : 0;
+		$script->setShowInContext($showInContext);
 
 		return $script;
 	}
@@ -84,6 +88,7 @@ class Script extends Entity implements JsonSerializable {
 			'description' => $this->description,
 			'program' => $this->program,
 			'enabled' => $this->enabled,
+			'showInContext' => $this->showInContext,
 			'limitGroups' => $this->getLimitGroupsArray(),
 			'public' => $this->public,
 			'fileTypes' => $this->getFileTypesArray()

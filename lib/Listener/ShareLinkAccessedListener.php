@@ -24,8 +24,6 @@ class ShareLinkAccessedListener implements IEventListener {
 			return;
 		}
 
-		$this->initialStateService->provideInitialState('actions_in_menu', false);
-
 		Util::addStyle(Application::APP_ID, 'global');
 		Util::addScript(Application::APP_ID, 'files_scripts-main');
 	}

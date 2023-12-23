@@ -85,13 +85,15 @@ class ScriptController extends Controller {
 		bool $enabled,
 		array $limitGroups,
 		bool $public,
-		array $fileTypes
+		array $fileTypes,
+		bool $showInContext
 	): Response {
 		$script = new Script();
 		$script->setTitle($title);
 		$script->setDescription($description);
 		$script->setProgram($program);
 		$script->setEnabled($enabled);
+		$script->setShowInContext($showInContext);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setPublic($public);
 		$script->setFileTypesArray($fileTypes);
@@ -122,7 +124,8 @@ class ScriptController extends Controller {
 		bool $enabled,
 		array $limitGroups,
 		bool $public,
-		array $fileTypes
+		array $fileTypes,
+		bool $showInContext
 	): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script) {
@@ -133,6 +136,7 @@ class ScriptController extends Controller {
 		$script->setDescription($description);
 		$script->setProgram($program);
 		$script->setEnabled($enabled);
+		$script->setShowInContext($showInContext);
 		$script->setLimitGroupsArray($limitGroups);
 		$script->setPublic($public);
 		$script->setFileTypesArray($fileTypes);

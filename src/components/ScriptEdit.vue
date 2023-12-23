@@ -27,6 +27,10 @@
 					{{ t('files_scripts', 'Enable script') }}
 				</NcCheckboxRadioSwitch>
 
+				<NcCheckboxRadioSwitch type="switch" :checked="!!script.showInContext" @update:checked="toggleShowInContext">
+					{{ t('files_scripts', 'Show in context menu') }}
+				</NcCheckboxRadioSwitch>
+
 				<NcCheckboxRadioSwitch type="switch" :checked="!!script.public" @update:checked="togglePublic">
 					{{ t('files_scripts', 'Allow on public shares') }}
 				</NcCheckboxRadioSwitch>
@@ -250,6 +254,9 @@ export default {
 		},
 		toggleEnabled() {
 			this.$store.commit('selectedToggleValue', 'enabled')
+		},
+		toggleShowInContext() {
+			this.$store.commit('selectedToggleValue', 'showInContext')
 		},
 		togglePublic() {
 			this.$store.commit('selectedToggleValue', 'public')

@@ -59,13 +59,13 @@ OC.L10N.register(
     "New action" : "إجراءٌ جديد",
     "No actions" : "لا إجراءات",
     "No file actions exist." : "لا توجد إجراءات على الملفات",
-    "Actions in menu" : "الإجراءات في القائمة",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "يعرض إجراءات الملف مباشرة في قائمة الملفات، بدلاً من الحاجة إلى تحديدها من خلال صيغة \"إجراءات أخرى\".",
     "Experimental interpreter" : "مُترجِم فوري interpreter تجريبي للنصوص البرمجية",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "يوصى بشدة بتشغيل امتداد PHP Lua على خادمك. إذا لم يكن ذلك ممكنًا، فيمكن استخدام مُترجِم Lua التجريبي. لا يزال هذا المترجم الفوري قيد التطوير وقد لا يُنتِج دائمًا النتائج المتوقعة.",
     "Use experimental interpreter" : "إستعمل المُترجِم الفوري interpreter التجريبي للنصوص البرمجية",
     "More actions" : "إجراءات إضافية",
     "Limit to specific MIME type" : "حصراً على نوع مُحدّد من MIME",
-    "MIME type (e.g. text/plain)" : "نوع MIME (مثال: نص عادي)"
+    "MIME type (e.g. text/plain)" : "نوع MIME (مثال: نص عادي)",
+    "Actions in menu" : "الإجراءات في القائمة",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "يعرض إجراءات الملف مباشرة في قائمة الملفات، بدلاً من الحاجة إلى تحديدها من خلال صيغة \"إجراءات أخرى\"."
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

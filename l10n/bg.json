@@ -52,12 +52,12 @@
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Действията с файлове са малки Lua скриптове, които могат да създават, променят и/или изтриват файлове по програма. Тези действия могат да бъдат задействани от потребители, за да се изпълняват върху техните файлове. Моля, прочетете документацията за повече информация.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Действията с файлове не са налични, тъй като няма наличен интерпретатор. Или инсталирайте приставката Lua на сървъра, или активирайте експерименталния интерпретатор.",
     "New action" : "Ново действие",
-    "Actions in menu" : "Действия в менюто",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показва действията на файла директно в менюто на файла, вместо да е необходимо да го избирате чрез модалния диалогов прозорец „Още действия“.",
     "Experimental interpreter" : "Експериментален интерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Силно препоръчително е да стартирате разширението PHP Lua на вашия сървър. Ако това не е възможно, може да се използва експерименталният интерпретатор Lua. Този интерпретатор все още е в процес на разработване и може да не дава винаги очакваните резултати.",
     "Use experimental interpreter" : "Използване на експериментален интерпретатор",
     "More actions" : "Повече действия",
-    "Limit to specific MIME type" : "Ограничаване до определен тип MIME"
+    "Limit to specific MIME type" : "Ограничаване до определен тип MIME",
+    "Actions in menu" : "Действия в менюто",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показва действията на файла директно в менюто на файла, вместо да е необходимо да го избирате чрез модалния диалогов прозорец „Още действия“."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -59,13 +59,13 @@ OC.L10N.register(
     "New action" : "Нова акција",
     "No actions" : "Нема акција",
     "No file actions exist." : "Не постоји ниједан фајл са акцијама.",
-    "Actions in menu" : "Акције у менију",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Приказује фајл акције директно у фајл менију, уместо да морају да се изаберу кроз модални дијалог ’Још акција’.",
     "Experimental interpreter" : "Експериментални интерпретер",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Снажно се препоручује да на свом серверу извршавате PHP Lua проширење. Ако то није могуће, може да се користи експериментални  Lua интерпретер. Овај интерпретер се још увек развија и можда неће увек да произведе очекиване резултате.",
     "Use experimental interpreter" : "Користи експериментални интерпретер",
     "More actions" : "Још акција",
     "Limit to specific MIME type" : "Ограничи на одређени MIME тип",
-    "MIME type (e.g. text/plain)" : "MIME тип (нпр. text/plain)"
+    "MIME type (e.g. text/plain)" : "MIME тип (нпр. text/plain)",
+    "Actions in menu" : "Акције у менију",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Приказује фајл акције директно у фајл менију, уместо да морају да се изаберу кроз модални дијалог ’Још акција’."
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

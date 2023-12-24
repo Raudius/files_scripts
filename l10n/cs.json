@@ -54,13 +54,13 @@
     "New action" : "Nová akce",
     "No actions" : "Žádná akce",
     "No file actions exist." : "Neexistují žádné akce ohledně souborů.",
-    "Actions in menu" : "Akce v nabídce",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zobrazuje akce ohledně souboru přímo v nabídce k danému souboru, čímž odpadá potřeba vybírat je zdlouhavěji z hloubi dialogu „Další akce“.",
     "Experimental interpreter" : "Experimentální interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Je silně doporučováno provozovat Lua jako PHP rozšíření na serveru. Pokud to není možné, je možné použít experimentální Lua interpreter. Ten je zatím ve vývoji a nemusí vždy poskytovat očekávané výsledky.",
     "Use experimental interpreter" : "Použít experimentální interpreter",
     "More actions" : "Další akce",
     "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
-    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)"
+    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)",
+    "Actions in menu" : "Akce v nabídce",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zobrazuje akce ohledně souboru přímo v nabídce k danému souboru, čímž odpadá potřeba vybírat je zdlouhavěji z hloubi dialogu „Další akce“."
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

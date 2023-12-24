@@ -54,12 +54,12 @@ OC.L10N.register(
     "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Сценарии файлов — это небольшие скрипты Lua, которые могут программно создавать, изменять и/или удалять файлы. Эти действия могут быть инициированы пользователями для выполнения над своими файлами. Пожалуйста, прочтите документацию для получения дополнительной информации.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Файловые сценарии недоступны, так как нет доступного интерпретатора. Либо установите плагин Lua на сервер, либо включите экспериментальный интерпретатор.",
     "New action" : "Создать действие",
-    "Actions in menu" : "Сценарий в меню",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показывает файловые сценарии непосредственно в меню файлов, вместо того, чтобы выбирать их через модальное окно «Дополнительные действия».",
     "Experimental interpreter" : "Экспериментальный интерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Настоятельно рекомендуется запустить расширение PHP Lua на вашем сервере. Если это невозможно, можно использовать экспериментальный интерпретатор Lua. Этот интерпретатор все еще находится в стадии разработки и не всегда может давать ожидаемые результаты.",
     "Use experimental interpreter" : "Использовать экспериментальный интерпретатор",
     "More actions" : "Больше действий",
-    "Limit to specific MIME type" : "Ограничение по определенным типам MIME"
+    "Limit to specific MIME type" : "Ограничение по определенным типам MIME",
+    "Actions in menu" : "Сценарий в меню",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показывает файловые сценарии непосредственно в меню файлов, вместо того, чтобы выбирать их через модальное окно «Дополнительные действия»."
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

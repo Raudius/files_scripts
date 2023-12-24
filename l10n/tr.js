@@ -59,13 +59,13 @@ OC.L10N.register(
     "New action" : "Yeni işlem",
     "No actions" : "Herhangi bir işlem yok",
     "No file actions exist." : "Herhangi bir dosya işlemi yok.",
-    "Actions in menu" : "İşlemler menüde görüntülensin",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Bu seçenek etkinleştirildiğinde, dosya işlemleri üste açılan 'Diğer işlemler' penceresi yerine doğrudan dosya menüsünde görüntülenir.",
     "Experimental interpreter" : "Deneysel yorumlayıcı",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Sunucunuzda PHP Lua uzantısını çalıştırmanız önemle önerilir. Bu yapılamıyorsa deneysel Lua yorumlayıcısı kullanılabilir. Bu yorumlayıcı hala geliştirme aşamasındadır ve her zaman beklenen sonuçları vermeyebilir.",
     "Use experimental interpreter" : "Deneysel yorumlayıcı kullanılsın",
     "More actions" : "Diğer işlemler",
     "Limit to specific MIME type" : "Belirli MIME türleri ile sınırlansın",
-    "MIME type (e.g. text/plain)" : "MIME türü (tex/plain gibi)"
+    "MIME type (e.g. text/plain)" : "MIME türü (tex/plain gibi)",
+    "Actions in menu" : "İşlemler menüde görüntülensin",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Bu seçenek etkinleştirildiğinde, dosya işlemleri üste açılan 'Diğer işlemler' penceresi yerine doğrudan dosya menüsünde görüntülenir."
 },
 "nplurals=2; plural=(n > 1);");

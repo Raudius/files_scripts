@@ -49,10 +49,10 @@ OC.L10N.register(
     "Action failed unexpectedly." : "Акцијата не е успешно извршена.",
     "New action" : "Нова акција",
     "No actions" : "Нема акции",
-    "Actions in menu" : "Акции во мени",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Ги прикажува дејствата на датотеките директно во менито со датотеки, наместо да треба да ги изберете преку главното мени во \"Повеќе дејства\".",
     "More actions" : "Повеќе акции",
     "Limit to specific MIME type" : "Ограничи на одреден MIME вид",
-    "MIME type (e.g. text/plain)" : "MIME вид (Пр. text/plain)"
+    "MIME type (e.g. text/plain)" : "MIME вид (Пр. text/plain)",
+    "Actions in menu" : "Акции во мени",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Ги прикажува дејствата на датотеките директно во менито со датотеки, наместо да треба да ги изберете преку главното мени во \"Повеќе дејства\"."
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

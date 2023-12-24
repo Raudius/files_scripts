@@ -56,13 +56,13 @@ OC.L10N.register(
     "New action" : "Új művelet",
     "No actions" : "Nincs művelet",
     "No file actions exist." : "Nem léteznek fájl műveletek.",
-    "Actions in menu" : "Műveletek a menüben",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "A fájlműveletek megjelenítése közvetlenül a menüben ahelyett, hogy ki kellene választania a „További műveletek” párbeszédablakon.",
     "Experimental interpreter" : "Kísérleti parancsértelmező",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Ajánlatos, hogy a saját kiszolgálóján lévő PHP lua kiterjesztést futtassa. Ha ez nem lehetséges, akkor használhatja a kísérleti Lua értelmezőt. Ez a parancsértelmező még fejlesztés alatt áll, és nem biztos, hogy mindig a várt eredményt kapja.",
     "Use experimental interpreter" : "Kísérleti parancsértelmező használata",
     "More actions" : "További műveletek",
     "Limit to specific MIME type" : "Adott MIME-típusokra korlátozás",
-    "MIME type (e.g. text/plain)" : "MIME típus (pl. text/plain)"
+    "MIME type (e.g. text/plain)" : "MIME típus (pl. text/plain)",
+    "Actions in menu" : "Műveletek a menüben",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "A fájlműveletek megjelenítése közvetlenül a menüben ahelyett, hogy ki kellene választania a „További műveletek” párbeszédablakon."
 },
 "nplurals=2; plural=(n != 1);");

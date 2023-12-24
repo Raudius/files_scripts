@@ -57,13 +57,13 @@
     "New action" : "Nova ação",
     "No actions" : "Nenhuma ação",
     "No file actions exist." : "Não existem ações de arquivo.",
-    "Actions in menu" : "Actions in menu",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal.",
     "Experimental interpreter" : "Intérprete experimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "É altamente recomendável executar a extensão PHP Lua em seu servidor. Se isso não for possível, o interpretador Lua experimental pode ser usado. Este interpretador ainda está em desenvolvimento e pode nem sempre produzir os resultados esperados.",
     "Use experimental interpreter" : "Usar intérprete experimental",
     "More actions" : "Mais ações",
     "Limit to specific MIME type" : "Limite a um tipo de MIME específico",
-    "MIME type (e.g. text/plain)" : "Tipo MIME (por exemplo, texto/sem formatação)"
+    "MIME type (e.g. text/plain)" : "Tipo MIME (por exemplo, texto/sem formatação)",
+    "Actions in menu" : "Actions in menu",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal."
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

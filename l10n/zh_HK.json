@@ -57,13 +57,13 @@
     "New action" : "新操作",
     "No actions" : "沒有操作",
     "No file actions exist." : "不存在檔案操作。",
-    "Actions in menu" : "選項單操作",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "直接在檔案選項單中顯示檔案操作，而非透過「更多操作」模式選擇它。",
     "Experimental interpreter" : "實驗解釋器",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "強烈建議在您的伺服器上運行 PHP Lua 擴展。如果無法做到這一點，可以使用實驗性 Lua 解釋器。此解釋器仍在開發中，可能無法產生預期的結果。",
     "Use experimental interpreter" : "使用實驗解釋器",
     "More actions" : "更多操作",
     "Limit to specific MIME type" : "限制為特定的 MIME 類型",
-    "MIME type (e.g. text/plain)" : "MIME 類型（例如 plain/text）"
+    "MIME type (e.g. text/plain)" : "MIME 類型（例如 plain/text）",
+    "Actions in menu" : "選項單操作",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "直接在檔案選項單中顯示檔案操作，而非透過「更多操作」模式選擇它。"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

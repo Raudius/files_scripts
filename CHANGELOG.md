@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.0.0
+
+### Removed
+- Removes deprecated function `html_to_pdf`, it may be installed separately by installing [files_scripts_deprecated](https://github.com/Raudius/files_scripts_deprecated).
+
+### Added
+- Integrates with new files API.
+- Replaces single MIME-type restriction with multi-option file-type filtering, which works with extensions and MIME types.
+- Replaces app-wide "show actions in menu" settings option, with per-script selection.
+
 ## 3.1.3
 
 ### Fixed

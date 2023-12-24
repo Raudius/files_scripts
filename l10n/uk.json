@@ -55,13 +55,13 @@
     "New action" : "Нова дія",
     "No actions" : "Відсутні дії",
     "No file actions exist." : "Відсутні дії з файлами.",
-    "Actions in menu" : "Дії в меню",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показувати дії з файлами у меню файлів замість здійснення вибору через пункт меню \"Більше дій\".",
     "Experimental interpreter" : "Експериментальний інтерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Наполегливо рекомендується запускати розширення PHP Lua на вашому сервері. Якщо це не можливо, то можна увімкнути експериментальний інтерпретатор Lua. Цей інтерпретатор все ще перебуває у стані розробки і не завжди може забезпечувати очікуваний результат виконання.",
     "Use experimental interpreter" : "Використовувати експериментальний інтерпретатор",
     "More actions" : "Більше дій",
     "Limit to specific MIME type" : "Обмежити для певних типів MIME",
-    "MIME type (e.g. text/plain)" : "Тип MIME (напр., text/plain)"
+    "MIME type (e.g. text/plain)" : "Тип MIME (напр., text/plain)",
+    "Actions in menu" : "Дії в меню",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показувати дії з файлами у меню файлів замість здійснення вибору через пункт меню \"Більше дій\"."
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);"
 }

@@ -57,13 +57,13 @@ OC.L10N.register(
     "New action" : "Nueva acción",
     "No actions" : "Sin acciones",
     "No file actions exist." : "No existen acciones de archivo.",
-    "Actions in menu" : "Acciones en el menú",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Muestra las acciones de archivo directamente en el menú de archivos, en lugar de tener que seleccionarlas a través del modal 'Más acciones'.",
     "Experimental interpreter" : "Intérprete experimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Es muy recomendable ejecutar la extensión PHP Lua en tu servidor. Si esto no es posible, se puede utilizar el intérprete experimental de Lua. Este intérprete aún está en desarrollo y puede que no siempre produzca los resultados esperados.",
     "Use experimental interpreter" : "Usar intérprete experimental",
     "More actions" : "Más acciones",
     "Limit to specific MIME type" : "Limitar a un tipo MIME específico",
-    "MIME type (e.g. text/plain)" : "Tipo MIME (por ejemplo, text/plain)"
+    "MIME type (e.g. text/plain)" : "Tipo MIME (por ejemplo, text/plain)",
+    "Actions in menu" : "Acciones en el menú",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Muestra las acciones de archivo directamente en el menú de archivos, en lugar de tener que seleccionarlas a través del modal 'Más acciones'."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

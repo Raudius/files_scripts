@@ -50,9 +50,9 @@ OC.L10N.register(
     "Action completed!" : "Åtgärd slutförd!",
     "Action failed unexpectedly." : "Åtgärden misslyckades oväntat.",
     "New action" : "Ny åtgärd",
-    "Actions in menu" : "Åtgärder i meny",
     "More actions" : "Fler händelser",
     "Limit to specific MIME type" : "Begränsa till specifik MIME-typ",
-    "MIME type (e.g. text/plain)" : "MIME-typ (t.ex. text/vanlig)"
+    "MIME type (e.g. text/plain)" : "MIME-typ (t.ex. text/vanlig)",
+    "Actions in menu" : "Åtgärder i meny"
 },
 "nplurals=2; plural=(n != 1);");

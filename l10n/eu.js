@@ -57,13 +57,13 @@ OC.L10N.register(
     "New action" : "Ekintza berria",
     "No actions" : "Ez dago ekintzarik",
     "No file actions exist." : "Ez dago fitxategi-ekintzarik.",
-    "Actions in menu" : "Ekintzak menuan",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zuzenean erakusten ditu fitxategi-ekintzak fitxategien menuan, 'Ekintza gehiago' modalitatearen bidez hautatu beharrean.",
     "Experimental interpreter" : "Interprete esperimentala",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Oso gomendagarria da PHP Lua luzapena zure zerbitzarian exekutatzea. Hori posible ez bada, Lua interprete esperimentala erabil daiteke. Interprete hau garatzen ari da oraindik eta baliteke beti espero diren emaitzak ez ematea.",
     "Use experimental interpreter" : "Erabili interprete esperimentala",
     "More actions" : "Ekintza gehiago",
     "Limit to specific MIME type" : "Mugatu MIME mota zehatzera",
-    "MIME type (e.g. text/plain)" : "MIME mota (adibidez, testua/laua)"
+    "MIME type (e.g. text/plain)" : "MIME mota (adibidez, testua/laua)",
+    "Actions in menu" : "Ekintzak menuan",
+    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zuzenean erakusten ditu fitxategi-ekintzak fitxategien menuan, 'Ekintza gehiago' modalitatearen bidez hautatu beharrean."
 },
 "nplurals=2; plural=(n != 1);");

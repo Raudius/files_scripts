@@ -41,6 +41,7 @@ OC.L10N.register(
     "Script name" : "اسم النصّ البرمجي Scriptname  ",
     "A short description of what this action will do …" : "شرح مختصر لما سيقوم به هذا الإجراء ...",
     "Enable script" : "تمكين النص البرمجي script",
+    "Show in context menu" : "عرض في القائمة السياقية ",
     "Allow on public shares" : "السماح في حالة المُشارَكات العامة",
     "Limit to groups" : "حصراً على مجموعات",
     "Select groups allowed to use this action" : "حدِّد المجموعات التي يحق لها استعمال هذا الإجراء",

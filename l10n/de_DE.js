@@ -41,6 +41,7 @@ OC.L10N.register(
     "Script name" : "Skriptname",
     "A short description of what this action will do …" : "Eine kurze Beschreibung, was diese Aktion bewirken wird …",
     "Enable script" : "Skript aktivieren",
+    "Show in context menu" : "Im Kontextmenü anzeigen",
     "Allow on public shares" : "Für öffentliche Freigaben erlauben",
     "Limit to groups" : "Auf Gruppen beschränken",
     "Select groups allowed to use this action" : "Gruppen auswählen, die diese Aktion verwenden dürfen",

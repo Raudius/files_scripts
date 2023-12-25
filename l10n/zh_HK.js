@@ -41,6 +41,7 @@ OC.L10N.register(
     "Script name" : "腳本名稱",
     "A short description of what this action will do …" : "簡短描述此操作將執行的操作 ...",
     "Enable script" : "啟用腳本語言",
+    "Show in context menu" : "顯示在上下文選項單中",
     "Allow on public shares" : "允許在公共共享上使用",
     "Limit to groups" : "限制於群組",
     "Select groups allowed to use this action" : "選擇允許使用此操作的群組",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.1
+
+### Fixed
+- Fixed issue where selection modal would not work when scripts have mimetype restrictions.
+
 ## 4.0.0
 
 ### Removed

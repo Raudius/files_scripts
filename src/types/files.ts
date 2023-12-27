@@ -1,5 +1,6 @@
 export interface NodeInfo {
 	id: number
-	baseName: string
+	basename: string
 	fullPath: string
+	mime: string
 }

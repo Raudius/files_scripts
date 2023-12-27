@@ -1,4 +1,5 @@
 import { Node } from "@nextcloud/files"
+import {NodeInfo} from "./files";
 
 export interface Script {
 	id: number
@@ -80,7 +81,7 @@ export function defaultScriptInputOptions(): ScriptInputOptions {
 	}
 }
 
-export function scriptAllowedForNodes(script: Script, nodes: Node[]): boolean {
+export function scriptAllowedForNodes(script: Script, nodes: Node[]|NodeInfo[]): boolean {
 	if (script.fileTypes.length === 0) {
 		return true
 	}

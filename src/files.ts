@@ -22,8 +22,9 @@ export type HandlerFunc = (files: NodeInfo[], currentFolder) => void;
 function getNodeInfo(node: Node): NodeInfo {
 	return {
 		id: node.fileid,
-		baseName: node.basename,
-		fullPath: node.path
+		basename: node.basename,
+		fullPath: node.path,
+		mime: node.mime
 	} as NodeInfo
 }
 

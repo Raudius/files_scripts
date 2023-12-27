@@ -41,6 +41,7 @@ OC.L10N.register(
     "Script name" : "指令稿名稱",
     "A short description of what this action will do …" : "簡短描述此動作會做些什麼……",
     "Enable script" : "啟用指令稿",
+    "Show in context menu" : "在情境選單中顯示",
     "Allow on public shares" : "在公開分享上允許",
     "Limit to groups" : "群組限制",
     "Select groups allowed to use this action" : "選取允許使用此動作的群組",

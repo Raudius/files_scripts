@@ -41,6 +41,7 @@ OC.L10N.register(
     "Script name" : "Betik adı",
     "A short description of what this action will do …" : "Bu işlemin ne yaptığının kısa bir açıklaması…",
     "Enable script" : "Betiği etkinleştir",
+    "Show in context menu" : "Sağ tık menüsünde görüntülensin",
     "Allow on public shares" : "Herkese açık paylaşımlarda kullanılabilsin",
     "Limit to groups" : "Şu gruplarla sınırlansın",
     "Select groups allowed to use this action" : "Bu işlemi yapabilecek grupları seçin",

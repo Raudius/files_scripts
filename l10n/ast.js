@@ -5,6 +5,7 @@ OC.L10N.register(
     "Delete" : "Desaniciar",
     "Back" : "Atrás",
     "Save" : "Guardar",
+    "Text" : "Testu",
     "Unknown error" : "Error desconocíu"
 },
 "nplurals=2; plural=(n != 1);");

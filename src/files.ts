@@ -33,22 +33,19 @@ function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): 
 	const id = 'files_scripts_action' + (script ? script.id : "")
 	const order = 1000 + (script ? 0 : 1)
 
-	const handleExec = (handler: HandlerFunc, nodes: Node[], view: View, dir: string): Promise<void> => {
+	const handleExec = (handler: HandlerFunc, nodes: Node[], view: View, dir: string): void => {
 		const nodeInfos = nodes.map(getNodeInfo)
 
-		return new Promise<void>((resolve) => {
-			if (!view) {
-				handler(nodeInfos, null)
-				resolve()
-			} else {
-				view.getContents(dir).then(function (value) {
-					myHandler(nodeInfos, value.folder)
-				}).then(resolve)
-			}
-		})
+		if (!view) {
+			handler(nodeInfos, null)
+		} else {
+			view.getContents(dir).then(function (value) {
+				myHandler(nodeInfos, value.folder)
+			})
+		}
 	}
 
-	return {
+	return new FileAction({
 		id: id,
 		displayName: (files, view): string => displayName,
 		title: (files, view): string => displayName,
@@ -57,13 +54,15 @@ function buildActionObject(myHandler: HandlerFunc, script: Script|null = null): 
 			return script === null || scriptAllowedForNodes(script, files)
 		},
 		order: order,
-		exec(file, view, dir) {
+		async exec(file, view, dir) {
 			handleExec(myHandler, [file], view, dir)
+			return null
 		},
-		execBatch(files, view, dir) {
+		async execBatch(files, view, dir) {
 			handleExec(myHandler, files, view, dir)
+			return [null]
 		},
-	} as FileAction
+	})
 }
 
 function nodeFromLegacy(file: any): Node {

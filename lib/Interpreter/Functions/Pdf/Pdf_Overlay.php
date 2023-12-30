@@ -10,8 +10,8 @@ use raudius\phpdf\Phpdf;
 /**
  * `pdf_overlay(Node target, Node overlay, [String new_file_name]=null, [Bool repeat]=true): Node`
  *
- * Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially: page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...
- * By default, the overlay repeats (after we run out of overlay pages we start again from page 1), this can be changed by setting the `repeat` parameter to `false`.
+ * Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially; page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...
+ * By default, the overlay repeats (after we run out of overlay pages, we start again from page 1). This can be changed by setting the `repeat` parameter to `false`.
  *
  * A new file can be created by specifying the `new_file_name` parameter (the file will be created on the target file's folder). By default, the target file gets overwritten.
  *

@@ -13,9 +13,9 @@ use Psr\Log\LoggerInterface;
 
 
 /**
- * `get_activity(object): Event[]`
+ * `get_activity(object Node): Event[]`
  *
- * Returns a table of activity data for the given object. Currently only `File` objects may be used for retrieving activity.
+ * Returns a table of activity data for the given object. Currently, only `Node` objects may be used for retrieving activity.
  *
  * If the activity app is not installed or enabled, this function returns an empty table.
  *

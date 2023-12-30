@@ -11,10 +11,10 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `shares_find(Node|nil node=nil, Int[] share_types): Share[]`
  *
- * Finds shares created by, or shared with, the current user. If a node is given it finds shares for that Node. It is also possible to specify
- * which [share types](#share-types) to search for. If `share_types` is omitted all types will be searched.
+ * Finds shares created by, or shared with, the current user. If a node is given, it finds shares for that Node. It is also possible to specify
+ * which [share types](#share-types) to search for. If `share_types` is omitted, all types will be searched.
  *
- * A list of share objects are returned, share objects are Lua tables which contain the following keys:
+ * A list of share objects are returned. Share objects are Lua tables which contain the following keys:
  *  - `_type`: used to identify the type of the object, always equal to `"share"`
  *  - `id`: the uid of the share
  *  - `full_id`: the full identifier reported by Nextcloud
@@ -27,7 +27,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *  - `token`: the token of the share (used for link shares in the URL `/index.php/s/<share-token>`)
  *
  * #### Share types
- * Nextcloud shares can have different types which offer different functionality, here is a list of constants provided in the API:
+ * Nextcloud shares can have different types which offer different functionality. Here is a list of constants provided in the API:
  *  - `SHARE_TYPE_USER`: file shared with a Nextcloud user
  *  - `SHARE_TYPE_GROUP`: file shared with a Nextcloud group
  *  - `SHARE_TYPE_LINK`: file shared via a public link
@@ -38,7 +38,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  *  - `SHARE_TYPE_DECK`: file attached to a Deck card
  *
  * #### Permissions
- * When sharing a file with a user you may select what the user can do with the file, these constants can be used to check/control these permissions, constants may be checked and combined with bitwise operations:
+ * When sharing a file with a user, you may select what the user can do with the file. These constants can be used to check/control these permissions. They may be combined with bitwise operations:
  *  - `PERMISSION_ALL`: All possible permissions, this option is equal to the bitwise-or of all other permissions
  *  - `PERMISSION_READ`: User is allowed to view the file(s)
  *  - `PERMISSION_CREATE`: User is able to create files within the shared location

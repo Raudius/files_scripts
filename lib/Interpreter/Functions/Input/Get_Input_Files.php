@@ -8,7 +8,7 @@ use OCP\Files\Node;
 /**
  * `get_input_files(): Node[]`
  *
- * Returns a list of the selected files: these are the files the user selects before running the action.
+ * Returns a list of the selected files. These are the files the user selects before running the action.
  */
 class Get_Input_Files extends RegistrableFunction {
 	public function run(): array {

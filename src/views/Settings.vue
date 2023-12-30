@@ -6,7 +6,7 @@
 		<NcSettingsSection
 			:name="t('files_scripts', 'File actions')"
 		 	:limitWidth="false"
-			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.')"
+			:description="t('files_scripts', 'File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information.')"
 			:doc-url="docUrl">
 
 			<NcNoteCard type="warning" v-if="!this.pluginAvailable && !this.usePhpInterpreter">

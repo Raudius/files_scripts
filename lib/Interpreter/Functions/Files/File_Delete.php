@@ -18,9 +18,9 @@ use Psr\Log\LoggerInterface;
  * Deletes the specified file/folder node.
  * Returns whether deletion succeeded.
  *
- * By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+ * By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.
  *
- * The third argument `bypass_trashbin` may be used to delete the file permanently, if set to true.
+ * The third argument `bypass_trashbin` may be used to delete the file permanently, if set to `true`.
  */
 class File_Delete extends RegistrableFunction {
 

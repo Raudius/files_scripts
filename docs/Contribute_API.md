@@ -1,12 +1,12 @@
-# Contributing to the the API
+# Contributing to the API
 
-Adding functions to the API is a relatively easy task, which requires little to no prior experience with PHP. In this tutorial I will outline the steps that can take you from zero to pull request.
+Adding functions to the API is a relatively easy task which requires little to no prior experience with PHP. In this tutorial, I will outline the steps that can take you from zero to pull request.
 
-For the purposes of this tutorial we will create a function which reverses the contents of a file.
+For the purposes of this tutorial, we will create a function which reverses the contents of a file.
 
 ## Step 1: Create a `RegistrableFunction`
 
-Create a class file inside a relevant subdirectory of [`lib/Interpreter/Functions`](https://github.com/Raudius/files_scripts/tree/master/lib/Interpreter/Functions), and make the class extend the `RegistrableFunction` 
+Create a class file inside a relevant subdirectory of [`lib/Interpreter/Functions`](https://github.com/Raudius/files_scripts/tree/master/lib/Interpreter/Functions) and make the class extend the `RegistrableFunction`.
 
 Note that the Lua function name will match the PHP function, except all letters will be lower case.
 
@@ -26,9 +26,9 @@ class Invert_Content extends RegistrableFunction {
 
 ## Step 2: Set the inputs
 
-To prevent runtime errors dont set types to the parameters and make sure to set default values for each one. Then validate each parameter accordingly.
+To prevent runtime errors, don't set types to the parameters and make sure to set default values for each one. Then validate each parameter accordingly.
 
-It is handy to make use of certain `RegistrableFunction` functions: for example when unpacking file data into file objects, or when reindexing Lua tables to PHP arrays. You can find examples of this in other API function implementations.
+It is handy to make use of certain `RegistrableFunction` functions (for example, when unpacking file data into file objects, or when reindexing Lua tables to PHP arrays). You can find examples of this in other API function implementations.
 
 <details>
 <summary>Show code</summary>
@@ -54,7 +54,7 @@ class Invert_Content extends RegistrableFunction {
 
 ## Step 3: Write the logic
 
-Depending on what your function will do you may need to familiarize yourself with some of the internal workings of the Nextcloud public API. For example for working with Nextcloud files you will need to look into the [`OCP\Files\Node`](https://github.com/nextcloud/server/blob/master/lib/public/Files/Node.php) class.
+Depending on what your function will do, you may need to familiarize yourself with some of the internal workings of the Nextcloud public API. For example, when working with Nextcloud files, you will need to look into the [`OCP\Files\Node`](https://github.com/nextcloud/server/blob/master/lib/public/Files/Node.php) class.
 <details>
 <summary>Show code</summary>
 
@@ -123,7 +123,7 @@ class FunctionProvider implements IFunctionProvider {
 
 ## Step 5: Add docummentation
 You can document your function directly in the PHP file by adding a doc comment (starting with `/**` instead of `/*`) to the class.
-Make sure to stick to the somewhat standarized formatting of other functions in the API and make full use of Markdown formatting where appropriate.
+Make sure to stick to the somewhat standardized formatting of other functions in the API and make full use of Markdown formatting where appropriate.
 <details>
 <summary>Show code</summary>
 
@@ -151,4 +151,4 @@ class Invert_Content extends RegistrableFunction {
 ```
 </details>
 
-Do not worry about generating the Markdown files inside `docs/`. This is done before each release by running the script inside `/bin/generate_docs.php`
+Do not worry about generating the Markdown files inside `docs/`. This is done before each release by running the script inside `/bin/generate_docs.php`.

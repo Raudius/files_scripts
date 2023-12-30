@@ -9,7 +9,7 @@ use OCP\Files\NotPermittedException;
 /**
  * `new_folder(Node parent, String name): Node|nil`
  *
- * Creates a new folder at the specified parent folder.
+ * Creates a new folder in the specified parent folder.
  * If successful, returns the newly created folder node. If creation fails, returns `nil`.
  */
 class New_Folder extends RegistrableFunction {

@@ -10,8 +10,8 @@ use OCP\Files\NotFoundException;
 /**
  * `directory_listing(Node folder, [String filter_type]='all'): Node[]`
  *
- * Returns a list of the directory contents, if the given node is not a folder, returns an empty list.
- * Optionally a second argument can be provided to filter out files or folders:
+ * Returns a list of the directory contents. If the given node is not a folder, returns an empty list.
+ * Optionally, a second argument can be provided to filter out files or folders:
  *  - If `"file"` is provided: only files are returned
  *  - If `"folder"` is provided: only folders are returned
  *  - If any other value is provided: both files and folders are returned.

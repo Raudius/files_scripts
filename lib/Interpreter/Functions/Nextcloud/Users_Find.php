@@ -13,9 +13,9 @@ use Throwable;
  *
  * Finds a Nextcloud user from the given parameters.
  *
- * If the name is specified, the function will return all users who have a matching name. If the UUID is given the name is ignored and a user is returned with the given UUID.
+ * If the name is specified, the function will return all users who have a matching name. If the UUID is given, the name is ignored and a search is performed for a user with the given UUID.
  * If both parameters are left empty (`nil`), the current user is returned.
- * If a user that meets the parameters can't be found an empty array is returned.
+ * If a user that meets the parameters can't be found, an empty array is returned.
  */
 class Users_Find extends RegistrableFunction {
 	use UserSerializerTrait;

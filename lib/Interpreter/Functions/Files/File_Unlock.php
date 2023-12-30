@@ -12,7 +12,7 @@ use OCP\Lock\ILockingProvider;
  * Lifts a file lock from the specified file/folder node.
  * Returns whether operation succeeded.
  *
- * By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+ * By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.
  */
 class File_Unlock extends RegistrableFunction {
 	public function run($node = [], $successIfNotFound = true): bool {

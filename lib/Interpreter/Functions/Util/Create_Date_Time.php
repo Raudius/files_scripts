@@ -7,7 +7,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `create_date_time(Number year, [Number month], [Number day], [Number hour], [Number minute], [Number second]): Date`
  *
- * Creates a `Date` object containing date and time information. If no values are specified the current date-time is returned.
+ * Creates a `Date` object containing date and time information. If no values are specified, the current date-time is returned.
  *
  * The `Date` object is a Lua table containing the following values:
  * ```lua

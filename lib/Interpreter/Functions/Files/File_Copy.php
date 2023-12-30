@@ -6,7 +6,7 @@ namespace OCA\FilesScripts\Interpreter\Functions\Files;
  * `file_copy(Node node, String folder_path, [String name]=nil): Node|nil`
  *
  * Copies the given node (file or folder) to the specified `folder_path`.
- * Optionally a new name can be specified for the file, if none is specified the original name is used.
+ * Optionally, a new name can be specified for the file. If none is specified, the original name is used.
  *
  * If the target file already exists, the operation will not succeed.
  *

@@ -10,12 +10,12 @@ use OCP\IUserSession;
 /**
  * `comment_create(String message, Node target, Table parameters={}): ?Comment`
  *
- * Writes a comment to a file or folder, returns the resulting comment object (or nil if failed).
+ * Writes a comment to a file or folder. Returns the resulting comment object (or `nil` if failed).
  *
  * The extra parameters table accepts:
  * ```lua
  * paramters = {
- *   unsafe_impersonate_user= users_find({ ... })[1]   -- Warning: This parameter breaks intended comment behaviour
+ *   unsafe_impersonate_user= users_find({ ... })[1]   -- Warning: This parameter breaks intended comment behaviour.
  * }
  * ```
  *

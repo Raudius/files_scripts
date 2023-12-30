@@ -11,7 +11,7 @@ use OCP\Files\NotFoundException;
 /**
  * `tag_file(Node file, Tag tag): Bool`
  *
- * Adds a tag to a file. Returns whether the tag was added successfully.
+ * Adds a tag to a file or folder. Returns whether the tag was added successfully.
  *
  * ```lua
  * local tags = tags_find({id= 42})

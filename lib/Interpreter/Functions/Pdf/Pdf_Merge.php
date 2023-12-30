@@ -13,7 +13,7 @@ use raudius\phpdf\PhpdfException;
  * `pdf_merge(Node[] files, Node folder, [String new_file_name]=nil): Node|nil`
  *
  * Merges any PDF documents in the given `files` array. The output file is saved to the specified folder.
- * The output's file name can be specified, if not specified the name `{timestamp}_merged.pdf` is used.
+ * The output's file name can be specified. If not specified, the name `{timestamp}_merged.pdf` is used.
  *
  * The output file's node is returned, or `nil` if operation failed.
  */

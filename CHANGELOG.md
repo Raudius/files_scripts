@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.2
+
+### Fixed
+- Fixed a bug where scripts could not be run on files outside the home directory.
+- Improved grammar and typos in documentation and app strings.
+
 ## 4.0.1
 
 ### Fixed

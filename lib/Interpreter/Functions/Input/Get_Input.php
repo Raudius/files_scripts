@@ -8,7 +8,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `get_input([String input_name=nil]): Table|any`
  *
- * Returns a Lua table containing the user inputs. If the optional `input_name` parameter is specified the value of the matching input is returned.
+ * Returns a Lua table containing the user inputs. If the optional `input_name` parameter is specified, the value of the matching input is returned.
  *
  * ```lua
  * get_input() 			-- { testVar= 'input' }

@@ -10,7 +10,7 @@ use OCP\Lock\LockedException;
  * `csv_to_table(Node input, String separator=',', String enclosure='"'): Table`
  *
  * Creates a table from a CSV-formatted file.
- * Optionally field separator and enclosure characters may be specified.
+ * Optionally, field separator and enclosure characters may be specified.
  */
 class Csv_To_Table extends RegistrableFunction {
 	/**

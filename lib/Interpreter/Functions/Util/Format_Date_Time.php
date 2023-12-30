@@ -11,9 +11,9 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * Returns a formatted date string.
  *
  *   - **Date:** See [create_date_time](#create_date_time)
- *   - **Locale:** A valid CLDR locale (if nil, the default PHP local will be used).
- *   - **Timezone:** A string containing any value in the ICU timezone database, or any offset of "GMT" (e.g `GMT-05:30`)
- *   - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax).
+ *   - **Locale:** A valid CLDR locale (if `nil`, the default PHP locale will be used)
+ *   - **Time zone:** A string containing any value in the ICU time zone database, or any offset of "GMT" (e.g `GMT-05:30`)
+ *   - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax)
  */
 class Format_Date_Time extends RegistrableFunction {
 	public function run($date = [], $locale = null, $timezone = null, $pattern = '') {

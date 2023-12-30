@@ -10,7 +10,7 @@ use OCP\Files\IRootFolder;
  * `file_delete_unsafe(String path, [Bool success_if_not_found]=true): Bool`
  *
  * Deletes a file/folder node in the given path.
- * By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+ * By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.
  *
  * ⚠️ Use of this function is strongly discouraged as it may allow users to delete files from other users.
  */

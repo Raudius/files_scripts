@@ -10,7 +10,7 @@ use raudius\phpdf\Phpdf;
 /**
  * `pdf_decrypt(Node file, [String password]=nil, [String new_file_name]=nil): Node|nil`
  *
- * Removes protections from the PDF file. If `new_file_name` is specified a new file is created, otherwise the existing file gets overwritten.
+ * Removes protections from the PDF file. If `new_file_name` is specified, a new file is created. Otherwise, the existing file gets overwritten.
  *
  * Returns the node object for the resulting file.
  */

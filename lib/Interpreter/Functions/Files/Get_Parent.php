@@ -10,7 +10,7 @@ use OCP\Files\NotFoundException;
  * `get_parent(Node node): Node`
  *
  * Returns the parent folder for the given file or directory.
- * The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.
+ * The root of the "file system" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.
  *
  * If the given file cannot be found, `nil` is returned.
  */

@@ -7,7 +7,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `json(Table|string input): String|Table|nil`
  *
- * If the input is a string, returns a Table of the JSON represented in the string.
+ * If the input is a string, returns a table of the JSON represented in the string.
  * If the input is a table, returns the JSON representation of that object.
  * If encoding/decoding fails, `nil` is returned.
  */

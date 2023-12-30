@@ -23,9 +23,9 @@ class RegisterScriptFunctionListener implements IEventListener {
 }
 ```
 
-As part of the event you should register some functions directly to the event. The functions are defined with a `RegistrableFunction` class and provided with a `IFunctionProvider` implementation. You can learn more about how to write registrable functions [here](Contribute_API.md).
+As part of the event, you should register some functions directly to the event. The functions are defined with a `RegistrableFunction` class and provided with a `IFunctionProvider` implementation. You can learn more about how to write registrable functions [here](Contribute_API.md).
 
-Dont forget to register the listener! This is usually done as part of the `Application::register()` method.
+Don't forget to register the listener! This is usually done as part of the `Application::register()` method.
 ```php
 use OCA\FilesScripts\Event\RegisterScriptFunctionsEvent;
 

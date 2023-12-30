@@ -8,7 +8,6 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * `for_each(Table items, Function function): Table`
  *
  * Calls the function on each key/item pair.
- * Note that inside the function only global values can be accessed.
  *
  * ```lua
  * bits = {"to", "be", "or", "not", "to", "be"}

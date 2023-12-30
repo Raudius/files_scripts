@@ -2,7 +2,7 @@
 	<div>
 		<h3>{{ t('files_scripts', 'User inputs') }}</h3>
 		<div class="section-description">
-			{{ t('files_scripts', 'Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function.') }}
+			{{ t('files_scripts', 'Specify any number of input values which the user may provide when running this action. These will be accessible in the script via the get_input() function.') }}
 		</div>
 
 		<div v-if="loading" class="icon-loading" />

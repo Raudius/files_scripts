@@ -12,7 +12,7 @@ use raudius\phpdf\PhpdfException;
 /**
  * `pdf_pages(Node file, String page_range, [String new_file_name]=nil): Node|nil`
  *
- * Creates a new PDF only containing the specified pages. Page range parameter allows multiple formats see [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).
+ * Creates a new PDF only containing the specified pages. The `page_range` parameter allows multiple formats. See [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).
  *
  * Returns the output file's node object, or `nil` if operation failed.
  */

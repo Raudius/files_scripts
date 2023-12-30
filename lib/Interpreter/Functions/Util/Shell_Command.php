@@ -8,10 +8,11 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `shell_command(String command): void`
  *
- * Issues the given command to the linux shell. Returns a table with the result, the table contains the following indices:
- *   - `exit_code`
- *   - `output`
- *   - `errors`
+ * Issues the given command to the linux shell.
+ * Returns a table with the result. The table contains the following indices:
+ *   - `exit_code` exit code of the command
+ *   - `output` stdout of the command
+ *   - `errors` stderr of the command
  */
 class Shell_Command extends RegistrableFunction {
 	public function run($commandInput = ""): array {

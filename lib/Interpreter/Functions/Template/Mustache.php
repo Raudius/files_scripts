@@ -8,7 +8,7 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
 /**
  * `mustache(String template, [Table variables]={}): String`
  *
- * Renders a [Mustache](https://mustache.github.io) template.
+ * Renders a [mustache](https://mustache.github.io) template.
  * Returns the resulting string.
  */
 class Mustache extends RegistrableFunction {

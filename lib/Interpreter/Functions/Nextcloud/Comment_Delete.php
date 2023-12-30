@@ -8,7 +8,7 @@ use OCP\Comments\ICommentsManager;
 /**
  * `comment_delete(Comment comment): Bool`
  *
- * Deletes a comment, returns whether the operation was successful.
+ * Deletes a comment. Returns whether the operation was successful.
  */
 class Comment_Delete extends RegistrableFunction {
 	use CommentSerializerTrait;

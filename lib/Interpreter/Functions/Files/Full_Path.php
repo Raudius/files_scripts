@@ -9,7 +9,7 @@ use OCP\Files\NotFoundException;
  * `full_path(Node node): String|nil`
  *
  * Returns the full path of the given file or directory including the node's name.
- * *Example:* for a file `abc.txt` in directory `/path/to/file` the full path is: `/path/to/file/abc.txt`.
+ * *Example:* for a file `abc.txt` in directory `/path/to/file`, the full path is: `/path/to/file/abc.txt`.
  *
  * If the file does not exist `nil` is returned.
  */

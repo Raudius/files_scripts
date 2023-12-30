@@ -9,7 +9,7 @@ use OCP\Files\NotPermittedException;
 /**
  * `new_file(Node folder, String name, [String content]=nil): Node|nil`
  *
- * Creates a new file at specified folder.
+ * Creates a new file in the specified folder.
  * If successful, returns the newly created file node. If file creation fails, returns `nil`.
  */
 class New_File extends RegistrableFunction {

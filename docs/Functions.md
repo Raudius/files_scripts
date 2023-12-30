@@ -1,4 +1,4 @@
-  - **[Files:](#Files)** Filesystem operations within the Nextcloud environment
+  - **[Files:](#Files)** File system operations within the Nextcloud environment
     - [directory_listing](#directory_listing)  
     - [exists](#exists)  
     - [exists_unsafe](#exists_unsafe)  
@@ -19,7 +19,7 @@
     - [new_file](#new_file)  
     - [new_folder](#new_folder)  
 
-  - **[Input:](#Input)** Retrieving user inputs
+  - **[Input:](#Input)** Retrieve user inputs
     - [get_input](#get_input)  
     - [get_input_files](#get_input_files)  
 
@@ -43,7 +43,7 @@
     - [tags_find](#tags_find)  
     - [users_find](#users_find)  
 
-  - **[Output:](#Output)** Reporting. logging and post-execution functions.
+  - **[Output:](#Output)** Reporting. logging and post-execution functions
     - [abort](#abort)  
     - [add_message](#add_message)  
     - [clear_messages](#clear_messages)  
@@ -79,8 +79,8 @@
 
 `directory_listing(Node folder, [String filter_type]='all'): Node[]`  
   
-Returns a list of the directory contents, if the given node is not a folder, returns an empty list.  
-Optionally a second argument can be provided to filter out files or folders:  
+Returns a list of the directory contents. If the given node is not a folder, returns an empty list.  
+Optionally, a second argument can be provided to filter out files or folders:  
  - If `"file"` is provided: only files are returned  
  - If `"folder"` is provided: only folders are returned  
  - If any other value is provided: both files and folders are returned.
@@ -89,13 +89,13 @@ Optionally a second argument can be provided to filter out files or folders:
 `exists(Node node, [String file_name]=nil): Bool`  
   
 Returns whether a file or directory exists.  
-Optionally the name of a file can be specified as a second argument, in which case the first argument will be assumed to be directory. The function will return whether the file exists in the directory.
+Optionally, the name of a file can be specified as a second argument, in which case the first argument will be assumed to be a directory. The function will return whether the file exists in the directory.
 ### exists_unsafe
 
 `exists_unsafe(String path): Bool`  
   
 Returns whether a file or directory exists. The expected path must be from the server root directory (e.g. `/alice/files/example.txt`).  
-For most cases it is recommended to use the function [exists()](#exists).
+For most cases, it is recommended to use the function [exists()](#exists).
 ### file_content
 
 `file_content(Node node): String|nil`  
@@ -106,7 +106,7 @@ Returns the string content of the file. If the node is a directory or the file d
 `file_copy(Node node, String folder_path, [String name]=nil): Node|nil`  
   
 Copies the given node (file or folder) to the specified `folder_path`.  
-Optionally a new name can be specified for the file, if none is specified the original name is used.  
+Optionally, a new name can be specified for the file. If none is specified, the original name is used.  
   
 If the target file already exists, the operation will not succeed.  
   
@@ -116,10 +116,10 @@ Returns the resulting file node, or `nil` if the operation failed.
 `file_copy_unsafe(Node file, String folder_path, [String name]=nil): Node|nil`  
   
 Unsafe version of [`file_copy`](#file_copy).  
-This function expects an absolute path from the server root (not from the users home folder). This means that files can be copied to locations which the user running the action does not have access to.  
+This function expects an absolute path from the server root (not from the user's home folder). This means that files can be copied to locations which the user running the action does not have access to.  
 This function performs no validation on the given path and does not check for file overwrites (overwrite handling is left up to the Nextcloud server implementation).  
   
-⚠️ Use of this function is strongly discouraged as it offers no safeguards against data-loss and carries potential security concerns.  
+⚠️ Use of this function is strongly discouraged as it offers no safeguards against data loss and carries potential security concerns.  
   
 ```lua  
 local file = get_input_files()[1]  
@@ -132,15 +132,15 @@ file_copy_unsafe(file, "alice/files/inbox", "message.txt")
 Deletes the specified file/folder node.  
 Returns whether deletion succeeded.  
   
-By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
+By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
   
-The third argument `bypass_trashbin` may be used to delete the file permanently, if set to true.
+The third argument `bypass_trashbin` may be used to delete the file permanently, if set to `true`.
 ### file_delete_unsafe
 
 `file_delete_unsafe(String path, [Bool success_if_not_found]=true): Bool`  
   
 Deletes a file/folder node in the given path.  
-By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
+By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.  
   
 ⚠️ Use of this function is strongly discouraged as it may allow users to delete files from other users.
 ### file_move
@@ -159,10 +159,10 @@ Returns the resulting file, or `nil` if the operation failed.
 `file_move_unsafe(Node file, [String folder = nil], [String new_name = nil]): Node|null`  
   
 Unsafe version of [`file_move`](#file_move).  
-This function expects an absolute path from the server root (not from the users home folder). This means that files can be copied to locations which the user running the action does not have access to.  
+This function expects an absolute path from the server root (not from the user's home folder). This means that files can be copied to locations which the user running the action does not have access to.  
 This function performs no validation on the given path and does not check for file overwrites (overwrite handling is left up to the Nextcloud server implementation).  
   
-⚠️ Use of this function is strongly discouraged as it offers no safeguards against data-loss and carries potential security concerns.  
+⚠️ Use of this function is strongly discouraged as it offers no safeguards against data loss and carries potential security concerns.  
   
 ```lua  
 local file = get_input_files()[1]  
@@ -175,13 +175,13 @@ file_move_unsafe(file, "alice/files/inbox", "message.txt")
 Lifts a file lock from the specified file/folder node.  
 Returns whether operation succeeded.  
   
-By default, the function also returns true if the file was not found. This behaviour can be changed by setting its second argument to `false`.
+By default, the function also returns `true` if the file was not found. This behaviour can be changed by setting its second argument to `false`.
 ### full_path
 
 `full_path(Node node): String|nil`  
   
 Returns the full path of the given file or directory including the node's name.  
-*Example:* for a file `abc.txt` in directory `/path/to/file` the full path is: `/path/to/file/abc.txt`.  
+*Example:* for a file `abc.txt` in directory `/path/to/file`, the full path is: `/path/to/file/abc.txt`.  
   
 If the file does not exist `nil` is returned.
 ### get_parent
@@ -189,7 +189,7 @@ If the file does not exist `nil` is returned.
 `get_parent(Node node): Node`  
   
 Returns the parent folder for the given file or directory.  
-The root of the "filesystem" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.  
+The root of the "file system" is considered to be the home directory of the user who is running the script. When attempting to get the parent of the root directory, the root directory is returned.  
   
 If the given file cannot be found, `nil` is returned.
 ### home
@@ -211,36 +211,36 @@ Returns whether the given node is a folder.
 
 `meta_data(Node node): Node`  
   
-Returns an inflated Node object with additional meta-data information for the given file or directory. The additional meta-data attributes are:  
+Returns an inflated Node object with additional metadata information for the given file or directory. The additional metadata attributes are:  
  - `size`: the size of the file (in bytes)  
- - `mimetype`: the mime-type of the file,  
- - `etag`: the entity tag of the file.  
+ - `mimetype`: the mime-type of the file  
+ - `etag`: the entity tag of the file  
  - `utime`: the UNIX-timestamp at which the file was uploaded to the server  
  - `mtime`: the UNIX-timestamp at which the file was last modified  
  - `can_read`: whether the user can read the file or can read files from the directory  
  - `can_delete`: whether the user can delete the file or can delete files from the directory  
  - `can_update`: whether the user can modify the file or can write to the directory  
  - `storage_path`: the path of the file relative to its storage root  
- - `local_path`: a path to a version of the file in the server's filesystem. This location might be temporary (local cache), if the file is stored in an external storage  
+ - `local_path`: a path to a version of the file in the server's file system. This location might be temporary (local cache), if the file is stored in an external storage  
  - `owner_id`: the user ID from the owner of the file
 ### new_file
 
 `new_file(Node folder, String name, [String content]=nil): Node|nil`  
   
-Creates a new file at specified folder.  
+Creates a new file in the specified folder.  
 If successful, returns the newly created file node. If file creation fails, returns `nil`.
 ### new_folder
 
 `new_folder(Node parent, String name): Node|nil`  
   
-Creates a new folder at the specified parent folder.  
+Creates a new folder in the specified parent folder.  
 If successful, returns the newly created folder node. If creation fails, returns `nil`.
 ## Input
 ### get_input
 
 `get_input([String input_name=nil]): Table|any`  
   
-Returns a Lua table containing the user inputs. If the optional `input_name` parameter is specified the value of the matching input is returned.  
+Returns a Lua table containing the user inputs. If the optional `input_name` parameter is specified, the value of the matching input is returned.  
   
 ```lua  
 get_input() 			-- { testVar= 'input' }  
@@ -250,7 +250,7 @@ get_input('testVar') -- 'input'
 
 `get_input_files(): Node[]`  
   
-Returns a list of the selected files: these are the files the user selects before running the action.
+Returns a list of the selected files. These are the files the user selects before running the action.
 ## Media
 ### ffmpeg
 
@@ -301,12 +301,12 @@ Returns a table detailing the metadata information that could be retrieved from 
 
 `comment_create(String message, Node target, Table parameters={}): ?Comment`  
   
-Writes a comment to a file or folder, returns the resulting comment object (or nil if failed).  
+Writes a comment to a file or folder. Returns the resulting comment object (or `nil` if failed).  
   
 The extra parameters table accepts:  
 ```lua  
 paramters = {  
-  unsafe_impersonate_user= users_find({ ... })[1]   -- Warning: This parameter breaks intended comment behaviour  
+  unsafe_impersonate_user= users_find({ ... })[1]   -- Warning: This parameter breaks intended comment behaviour.  
 }  
 ```  
   
@@ -318,7 +318,7 @@ comment_create("Hello world!", get_input_files()[1])
 
 `comment_delete(Comment comment): Bool`  
   
-Deletes a comment, returns whether the operation was successful.
+Deletes a comment. Returns whether the operation was successful.
 ### comments_find
 
 `comments_find(Table parameters): Comment[]`  
@@ -333,7 +333,7 @@ local parameters = {
 ```  
   
 It searches for each of the provided parameters in order: `id`, `parent_id`, `file`. Returns as the first set of results possible.  
-So if it finds a file by `id` it won't continue searching by `parent_id` or `file`.  
+So if it finds a file by `id`, it won't continue searching by `parent_id` or `file`.  
   
 Examples:  
 ```lua  
@@ -344,9 +344,9 @@ tags({id= 21, parent_id= 13})      -- Finds comment with ID 21 or (if comment 21
 ```
 ### get_activity
 
-`get_activity(object): Event[]`  
+`get_activity(object Node): Event[]`  
   
-Returns a table of activity data for the given object. Currently only `File` objects may be used for retrieving activity.  
+Returns a table of activity data for the given object. Currently, only `Node` objects may be used for retrieving activity.  
   
 If the activity app is not installed or enabled, this function returns an empty table.  
   
@@ -395,12 +395,12 @@ Deletes the share, returns whether the deletion succeeded.
 Creates a share for the given file with the configuration options given.  
   
 The configuration table may contain the following properties:  
- - `target`: The target of the share, may be a user object (see: [users_find](#users_find)), or the constant `SHARE_TARGET_LINK` may be used to create a link share.  
+ - `target`: The target of the share, may be a user object (see: [users_find](#users_find)), or the constant `SHARE_TARGET_LINK` may be used to create a link share  
  - `expiration`: An expiration date for the share (see: [create_date_time](#create_date_time))  
  - `hide_download`: Whether the download button should be hidden in public (link) shares  
- - `permissions`: The [permissions](#Permissions) for the shared file, these can be combined with the bitwise-or operator `|`.  
+ - `permissions`: The [permissions](#Permissions) for the shared file, these can be combined with the bitwise-or operator `|`  
  - `label`: A label to attach to the share  
- - `password`: A password with which to protect the share.  
+ - `password`: A password with which to protect the share  
  - `note`: A note to attach to the share  
  - `token`: The share token (used in public share URL: `index.php/s/<share-token>`  
   
@@ -430,10 +430,10 @@ share_file(file, {
 
 `shares_find(Node|nil node=nil, Int[] share_types): Share[]`  
   
-Finds shares created by, or shared with, the current user. If a node is given it finds shares for that Node. It is also possible to specify  
-which [share types](#share-types) to search for. If `share_types` is omitted all types will be searched.  
+Finds shares created by, or shared with, the current user. If a node is given, it finds shares for that Node. It is also possible to specify  
+which [share types](#share-types) to search for. If `share_types` is omitted, all types will be searched.  
   
-A list of share objects are returned, share objects are Lua tables which contain the following keys:  
+A list of share objects are returned. Share objects are Lua tables which contain the following keys:  
  - `_type`: used to identify the type of the object, always equal to `"share"`  
  - `id`: the uid of the share  
  - `full_id`: the full identifier reported by Nextcloud  
@@ -446,7 +446,7 @@ A list of share objects are returned, share objects are Lua tables which contain
  - `token`: the token of the share (used for link shares in the URL `/index.php/s/<share-token>`)  
   
 #### Share types  
-Nextcloud shares can have different types which offer different functionality, here is a list of constants provided in the API:  
+Nextcloud shares can have different types which offer different functionality. Here is a list of constants provided in the API:  
  - `SHARE_TYPE_USER`: file shared with a Nextcloud user  
  - `SHARE_TYPE_GROUP`: file shared with a Nextcloud group  
  - `SHARE_TYPE_LINK`: file shared via a public link  
@@ -457,7 +457,7 @@ Nextcloud shares can have different types which offer different functionality, h
  - `SHARE_TYPE_DECK`: file attached to a Deck card  
   
 #### Permissions  
-When sharing a file with a user you may select what the user can do with the file, these constants can be used to check/control these permissions, constants may be checked and combined with bitwise operations:  
+When sharing a file with a user, you may select what the user can do with the file. These constants can be used to check/control these permissions. They may be combined with bitwise operations:  
  - `PERMISSION_ALL`: All possible permissions, this option is equal to the bitwise-or of all other permissions  
  - `PERMISSION_READ`: User is allowed to view the file(s)  
  - `PERMISSION_CREATE`: User is able to create files within the shared location  
@@ -473,7 +473,7 @@ Creates a collaborative tag. Returns the created tag, or `nil` if the tag could 
 
 `tag_file(Node file, Tag tag): Bool`  
   
-Adds a tag to a file. Returns whether the tag was added successfully.  
+Adds a tag to a file or folder. Returns whether the tag was added successfully.  
   
 ```lua  
 local tags = tags_find({id= 42})  
@@ -513,9 +513,9 @@ tags_find({name= "2021", name_exact= true})   -- Finds an array containing a tag
   
 Finds a Nextcloud user from the given parameters.  
   
-If the name is specified, the function will return all users who have a matching name. If the UUID is given the name is ignored and a user is returned with the given UUID.  
+If the name is specified, the function will return all users who have a matching name. If the UUID is given, the name is ignored and a search is performed for a user with the given UUID.  
 If both parameters are left empty (`nil`), the current user is returned.  
-If a user that meets the parameters can't be found an empty array is returned.
+If a user that meets the parameters can't be found, an empty array is returned.
 ## Output
 ### abort
 
@@ -570,7 +570,7 @@ Sets a list of files to be viewed after execution.
 
 `pdf_decrypt(Node file, [String password]=nil, [String new_file_name]=nil): Node|nil`  
   
-Removes protections from the PDF file. If `new_file_name` is specified a new file is created, otherwise the existing file gets overwritten.  
+Removes protections from the PDF file. If `new_file_name` is specified, a new file is created. Otherwise, the existing file gets overwritten.  
   
 Returns the node object for the resulting file.
 ### pdf_merge
@@ -578,15 +578,15 @@ Returns the node object for the resulting file.
 `pdf_merge(Node[] files, Node folder, [String new_file_name]=nil): Node|nil`  
   
 Merges any PDF documents in the given `files` array. The output file is saved to the specified folder.  
-The output's file name can be specified, if not specified the name `{timestamp}_merged.pdf` is used.  
+The output's file name can be specified. If not specified, the name `{timestamp}_merged.pdf` is used.  
   
 The output file's node is returned, or `nil` if operation failed.
 ### pdf_overlay
 
 `pdf_overlay(Node target, Node overlay, [String new_file_name]=null, [Bool repeat]=true): Node`  
   
-Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially: page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...  
-By default, the overlay repeats (after we run out of overlay pages we start again from page 1), this can be changed by setting the `repeat` parameter to `false`.  
+Overlays the `overlay` PDF document onto the `target` PDF file. The overlay happens sequentially; page 1 of `overlay` gets rendered over page 1 of `target`, page 2 over page 2...  
+By default, the overlay repeats (after we run out of overlay pages, we start again from page 1). This can be changed by setting the `repeat` parameter to `false`.  
   
 A new file can be created by specifying the `new_file_name` parameter (the file will be created on the target file's folder). By default, the target file gets overwritten.  
   
@@ -601,7 +601,7 @@ If the document is not a valid PDF document, -1 is returned.
 
 `pdf_pages(Node file, String page_range, [String new_file_name]=nil): Node|nil`  
   
-Creates a new PDF only containing the specified pages. Page range parameter allows multiple formats see [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).  
+Creates a new PDF only containing the specified pages. The `page_range` parameter allows multiple formats. See [qpdf documentation](https://qpdf.readthedocs.io/en/stable/cli.html#page-ranges).  
   
 Returns the output file's node object, or `nil` if operation failed.
 ## Template
@@ -616,14 +616,14 @@ You can continue using the function by manually installing the [`files_scripts_d
 
 `mustache(String template, [Table variables]={}): String`  
   
-Renders a [Mustache](https://mustache.github.io) template.  
+Renders a [mustache](https://mustache.github.io) template.  
 Returns the resulting string.
 ## Util
 ### create_date_time
 
 `create_date_time(Number year, [Number month], [Number day], [Number hour], [Number minute], [Number second]): Date`  
   
-Creates a `Date` object containing date and time information. If no values are specified the current date-time is returned.  
+Creates a `Date` object containing date and time information. If no values are specified, the current date-time is returned.  
   
 The `Date` object is a Lua table containing the following values:  
 ```lua  
@@ -641,13 +641,12 @@ date = {
 `csv_to_table(Node input, String separator=',', String enclosure='"'): Table`  
   
 Creates a table from a CSV-formatted file.  
-Optionally field separator and enclosure characters may be specified.
+Optionally, field separator and enclosure characters may be specified.
 ### for_each
 
 `for_each(Table items, Function function): Table`  
   
 Calls the function on each key/item pair.  
-Note that inside the function only global values can be accessed.  
   
 ```lua  
 bits = {"to", "be", "or", "not", "to", "be"}  
@@ -667,19 +666,19 @@ for_each(
 Returns a formatted date string.  
   
   - **Date:** See [create_date_time](#create_date_time)  
-  - **Locale:** A valid CLDR locale (if nil, the default PHP local will be used).  
-  - **Timezone:** A string containing any value in the ICU timezone database, or any offset of "GMT" (e.g `GMT-05:30`)  
-  - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax).
+  - **Locale:** A valid CLDR locale (if `nil`, the default PHP locale will be used)  
+  - **Time zone:** A string containing any value in the ICU time zone database, or any offset of "GMT" (e.g `GMT-05:30`)  
+  - **Pattern:** A string containing an [ICU-valid pattern](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax)
 ### format_price
 
 `format_price(Number value, [String symbol], [String currency], [String locale]): String`  
   
-Formats a number to a formatted string. The symbol, currency and locale can be specified for more precise formatting.  
+Formats a price into a formatted string. The symbol, currency and locale can be specified for more precise formatting.  
 By default, locale is set to `en`, and no symbol/currency are specified.  
   
-**Symbol:** any string is allowed. It is be used as the currency symbol in the output string  
+**Symbol:** any string is allowed. It is used as the currency symbol in the output string  
 **Currency:** a string containing a valid ISO 4217 currency code. It is used for calculating currency subdivisions (cents, pennies, etc.)  
-**Locale:** a string containing a valid CLDR locale. It is used for formatting in a locale specific way (e.g. symbol before or after value)
+**Locale:** a string containing a valid CLDR locale. It is used for formatting in a locale-specific way (e.g. symbol before or after value)
 ### http_request
 
 `http_get(String url, [String method]='GET', [Table data]={}): String`  
@@ -710,29 +709,30 @@ my_api_function()
 
 `json(Table|string input): String|Table|nil`  
   
-If the input is a string, returns a Table of the JSON represented in the string.  
+If the input is a string, returns a table of the JSON represented in the string.  
 If the input is a table, returns the JSON representation of that object.  
 If encoding/decoding fails, `nil` is returned.
 ### shell_command
 
 `shell_command(String command): void`  
   
-Issues the given command to the linux shell. Returns a table with the result, the table contains the following indices:  
-  - `exit_code`  
-  - `output`  
-  - `errors`
+Issues the given command to the linux shell.  
+Returns a table with the result. The table contains the following indices:  
+  - `exit_code` exit code of the command  
+  - `output` stdout of the command  
+  - `errors` stderr of the command
 ### sort
 
 `sort(Table items, [String key]=nil, [Bool ascending]=true): Table`  
   
 Sorts a Lua table and returns the result.  
-If the argument `key` is returned it will sort the elements using that key (see example below).  
+If the argument `key` is specified, it will sort the elements using that key (see example below).  
 If the `ascending` argument is set to `false`, the ordering will be reversed (largest first).  
   
-This function uses [PHP's](https://www.php.net/manual/en/types.comparisons.php) default type comparison  
+This function uses [PHP's](https://www.php.net/manual/en/types.comparisons.php) default type comparison.  
 This function may be slightly more convenient than Lua's own: [table.sort](https://www.lua.org/manual/5.3/manual.html#pdf-table.sort), such as in cases where you need the ascending/descending parameter.  
   
-**Note:** if you input an associative Table, the keys will be removed in the process.  
+**Note:** if you input an associative table, the keys will be removed in the process.  
   
 Example:  
 ```lua  

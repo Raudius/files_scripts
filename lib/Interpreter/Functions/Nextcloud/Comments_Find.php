@@ -21,7 +21,7 @@ use OCP\Files\Node;
  * ```
  *
  * It searches for each of the provided parameters in order: `id`, `parent_id`, `file`. Returns as the first set of results possible.
- * So if it finds a file by `id` it won't continue searching by `parent_id` or `file`.
+ * So if it finds a file by `id`, it won't continue searching by `parent_id` or `file`.
  *
  * Examples:
  * ```lua

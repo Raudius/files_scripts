@@ -174,7 +174,7 @@ class ScriptController extends Controller {
 
 		$filePaths = [];
 		foreach ($files as $file) {
-			$filePaths[] = $file['basename'];
+			$filePaths[] = $file['fullPath'];
 		}
 
 		$groupedInputs = [];

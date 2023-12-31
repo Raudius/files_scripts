@@ -23,7 +23,6 @@ OC.L10N.register(
     "Text" : "Text",
     "Checkbox" : "Casella de selecció",
     "User inputs" : "Entrades de l'usuari",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Especifiqueu qualsevol nombre de valors d'entrada que l'usuari pugui proporcionar quan executeu aquesta acció. Aquests seran accessibles per a l'script mitjançant la funció get_input().",
     "Script name" : "Nom del fitxer d’ordres",
     "A short description of what this action will do …" : "Una breu descripció del que farà aquesta acció …",
     "Enable script" : "Activa el fitxer d’ordres",
@@ -36,8 +35,9 @@ OC.L10N.register(
     "Execute" : "Execució",
     "Action completed!" : "Acció completada!",
     "Action failed unexpectedly." : "L'acció ha fallat de manera inesperada.",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Les accions de fitxers són petits fitxer d’ordres en Lua que poden crear, modificar i/o eliminar fitxers de manera programada. Aquestes accions poden ser activades pels usuaris per executar-les als seus fitxers. Si us plau, llegiu la documentació per obtenir més informació.",
     "New action" : "Nova acció",
-    "More actions" : "Més accions"
+    "More actions" : "Més accions",
+    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Especifiqueu qualsevol nombre de valors d'entrada que l'usuari pugui proporcionar quan executeu aquesta acció. Aquests seran accessibles per a l'script mitjançant la funció get_input().",
+    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Les accions de fitxers són petits fitxer d’ordres en Lua que poden crear, modificar i/o eliminar fitxers de manera programada. Aquestes accions poden ser activades pels usuaris per executar-les als seus fitxers. Si us plau, llegiu la documentació per obtenir més informació."
 },
 "nplurals=2; plural=(n != 1);");

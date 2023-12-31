@@ -7,6 +7,7 @@ OC.L10N.register(
     "Disabled" : "Dinonaktifkan",
     "Back" : "Kembali",
     "Save" : "Simpan",
+    "Text" : "Teks",
     "Checkbox" : "Kotak check",
     "Limit to groups" : "Batasi ke grup",
     "Saved" : "Disimpan",

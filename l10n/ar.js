@@ -14,6 +14,7 @@ OC.L10N.register(
     "Title is empty." : "العنوان فارغ.",
     "A script already exists with this title." : "هنالك سكريبت يحمل هذا العنوان موجودٌ سلفاً.",
     "Scripting tool which allows administrators to expand the file options menu." : "أداة البرمجة النصية Scripting tool التي تسمح للمشرفين بتوسيع قائمة خيارات الملفات.",
+    "Allows administrators to write small scripts which users can run through the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️ Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows.\n\n⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting." : "يسمح file_scripts للمشرفين بكتابة نصوص برمجية صغيرة يمكن للمستخدمين تشغيلها من خلال قائمة إجراءات الملف في تطبيق الملفات! \n\n- **🌕 Lua:** النص البرمجي بلغة Lua، بسيط وتتوافر عنه الكثير من الموارد في الإنترنت. \n- **⚡️ تمكين المستخدمين:** تسهيل المهام الصعبة؛ مباشرة من تطبيق الملفات. \n- **🙋 مفتوح للاقتراحات:** هل ترى أن هنالك وظيفة ناقصة في واجهة برمجة تطبيقات البرمجة النصية؟ أطلبها عن طريق القيت هب! \n- **🤖 التكامل مع Nextcloud Flow:** يتيح لك أتمتة سير العمل بشكل كامل. \n\n⚠️ **انتبه** قد تقوم البرامج النصية بتعديل الملفات وحذفها نهائيًا. كن حذرًا وتأكد من قراءة الوثائق جيدًا قبل البرمجة النصية.",
     "Edit" : "تعديل",
     "Delete" : "إزالة",
     "Enabled" : "مُفعّل",
@@ -32,6 +33,7 @@ OC.L10N.register(
     "File picker" : "لاقط الملفات",
     "Multi-select" : "اختيارات متعددة",
     "User inputs" : "مُدخلات المستخدِم",
+    "Specify any number of input values which the user may provide when running this action. These will be accessible in the script via the get_input() function." : "حدّد أي عدد من قيم الإدخال التي قد يقدمها المستخدم عند تشغيل هذا الإجراء. سيتم الوصول إليها في البرنامج النصي عبر الوظيفة  ()get_input.",
     "Move to bottom" : "أنقُل للأسفل",
     "Add input" : "أضِف مُدخلاتٍ",
     "Script input name cannot be empty" : "اسم النصّ البرمجي المُدخَل Script input name يجب ألّا يكون فارغاً",
@@ -53,6 +55,7 @@ OC.L10N.register(
     "Execute" : "نفِّذ",
     "Action completed!" : "إكتمَل الإجراء",
     "Action failed unexpectedly." : "فشل الإجراء بشكل غير مُتوقّعٍ",
+    "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "إجراءات الملف عبارة عن نصوص نصية صغيرة بلغة Lua يمكنها إنشاء ملفات و/أو تعديلها و/أو حذفها برمجيًا. يمكن للمستخدمين بتشغيل هذه الإجراءات على ملفاتهم.\n يرجى قراءة الوثائق لمزيد من المعلومات.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "إجراءات الملف غير متاحة بسبب عدم توفر مترجم فوري interpreter للنصوص البرمجية. قُم إما بتثبيت المكون الإضافي Lua على الخادوم أو تمكين المترجم التجريبي.",
     "New action" : "إجراءٌ جديد",
     "No actions" : "لا إجراءات",

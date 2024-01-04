@@ -77,11 +77,16 @@ class Tags_Find extends RegistrableFunction {
 	private function findByName(array $params): array {
 		$name_exact = $params['name_exact'] ?? false;
 		$userVisible = $params['user_visible'] ?? true;
+		$userAssignable = $params['user_visible'] ?? true; // TODO provide separate 'user_assignable' parameter
 		$name = $params['name'] ?? '';
 
-		if ($name_exact) {
-			$tags = [$this->tagManager->getTag($name, $userVisible, true), $this->tagManager->getTag($name, $userVisible, true)];
-			return array_filter($tags);
+		try {
+			if ($name_exact) {
+				$tags = [$this->tagManager->getTag($name, $userVisible, $userAssignable)];
+				return array_filter($tags);
+			}
+		} catch (\Throwable $e) {
+			return [];
 		}
 
 		return $this->tagManager->getAllTags($userVisible, $name);

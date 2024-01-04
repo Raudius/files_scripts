@@ -1,0 +1,15 @@
+{ "translations": {
+    "Edit" : "Edit",
+    "Delete" : "Delete",
+    "Enabled" : "Enabled",
+    "Disabled" : "Disabled",
+    "Back" : "Back",
+    "Save" : "Save",
+    "Text" : "Text",
+    "Checkbox" : "Checkbox",
+    "Limit to groups" : "Limit to groups",
+    "Saved" : "Saved",
+    "Unknown error" : "Unknown error",
+    "More actions" : "More actions"
+},"pluralForm" :"nplurals=2; plural=(n!=1);"
+}

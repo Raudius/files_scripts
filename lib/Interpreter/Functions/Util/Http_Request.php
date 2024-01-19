@@ -34,7 +34,7 @@ class Http_Request extends RegistrableFunction {
 			case 'POST':
 				curl_setopt($curl, CURLOPT_POST, 1);
 				return;
-			case 'PIT':
+			case 'PUT':
 				curl_setopt($curl, CURLOPT_PUT, 1);
 				return;
 		}

@@ -20,7 +20,7 @@ trait ShareSerializerTrait {
 			'type' => $share->getShareType(),
 			'share_owner' => $share->getShareOwner(),
 			'shared_by' => $share->getSharedBy(),
-			'shared_with' => $share->getSharedBy(),
+			'shared_with' => $share->getSharedWith(),
 			'permissions' => $share->getPermissions(),
 			'token' => $share->getToken(),
 		];

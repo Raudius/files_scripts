@@ -14,7 +14,7 @@ Allows administrators to write small scripts which users can run through the fil
 ⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
-    <version>4.0.2</version>
+    <version>4.0.3</version>
 
 	<licence>agpl</licence>
 	<author mail="r.ferreira.fuentes@gmail.com" >Raul Ferreira Fuentes</author>

@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.3
+
+### Fixed
+
+- Fixed `name_exact` parameter in `tags_find` function
+- Fixed error message in files app due to incorrect integration with the new file actions API
+- Fixed incorrect value in `shared_with` property of share objects @BadmanMassive
+
 ## 4.0.2
 
 ### Fixed

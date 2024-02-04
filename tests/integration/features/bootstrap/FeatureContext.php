@@ -104,10 +104,13 @@ class FeatureContext implements Context {
 		$this->userRunsScriptId("admin", $scriptId);
 		$response = $this->getJson();
 
+		$error = $response["error"] ?? null;
+		$messages = $respone["messages"] ?? null;
+
 		$hasOutput = $outputFileOrNo !== "no";
 		if (!$hasOutput) {
-			Assert::assertNull($response["error"] ?? null);
-			Assert::assertEmpty($response["messages"] ?? null);
+			Assert::assertNull($error, "Script failed with error: " . $error);
+			Assert::assertEmpty($messages, "not empty messages " . json_encode($messages));
 		} else {
 			$outputString = $this->readFixture($outputFileOrNo);
 			$output = json_decode($outputString, true);

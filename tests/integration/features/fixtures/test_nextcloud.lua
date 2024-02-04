@@ -128,6 +128,9 @@ assertNotEmpty(found_shares, "no shares found after share creation")
 found_share = found_shares[1]
 assertEquals(json(found_share), json(share), "created-share and found-share not equal")
 
+assertEquals(found_share["shared_by"], "admin", "failed asserting the share was created by admin user")
+assertEquals(found_share["shared_with"], "alice", "failed asserting the share was created with alice user")
+
 -- Delete share
 success = share_delete(found_share)
 assertTrue(success, "failed to delete the share")

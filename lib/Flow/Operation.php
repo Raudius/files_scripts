@@ -137,6 +137,10 @@ class Operation implements ISpecificOperation {
 		 * @var Node|null $oldNode
 		 * @var Node $node
 		 */
+
+		$user = $this->session->getUser();
+		$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
+		
 		$oldNode = null;
 		if ($eventName === '\OCP\Files::postRename' || $eventName === '\OCP\Files::postCopy') {
 			[$oldNode, $node] = $event->getSubject();
@@ -144,7 +148,7 @@ class Operation implements ISpecificOperation {
 			if ($event->getObjectType() !== 'files') {
 				return null;
 			}
-			$nodes = $this->rootFolder->getById($event->getObjectId());
+			$nodes = $rootFolder->getById($event->getObjectId());
 			if (!isset($nodes[0])) {
 				return null;
 			}
@@ -161,11 +165,7 @@ class Operation implements ISpecificOperation {
 		]);
 
 		try {
-			$user = $this->session->getUser();
-			$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
-
-			$inputs = [$oldNodeInput];
-			return $this->contextFactory->createContextForUser($user->getUID(), $inputs, [$rootFolder->getRelativePath($node->getPath())]);
+			return $this->contextFactory->createContextForUser($user->getUID(), [$oldNodeInput], [$rootFolder->getRelativePath($node->getPath())]);
 		} catch (Throwable $e) {
 			$this->logger->info('Could not create context due to unexpected exception.', ['error_message' => $e->getMessage()]);
 		}

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Back" : "Atrás",
     "Save" : "Guardar",
     "Text" : "Testu",
+    "Saved" : "Guardóse",
     "Unknown error" : "Error desconocíu"
 },
 "nplurals=2; plural=(n != 1);");

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Back" : "Atrás",
     "Save" : "Guardar",
     "Text" : "Testu",
+    "Checkbox" : "Caxellu",
     "Saved" : "Guardóse",
     "Unknown error" : "Error desconocíu"
 },

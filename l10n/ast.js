@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Edit" : "Editar",
     "Delete" : "Desaniciar",
+    "Enabled" : "Activóse",
+    "Disabled" : "Desactivóse",
     "Back" : "Atrás",
     "Save" : "Guardar",
     "Text" : "Testu",

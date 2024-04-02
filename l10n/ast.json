@@ -1,6 +1,8 @@
 { "translations": {
     "Edit" : "Editar",
     "Delete" : "Desaniciar",
+    "Enabled" : "Activóse",
+    "Disabled" : "Desactivóse",
     "Back" : "Atrás",
     "Save" : "Guardar",
     "Text" : "Testu",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Disabled" : "Deaktivéiert",
     "Back" : "Zeréck",
     "Save" : "Späicheren",
+    "Checkbox" : "Checkbox",
     "Saved" : "Gespäichert",
     "Unknown error" : "Et ass en onbekannte Fehler opgetrueden"
 },

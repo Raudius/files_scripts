@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "Testu",
     "Checkbox" : "Caxellu",
     "Saved" : "Guardóse",
-    "Unknown error" : "Error desconocíu"
+    "Unknown error" : "Error desconocíu",
+    "More actions" : "Más aiciones"
 },
 "nplurals=2; plural=(n != 1);");

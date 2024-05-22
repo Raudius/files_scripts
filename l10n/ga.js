@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Edit" : "Cuir in eagar",
     "Delete" : "Scrios",
+    "Disabled" : "Faoi mhíchumas",
     "Back" : "Ar ais",
     "Save" : "Sábháil",
     "Saved" : "Shábháil"

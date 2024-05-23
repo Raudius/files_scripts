@@ -1,7 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Rediģēt",
+    "Edit" : "Labot",
     "Delete" : "Dzēst",
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",

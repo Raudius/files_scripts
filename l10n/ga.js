@@ -6,6 +6,7 @@ OC.L10N.register(
     "Disabled" : "Faoi mhíchumas",
     "Back" : "Ar ais",
     "Save" : "Sábháil",
+    "Limit to groups" : "Teorainn do ghrúpaí",
     "Saved" : "Shábháil"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

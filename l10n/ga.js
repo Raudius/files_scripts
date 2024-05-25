@@ -6,6 +6,7 @@ OC.L10N.register(
     "Disabled" : "Faoi mhíchumas",
     "Back" : "Ar ais",
     "Save" : "Sábháil",
+    "Text" : "Téacs",
     "Limit to groups" : "Teorainn do ghrúpaí",
     "Saved" : "Shábháil"
 },

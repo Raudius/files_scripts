@@ -27,7 +27,8 @@
 					:script="script"
 					:title="script.title"
 					@delete="deleteScript"
-					@select="selectScript" />
+					@select="selectScript"
+					@duplicate="duplicateScript"/>
 			</ul>
 
 			<div v-if="isLoading" class="icon-loading" />
@@ -115,8 +116,19 @@ export default {
 		selectScript(script: Script) {
 			this.$store.commit('setSelectedScript', script)
 		},
+		duplicateScript(script: Script) {
+			try {
+				this.$store.dispatch('duplicateScript', script)
+			} catch (e) {
+				showError(t('files_scripts', 'Failed to duplicate the script.'))
+			}
+		},
 		deleteScript(script: Script) {
-			this.$store.dispatch('deleteScript', script)
+			try {
+				this.$store.dispatch('deleteScript', script)
+			} catch (e) {
+				showError(t('files_scripts', 'Failed to delete the script.'))
+			}
 		},
 		async toggleExperimentalInterpreter(value) {
 			this.usePhpInterpreter = value

@@ -11,6 +11,12 @@
 			<NcActionButton icon="icon-rename" :close-after-click="true" @click="editScript">
 				{{ t('files_scripts', 'Edit') }}
 			</NcActionButton>
+			<NcActionButton :close-after-click="true" @click="duplicateScript">
+				<template #icon>
+					<ContentDuplicate :size="20" />
+				</template>
+				{{ t('files_scripts', 'Duplicate') }}
+			</NcActionButton>
 			<NcActionButton icon="icon-delete" :close-after-click="true" @click="deleteScript">
 				{{ t('files_scripts', 'Delete') }}
 			</NcActionButton>
@@ -22,12 +28,15 @@
 import { NcListItem, NcActionButton } from '@nextcloud/vue'
 import { Script } from '../types/script'
 import { translate as t } from '../l10n'
+import ContentDuplicate from 'vue-material-design-icons/ContentDuplicate.vue'
+
 
 export default {
 	name: 'ScriptCard',
 	components: {
 		NcListItem,
 		NcActionButton,
+		ContentDuplicate,
 	},
 
 	props: {
@@ -41,6 +50,9 @@ export default {
 		},
 		editScript() {
 			this.$emit('select', this.script)
+		},
+		duplicateScript() {
+			this.$emit('duplicate', this.script)
 		},
 		deleteScript() {
 			this.$emit('delete', this.script)

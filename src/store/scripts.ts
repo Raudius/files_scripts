@@ -88,6 +88,15 @@ const actions = {
 		}
 		dispatch('fetchAllScripts')
 	},
+
+	async duplicateScript({ dispatch, commit, state }, script) {
+		commit('clearAll')
+		if (script.id) {
+			script.title = script.title + " (copy)"
+			await api.createScript(script)
+		}
+		dispatch('fetchAllScripts')
+	},
 }
 
 export const store = new Vuex.Store({

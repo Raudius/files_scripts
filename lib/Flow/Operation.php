@@ -3,6 +3,7 @@
 namespace OCA\FilesScripts\Flow;
 
 use Lua;
+use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;
@@ -134,41 +135,79 @@ class Operation implements ISpecificOperation {
 
 	private function createContext(string $eventName, Event $event): ?Context {
 		/**
-		 * @var Node|null $oldNode
-		 * @var Node $node
+		 * @var $newNodePath string|null
+		 * @var $oldNodePath string|null
 		 */
+		[$newNodePath, $oldNodePath] = $this->getNodePaths($eventName, $event);
 
-		$user = $this->session->getUser();
-		$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
-		
-		$oldNode = null;
-		if ($eventName === '\OCP\Files::postRename' || $eventName === '\OCP\Files::postCopy') {
-			[$oldNode, $node] = $event->getSubject();
-		} elseif ($event instanceof MapperEvent) {
-			if ($event->getObjectType() !== 'files') {
-				return null;
-			}
-			$nodes = $rootFolder->getById($event->getObjectId());
-			if (!isset($nodes[0])) {
-				return null;
-			}
-			$node = $nodes[0];
-			unset($nodes);
-		} else {
-			$node = $event->getSubject();
-		}
-
-		$oldNodeInput = ScriptInput::fromParams([
-			'name' => 'old_node_path',
-			'options' => json_encode(['type'=> 'text']),
-			'value' => $oldNode ? $oldNode->getPath() : null
-		]);
+		$inputs = [
+			ScriptInput::fromParams([
+				'name' => 'old_node_path',
+				'options' => json_encode(['type'=> 'text']),
+				'value' => $oldNodePath // could be null
+			])
+		];
+		$targetFiles = $newNodePath ? [$newNodePath] : [];
 
 		try {
-			return $this->contextFactory->createContextForUser($user->getUID(), [$oldNodeInput], [$rootFolder->getRelativePath($node->getPath())]);
+			$userId = $this->session->getUser()->getUID();
+			return $this->contextFactory->createContextForUser($userId, $inputs, $targetFiles);
 		} catch (Throwable $e) {
 			$this->logger->info('Could not create context due to unexpected exception.', ['error_message' => $e->getMessage()]);
 		}
 		return null;
+	}
+
+	private function getNodePaths(string $eventName, Event $event): array {
+		$user = $this->session->getUser();
+		try {
+			$rootFolder = $user ? $this->rootFolder->getUserFolder($user->getUID()) : $this->rootFolder;
+		} catch (\Throwable $e) {
+			$rootFolder = $this->rootFolder;
+			$this->logger->error("Files scripts flow failed to get root folder for user", [
+				'error_message' => $e->getMessage(),
+				'error_trace' => $e->getTraceAsString(),
+				'user_id' => $user ? $user->getUID() : null,
+			]);
+		}
+		$newNode = null;
+		$oldNode = null;
+
+		if ($event instanceof GenericEvent) {
+			if ($eventName === '\OCP\Files::postRename' || $eventName === '\OCP\Files::postCopy') {
+				[$oldNode, $newNode] = $event->getSubject();
+			} elseif ($eventName === '\OCP\Files::postDelete') {
+				$oldNode = $event->getSubject();
+			} else {
+				$newNode = $event->getSubject();
+			}
+		}
+
+		if ($event instanceof MapperEvent && $event->getObjectType() === 'files') {
+			$nodes = $rootFolder->getById($event->getObjectId());
+			if (isset($nodes[0])) {
+				$newNode = $nodes[0];
+			}
+		}
+
+		$newNode = $newNode instanceof Node ? $newNode : null;
+		$oldNode = $oldNode instanceof Node ? $oldNode : null;
+
+		$newNodePath = null;
+		$oldNodePath = null;
+		try {
+			$newNodePath = $newNode ? $rootFolder->getRelativePath($newNode->getPath()) : null;
+			$oldNodePath = $oldNode ? $rootFolder->getRelativePath($oldNode->getPath()) : null;
+		}
+		catch (Throwable $e) {
+			$this->logger->error("Files scripts flow failed to get old/new file path for event", [
+				'error_message' => $e->getMessage(),
+				'error_trace' => $e->getTraceAsString(),
+				'newNodePath' => $newNode ? $newNode->getPath() : '',
+				'oldNodePath' => $oldNode ? $oldNode->getPath() : '',
+			]);
+		}
+
+		return [$newNodePath, $oldNodePath];
 	}
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.1.0
+
+### Added
+- Nextcloud 29 support
+- Option to add inputs to occ actions (@ZeiTee)
+- Button to duplicate a file action
+
+### Fixed
+- Retrieval of nodes inside group-folders for flow actions (@ZeiTee)
+- Prevent creation of deleted nodes during flow action setup
+
 ## 4.0.3
 
 ### Fixed

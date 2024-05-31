@@ -14,7 +14,7 @@ Allows administrators to write small scripts which users can run through the fil
 ⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
-    <version>4.0.3</version>
+    <version>4.1.0</version>
 
 	<licence>agpl</licence>
 	<author mail="r.ferreira.fuentes@gmail.com" >Raul Ferreira Fuentes</author>
@@ -35,7 +35,7 @@ Allows administrators to write small scripts which users can run through the fil
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/4.png</screenshot>
 
     <dependencies>
-        <nextcloud min-version="28" max-version="28"/>
+        <nextcloud min-version="28" max-version="29"/>
 		<php min-version="8.0" />
     </dependencies>
 	<commands>

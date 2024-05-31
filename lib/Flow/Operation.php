@@ -2,8 +2,6 @@
 
 namespace OCA\FilesScripts\Flow;
 
-use Lua;
-use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInput;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\AbortException;

@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Lua extension not installed on the server." : "Razširitev Lua na strežniku ni nameščena.",
     "Edit" : "Uredi",
+    "Duplicate" : "Podvoji",
     "Delete" : "Izbriši",
     "Enabled" : "Omogočeno",
     "Disabled" : "Onemogočeno",

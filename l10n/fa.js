@@ -15,6 +15,7 @@ OC.L10N.register(
     "A script already exists with this title." : "A script already exists with this title.",
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tool which allows administrators to expand the file options menu.",
     "Edit" : "ویرایش",
+    "Duplicate" : "Duplicate",
     "Delete" : "حذف",
     "Enabled" : "فعال شده",
     "Disabled" : "غیرفعال شده",

@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "Edit" : "Επεξεργασία",
+    "Duplicate" : "Διπλότυπο",
     "Delete" : "Διαγραφή",
     "Enabled" : "Ενεργοποιημένο",
     "Disabled" : "Απενεργοποιημένο",

@@ -1,5 +1,6 @@
 { "translations": {
     "Edit" : "Edit",
+    "Duplicate" : "Duplicate",
     "Delete" : "Delete",
     "Enabled" : "Enabled",
     "Disabled" : "Disabled",

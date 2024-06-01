@@ -16,6 +16,7 @@ OC.L10N.register(
     "Scripting tool which allows administrators to expand the file options menu." : "允許管理員擴展檔案選項選項單的腳本工具。",
     "Allows administrators to write small scripts which users can run through the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️ Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows.\n\n⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting." : "讓管理員可以編寫供用戶透過 Files 應用程式中的檔案動作選單執行的小型指令稿\n\n- **🌕 Lua：** 使用 Lua 編寫指令稿，其簡單且有許多線上資源。\n- **⚡️授權用戶：** 直接透過 Files 應用程式輕鬆完成困難的工作。\n- **🙋 接受建議：** 少了一些指令稿 API 功能嗎？請在 GitHub 上開啟議題！\n **🤖 與 Nextcloud Flow 整合：** 讓您可以將工作流程完全自動化\n\n⚠️**注意** 指令稿可能永久修改與刪除檔案。編寫指令稿前請務必小心且仔細閱讀文件。",
     "Edit" : "編輯",
+    "Duplicate" : "重複",
     "Delete" : "刪除",
     "Enabled" : "啟用",
     "Disabled" : "停用",

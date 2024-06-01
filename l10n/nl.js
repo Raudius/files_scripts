@@ -5,6 +5,7 @@ OC.L10N.register(
     "File actions" : "Bestandsacties",
     "Title is empty." : "Titel is leeg.",
     "Edit" : "Bewerk",
+    "Duplicate" : "Duplicaat",
     "Delete" : "Verwijder",
     "Enabled" : "Ingeschakeld",
     "Disabled" : "Uitgeschakeld",

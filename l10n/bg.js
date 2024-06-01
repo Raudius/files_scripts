@@ -15,6 +15,7 @@ OC.L10N.register(
     "A script already exists with this title." : "Вече съществува скрипт с това заглавие.",
     "Scripting tool which allows administrators to expand the file options menu." : "Инструмент за скриптове, който позволява на администраторите да разширят менюто с опции за файлове.",
     "Edit" : "Редактиране",
+    "Duplicate" : "Дубликат",
     "Delete" : "Изтриване",
     "Enabled" : "Включено",
     "Disabled" : "Изключено",

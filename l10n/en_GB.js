@@ -16,6 +16,7 @@ OC.L10N.register(
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tool which allows administrators to expand the file options menu.",
     "Allows administrators to write small scripts which users can run through the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️ Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows.\n\n⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, it's simple and has plenty of online resources.\n- **⚡️ Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows.\n\n⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting.",
     "Edit" : "Edit",
+    "Duplicate" : "Duplicate",
     "Delete" : "Delete",
     "Enabled" : "Enabled",
     "Disabled" : "Disabled",

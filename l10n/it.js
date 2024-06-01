@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "Edit" : "Modifica",
+    "Duplicate" : "Duplicato",
     "Delete" : "Elimina",
     "Enabled" : "Abilitata",
     "Disabled" : "Disabilitata",

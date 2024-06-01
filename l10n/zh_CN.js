@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "Edit" : "编辑",
+    "Duplicate" : "重复",
     "Delete" : "删除",
     "Enabled" : "已启用",
     "Disabled" : "已禁用",

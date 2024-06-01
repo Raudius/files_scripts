@@ -12,6 +12,7 @@ OC.L10N.register(
     "Title is empty." : "Името е празно.",
     "A script already exists with this title." : "Постои скрипта со тоа име.",
     "Edit" : "Уреди",
+    "Duplicate" : "Дуплирај",
     "Delete" : "Избриши",
     "Enabled" : "Овозможено",
     "Disabled" : "Оневозможено",

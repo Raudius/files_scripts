@@ -14,6 +14,7 @@ OC.L10N.register(
     "A script already exists with this title." : "Ja existeix un fitxer d’ordres amb aquest títol.",
     "Scripting tool which allows administrators to expand the file options menu." : "Eina de fitxers d’ordres que permet als administradors ampliar el menú d'opcions de fitxer.",
     "Edit" : "Edita",
+    "Duplicate" : "Duplica",
     "Delete" : "Suprimeix",
     "Enabled" : "Habilitat",
     "Disabled" : "Inhabilitat",

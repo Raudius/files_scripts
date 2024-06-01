@@ -15,6 +15,7 @@ OC.L10N.register(
     "A script already exists with this title." : "Már létezik parancsfájl ezzel a címmel.",
     "Scripting tool which allows administrators to expand the file options menu." : "Parancsfájlkészítő-eszköz, amely lehetővé teszik, hogy a rendszergazdák kibővítsék a fájlok menüjét.",
     "Edit" : "Szerkesztés",
+    "Duplicate" : "Kettőzés",
     "Delete" : "Törlés",
     "Enabled" : "Engedélyezve",
     "Disabled" : "Letiltva",

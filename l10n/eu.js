@@ -15,6 +15,7 @@ OC.L10N.register(
     "A script already exists with this title." : "Script bat existitzen da izenburu honekin.",
     "Scripting tool which allows administrators to expand the file options menu." : "Scripting tresna, administratzaileei fitxategien aukera menua zabaltzeko aukera ematen diena.",
     "Edit" : "Aldatu",
+    "Duplicate" : "Bikoiztu",
     "Delete" : "Ezabatu",
     "Enabled" : "Gaituta",
     "Disabled" : "Desgaituta",

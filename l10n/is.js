@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "Edit" : "Breyta",
+    "Duplicate" : "Tvítaka",
     "Delete" : "Eyða",
     "Enabled" : "Virkt",
     "Disabled" : "Óvirkt",

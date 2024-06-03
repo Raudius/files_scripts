@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "Edit" : "Cuir in eagar",
+    "Duplicate" : "Dúblach",
     "Delete" : "Scrios",
     "Disabled" : "Faoi mhíchumas",
     "Back" : "Ar ais",

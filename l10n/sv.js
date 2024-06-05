@@ -63,6 +63,8 @@ OC.L10N.register(
     "Experimental interpreter" : "Experimentell tolk",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Det rekommenderas starkt att köra PHP Lua-tillägget på din server. Om detta inte är möjligt kan den experimentella Lua-tolken användas. Denna tolk är fortfarande under utveckling och ger kanske inte alltid de förväntade resultaten.",
     "Use experimental interpreter" : "Använd experimentell tolk",
+    "Failed to duplicate the script." : "Det gick inte att kopiera skriptet.",
+    "Failed to delete the script." : "Det gick inte att ta bort skriptet.",
     "More actions" : "Fler händelser",
     "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Ange valfritt antal indatavärden som användaren kan ange när den här åtgärden körs. Dessa kommer att vara tillgängliga för skriptet via get_input()-funktionen.",
     "Limit to specific MIME type" : "Begränsa till specifik MIME-typ",

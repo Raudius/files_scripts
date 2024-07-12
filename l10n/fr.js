@@ -44,7 +44,7 @@ OC.L10N.register(
     "Enable script" : "Activer le script",
     "Show in context menu" : "Afficher dans le menu contextuel",
     "Allow on public shares" : "Autoriser sur les partages publics",
-    "Limit to groups" : "Limiter aux groupes",
+    "Limit to groups" : "Limiter à des groupes",
     "Select groups allowed to use this action" : "Sélectionner les groupes autorisés à utiliser cette action",
     "Limit by file types" : "Limiter par types de fichiers",
     "Media type or file extension (e.g. text/plain, doc)" : "Type de média ou extension de fichier (par ex. text/plain, doc)",

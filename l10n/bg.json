@@ -54,11 +54,6 @@
     "Experimental interpreter" : "Експериментален интерпретатор",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Силно препоръчително е да стартирате разширението PHP Lua на вашия сървър. Ако това не е възможно, може да се използва експерименталният интерпретатор Lua. Този интерпретатор все още е в процес на разработване и може да не дава винаги очакваните резултати.",
     "Use experimental interpreter" : "Използване на експериментален интерпретатор",
-    "More actions" : "Повече действия",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Посочете произволен брой входни стойности, които потребителят може да предостави, когато изпълнява това действие. Те ще бъдат достъпни за скрипта чрез функцията get_input().",
-    "Limit to specific MIME type" : "Ограничаване до определен тип MIME",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Действията с файлове са малки Lua скриптове, които могат да създават, променят и/или изтриват файлове по програма. Тези действия могат да бъдат задействани от потребители, за да се изпълняват върху техните файлове. Моля, прочетете документацията за повече информация.",
-    "Actions in menu" : "Действия в менюто",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Показва действията на файла директно в менюто на файла, вместо да е необходимо да го избирате чрез модалния диалогов прозорец „Още действия“."
+    "More actions" : "Повече действия"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

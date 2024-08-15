@@ -66,13 +66,6 @@ OC.L10N.register(
     "Use experimental interpreter" : "Use experimental interpreter",
     "Failed to duplicate the script." : "Failed to duplicate the script.",
     "Failed to delete the script." : "Failed to delete the script.",
-    "More actions" : "More actions",
-    "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows\n\n⚠️**Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting." : "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows\n\n⚠️**Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting.",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function.",
-    "Limit to specific MIME type" : "Limit to specific MIME type",
-    "MIME type (e.g. text/plain)" : "MIME type (e.g. text/plain)",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information.",
-    "Actions in menu" : "Actions in menu",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal."
+    "More actions" : "More actions"
 },
 "nplurals=2; plural=(n != 1);");

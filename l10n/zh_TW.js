@@ -66,13 +66,6 @@ OC.L10N.register(
     "Use experimental interpreter" : "使用實驗性的直譯器",
     "Failed to duplicate the script." : "再製命令稿失敗。",
     "Failed to delete the script." : "刪除命令稿失敗。",
-    "More actions" : "更多動作",
-    "Allows administrators to write small scripts which users can run through via the file actions menu in the Files app!\n\n- **🌕 Lua:** Script in Lua, its simple and has plenty of online resources.\n- **⚡️Empower users:** Make hard tasks easy, straight from the Files app.\n- **🙋 Open to suggestions:** Are you missing a function in the scripting API? Open an issue on Github!\n- **🤖 Integration with Nextcloud Flow:** allows you to fully automate workflows\n\n⚠️**Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting." : "讓管理員可以編寫供使用者透過 Files 應用程式中的檔案動作選單執行的小型指令稿\n\n- **🌕 Lua：** 使用 Lua 編寫指令稿，其簡單且有許多線上資源。\n- **⚡️授權使用者：** 直接透過 Files 應用程式輕鬆完成困難的工作。\n- **🙋 接受建議：** 少了一些指令稿 API 功能嗎？請在 GitHub 上開啟議題！\n **🤖 與 Nextcloud Flow 整合：** 讓您可以將工作流程完全自動化\n\n⚠️**注意** 指令稿可能永久修改與刪除檔案。編寫指令稿前請務必小心且仔細閱讀文件。",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "指定使用者在執行此動作時可以提供的任意數量的輸入值。指令稿可以透過 get_input() 函式存取這些值。",
-    "Limit to specific MIME type" : "限制為特定的 MIME 類型",
-    "MIME type (e.g. text/plain)" : "MIME 類型（例如 text/plain）",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "檔案動作是可以程式方式建立、修改及／或刪除檔案。使用者可能會觸發這些動作以在其檔案上執行。請閱讀文件以取得更多資訊。",
-    "Actions in menu" : "選單中的動作",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "直接在檔案選單中顯示檔案動作，而非透過「更多動作」模式選擇它。"
+    "More actions" : "更多動作"
 },
 "nplurals=1; plural=0;");

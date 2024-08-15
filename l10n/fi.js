@@ -53,9 +53,6 @@ OC.L10N.register(
     "No file actions exist." : "Tiedostotoimintoja ei ole olemassa.",
     "Experimental interpreter" : "Kokeellinen tulkki",
     "Use experimental interpreter" : "Käytä kokeellista tulkkia",
-    "More actions" : "Lisää toimintoja",
-    "Limit to specific MIME type" : "Rajoita tiettyyn MIME-tyyppiin",
-    "MIME type (e.g. text/plain)" : "MIME-tyyppi (esim. text/plain)",
-    "Actions in menu" : "Valikossa olevat toiminnot"
+    "More actions" : "Lisää toimintoja"
 },
 "nplurals=2; plural=(n != 1);");

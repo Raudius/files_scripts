@@ -59,12 +59,6 @@
     "Experimental interpreter" : "Experimentální interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Je silně doporučováno provozovat Lua jako PHP rozšíření na serveru. Pokud to není možné, je možné použít experimentální Lua interpreter. Ten je zatím ve vývoji a nemusí vždy poskytovat očekávané výsledky.",
     "Use experimental interpreter" : "Použít experimentální interpreter",
-    "More actions" : "Další akce",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Zadejte libovolný počet vstupních hodnot, které uživatelé mohou při spuštění této akce uvést. Tyto budou přístupné ve skriptech prostřednictvím funkce get_input().",
-    "Limit to specific MIME type" : "Omezit na konkrétní MIME typ",
-    "MIME type (e.g. text/plain)" : "MIME typ (např. text/plain)",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Akce ohledně souborů jsou krátké Lua skripty, které programaticky mohou vytvářet, měnit a/nebo mazat soubory. Tyto akce mohou být spouštěny uživateli na jejich soubory. Podrobnosti naleznete v dokumentaci.",
-    "Actions in menu" : "Akce v nabídce",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Zobrazuje akce ohledně souboru přímo v nabídce k danému souboru, čímž odpadá potřeba vybírat je zdlouhavěji z hloubi dialogu „Další akce“."
+    "More actions" : "Další akce"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }

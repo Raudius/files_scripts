@@ -65,12 +65,6 @@ OC.L10N.register(
     "Use experimental interpreter" : "Använd experimentell tolk",
     "Failed to duplicate the script." : "Det gick inte att kopiera skriptet.",
     "Failed to delete the script." : "Det gick inte att ta bort skriptet.",
-    "More actions" : "Fler händelser",
-    "Specify any number of input values the user may provide when running this action. These will be accessible to the script via the get_input() function." : "Ange valfritt antal indatavärden som användaren kan ange när den här åtgärden körs. Dessa kommer att vara tillgängliga för skriptet via get_input()-funktionen.",
-    "Limit to specific MIME type" : "Begränsa till specifik MIME-typ",
-    "MIME type (e.g. text/plain)" : "MIME-typ (t.ex. text/vanlig)",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programatically. These actions may be triggered by users to be run on their files. Please read the documentation for more information." : "Filåtgärder är små Lua-skript som kan skapa, ändra och/eller ta bort filer programmässigt. Dessa åtgärder kan utlösas av användare som kör deras filer. Läs dokumentationen för mer information.",
-    "Actions in menu" : "Åtgärder i meny",
-    "Shows file actions directly in the file menu, instead of needing to select it through the 'More actions' modal." : "Visar filåtgärder direkt i filmenyn, istället för att behöva välja den via \"Fler åtgärder\"."
+    "More actions" : "Fler händelser"
 },
 "nplurals=2; plural=(n != 1);");

@@ -27,7 +27,7 @@ class Log extends RegistrableFunction {
 		}
 
 		$level = is_int($level) ? $level : 1;
-		$level = max(min($level, 0), 4);
+		$level = ($level >= 0 && $level <= 4) ? $level : 4;
 		$context = is_array($context) ? $context : [];
 
 		$this->logger->log($level, $message, $context);

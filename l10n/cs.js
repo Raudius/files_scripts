@@ -61,6 +61,8 @@ OC.L10N.register(
     "Experimental interpreter" : "Experimentální interpreter",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Je silně doporučováno provozovat Lua jako PHP rozšíření na serveru. Pokud to není možné, je možné použít experimentální Lua interpreter. Ten je zatím ve vývoji a nemusí vždy poskytovat očekávané výsledky.",
     "Use experimental interpreter" : "Použít experimentální interpreter",
+    "Failed to duplicate the script." : "Nepodařilo se zduplikovat skript.",
+    "Failed to delete the script." : "Nepodařilo se smazat skript.",
     "More actions" : "Další akce"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");

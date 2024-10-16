@@ -3,7 +3,7 @@
     "Action does not exist or is disabled." : "الإجراء غير موجود أو مُعطّل,",
     "This action is not enabled on public shares." : "الإجراء مُعطّل في حالة المشارَكات العامة",
     "Failed to create the action variables." : "فشل في إنشاء متغيرات الإجراء.",
-    "Lua extension not installed on the server." : "تمديد لغة Lua غير مُثبّتٍ على الخادوم",
+    "Lua extension not installed on the server." : "إضافة لغة Lua غير مُثبّتٍ على الخادم",
     "No script was chosen." : "لم يتم اختيار اي سكريبت.",
     "Run file action" : "إجراء تنفيذ ملف Run file",
     "Pass files to a file action script and run it." : "مرِّر الملفات إلى سكريبت إجراء ملف و نفّذه.",

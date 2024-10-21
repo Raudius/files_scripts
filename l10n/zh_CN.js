@@ -14,6 +14,7 @@ OC.L10N.register(
     "Limit to groups" : "限制于分组",
     "Saved" : "已保存",
     "Unknown error" : "未知错误",
+    "New action" : "新操作",
     "More actions" : "更多操作 "
 },
 "nplurals=1; plural=0;");

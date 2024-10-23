@@ -62,6 +62,8 @@
     "Experimental interpreter" : "Interpréteur expérimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "Il est vivement recommandé de faire tourner l'extension PHP Lua sur votre serveur. Si cela n'est pas possible, l'interpréteur expérimental Lua peut être utilisé. Cet interpréteur est toujours en développement et peut ne pas toujours produire les résultats attendus.",
     "Use experimental interpreter" : "Utiliser l'interpréteur expérimental",
+    "Failed to duplicate the script." : "Échec de duplication du script.",
+    "Failed to delete the script." : "Échec de suppression du script.",
     "More actions" : "Plus d'actions…"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

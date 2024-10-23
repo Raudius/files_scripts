@@ -12,6 +12,7 @@ OC.L10N.register(
     "Limit to groups" : "Lìmita a grupos",
     "Saved" : "Sarvadu",
     "Unknown error" : "Errore disconnotu",
+    "New action" : "Atzione noa",
     "More actions" : "Àteras atziones"
 },
 "nplurals=2; plural=(n != 1);");

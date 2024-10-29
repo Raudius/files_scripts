@@ -22,7 +22,7 @@ OC.L10N.register(
     "Disabled" : "Désactivé",
     "Back" : "Retour",
     "Variable name" : "Nom variable",
-    "User prompt" : "Invite utilisateur",
+    "User prompt" : "Prompt utilisateur",
     "Input type" : "Type d'entrée",
     "Large text area" : "Zone de texte détaillé",
     "Allow multiple selections" : "Permettre la sélection multiple",

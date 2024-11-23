@@ -66,6 +66,45 @@ sudo cp ./.libs/lua.so /usr/lib/php/20200930/
 
 Don't forget to append `extension=lua.so` to your `php.ini`!
 
+### Nextcloud Docker Container Setup
+<details>
+If you're using the Nextcloud manual docker image the below will get your environment setup. 
+Note that you'll have to either rebuild the image with a dockerfile that includes these or run this script each time the container is rebuilt
+	<details>
+		<summary>Build and enable LUA</summary>
+		Similar to installing Lua for PHP8. Installs the packages needed, copies the lua.so file, 
+		and then writes out the ini needed which enables the extension for PHP. 
+		You will need to verify the destination path as noted in the commented lines in the event PHP is updated in the container and update yourcp and echo lines
+
+		```shell
+			apt update
+			apt install -y lua5.3 liblua5.3-0 liblua5.3-dev ffmpeg git
+
+			cd ~
+			git clone https://github.com/badoo/php-lua.git
+			cd php-lua
+			phpize && ./configure --with-lua-version=5.3
+			make
+
+			# The destination path may change depending on your PHP version
+			# You can find your extension directory by using:
+			# php -i | grep extension_dir
+			cp ./.libs/lua.so /usr/local/lib/php/extensions/no-debug-non-zts-20220829
+
+			echo extension=lua.so > /usr/local/etc/php/conf.d/docker-php-ext-lua.ini
+		```
+	</details>
+* Download and install release
+Depending on your volume mounts is where you'll place the compressed archive
+For example, if you have the following mounts in your docker-compose 
+```shell
+    volumes:
+      - /mnt/containers/nextcloud/html:/var/www/html
+      - /mnt/containers/nextcloud/apps:/var/www/html/custom_apps
+```
+You would extract the files_scripts archive into /mnt/containers/nextcloud/apps on your host machine
+</details>
+
 ### Optional:
 
 <details>

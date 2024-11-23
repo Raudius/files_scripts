@@ -96,7 +96,7 @@ You will need to verify the destination path as noted in the commented lines in 
 
 ```shell
 apt update
-apt install -y lua5.3 liblua5.3-0 liblua5.3-dev ffmpeg git
+apt install -y lua5.3 liblua5.3-0 liblua5.3-dev git
 
 cd ~
 git clone https://github.com/badoo/php-lua.git
@@ -106,8 +106,9 @@ make
 
 # The destination path may change depending on your PHP version
 # You can find your extension directory by using:
-# php -i | grep extension_dir
-cp ./.libs/lua.so /usr/local/lib/php/extensions/no-debug-non-zts-20220829
+# php-config --extension-dir or php -i | grep extension_dir
+EXTENSIONPATH="$(php-config --extension-dir)"
+cp ./.libs/lua.so $EXTENSIONPATH
 
 echo extension=lua.so > /usr/local/etc/php/conf.d/docker-php-ext-lua.ini
 ```

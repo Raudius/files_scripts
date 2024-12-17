@@ -4,6 +4,7 @@ OC.L10N.register(
     "Edit" : "Sunting",
     "Delete" : "Padam",
     "Back" : "Kembali",
-    "Save" : "Simpan"
+    "Save" : "Simpan",
+    "Saved" : "Disimpan"
 },
 "nplurals=1; plural=0;");

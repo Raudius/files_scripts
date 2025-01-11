@@ -13,6 +13,7 @@ OC.L10N.register(
     "Limit to groups" : "グループに制限する",
     "Saved" : "保存しました",
     "Unknown error" : "不明なエラー",
+    "New action" : "新しいアクション",
     "More actions" : "その他のアクション"
 },
 "nplurals=1; plural=0;");

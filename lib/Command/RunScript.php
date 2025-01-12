@@ -1,12 +1,14 @@
 <?php
 namespace OCA\FilesScripts\Command;
 
+use Error;
 use OC\Core\Command\Base;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
 use OCA\FilesScripts\Interpreter\Context;
 use OCA\FilesScripts\Interpreter\Lua\LuaProvider;
 use OCA\FilesScripts\Service\ScriptService;
+use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -44,29 +46,8 @@ class RunScript extends Base {
 		parent::configure();
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)  {
-		$scriptId = $input->getArgument('id');
-		$userId = $input->getOption('user');
-		$scriptInputsJson = $input->getOption('inputs') ?? '{}';
+	public static function getFilesForCommand(InputInterface $input, OutputInterface $output, Folder $rootFolder) {
 		$fileInputs = $input->getOption('file') ?? [];
-		
-		try {
-			$scriptInputsData = json_decode($scriptInputsJson, true, 512, JSON_THROW_ON_ERROR);
-		} catch (\JsonException $err) {
-			$output->writeln('<error>Could not parse the inputs JSON</error>');
-			return 1;
-		}
-
-		$script = $this->scriptMapper->find($scriptId);
-		$output->writeln('<info>Executing file action: ' . $script->getTitle() . '</info>');
-
-		$scriptInputs = $this->scriptInputMapper->findAllByScriptId($scriptId);
-		foreach ($scriptInputs as $scriptInput) {
-			$value = $scriptInputsData[$scriptInput->getName()] ?? null;
-			$scriptInput->setValue($value);
-		}
-
-		$rootFolder = $this->rootFolder->getUserFolder($userId);
 
 		$files = [];
 		$n = 1;
@@ -77,22 +58,56 @@ class RunScript extends Base {
 					if (ctype_digit(strval($fileInput))) {
 						$nodes = $rootFolder->getById(intval($fileInput));
 						if (!isset($nodes[0])) {
-							$output->writeln('<error>Could not find input file ' . $fileInput . ' belonging in root folder ' . $rootFolder->getPath() . ' for file action</error>');			
-							return 1;
+							throw new Error('Could not find input file ' . $fileInput . ' belonging in root folder ' . $rootFolder->getPath() . ' for file action');
 						}
 						$file = $nodes[0];
 						unset($nodes);
 					} else {
 						$file = $rootFolder->get($fileInput);
 					}
-				} catch (\Exception $e) {
-					$output->writeln('<error>Could not find input file ' . $fileInput . ' belonging in root folder ' . $rootFolder->getPath() . ' for file action</error>');
-					return 1;
+				} catch (\Throwable $e) {
+					throw $e;
 				}
 				$files[$n++] = $file;
 			}
 		}
 
+		return $files;
+	}
+
+	protected function execute(InputInterface $input, OutputInterface $output)  {
+		$scriptId = $input->getArgument('id');
+		$userId = $input->getOption('user');
+		$scriptInputsJson = $input->getOption('inputs') ?? '{}';
+
+		try {
+			$scriptInputsData = json_decode($scriptInputsJson, true, 512, JSON_THROW_ON_ERROR);
+		} catch (\JsonException $err) {
+			$output->writeln('<error>Could not parse the inputs JSON</error>');
+			return 1;
+		}
+
+		$script = $this->scriptMapper->find($scriptId);
+		$output->writeln('<info>Executing file action: ' . $script->getTitle() . '</info>');
+
+		$scriptInputs = $this->scriptInputMapper->findAllByScriptId($scriptId) ?? [];
+		foreach ($scriptInputs as $scriptInput) {
+			$value = $scriptInputsData[$scriptInput->getName()] ?? null;
+			$scriptInput->setValue($value);
+		}
+
+		$rootFolder = $this->rootFolder;
+		try {
+			if ($userId) {
+				$rootFolder = $this->rootFolder->getUserFolder($userId);
+			}
+			$files = self::getFilesForCommand($input, $output, $rootFolder);
+		} catch (\Throwable $e) {
+			$output->writeln('<error>' . $e->getMessage() .'</error>');
+			return 1;
+		}
+
+		print(gettype($scriptInputs));
 		$context = new Context(
 			$this->luaProvider->createLua(),
 			$rootFolder,

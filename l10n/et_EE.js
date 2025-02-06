@@ -7,6 +7,7 @@ OC.L10N.register(
     "Disabled" : "Keelatud",
     "Back" : "Tagasi",
     "Save" : "Salvesta",
+    "Text" : "Tekst",
     "Checkbox" : "Märkeruut",
     "Limit to groups" : "Luba gruppidele",
     "Saved" : "Salvestatud",

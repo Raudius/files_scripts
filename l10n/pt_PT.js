@@ -11,13 +11,13 @@ OC.L10N.register(
     "A script already exists with this title." : "Já existe uma script com esse assunto.",
     "Edit" : "Editar",
     "Delete" : "Apagar",
-    "Enabled" : "Activo",
-    "Disabled" : "Desactivado",
+    "Enabled" : "Ativado",
+    "Disabled" : "Desativado",
     "Back" : "Anterior",
     "Variable name" : "Nome da variável",
     "Save" : "Guardar",
     "Text" : "Texto",
-    "Checkbox" : "Caixa de selecção",
+    "Checkbox" : "Caixa de seleção",
     "User inputs" : "Escolhas do utilizador",
     "Script name" : "Nome da script",
     "Enable script" : "Ativar a script",
@@ -31,6 +31,6 @@ OC.L10N.register(
     "Action completed!" : "Execução concluída!",
     "Action failed unexpectedly." : "Execução falhou subitamente.",
     "New action" : "Nova ação",
-    "More actions" : "Mais acções"
+    "More actions" : "Mais ações"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

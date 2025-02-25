@@ -13,6 +13,7 @@ OC.L10N.register(
     "Limit to groups" : "Begræns til grupper",
     "Saved" : "Gemt",
     "Unknown error" : "Ukendt fejl",
+    "New action" : "Ny handling",
     "More actions" : "Flere handlinger"
 },
 "nplurals=2; plural=(n != 1);");

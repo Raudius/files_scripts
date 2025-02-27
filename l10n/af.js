@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Edit" : "Wysig",
     "Delete" : "Skrap",
+    "Text" : "Teks",
     "Back" : "Terug",
     "Save" : "Bewaar",
-    "Text" : "Teks",
     "Saved" : "Bewaar",
     "Unknown error" : "Onbekende fout"
 },

@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Izmjeni",
-    "Delete" : "Obriši",
     "Enabled" : "Aktivirano",
     "Disabled" : "Onemogućeno",
+    "Edit" : "Izmjeni",
+    "Delete" : "Obriši",
     "Save" : "Spremi",
     "Saved" : "Spremljeno",
     "Unknown error" : "Nepoznata greška"

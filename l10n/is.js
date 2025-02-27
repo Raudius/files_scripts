@@ -1,17 +1,17 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Virkt",
+    "Disabled" : "Óvirkt",
     "Edit" : "Breyta",
     "Duplicate" : "Tvítaka",
     "Delete" : "Eyða",
-    "Enabled" : "Virkt",
-    "Disabled" : "Óvirkt",
-    "Back" : "Til baka",
-    "Save" : "Vista",
     "Text" : "Texti",
     "Checkbox" : "Gátreitur",
-    "Limit to groups" : "Takmarka við hópa",
+    "Back" : "Til baka",
+    "Save" : "Vista",
     "Saved" : "Vistað",
+    "Limit to groups" : "Takmarka við hópa",
     "Unknown error" : "Óþekkt villa",
     "New action" : "Ný aðgerð",
     "More actions" : "Fleiri aðgerðir"

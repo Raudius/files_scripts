@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Modifi",
-    "Delete" : "Forigi",
     "Enabled" : "Ŝaltita",
     "Disabled" : "Malŝaltita",
-    "Back" : "Antaŭen",
-    "Save" : "Konservi",
+    "Edit" : "Modifi",
+    "Delete" : "Forigi",
     "Text" : "Teksto",
     "Checkbox" : "Markobutono",
-    "Limit to groups" : "Limigi al grupoj",
+    "Back" : "Antaŭen",
+    "Save" : "Konservi",
     "Saved" : "Konservita",
+    "Limit to groups" : "Limigi al grupoj",
     "Unknown error" : "Nekonata eraro",
     "More actions" : "Pliaj agoj"
 },

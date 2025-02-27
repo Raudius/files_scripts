@@ -1,14 +1,14 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Dəyişiklik et",
-    "Delete" : "Sil",
     "Enabled" : "İşə salınıb",
     "Disabled" : "Dayandırılıb",
+    "Edit" : "Dəyişiklik et",
+    "Delete" : "Sil",
     "Back" : "Geri",
     "Save" : "Saxla",
-    "Limit to groups" : "Qruplara limitlə",
     "Saved" : "Saxlanıldı",
+    "Limit to groups" : "Qruplara limitlə",
     "Unknown error" : "Bəlli olmayan səhv baş verdi"
 },
 "nplurals=2; plural=(n != 1);");

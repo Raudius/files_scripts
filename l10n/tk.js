@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Edit" : "Redaktirläň",
     "Delete" : "Pozmak",
+    "Checkbox" : "Bellik gutusy",
     "Back" : "Yzyna",
     "Save" : "Saklamak",
-    "Checkbox" : "Bellik gutusy",
     "Unknown error" : "Näbelli ýalňyşlyk"
 },
 "nplurals=2; plural=(n != 1);");

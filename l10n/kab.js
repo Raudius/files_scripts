@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Ẓreg",
-    "Delete" : "Kkes",
     "Enabled" : "Yermed",
     "Disabled" : "Ittwarermed",
+    "Edit" : "Ẓreg",
+    "Delete" : "Kkes",
     "Back" : "Retour",
     "Save" : "Sekles",
     "Unknown error" : "Erreur inconnue"

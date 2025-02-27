@@ -1,14 +1,14 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Editar",
-    "Delete" : "Desaniciar",
     "Enabled" : "Activóse",
     "Disabled" : "Desactivóse",
-    "Back" : "Atrás",
-    "Save" : "Guardar",
+    "Edit" : "Editar",
+    "Delete" : "Desaniciar",
     "Text" : "Testu",
     "Checkbox" : "Caxellu",
+    "Back" : "Atrás",
+    "Save" : "Guardar",
     "Saved" : "Guardóse",
     "Unknown error" : "Error desconocíu",
     "More actions" : "Más aiciones"

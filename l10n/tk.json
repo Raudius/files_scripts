@@ -1,9 +1,9 @@
 { "translations": {
     "Edit" : "Redaktirläň",
     "Delete" : "Pozmak",
+    "Checkbox" : "Bellik gutusy",
     "Back" : "Yzyna",
     "Save" : "Saklamak",
-    "Checkbox" : "Bellik gutusy",
     "Unknown error" : "Näbelli ýalňyşlyk"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

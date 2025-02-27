@@ -1,17 +1,17 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Habilitado",
+    "Disabled" : "Deshabilitado",
     "Edit" : "Editar",
     "Duplicate" : "Duplicado",
     "Delete" : "Eliminar",
-    "Enabled" : "Habilitado",
-    "Disabled" : "Deshabilitado",
-    "Back" : "Atrás",
-    "Save" : "Guardar",
     "Text" : "Texto",
     "Checkbox" : "Casilla de verificación",
-    "Limit to groups" : "Limitar a grupos",
+    "Back" : "Atrás",
+    "Save" : "Guardar",
     "Saved" : "Guardado",
+    "Limit to groups" : "Limitar a grupos",
     "Unknown error" : "Se presentó un error desconocido",
     "More actions" : "Más acciones"
 },

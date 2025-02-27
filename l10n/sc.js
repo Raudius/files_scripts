@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Modìfica",
-    "Delete" : "Cantzella",
     "Enabled" : "Ativadu",
     "Disabled" : "Disativadu",
-    "Back" : "In segus",
-    "Save" : "Sarva",
+    "Edit" : "Modìfica",
+    "Delete" : "Cantzella",
     "Text" : "Testu",
     "Checkbox" : "Casella de seletzione",
-    "Limit to groups" : "Lìmita a grupos",
+    "Back" : "In segus",
+    "Save" : "Sarva",
     "Saved" : "Sarvadu",
+    "Limit to groups" : "Lìmita a grupos",
     "Unknown error" : "Errore disconnotu",
     "New action" : "Atzione noa",
     "More actions" : "Àteras atziones"

@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "ಸಂಪಾದಿಸು",
-    "Delete" : "﻿ಅಳಿಸಿ",
     "Enabled" : "ಸಕ್ರಿಯಗೊಳಿಸಿದೆ",
     "Disabled" : "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+    "Edit" : "ಸಂಪಾದಿಸು",
+    "Delete" : "﻿ಅಳಿಸಿ",
     "Save" : "﻿ಉಳಿಸಿ",
     "Saved" : "﻿ಉಳಿಸಿದ",
     "Unknown error" : "ಗೊತ್ತಿಲ್ಲದ ದೋಷ"

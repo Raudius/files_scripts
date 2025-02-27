@@ -1,13 +1,13 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Golygu",
-    "Delete" : "Dileu",
     "Enabled" : "Galluogwyd",
     "Disabled" : "Analluogwyd",
+    "Edit" : "Golygu",
+    "Delete" : "Dileu",
+    "Checkbox" : "Blwch ticio",
     "Back" : "Nôl",
     "Save" : "Cadw",
-    "Checkbox" : "Blwch ticio",
     "Saved" : "Wedi'u cadw",
     "Unknown error" : "Gwall anhysbys"
 },

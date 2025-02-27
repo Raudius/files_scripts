@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Uredi",
-    "Delete" : "Izbriši",
     "Enabled" : "Omogućeno",
     "Disabled" : "Onemogućeno",
-    "Back" : "Natrag",
-    "Save" : "Spremi",
+    "Edit" : "Uredi",
+    "Delete" : "Izbriši",
     "Text" : "Tekst",
     "Checkbox" : "Potvrdni okvir",
-    "Limit to groups" : "Ograniči na grupe",
+    "Back" : "Natrag",
+    "Save" : "Spremi",
     "Saved" : "Spremljeno",
+    "Limit to groups" : "Ograniči na grupe",
     "Unknown error" : "Nepoznata pogreška",
     "More actions" : "Dodatne radnje"
 },

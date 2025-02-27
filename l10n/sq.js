@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Përpuno",
-    "Delete" : "Fshi",
     "Enabled" : "I aktivizuar",
     "Disabled" : "I çaktivizuar",
-    "Back" : "Prapa",
-    "Save" : "Ruaj",
+    "Edit" : "Përpuno",
+    "Delete" : "Fshi",
     "Text" : "Tekst",
     "Checkbox" : "Checkbox",
-    "Limit to groups" : "Kufizo grupet",
+    "Back" : "Prapa",
+    "Save" : "Ruaj",
     "Saved" : "Ruajtur",
+    "Limit to groups" : "Kufizo grupet",
     "Unknown error" : "Gabim i panjohur",
     "More actions" : "Më tepër veprime "
 },

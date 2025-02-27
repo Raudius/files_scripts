@@ -1,15 +1,15 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Labot",
-    "Delete" : "Dzēst",
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",
+    "Edit" : "Labot",
+    "Delete" : "Dzēst",
+    "Text" : "Teksts",
     "Back" : "Atpakaļ",
     "Save" : "Saglabāt",
-    "Text" : "Teksts",
-    "Limit to groups" : "Grupu ierobežojums",
     "Saved" : "Saglabāts",
+    "Limit to groups" : "Grupu ierobežojums",
     "Unknown error" : "Nezināma kļūda"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

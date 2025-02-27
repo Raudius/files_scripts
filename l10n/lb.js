@@ -1,13 +1,13 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Änneren",
-    "Delete" : "Läschen",
     "Enabled" : "Aktivéiert",
     "Disabled" : "Deaktivéiert",
+    "Edit" : "Änneren",
+    "Delete" : "Läschen",
+    "Checkbox" : "Checkbox",
     "Back" : "Zeréck",
     "Save" : "Späicheren",
-    "Checkbox" : "Checkbox",
     "Saved" : "Gespäichert",
     "Unknown error" : "Et ass en onbekannte Fehler opgetrueden"
 },

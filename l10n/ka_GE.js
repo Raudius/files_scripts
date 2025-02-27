@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "შეცვლა",
-    "Delete" : "წაშლა",
     "Enabled" : "მოქმედია",
     "Disabled" : "არაა მოქმედი",
-    "Back" : "უკან",
-    "Save" : "შენახვა",
+    "Edit" : "შეცვლა",
+    "Delete" : "წაშლა",
     "Text" : "ტექსტი",
     "Checkbox" : "ჩექბოქსი",
-    "Limit to groups" : "ლიმიტი ჯგუფებზე",
+    "Back" : "უკან",
+    "Save" : "შენახვა",
     "Saved" : "შენახულია",
+    "Limit to groups" : "ლიმიტი ჯგუფებზე",
     "Unknown error" : "უცნობი შეცდომა",
     "More actions" : "მეტი ქმედება"
 },

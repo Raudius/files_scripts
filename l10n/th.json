@@ -1,12 +1,12 @@
 { "translations": {
-    "Edit" : "แก้ไข",
-    "Delete" : "ลบ",
     "Enabled" : "เปิดใช้งาน",
     "Disabled" : "ปิดใช้งาน",
-    "Back" : "ย้อนกลับ",
-    "Save" : "บันทึก",
+    "Edit" : "แก้ไข",
+    "Delete" : "ลบ",
     "Text" : "ข้อความ",
     "Checkbox" : "กล่องกาเครื่องหมาย",
+    "Back" : "ย้อนกลับ",
+    "Save" : "บันทึก",
     "Saved" : "บันทึกแล้ว",
     "Unknown error" : "ข้อผิดพลาดที่ไม่รู้จัก"
 },"pluralForm" :"nplurals=1; plural=0;"

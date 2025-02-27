@@ -1,9 +1,9 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Activate",
     "Edit" : "Modificar",
     "Delete" : "Deler",
-    "Enabled" : "Activate",
     "Back" : "Retro",
     "Save" : "Salveguardar",
     "Saved" : "Salveguardate",

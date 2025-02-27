@@ -1,17 +1,17 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Enabled",
+    "Disabled" : "Disabled",
     "Edit" : "Edit",
     "Duplicate" : "Duplicate",
     "Delete" : "Delete",
-    "Enabled" : "Enabled",
-    "Disabled" : "Disabled",
-    "Back" : "Back",
-    "Save" : "Save",
     "Text" : "Text",
     "Checkbox" : "Checkbox",
-    "Limit to groups" : "Limit to groups",
+    "Back" : "Back",
+    "Save" : "Save",
     "Saved" : "Saved",
+    "Limit to groups" : "Limit to groups",
     "Unknown error" : "Unknown error",
     "More actions" : "More actions"
 },

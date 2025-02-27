@@ -1,10 +1,10 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "সম্পাদনা",
-    "Delete" : "মুছে",
     "Enabled" : "কার্যকর",
     "Disabled" : "অকার্যকর",
+    "Edit" : "সম্পাদনা",
+    "Delete" : "মুছে",
     "Back" : "পেছনে যাও",
     "Save" : "সংরক্ষণ",
     "Saved" : "সংরক্ষণ করা হলো",

@@ -1,17 +1,17 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Aktiveret",
+    "Disabled" : "Deaktiveret",
     "Edit" : "Rediger",
     "Duplicate" : "dubletter",
     "Delete" : "Slet",
-    "Enabled" : "Aktiveret",
-    "Disabled" : "Deaktiveret",
-    "Back" : "Tilbage",
-    "Save" : "Gem",
     "Text" : "Tekst",
     "Checkbox" : "Afkrydsningsfelt",
-    "Limit to groups" : "Begræns til grupper",
+    "Back" : "Tilbage",
+    "Save" : "Gem",
     "Saved" : "Gemt",
+    "Limit to groups" : "Begræns til grupper",
     "Unknown error" : "Ukendt fejl",
     "New action" : "Ny handling",
     "More actions" : "Flere handlinger"

@@ -1,16 +1,16 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "עריכה",
-    "Delete" : "מחיקה",
     "Enabled" : "מופעל",
     "Disabled" : "מושבת",
-    "Back" : "חזרה",
-    "Save" : "שמירה",
+    "Edit" : "עריכה",
+    "Delete" : "מחיקה",
     "Text" : "טקסט",
     "Checkbox" : "תיבת סימון",
-    "Limit to groups" : "הגבלה לקבוצות",
+    "Back" : "חזרה",
+    "Save" : "שמירה",
     "Saved" : "נשמרה",
+    "Limit to groups" : "הגבלה לקבוצות",
     "Unknown error" : "שגיאה בלתי ידועה",
     "More actions" : "פעולות נוספות"
 },

@@ -1,13 +1,13 @@
 OC.L10N.register(
     "files_scripts",
     {
-    "Edit" : "Rediger",
-    "Delete" : "Slett",
     "Enabled" : "Aktivert",
     "Disabled" : "Deaktivert",
+    "Edit" : "Rediger",
+    "Delete" : "Slett",
+    "Checkbox" : "Avkryssingsfelt",
     "Back" : "Tilbake",
     "Save" : "Lagre",
-    "Checkbox" : "Avkryssingsfelt",
     "Saved" : "Lagra",
     "Unknown error" : "Ukjend feil"
 },

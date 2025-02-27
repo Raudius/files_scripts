@@ -1,17 +1,17 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Enabled" : "Activat",
+    "Disabled" : "Dezactivați",
     "Edit" : "Editează",
     "Duplicate" : "Duplicat",
     "Delete" : "Șterge",
-    "Enabled" : "Activat",
-    "Disabled" : "Dezactivați",
-    "Back" : "Înapoi",
-    "Save" : "Salvează",
     "Text" : "Text",
     "Checkbox" : "Căsuța de bifat",
-    "Limit to groups" : "Limitează pentru grupuri",
+    "Back" : "Înapoi",
+    "Save" : "Salvează",
     "Saved" : "Salvat",
+    "Limit to groups" : "Limitează pentru grupuri",
     "Unknown error" : "Eroare necunoscută",
     "More actions" : "Mai multe acțiuni"
 },

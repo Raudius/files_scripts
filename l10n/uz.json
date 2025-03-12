@@ -1,5 +1,8 @@
 { "translations": {
+    "Edit" : "Tahrirlash",
+    "Duplicate" : "Nusxa",
     "Delete" : "Delete",
+    "Back" : "Orqaga",
     "Save" : "Save",
     "Saved" : "Saved",
     "Unknown error" : "Unknown error"

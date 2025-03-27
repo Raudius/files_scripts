@@ -4,6 +4,7 @@ OC.L10N.register(
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",
     "Edit" : "Labot",
+    "Duplicate" : "Pavairot",
     "Delete" : "Dzēst",
     "Text" : "Teksts",
     "Back" : "Atpakaļ",

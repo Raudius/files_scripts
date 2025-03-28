@@ -11,6 +11,7 @@ OC.L10N.register(
     "Save" : "Salvesta",
     "Saved" : "Salvestatud",
     "Limit to groups" : "Luba gruppidele",
-    "Unknown error" : "Tundmatu viga"
+    "Unknown error" : "Tundmatu viga",
+    "More actions" : "Täiendavad tegevused"
 },
 "nplurals=2; plural=(n != 1);");

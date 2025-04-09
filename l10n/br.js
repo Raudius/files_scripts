@@ -5,6 +5,7 @@ OC.L10N.register(
     "Disabled" : "Disaotreañ",
     "Edit" : "Cheñch",
     "Delete" : "Lemel",
+    "Text" : "Testenn",
     "Checkbox" : "Checkbox",
     "Back" : "Distro",
     "Save" : "Enrollañ",

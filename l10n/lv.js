@@ -5,7 +5,7 @@ OC.L10N.register(
     "Disabled" : "Atspējots",
     "Edit" : "Labot",
     "Duplicate" : "Pavairot",
-    "Delete" : "Dzēst",
+    "Delete" : "Izdzēst",
     "Text" : "Teksts",
     "Back" : "Atpakaļ",
     "Save" : "Saglabāt",

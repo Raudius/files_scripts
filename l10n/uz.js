@@ -4,6 +4,8 @@ OC.L10N.register(
     "Edit" : "Tahrirlash",
     "Duplicate" : "Nusxa",
     "Delete" : "Delete",
+    "Text" : "Matn",
+    "Checkbox" : "Belgilash katagi",
     "Back" : "Orqaga",
     "Save" : "Save",
     "Saved" : "Saved",

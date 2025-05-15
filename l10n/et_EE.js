@@ -4,6 +4,7 @@ OC.L10N.register(
     "Enabled" : "Lubatud",
     "Disabled" : "Keelatud",
     "Edit" : "Redigeeri",
+    "Duplicate" : "Tee koopia",
     "Delete" : "Kustuta",
     "Text" : "Tekst",
     "Checkbox" : "Märkeruut",

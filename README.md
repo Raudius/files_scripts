@@ -83,6 +83,49 @@ sudo apt install ffmpeg
 
 </details>
 
+### Nextcloud Docker Container Setup
+
+If you're using the Nextcloud manual docker image the below will get your environment setup. 
+Note that you'll have to either rebuild the image with a dockerfile that includes these or run this script each time the container is rebuilt
+
+<details>
+<summary>Build and enable LUA</summary>
+Similar to installing Lua for PHP8. Installs the packages needed, copies the lua.so file, 
+and then writes out the ini needed which enables the extension for PHP. 
+You will need to verify the destination path as noted in the commented lines in the event PHP is updated in the container and update yourcp and echo lines
+
+```shell
+apt update
+apt install -y lua5.3 liblua5.3-0 liblua5.3-dev git
+
+cd ~
+git clone https://github.com/badoo/php-lua.git
+cd php-lua
+phpize && ./configure --with-lua-version=5.3
+make
+
+# The destination path may change depending on your PHP version
+# You can find your extension directory by using:
+# php-config --extension-dir or php -i | grep extension_dir
+EXTENSIONPATH="$(php-config --extension-dir)"
+cp ./.libs/lua.so $EXTENSIONPATH
+
+echo extension=lua.so > /usr/local/etc/php/conf.d/docker-php-ext-lua.ini
+```
+</details>
+<details>
+<summary>Install release</summary>
+
+Depending on your volume mounts is where you'll place the compressed archive
+For example, if you have the following mounts in your docker-compose 
+```shell
+    volumes:
+      - /mnt/containers/nextcloud/html:/var/www/html
+      - /mnt/containers/nextcloud/apps:/var/www/html/custom_apps
+```
+You would extract the files_scripts archive into /mnt/containers/nextcloud/apps on your host machine
+</details>
+
 ## Documentation
 
 The [admin documentation](docs/Admin.md) contains information about how to create new actions and some precautions that should be taken when writing one.

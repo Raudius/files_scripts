@@ -4,6 +4,7 @@ OC.L10N.register(
     "Edit" : "Hariri",
     "Duplicate" : "Zalisha",
     "Delete" : "Futa",
+    "Text" : "Maandishi",
     "Back" : "Rudi",
     "Save" : "Hifadhi"
 },

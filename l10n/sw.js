@@ -6,6 +6,7 @@ OC.L10N.register(
     "Delete" : "Futa",
     "Text" : "Maandishi",
     "Back" : "Rudi",
-    "Save" : "Hifadhi"
+    "Save" : "Hifadhi",
+    "Unknown error" : "Hitilafu isiyojulikana"
 },
 "nplurals=2; plural=(n != 1);");

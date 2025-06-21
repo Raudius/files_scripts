@@ -7,6 +7,7 @@ OC.L10N.register(
     "Text" : "Maandishi",
     "Back" : "Rudi",
     "Save" : "Hifadhi",
-    "Unknown error" : "Hitilafu isiyojulikana"
+    "Unknown error" : "Hitilafu isiyojulikana",
+    "More actions" : "Vitendo zaidi"
 },
 "nplurals=2; plural=(n != 1);");

@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Disabled" : "Zima",
     "Edit" : "Hariri",
     "Duplicate" : "Zalisha",
     "Delete" : "Futa",

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Text" : "Maandishi",
     "Back" : "Rudi",
     "Save" : "Hifadhi",
+    "Saved" : "Imehifadhiwa",
     "Unknown error" : "Hitilafu isiyojulikana",
     "More actions" : "Vitendo zaidi"
 },

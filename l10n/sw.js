@@ -10,6 +10,7 @@ OC.L10N.register(
     "Back" : "Rudi",
     "Save" : "Hifadhi",
     "Saved" : "Imehifadhiwa",
+    "Limit to groups" : "Limit to groups",
     "Unknown error" : "Hitilafu isiyojulikana",
     "More actions" : "Vitendo zaidi"
 },

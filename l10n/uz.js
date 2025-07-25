@@ -3,11 +3,11 @@ OC.L10N.register(
     {
     "Edit" : "Tahrirlash",
     "Duplicate" : "Nusxa",
-    "Delete" : "Delete",
+    "Delete" : "O'chirish",
     "Text" : "Matn",
     "Checkbox" : "Belgilash katagi",
     "Back" : "Orqaga",
-    "Save" : "Save",
+    "Save" : "Saqlash",
     "Saved" : "Saved",
     "Unknown error" : "Unknown error",
     "More actions" : "Ko'proq harakatlar"

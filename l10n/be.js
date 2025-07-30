@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "Edit" : "Рэдагаваць",
     "Delete" : "Выдаліць",
     "Text" : "Тэкст",
     "Back" : "Назад",

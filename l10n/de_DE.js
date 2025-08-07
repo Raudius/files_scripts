@@ -10,7 +10,7 @@ OC.L10N.register(
     "Run file action" : "Dateiaktion ausführen",
     "Pass files to a file action script and run it." : "Dateien an ein Dateiaktionsskript übergeben und dieses ausführen.",
     "File actions" : "Dateiaktionen",
-    "An unexpected error occurred when running the action." : "Es ist ein unerwarteter Fehler bei der Ausführung der Aktion aufgetreten.",
+    "An unexpected error occurred when running the action." : "Bei der Ausführung der Aktion ist ein unerwarteter Fehler aufgetreten.",
     "Title is empty." : "Titel ist leer.",
     "A script already exists with this title." : "Ein Skript mit diesem Titel existiert bereits.",
     "Scripting tool which allows administrators to expand the file options menu." : "Skripting-Tool, mit dem die Administration das Menü der Dateioptionen erweitern kann.",

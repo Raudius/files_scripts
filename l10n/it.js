@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "File actions" : "Azioni sui file",
     "Enabled" : "Abilitata",
     "Disabled" : "Disabilitata",
     "Edit" : "Modifica",

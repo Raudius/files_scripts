@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "File actions" : "文件操作",
     "Enabled" : "已启用",
     "Disabled" : "已禁用",
     "Edit" : "编辑",

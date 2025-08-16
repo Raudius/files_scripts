@@ -56,6 +56,8 @@ OC.L10N.register(
     "Action failed unexpectedly." : "La acción falló inesperadamente.",
     "Select action to perform" : "Seleccione la acción a realizar",
     "Execute" : "Ejecutar",
+    "Failed to duplicate the script." : "Fallo al duplicar el script.",
+    "Failed to delete the script." : "Fallo al borrar el script.",
     "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "Las acciones de archivo son pequeños scripts de Lua que pueden crear, modificar y/o eliminar archivos de forma programática. Estas acciones pueden ser activadas por los usuarios para ejecutarse en sus archivos. Por favor, lea la documentación para obtener más información.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Las acciones de archivo no están disponibles ya que no hay ningún intérprete disponible. Instale el plugin de Lua en el servidor o bien habilite el intérprete experimental.",
     "New action" : "Nueva acción",

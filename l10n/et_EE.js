@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "File actions" : "Tegevused failidega",
     "Enabled" : "Lubatud",
     "Disabled" : "Keelatud",
     "Edit" : "Redigeeri",

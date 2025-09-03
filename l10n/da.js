@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "File actions" : "Fil-handlinger",
     "Enabled" : "Aktiveret",
     "Disabled" : "Deaktiveret",
     "Edit" : "Rediger",

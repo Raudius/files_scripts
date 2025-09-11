@@ -2,6 +2,7 @@ OC.L10N.register(
     "files_scripts",
     {
     "File actions" : "Дзеянні з файламі",
+    "Disabled" : "Адключана",
     "Edit" : "Рэдагаваць",
     "Delete" : "Выдаліць",
     "Text" : "Тэкст",

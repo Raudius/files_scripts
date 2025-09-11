@@ -4,7 +4,7 @@ OC.L10N.register(
     "File actions" : "Fil-handlinger",
     "Enabled" : "Aktiveret",
     "Disabled" : "Deaktiveret",
-    "Edit" : "Rediger",
+    "Edit" : "Redigér",
     "Duplicate" : "dubletter",
     "Delete" : "Slet",
     "Text" : "Tekst",

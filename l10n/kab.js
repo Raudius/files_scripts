@@ -7,6 +7,7 @@ OC.L10N.register(
     "Delete" : "Kkes",
     "Back" : "Retour",
     "Save" : "Sekles",
-    "Unknown error" : "Erreur inconnue"
+    "Unknown error" : "Erreur inconnue",
+    "More actions" : "Ugar n tigawin"
 },
 "nplurals=2; plural=(n != 1);");

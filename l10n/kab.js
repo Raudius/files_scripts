@@ -5,6 +5,7 @@ OC.L10N.register(
     "Disabled" : "Ittwarermed",
     "Edit" : "Ẓreg",
     "Delete" : "Kkes",
+    "Text" : "Aḍris",
     "Back" : "Retour",
     "Save" : "Sekles",
     "Unknown error" : "Erreur inconnue",

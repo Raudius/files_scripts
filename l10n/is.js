@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "File actions" : "Skráaaðgerðir",
     "Enabled" : "Virkt",
     "Disabled" : "Óvirkt",
     "Edit" : "Breyta",

@@ -1,4 +1,5 @@
 { "translations": {
+    "An unexpected error occurred when running the action." : "Darbības izpildīšanas laikā atgadījās neparedzēta kļūda.",
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",
     "Edit" : "Labot",

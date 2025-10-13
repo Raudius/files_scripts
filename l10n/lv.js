@@ -1,6 +1,7 @@
 OC.L10N.register(
     "files_scripts",
     {
+    "An unexpected error occurred when running the action." : "Darbības izpildīšanas laikā atgadījās neparedzēta kļūda.",
     "Enabled" : "Iespējots",
     "Disabled" : "Atspējots",
     "Edit" : "Labot",

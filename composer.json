@@ -21,7 +21,7 @@
 		"raudius/luar": "0.1.4"
     },
 	"require-dev": {
-		"phpunit/phpunit": "^13.1.12",
+		"phpunit/phpunit": "^10.5.63",
 		"behat/behat": "^v3.31.0",
 		"guzzlehttp/guzzle": "^7.11",
 		"nextcloud/coding-standard": "^1.0.0",

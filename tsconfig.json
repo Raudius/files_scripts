@@ -8,9 +8,10 @@
 		"resolveJsonModule": true,
 		"allowSyntheticDefaultImports": true,
 		"paths": {
-			"@/*": [
-				"./"
-			]
+			"@nextcloud/files": ["./node_modules/@nextcloud/files/dist/index.d.ts"],
+			"@nextcloud/dialogs": ["./node_modules/@nextcloud/dialogs/dist/index.d.ts"],
+			"@nextcloud/sharing": ["./node_modules/@nextcloud/sharing/dist/index.d.ts"],
+			"@nextcloud/sharing/public": ["./node_modules/@nextcloud/sharing/dist/public.d.ts"],
 		}
 	},
 	"include": ["./src/*", "./custom.d.ts"],

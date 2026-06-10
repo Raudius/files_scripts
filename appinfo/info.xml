@@ -35,7 +35,7 @@ Allows administrators to write small scripts which users can run through the fil
 	<screenshot>https://raw.githubusercontent.com/Raudius/files_scripts/master/screenshots/4.png</screenshot>
 
     <dependencies>
-        <nextcloud min-version="28" max-version="29"/>
+        <nextcloud min-version="33" max-version="35"/>
 		<php min-version="8.0" />
     </dependencies>
 	<commands>

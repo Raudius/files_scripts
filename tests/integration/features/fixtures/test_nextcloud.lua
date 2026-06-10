@@ -161,7 +161,7 @@ assertEquals(json(found_share), json(share), "created-share and found-share not 
 local file = new_file(home(), "activity_foo.txt")
 local activity = get_activity(file)
 
-assertEquals(#activity, 1, "Newly created file should have one activity event (creation)")
+assertEquals(#activity, 1, "Newly created file should have one activity event (creation), has " .. #activity)
 
 created_event = activity[1]
 assertEquals(created_event["_type"], "event", "get_activity() should always return event objects")

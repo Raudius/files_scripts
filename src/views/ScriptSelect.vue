@@ -57,7 +57,7 @@ import {translate as t} from '../l10n'
 import {registerMenuOption, reloadDirectory} from '../files'
 import ScriptInputComponent from '../components/ScriptSelect/ScriptInputComponent.vue'
 import {MessageType, showMessage} from "../types/Messages";
-import {Node} from "@nextcloud/files";
+import {ActionContext, Node} from '@nextcloud/files'
 import {Script, scriptAllowedForNodes} from "../types/script";
 import {NodeInfo} from "../types/files";
 
@@ -78,7 +78,7 @@ export default {
 			showModal: false,
 			isRunning: false,
 			selectedScript: null,
-			selectedFiles: [] as NodeInfo[],
+			selectedFiles: [] as Node[],
 			currentFolder: null as Node,
 			outputDirectory: null,
 			scriptInputs: [],
@@ -173,10 +173,10 @@ export default {
 		/**
 		 * Select the files and optionally the script (if selecting directly from the file menu)
 		 */
-		selectFiles(files: NodeInfo[], currentFolder) {
-			this.selectedFiles = files
+		selectFiles(ctx: ActionContext) {
+			this.selectedFiles = ctx.nodes
 			this.showScriptSelection = true
-			this.currentFolder = currentFolder
+			this.currentFolder = ctx.folder
 
 			this.showModal = true
 		},

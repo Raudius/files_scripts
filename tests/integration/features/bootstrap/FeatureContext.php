@@ -308,35 +308,34 @@ class FeatureContext implements Context {
 	}
 
 	/**
-	 * @param string                $verb
-	 * @param string                $url
-	 * @param TableNode|string|null $body
-	 * @param array                 $headers
-	 * @param bool|null             $auth
+	 * @param TableNode|array|string|resource|null $body
 	 *
 	 * @throws GuzzleException
 	 */
 	private function sendRequestBase(string $verb,
 									 string $url,
-											$body = null,
+									 $body = null,
 									 array $headers = [],
 									 ?bool $auth = true): void {
 		$client = new Client($this->clientOptions);
 
-		if (true === $auth && !isset($this->cookieJars[$this->currentUser])) {
+		if ($auth === true && !isset($this->cookieJars[$this->currentUser])) {
 			$this->cookieJars[$this->currentUser] = new CookieJar();
 		}
 
-		// Get request token for user (required due to CSRF checks)
-		if (true === $auth && !isset($this->requestTokens[$this->currentUser])) {
-			$this->getUserRequestToken($this->currentUser);
+		if ($auth === true) {
+			// Get request token for user (required due to CSRF checks)
+			if (!isset($this->requestTokens[$this->currentUser])) {
+				$this->getUserRequestToken($this->currentUser);
+			}
+
+			$options = ['cookies' => $this->cookieJars[$this->currentUser]];
+			$options['headers'] = array_merge($headers, [
+				'requesttoken' => $this->requestTokens[$this->currentUser],
+			]);
+		} else {
+			$options['headers'] = $headers;
 		}
-
-		$options = ['cookies' => $this->cookieJars[$this->currentUser]];
-
-		$options['headers'] = array_merge($headers, [
-			'requesttoken' => $this->requestTokens[$this->currentUser],
-		]);
 
 		if ($body instanceof TableNode) {
 			$fd = $body->getRowsHash();
@@ -347,30 +346,16 @@ class FeatureContext implements Context {
 			$options['body'] = $body;
 		}
 
-		// Add Xdebug trigger variable as GET parameter
-		$xdebugSession = 'XDEBUG_SESSION=PHPSTORM';
-		if (false !== strpos($url, '?')) {
-			$url .= '&' . $xdebugSession;
-		} else {
-			$url .= '?' . $xdebugSession;
-		}
 
-		// clear the cached json response
 		$this->json = null;
 		try {
-			if ($verb === 'PROPFIND') {
-				$this->response = $client->request('PROPFIND', $url, $options);
-			} else {
-				$this->response = $client->{$verb}($url, $options);
-			}
+			$this->response = $client->request($verb, $url, $options);
 		} catch (ClientException $e) {
 			$this->response = $e->getResponse();
 		}
 	}
 
 	/**
-	 * @param string $user
-	 *
 	 * @throws GuzzleException
 	 */
 	private function getUserRequestToken(string $user): void {
@@ -381,7 +366,12 @@ class FeatureContext implements Context {
 			$client = new Client($this->clientOptions);
 			$response = $client->get(
 				$loginUrl,
-				['cookies' => $this->cookieJars[$user]]
+				[
+					'cookies' => $this->cookieJars[$user],
+					'headers' => [
+						'Origin' => $this->baseUrl,
+					],
+				],
 			);
 			$requestToken = substr(preg_replace('/(.*)data-requesttoken="(.*)">(.*)/sm', '\2', $response->getBody()->getContents()), 0, 89);
 
@@ -396,6 +386,9 @@ class FeatureContext implements Context {
 						'requesttoken' => $requestToken,
 					],
 					'cookies' => $this->cookieJars[$user],
+					'headers' => [
+						'Origin' => $this->baseUrl,
+					],
 				]
 			);
 			$this->assertStatusCode(200);

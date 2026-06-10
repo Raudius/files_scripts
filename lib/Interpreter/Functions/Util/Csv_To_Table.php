@@ -31,9 +31,13 @@ class Csv_To_Table extends RegistrableFunction {
 			return [];
 		}
 
+		if (strlen($enclosure) !== 1) {
+			$enclosure = '"';
+		}
+
 		$csvTable = [];
 		while ($line = fgets($fileStream)) {
-			$csvTable[] = $this->reindex(str_getcsv($line, $separator, $enclosure));
+			$csvTable[] = $this->reindex(str_getcsv($line, $separator, $enclosure, "\\"));
 		}
 		fclose($fileStream);
 		return $this->reindex($csvTable);

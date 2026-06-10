@@ -3,6 +3,7 @@ import { generateUrl } from '@nextcloud/router'
 import { inflateScriptInputOptions, Script, ScriptInput } from '../types/script'
 import {Node} from "@nextcloud/files";
 import {NodeInfo} from "../types/files";
+import {getSharingToken} from "@nextcloud/sharing/public";
 
 function getNodeInfo(node: Node): NodeInfo {
 	return {
@@ -40,7 +41,7 @@ export const api = {
 	},
 
 	async runScript(script: Script, inputs: ScriptInput[], nodes: Node[]): Promise<any> {
-		const shareToken = (<HTMLInputElement>document.getElementById('sharingToken'))?.value ?? null
+		const shareToken = getSharingToken()
 		const data = { inputs, files: nodes.map(getNodeInfo), shareToken }
 
 		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), data)).data

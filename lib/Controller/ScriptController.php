@@ -2,6 +2,8 @@
 
 namespace OCA\FilesScripts\Controller;
 
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCA\FilesScripts\Db\Script;
 use OCA\FilesScripts\Db\ScriptInputMapper;
 use OCA\FilesScripts\Db\ScriptMapper;
@@ -158,10 +160,8 @@ class ScriptController extends Controller {
 		return new JSONResponse($script);
 	}
 
-	/**
-	 * @PublicPage
-	 * @NoAdminRequired
-	 */
+	#[PublicPage]
+	#[NoAdminRequired]
 	public function run(int $id, array $inputs = [], array $files = [], string $shareToken = null): Response {
 		$script = $this->scriptMapper->find($id);
 		if (!$script || !$this->permissionService->isEnabledForUser($script)) {

@@ -1,7 +1,17 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
 import { inflateScriptInputOptions, Script, ScriptInput } from '../types/script'
+import {Node} from "@nextcloud/files";
+import {NodeInfo} from "../types/files";
 
+function getNodeInfo(node: Node): NodeInfo {
+	return {
+		id: node.id,
+		basename: node.basename,
+		fullPath: node.path,
+		mime: node.mime
+	} as NodeInfo
+}
 export const api = {
 	/**
 	 * Get the scripts that are enabled for the current user.
@@ -29,9 +39,9 @@ export const api = {
 		return (await axios.delete(generateUrl('/apps/files_scripts/scripts/' + script.id))).data
 	},
 
-	async runScript(script: Script, inputs: ScriptInput[], files: any[]): Promise<any> {
+	async runScript(script: Script, inputs: ScriptInput[], nodes: Node[]): Promise<any> {
 		const shareToken = (<HTMLInputElement>document.getElementById('sharingToken'))?.value ?? null
-		const data = { inputs, files, shareToken }
+		const data = { inputs, files: nodes.map(getNodeInfo), shareToken }
 
 		return (await axios.post(generateUrl('/apps/files_scripts/run/' + script.id), data)).data
 	},

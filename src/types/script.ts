@@ -81,7 +81,7 @@ export function defaultScriptInputOptions(): ScriptInputOptions {
 	}
 }
 
-export function scriptAllowedForNodes(script: Script, nodes: Node[]|NodeInfo[]): boolean {
+export function scriptAllowedForNodes(script: Script, nodes: Node[]): boolean {
 	if (script.fileTypes.length === 0) {
 		return true
 	}

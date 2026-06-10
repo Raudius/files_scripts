@@ -1,5 +1,5 @@
 export interface NodeInfo {
-	id: number
+	id: string|number
 	basename: string
 	fullPath: string
 	mime: string

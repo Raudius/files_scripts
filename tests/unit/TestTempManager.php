@@ -4,11 +4,11 @@ namespace OCA\FilesScripts;
 use OCP\ITempManager;
 
 class TestTempManager implements ITempManager {
-	public function getTemporaryFile($postFix = '') {
+	public function getTemporaryFile(string $postFix = ''): string {
 		return 'temp_file' . $postFix;
 	}
 
-	public function getTemporaryFolder($postFix = '') {
+	public function getTemporaryFolder(string $postFix = ''): string {
 		return sys_get_temp_dir();
 	}
 

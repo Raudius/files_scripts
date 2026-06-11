@@ -1,6 +1,6 @@
 # This file is licensed under the Affero General Public License version 3 or
 # later. See the COPYING file.
-VERSION?=$(shell sed -ne 's/^\s*<version>\(.*\)<\/version>/\1/p' appinfo/info.xml)
+VERSION?=$(shell cat package.json | jq -r '.version')
 composer=$(shell which composer 2> /dev/null)
 
 # Internal variables
@@ -107,7 +107,7 @@ prepare-build:
 # Signs the build files
 sign-build:
 	echo "Signing app files…"; \
-	sudo -u \#33 -- $(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
+	$(OCC) integrity:sign-app --privateKey="$(CERT_DIR)/$(APP_NAME).key" \
     			--certificate="$(CERT_DIR)/$(APP_NAME).crt" \
     			--path="$(RELEASE_DIR)/$(APP_NAME)";
 

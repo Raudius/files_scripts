@@ -14,7 +14,7 @@ Allows administrators to write small scripts which users can run through the fil
 ⚠️ **Attention** Scripts may modify and delete files permanently. Take care and make sure to read the documentation thoroughly before scripting.
 	]]></description>
 
-    <version>4.1.0</version>
+    <version>5.0.0</version>
 
 	<licence>agpl</licence>
 	<author mail="r.ferreira.fuentes@gmail.com" >Raul Ferreira Fuentes</author>
@@ -26,6 +26,7 @@ Allows administrators to write small scripts which users can run through the fil
 
     <category>files</category>
 	<category>workflow</category>
+	<category>customization</category>
 
 	<bugs>https://github.com/raudius/files_scripts/issues</bugs>
 	<repository>https://github.com/raudius/files_scripts.git</repository>

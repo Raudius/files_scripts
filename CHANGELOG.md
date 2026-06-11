@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.0.0
+
+- Adds compatibility for Nextcloud versions 33 to 35
+- Fixes registration of file action in frontend 
+  - Additional fixes for getting the file action to appear on public shares
+- Fixes some deprecated PHP behaviour
+- Fixes integration tests not working due to authentication issues
+- Dependency updates
+
 ## 4.1.0
 
 ### Added

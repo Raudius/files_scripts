@@ -1,9 +1,0 @@
-{ "translations": {
-    "Enabled" : "සබල කර ඇත",
-    "Disabled" : "අබල කර ඇත",
-    "Edit" : "සංස්කරණය",
-    "Back" : "ආපසු",
-    "Save" : "සුරකින්න",
-    "Unknown error" : "නොදන්නා දෝෂයකි"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
-}

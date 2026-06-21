@@ -1,0 +1,9 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Delete" : "Delete",
+    "Text" : "Teks",
+    "Save" : "Save",
+    "Saved" : "Bewaar",
+    "Unknown error" : "Onbekende fout"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

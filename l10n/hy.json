@@ -1,0 +1,8 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Edit" : "մշակել",
+    "Delete" : "Delete",
+    "Save" : "Save",
+    "Saved" : "Պահված"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

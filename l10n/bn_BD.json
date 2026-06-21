@@ -1,0 +1,11 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Enabled" : "কার্যকর",
+    "Disabled" : "অকার্যকর",
+    "Edit" : "সম্পাদনা",
+    "Delete" : "Delete",
+    "Save" : "Save",
+    "Saved" : "সংরক্ষণ করা হলো",
+    "Unknown error" : "অজানা জটিলতা"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

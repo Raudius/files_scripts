@@ -1,0 +1,17 @@
+OC.L10N.register(
+    "files_scripts",
+    {
+    "File actions" : "File actions",
+    "Enabled" : "მოქმედია",
+    "Disabled" : "არაა მოქმედი",
+    "Edit" : "შეცვლა",
+    "Delete" : "Delete",
+    "Text" : "ტექსტი",
+    "Checkbox" : "ჩექბოქსი",
+    "Save" : "Save",
+    "Saved" : "შენახულია",
+    "Limit to groups" : "ლიმიტი ჯგუფებზე",
+    "Unknown error" : "უცნობი შეცდომა",
+    "More actions" : "მეტი ქმედება"
+},
+"nplurals=2; plural=(n!=1);");

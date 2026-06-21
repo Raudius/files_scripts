@@ -1,0 +1,10 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Enabled" : "Activate",
+    "Edit" : "Modificar",
+    "Delete" : "Delete",
+    "Save" : "Save",
+    "Saved" : "Salveguardate",
+    "Unknown error" : "Error incognite"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

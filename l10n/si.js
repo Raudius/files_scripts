@@ -1,0 +1,13 @@
+OC.L10N.register(
+    "files_scripts",
+    {
+    "File actions" : "File actions",
+    "Enabled" : "සබල කර ඇත",
+    "Disabled" : "අබල කර ඇත",
+    "Edit" : "සංස්කරණය",
+    "Delete" : "Delete",
+    "Back" : "ආපසු",
+    "Save" : "Save",
+    "Unknown error" : "නොදන්නා දෝෂයකි"
+},
+"nplurals=2; plural=(n != 1);");

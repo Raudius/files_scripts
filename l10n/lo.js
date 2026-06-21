@@ -1,0 +1,19 @@
+OC.L10N.register(
+    "files_scripts",
+    {
+    "File actions" : "File actions",
+    "Enabled" : "ເປີດໃຊ້ງານ",
+    "Disabled" : "ປິດໃຊ້ງານ",
+    "Edit" : "ແກ້ໄຂ",
+    "Duplicate" : "ສຳເນົາ",
+    "Delete" : "Delete",
+    "Text" : "ຂໍ້ຄວາມ",
+    "Checkbox" : "ເຄື່ອງໝາຍກ່ອງ",
+    "Back" : "ກັບຄືນ",
+    "Save" : "Save",
+    "Saved" : "ບັນທຶກແລ້ວ",
+    "Limit to groups" : "Limit to groups",
+    "Unknown error" : "ຜິດພາດທີ່ບໍ່ຮູ້ຈັກ",
+    "More actions" : "More actions"
+},
+"nplurals=1; plural=0;");

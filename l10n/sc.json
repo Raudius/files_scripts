@@ -1,0 +1,17 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Enabled" : "Ativadu",
+    "Disabled" : "Disativadu",
+    "Edit" : "Modìfica",
+    "Delete" : "Delete",
+    "Text" : "Testu",
+    "Checkbox" : "Casella de seletzione",
+    "Back" : "In segus",
+    "Save" : "Save",
+    "Saved" : "Sarvadu",
+    "Limit to groups" : "Lìmita a grupos",
+    "Unknown error" : "Errore disconnotu",
+    "New action" : "Atzione noa",
+    "More actions" : "Àteras atziones"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

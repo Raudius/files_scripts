@@ -1,0 +1,8 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Edit" : "تدوین کریں",
+    "Delete" : "Delete",
+    "Save" : "Save",
+    "Unknown error" : "غیر معروف خرابی"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

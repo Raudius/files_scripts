@@ -1,0 +1,15 @@
+{ "translations": {
+    "File actions" : "File actions",
+    "Enabled" : "Activóse",
+    "Disabled" : "Desactivóse",
+    "Edit" : "Editar",
+    "Delete" : "Delete",
+    "Text" : "Testu",
+    "Checkbox" : "Caxellu",
+    "Back" : "Atrás",
+    "Save" : "Save",
+    "Saved" : "Guardóse",
+    "Unknown error" : "Error desconocíu",
+    "More actions" : "Más aiciones"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

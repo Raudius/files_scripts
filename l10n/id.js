@@ -1,0 +1,19 @@
+OC.L10N.register(
+    "files_scripts",
+    {
+    "File actions" : "Tindakan file",
+    "Enabled" : "Diaktifkan",
+    "Disabled" : "Dinonaktifkan",
+    "Edit" : "Edit",
+    "Duplicate" : "Duplikat",
+    "Delete" : "Delete",
+    "Text" : "Teks",
+    "Checkbox" : "Kotak centang",
+    "Back" : "Kembali",
+    "Save" : "Save",
+    "Saved" : "Disimpan",
+    "Limit to groups" : "Batasi ke grup",
+    "Unknown error" : "Kesalahan tidak diketahui",
+    "More actions" : "Tindakan lainnya"
+},
+"nplurals=1; plural=0;");

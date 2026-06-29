@@ -12,6 +12,7 @@ OC.L10N.register(
     "Enabled" : "Ativado",
     "Disabled" : "Desativado",
     "Edit" : "Editar",
+    "Duplicate" : "Duplicar",
     "Delete" : "Delete",
     "Text" : "Texto",
     "Checkbox" : "Caixa de seleção",

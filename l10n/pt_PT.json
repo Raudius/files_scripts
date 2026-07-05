@@ -4,6 +4,7 @@
     "This action is not enabled on public shares." : "Esta ação não está ativada em compartilhamentos públicos.",
     "Failed to create the action variables." : "Erro na criação das variáveis da ação.",
     "Lua extension not installed on the server." : "A extensão \"Lua\" não está instalada no servidor.",
+    "No script was chosen." : "Nenhum script foi escolhido.",
     "Run file action" : "Executar ação de arquivos",
     "Pass files to a file action script and run it." : "Passe arquivos para um script de ação de arquivos e execute-o.",
     "File actions" : "Ações sobre ficheiros",
@@ -24,6 +25,7 @@
     "Back" : "Voltar",
     "Variable name" : "Nome da variável",
     "User prompt" : "Prompt do usuário",
+    "Input type" : "Tipo de entrada",
     "Large text area" : "Grande área de texto",
     "Allow multiple selections" : "Permitir várias seleções",
     "Multi-select options" : "Opções de seleção múltipla",
@@ -45,6 +47,7 @@
     "Limit to groups" : "Limitado a grupos",
     "Select groups allowed to use this action" : "Selecione os grupos autorizados a usar esta ação",
     "Limit by file types" : "Limitar por tipos de arquivo",
+    "Media type or file extension (e.g. text/plain, doc)" : "Tipo de mídia ou extensão de arquivo (p. ex., text/plain, doc)",
     "Unknown error" : "Erro desconhecido",
     "Select an action to perform" : "Escolha uma ação a executar",
     "Action completed!" : "Execução concluída!",
@@ -57,8 +60,10 @@
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "As ações de arquivos não estão disponíveis porque não há interpretador disponível. Ou instale o plug-in Lua no servidor ou ativar o interpretador experimental.",
     "New action" : "Nova ação",
     "No actions" : "Sem ações",
+    "No file actions exist." : "Não existem ações de arquivos.",
     "Experimental interpreter" : "Interpretador experimental",
     "It is highly recommended to run the PHP Lua extension on your server. If this is not possible, the experimental Lua interpreter may be used. This interpreter is still under development and may not always produce the expected results." : "É altamente recomendável executar a extensão PHP Lua em seu servidor. Se isso não for possível, o interpretador Lua experimental poderá ser usado. Este interpretador ainda está em desenvolvimento e pode nem sempre produzir os resultados esperados.",
+    "Use experimental interpreter" : "Usar interpretador experimental",
     "More actions" : "Mais ações"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

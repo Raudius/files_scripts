@@ -6,6 +6,7 @@ OC.L10N.register(
     "Edit" : "Rediger",
     "Delete" : "Delete",
     "Checkbox" : "Avkryssingsfelt",
+    "Back" : "Tilbake",
     "Save" : "Save",
     "Saved" : "Lagra",
     "Unknown error" : "Ukjend feil",

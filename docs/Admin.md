@@ -88,3 +88,16 @@ To get the `<userid>` value, you can use the user-list command:
 ```sh
 occ user:list
 ```
+
+## Interactive (REPL) shell
+You can start an interactive shell with the `files_scripts:interactive` command
+```sh
+occ files_scripts:interactive
+```
+
+Multi-line commands can be given by ending the line with a backslash character:
+```
+> print("hello \
+> world")
+```
+You can type the `exit` command to exit the shell.

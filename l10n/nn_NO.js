@@ -5,6 +5,7 @@ OC.L10N.register(
     "Disabled" : "Deaktivert",
     "Edit" : "Rediger",
     "Delete" : "Delete",
+    "Text" : "Tekst",
     "Checkbox" : "Avkryssingsfelt",
     "Back" : "Tilbake",
     "Save" : "Save",

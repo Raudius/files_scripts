@@ -21,7 +21,7 @@ class ListScripts extends Base {
 		parent::configure();
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)  {
+	protected function execute(InputInterface $input, OutputInterface $output): int  {
 		$output->writeln('<info>Listing file actions:</info>');
 		$scripts = $this->scriptMapper->findAll();
 

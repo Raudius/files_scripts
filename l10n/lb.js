@@ -6,6 +6,7 @@ OC.L10N.register(
     "Disabled" : "Deaktivéiert",
     "Edit" : "Änneren",
     "Delete" : "Delete",
+    "Text" : "Text",
     "Checkbox" : "Checkbox",
     "Save" : "Save",
     "Saved" : "Gespäichert",

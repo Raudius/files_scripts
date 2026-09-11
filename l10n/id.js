@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "Teks",
     "Checkbox" : "Kotak centang",
     "Back" : "Kembali",
+    "Variable name" : "Nama variabel",
     "Save" : "Save",
     "Saved" : "Disimpan",
     "Limit to groups" : "Batasi ke grup",

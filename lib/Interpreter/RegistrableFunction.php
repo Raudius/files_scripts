@@ -52,7 +52,7 @@ abstract class RegistrableFunction {
 		return $folder;
 	}
 
-	final protected function getPath(array $data): string {
+	final protected function getPath(?array $data): string {
 		return ($data['path'] ?? '<no-path>') . '/' . ($data['name'] ?? '<no-name>');
 	}
 

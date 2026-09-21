@@ -12,12 +12,19 @@ use OCA\FilesScripts\Interpreter\RegistrableFunction;
  * Returns the resulting string.
  */
 class Mustache extends RegistrableFunction {
-	public function run($template = '', $vars = []): string {
+	public function run($template = '', $vars = [], $escape = false): string {
 		if (!$vars || !is_array($vars)) {
 			$vars = [];
 		}
 		$vars = $this->normaliseArray($vars);
 
-		return (new Mustache_Engine(['entity_flags' => ENT_QUOTES]))->render($template, $vars);
+		$options = $escape ? [
+			'entity_flags' => ENT_QUOTES
+		] : [
+			'escape' => function($value) { return $value; }
+		];
+
+		return (new Mustache_Engine($options))->render($template, $vars);
+
 	}
 }

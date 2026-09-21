@@ -614,9 +614,11 @@ This function has been removed. The dependency that makes this function work is 
 You can continue using the function by manually installing the [`files_scripts_deprecated`](https://github.com/Raudius/files_scripts_deprecated) app, which bundles all the removed functions.
 ### mustache
 
-`mustache(String template, [Table variables]={}): String`  
+`mustache(String template, [Table variables]={}, [Bool escape]=true): String`  
   
-Renders a [mustache](https://mustache.github.io) template.  
+Renders a [mustache](https://mustache.github.io) template.
+If escape is false, no escaping of special characters (for e.g. HTML) will be performed. This is suitable for use with plaintext or other file formats where no special handling is desired.
+
 Returns the resulting string.
 ## Util
 ### create_date_time

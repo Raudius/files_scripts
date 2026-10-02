@@ -9,6 +9,7 @@ OC.L10N.register(
     "Text" : "Texto",
     "Checkbox" : "Casilla de verificación",
     "Back" : "Volver",
+    "Variable name" : "Nombre de la variable",
     "Save" : "Save",
     "Saved" : "Guardado",
     "Limit to groups" : "Limitar a grupos",

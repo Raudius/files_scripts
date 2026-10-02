@@ -25,7 +25,7 @@ OC.L10N.register(
     "File picker" : "Výber súboru",
     "Multi-select" : "Viacnásobný výber",
     "Back" : "Späť",
-    "Variable name" : "Meno premmenej",
+    "Variable name" : "Názov premennej",
     "User prompt" : "Výzva pre užívateľa",
     "Input type" : "Typ vstupu",
     "Large text area" : "Veľká textová plocha",

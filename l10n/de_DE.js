@@ -49,7 +49,7 @@ OC.L10N.register(
     "Limit to groups" : "Auf Gruppen beschränken",
     "Select groups allowed to use this action" : "Gruppen auswählen, die diese Aktion verwenden dürfen",
     "Limit by file types" : "Nach Dateitypen begrenzen",
-    "Media type or file extension (e.g. text/plain, doc)" : "Medientyp oder Dateierweiterung (z. B. text/plain, doc)",
+    "Media type or file extension (e.g. text/plain, doc)" : "Medientyp oder Dateierweiterung (z. B. text/plain, doc)",
     "Unknown error" : "Unbekannter Fehler",
     "Select an action to perform" : "Eine auszuführende Aktion auswählen",
     "Action completed!" : "Aktion abgeschlossen",

@@ -34,7 +34,7 @@
     "Script input name cannot be empty" : "Der Name der Skripteingabe darf nicht leer sein",
     "Script input name already in use." : "Der Name der Skripteingabe wird bereits verwendet",
     "User inputs" : "Benutzereingaben",
-    "Specify any number of input values which the user may provide when running this action. These will be accessible in the script via the get_input() function." : "Gib eine beliebige Anzahl von Eingabewerten an, die der Benutzer bei der Ausführung dieser Aktion übergeben kann. Auf diese kann das Skript über die Funktion get_input() zugreifen.",
+    "Specify any number of input values which the user may provide when running this action. These will be accessible in the script via the get_input() function." : "Eine beliebige Anzahl von Eingabewerten angeben, die Benutzer bei der Ausführung dieser Aktion übergeben können. Auf diese kann das Skript über die Funktion get_input() zugreifen.",
     "Move to bottom" : "Nach unten verschieben",
     "Add input" : "Eingabe hinzufügen",
     "Saved" : "Gespeichert",

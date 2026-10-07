@@ -7,7 +7,7 @@
     "No script was chosen." : "Сценарий не выбран.",
     "Run file action" : "Запустить сценарий для файла",
     "Pass files to a file action script and run it." : "Передать файлы в сценарий и запустить его.",
-    "File actions" : "Сценарии файла",
+    "File actions" : "Просмотр действий для файла",
     "An unexpected error occurred when running the action." : "При выполнении сценария произошла непредвиденная ошибка.",
     "Title is empty." : "Заголовок пуст.",
     "A script already exists with this title." : "Скрипт с таким названием уже существует.",

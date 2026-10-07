@@ -56,7 +56,7 @@
     "Execute" : "Spustiť",
     "Failed to duplicate the script." : "Nepodarilo sa duplikovať skript.",
     "Failed to delete the script." : "Nepodarilo sa zmazať skript.",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "Akcie so súbormi sú malé skripty Lua, ktoré môžu vytvárať, upravovať a/alebo odstraňovať súbory programovo. Tieto akcie môžu spúšťať užívatelia na ich súboroch. Ďalšie informácie nájdete v dokumentácii.",
+    "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "Akcie so súbormi sú malé skripty Lua, ktoré môžu vytvárať, upravovať a/alebo odstraňovať súbory programovo. Tieto akcie môžu spúšťať používatelia na ich súboroch. Ďalšie informácie nájdete v dokumentácii.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Akcie so súbormi nie sú k dispozícii, pretože nie je k dispozícii žiadny tlmočník. Nainštalujte doplnok Lua na server alebo povoľte experimentálny interpret.",
     "New action" : "Nová akcia",
     "No actions" : "Žiadne akcie",

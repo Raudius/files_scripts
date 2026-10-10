@@ -49,7 +49,7 @@ OC.L10N.register(
     "Limit to groups" : "Povoľ len pre skupiny",
     "Select groups allowed to use this action" : "Vybrať skupiny ktoré majú povolenie použiť túto akciu",
     "Limit by file types" : "Obmedziť typmi súborov",
-    "Media type or file extension (e.g. text/plain, doc)" : "Typ média alebo prípona súboru (napr: text/plain, doc)",
+    "Media type or file extension (e.g. text/plain, doc)" : "Typ média alebo prípona súboru (napr. text/plain, doc)",
     "Unknown error" : "Neznáma chyba",
     "Select an action to perform" : "Vyberte akciu ktorú chcete spustiť",
     "Action completed!" : "Akcia kompletná!",

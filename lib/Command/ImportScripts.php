@@ -28,7 +28,7 @@ class ImportScripts extends Base {
 		parent::configure();
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)  {
+	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$json = file_get_contents("php://stdin");
 		if (false === $json) {
 			$output->writeln('<error>You need an interactive terminal to run this command</error>');

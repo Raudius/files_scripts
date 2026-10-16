@@ -56,7 +56,7 @@
     "Execute" : "Выполнить",
     "Failed to duplicate the script." : "Не удалось продублировать сценарий.",
     "Failed to delete the script." : "Не удалось удалить скрипт.",
-    "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "Действия с файлами - это небольшие Lua-скрипты, которые могут создавать, изменять и/или удалять файлы программным путем. Эти действия могут запускаться пользователями для работы со своими файлами. Пожалуйста, ознакомьтесь с документацией для получения дополнительной информации.",
+    "File actions are small Lua scripts that can create, modify, and/or delete files programmatically. These actions may be triggered by users to run on their files. Please read the documentation for more information." : "Действия с файлами — это небольшие Lua-скрипты, которые могут создавать, изменять и/или удалять файлы программным путём. Эти действия могут запускаться пользователями для работы со своими файлами. Для получения дополнительной информации ознакомьтесь с документацией.",
     "File actions are not available because there is no available interpreter. Either install the Lua plugin on the server or enable the experimental interpreter." : "Файловые сценарии недоступны, так как нет доступного интерпретатора. Либо установите плагин Lua на сервер, либо включите экспериментальный интерпретатор.",
     "New action" : "Создать действие",
     "No actions" : "Нет действий",

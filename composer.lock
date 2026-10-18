@@ -4,31 +4,35 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0234e73de094aeb6408d04c2a3e874f0",
+    "content-hash": "251ff5046b04377e03ab3c175ea16a9a",
     "packages": [
         {
             "name": "antlr/antlr4-php-runtime",
-            "version": "0.5.1",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antlr/antlr-php-runtime.git",
-                "reference": "73790bc994cec4b18a414865234ab0db198b065d"
+                "reference": "396cbea30b6b45f97511a37effde24d98de918c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antlr/antlr-php-runtime/zipball/73790bc994cec4b18a414865234ab0db198b065d",
-                "reference": "73790bc994cec4b18a414865234ab0db198b065d",
+                "url": "https://api.github.com/repos/antlr/antlr-php-runtime/zipball/396cbea30b6b45f97511a37effde24d98de918c6",
+                "reference": "396cbea30b6b45f97511a37effde24d98de918c6",
                 "shasum": ""
             },
             "require": {
-                "ext-mbstring": "*",
-                "php": "7.4 - 8.0"
+                "ext-mbstring": "^8.0",
+                "php": "^8.0",
+                "psr/log": "^2.0 || ^3.0"
             },
             "require-dev": {
+                "ergebnis/composer-normalize": "^2.15",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.11.4",
-                "slevomat/coding-standard": "^5.0.4",
-                "squizlabs/php_codesniffer": "^3.4.1"
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.1",
+                "slevomat/coding-standard": "^7.0",
+                "squizlabs/php_codesniffer": "^3.6"
             },
             "type": "library",
             "extra": {
@@ -45,7 +49,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "PHP 7 and 8.0 runtime for ANTLR 4",
+            "description": "PHP 8.0+ runtime for ANTLR 4",
             "keywords": [
                 "antlr4",
                 "php",
@@ -53,9 +57,9 @@
             ],
             "support": {
                 "issues": "https://github.com/antlr/antlr-php-runtime/issues",
-                "source": "https://github.com/antlr/antlr-php-runtime/tree/0.5.1"
+                "source": "https://github.com/antlr/antlr-php-runtime/tree/0.10.0"
             },
-            "time": "2021-08-13T11:44:19+00:00"
+            "time": "2026-08-15T19:53:16+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -443,25 +447,25 @@
         },
         {
             "name": "raudius/luar",
-            "version": "0.1.4",
+            "version": "v0.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Raudius/Luar.git",
-                "reference": "4ae72b12e45e2684424c29d2307b065ce5271a8b"
+                "reference": "1395a73db52d5dd0cf0107e993b97faeb2b69983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Raudius/Luar/zipball/4ae72b12e45e2684424c29d2307b065ce5271a8b",
-                "reference": "4ae72b12e45e2684424c29d2307b065ce5271a8b",
+                "url": "https://api.github.com/repos/Raudius/Luar/zipball/1395a73db52d5dd0cf0107e993b97faeb2b69983",
+                "reference": "1395a73db52d5dd0cf0107e993b97faeb2b69983",
                 "shasum": ""
             },
             "require": {
-                "antlr/antlr4-php-runtime": "^0.5.1",
+                "antlr/antlr4-php-runtime": "^0.10.0",
                 "ext-json": "*"
             },
             "require-dev": {
                 "clean/phpdoc-md": "^0.19.3",
-                "phpunit/phpunit": "^9.5"
+                "phpunit/phpunit": "^13.3.6"
             },
             "type": "library",
             "autoload": {
@@ -483,9 +487,9 @@
             "description": "Lua interpreter written entirely in PHP",
             "support": {
                 "issues": "https://github.com/Raudius/Luar/issues",
-                "source": "https://github.com/Raudius/Luar/tree/v0.1.4"
+                "source": "https://github.com/Raudius/Luar/tree/v0.1.7"
             },
-            "time": "2023-07-15T21:24:58+00:00"
+            "time": "2026-10-18T14:06:58+00:00"
         },
         {
             "name": "raudius/phpdf",
@@ -1529,22 +1533,22 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.5",
+            "version": "7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a"
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
-                "reference": "ee80339fd9177ba44c49cdb653ff02a4d1106b9a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ffb62ec787050ae4fa9449cdd6b80335db69bda2",
+                "reference": "ffb62ec787050ae4fa9449cdd6b80335db69bda2",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^2.5.3",
-                "guzzlehttp/psr7": "^2.13.1",
+                "guzzlehttp/promises": "^2.6",
+                "guzzlehttp/psr7": "^2.13.2",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.5 || ^3.0",
@@ -1637,7 +1641,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.16.0"
             },
             "funding": [
                 {
@@ -1653,20 +1657,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:21:06+00:00"
+            "time": "2026-10-18T13:38:36+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1"
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/cde49999552d185d64715fe9c1f77a2aadd2f9f1",
-                "reference": "cde49999552d185d64715fe9c1f77a2aadd2f9f1",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/3d88c829bd5f13d13847b39067dbf09a60af2154",
+                "reference": "3d88c829bd5f13d13847b39067dbf09a60af2154",
                 "shasum": ""
             },
             "require": {
@@ -1721,7 +1725,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.5.3"
+                "source": "https://github.com/guzzle/promises/tree/2.6.0"
             },
             "funding": [
                 {
@@ -1737,7 +1741,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T09:11:28+00:00"
+            "time": "2026-10-18T12:46:59+00:00"
         },
         {
             "name": "guzzlehttp/psr7",

@@ -60,6 +60,7 @@ use OCA\FilesScripts\Interpreter\Functions\Util\Http_Request;
 use OCA\FilesScripts\Interpreter\Functions\Util\Json;
 use OCA\FilesScripts\Interpreter\Functions\Util\Shell_Command;
 use OCA\FilesScripts\Interpreter\Functions\Util\Sort;
+use OCA\FilesScripts\Interpreter\Functions\Util\Split;
 use OCA\FilesScripts\Interpreter\Functions\Util\Wait;
 
 class FunctionProvider implements IFunctionProvider {
@@ -126,7 +127,8 @@ class FunctionProvider implements IFunctionProvider {
 		File_Delete_Unsafe $f61,
 		Share_Delete $f62,
 		View_Files $f63,
-		Get_Activity $f64
+		Get_Activity $f64,
+		Split $f65,
 	) {
 		$this->functions = func_get_args();
 	}

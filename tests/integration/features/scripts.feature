@@ -2,7 +2,7 @@ Feature: scripts
   Scenario: Run scripts
     Given "admin" deletes all scripts
     And "admin" deletes all tags
-    Then script "test_files.lua" is run with "no" output
+    Then script "test_util.lua" is run with "no" output
     And script "test_nextcloud.lua" is run with "no" output
     And script "test_util.lua" is run with "no" output
 

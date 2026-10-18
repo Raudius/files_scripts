@@ -7,9 +7,9 @@ default:
         - '%paths.base%/../features'
       contexts:
         - FeatureContext:
-            baseUrl: 'http://nextcloud.local/index.php'
-            remoteUrl: 'http://nextcloud.local/remote.php'
-            ocsUrl: 'http://nextcloud.local/ocs/v2.php'
+            baseUrl: 'http://stable33.local/index.php'
+            remoteUrl: 'http://stable33.local/remote.php'
+            ocsUrl: 'http://stable33.local/ocs/v2.php'
 
 ci:
   suites:

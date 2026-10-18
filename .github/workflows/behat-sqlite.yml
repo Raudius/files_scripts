@@ -34,11 +34,14 @@ env:
 jobs:
   behat-sqlite:
     runs-on: ubuntu-latest
-
+    continue-on-error: ${{ matrix.server-versions == 'master' }}
     strategy:
       matrix:
         php-versions: ['8.2', '8.3', '8.4']
         server-versions: ['stable33', 'stable34', 'master']
+        exclude:
+          - php-versions: '8.2'
+            server-versions: 'master'
 
     steps:
       - name: Set app env

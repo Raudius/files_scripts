@@ -72,6 +72,7 @@
     - [json](#json)  
     - [shell_command](#shell_command)  
     - [sort](#sort)  
+    - [split](#split)  
     - [wait](#wait)  
 
 ## Files
@@ -743,6 +744,20 @@ fruits = sort(fruits)
 fruits = {{name="grape"}, {name="apple"}, {name="banana"}, {name="orange"}}  
 fruits = sort(fruits, "name", true)  
 -- {{name="apple"}, {name="banana"},{name="grape"},{name="orange"}}  
+```
+### split
+
+`split(string subject, string delimiter): Table`  
+  
+Splits a string into parts based on a delimiter and returns the result as a table.  
+If the `delimiter` is not specified, it will default to splitting on whitespace.  
+If the `subject` is empty, it will return an empty table.  
+  
+Example:  
+```lua  
+text = "apple,banana,grape"  
+fruits = split(text, ",")  
+-- {"apple", "banana", "grape"}  
 ```
 ### wait
 

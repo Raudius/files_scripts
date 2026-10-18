@@ -83,3 +83,19 @@ assertNotNil(sansaJsonString:find('"name":"Sansa"'))
 assertNotNil(sansaJsonString:find('"surname":"Stark"'))
 assertNotNil(sansaJsonString:find('"city":"Winterfell"'))
 assertNotNil(sansaJsonString:find('"age":13'))
+
+
+-- test split with `-` separator
+starkWords = "Winter-is-coming"
+
+starkWordsTable = split(starkWords, "-")
+assertEqualTable(starkWordsTable, {"Winter", "is", "coming"})
+
+-- test split with default separator (whitespace)
+starkWords = "Winter is coming"
+starkWordsTable = split(starkWords)
+assertEqualTable(starkWordsTable, {"Winter", "is", "coming"})
+
+-- test split with nil string input
+zilch = split(nil) -- nil should return empty table
+assertEqualTable(zilch, {})

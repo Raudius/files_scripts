@@ -113,7 +113,7 @@ sign-build:
 
 # Packages the build into a release tarball, then signs the tarball.
 package-build:
-	tar -czf $(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz \
+	tar -czf $(RELEASE_DIR)/$(APP_NAME)-$(VERSION).tar.gz --no-xattrs \
 		-C $(RELEASE_DIR) $(APP_NAME)
 
 # Sign the release tarball

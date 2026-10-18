@@ -44,12 +44,12 @@ class RunScript extends Base {
 		parent::configure();
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)  {
+	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$scriptId = $input->getArgument('id');
 		$userId = $input->getOption('user');
 		$scriptInputsJson = $input->getOption('inputs') ?? '{}';
 		$fileInputs = $input->getOption('file') ?? [];
-		
+
 		try {
 			$scriptInputsData = json_decode($scriptInputsJson, true, 512, JSON_THROW_ON_ERROR);
 		} catch (\JsonException $err) {
@@ -77,7 +77,7 @@ class RunScript extends Base {
 					if (ctype_digit(strval($fileInput))) {
 						$nodes = $rootFolder->getById(intval($fileInput));
 						if (!isset($nodes[0])) {
-							$output->writeln('<error>Could not find input file ' . $fileInput . ' belonging in root folder ' . $rootFolder->getPath() . ' for file action</error>');			
+							$output->writeln('<error>Could not find input file ' . $fileInput . ' belonging in root folder ' . $rootFolder->getPath() . ' for file action</error>');
 							return 1;
 						}
 						$file = $nodes[0];

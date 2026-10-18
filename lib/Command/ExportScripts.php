@@ -27,7 +27,7 @@ class ExportScripts extends Base {
 		parent::configure();
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)  {
+	protected function execute(InputInterface $input, OutputInterface $output): int  {
 		$scriptId = $input->getOption('id');
 		$scriptId = $scriptId ? intval($scriptId) : null;
 		if ($scriptId !== null) {

@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "ຂໍ້ຄວາມ",
     "Checkbox" : "ເຄື່ອງໝາຍກ່ອງ",
     "Back" : "ກັບຄືນ",
+    "Variable name" : "ຊື່ໂຕແປ",
     "Save" : "Save",
     "Saved" : "ບັນທຶກແລ້ວ",
     "Limit to groups" : "Limit to groups",

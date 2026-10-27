@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "Texti",
     "Checkbox" : "Gátreitur",
     "Back" : "Til baka",
+    "Variable name" : "Heiti breytu",
     "Save" : "Save",
     "Saved" : "Vistað",
     "Limit to groups" : "Takmarka við hópa",

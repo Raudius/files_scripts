@@ -16,6 +16,7 @@ OC.L10N.register(
     "Checkbox" : "Žymimasis langelis",
     "File picker" : "Failų rinkiklis",
     "Back" : "Atgal",
+    "Variable name" : "Kintamojo pavadinimas",
     "Large text area" : "Didelis teksto laukas",
     "Save" : "Išsaugoti",
     "Saved" : "Įrašyta",

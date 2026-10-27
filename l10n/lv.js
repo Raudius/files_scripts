@@ -9,6 +9,7 @@ OC.L10N.register(
     "Duplicate" : "Pavairot",
     "Delete" : "Delete",
     "Text" : "Teksts",
+    "Variable name" : "Mainīgā nosaukums",
     "Save" : "Save",
     "Saved" : "Saglabāts",
     "Limit to groups" : "Ierobežot kopām",

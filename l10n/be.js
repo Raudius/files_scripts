@@ -8,6 +8,7 @@ OC.L10N.register(
     "Delete" : "Delete",
     "Text" : "Тэкст",
     "Back" : "Назад",
+    "Variable name" : "Назва зменнай",
     "Save" : "Save",
     "Saved" : "Захавана",
     "Unknown error" : "Невядомая памылка",

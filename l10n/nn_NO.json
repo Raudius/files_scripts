@@ -1,11 +1,13 @@
 { "translations": {
     "File actions" : "File actions",
+    "Enabled" : "Aktivert",
     "Disabled" : "Deaktivert",
     "Edit" : "Rediger",
     "Delete" : "Delete",
     "Text" : "Tekst",
     "Checkbox" : "Avkryssingsfelt",
     "Back" : "Tilbake",
+    "Variable name" : "Variabelnamn",
     "Save" : "Save",
     "Saved" : "Lagra",
     "Unknown error" : "Ukjend feil",

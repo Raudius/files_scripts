@@ -9,6 +9,7 @@ OC.L10N.register(
     "Text" : "Tekst",
     "Checkbox" : "Checkbox",
     "Back" : "Mbrapsht",
+    "Variable name" : "Emri i variablit",
     "Save" : "Save",
     "Saved" : "Ruajtur",
     "Limit to groups" : "Kufizo grupet",

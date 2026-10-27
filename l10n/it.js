@@ -11,6 +11,7 @@ OC.L10N.register(
     "Checkbox" : "Casella di selezione",
     "Multi-select" : "Selezione multipla",
     "Back" : "Indietro",
+    "Variable name" : "Nome variabile",
     "Save" : "Save",
     "Saved" : "Salvato",
     "Limit to groups" : "Limita a gruppi",

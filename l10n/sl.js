@@ -11,6 +11,7 @@ OC.L10N.register(
     "Text" : "Besedilo",
     "Checkbox" : "Izbirno polje",
     "Back" : "Nazaj",
+    "Variable name" : "Ime spremenljivke",
     "Save" : "Save",
     "Saved" : "Shranjeno",
     "Allow on public shares" : "Dovoli na javnih mestih souporabe",

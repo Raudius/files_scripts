@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "文本 ",
     "Checkbox" : "复选框",
     "Back" : "返回",
+    "Variable name" : "变量名称",
     "Save" : "Save",
     "Saved" : "已保存",
     "A short description of what this action will do …" : "简短描述此动作能做些什么……",

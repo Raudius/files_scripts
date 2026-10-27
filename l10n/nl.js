@@ -12,6 +12,7 @@ OC.L10N.register(
     "Text" : "Tekst",
     "Checkbox" : "Aanvinkvakje",
     "Back" : "Terug",
+    "Variable name" : "Naam variabele",
     "Save" : "Save",
     "Saved" : "Opgeslagen",
     "An error occurred during saving" : "Er trad een fout op bij het opslaan",

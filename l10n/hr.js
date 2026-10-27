@@ -10,6 +10,7 @@ OC.L10N.register(
     "Text" : "Tekst",
     "Checkbox" : "Potvrdni okvir",
     "Back" : "Natrag",
+    "Variable name" : "Naziv varijable",
     "Save" : "Spremi",
     "Saved" : "Spremljeno",
     "Limit to groups" : "Ograniči na grupe",

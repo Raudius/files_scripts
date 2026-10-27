@@ -6,6 +6,8 @@ OC.L10N.register(
     "Disabled" : "Onemogućeno",
     "Edit" : "Izmjeni",
     "Delete" : "Delete",
+    "Text" : "Tekst",
+    "Variable name" : "Naziv varijable",
     "Save" : "Save",
     "Saved" : "Spremljeno",
     "Unknown error" : "Nepoznata greška"
